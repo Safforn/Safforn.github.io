@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>first blog</title>
+    <url>/2023/02/27/first-blog/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Android Studio安装教程及踩坑</title>
     <url>/2023/02/27/Android%20Studio%20Install%20Q&amp;A/</url>
     <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
@@ -9,11 +14,6 @@
 <hr>
 <h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>first blog</title>
-    <url>/2023/02/27/first-blog/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Hello World</title>
