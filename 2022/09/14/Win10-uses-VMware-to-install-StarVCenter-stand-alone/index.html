@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Archives: 2023 |  </title>
+      <title>win10利用VMware安装StarVCenter(单机版) |  </title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -52,73 +52,264 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-Win10-uses-VMware-to-install-StarVCenter-stand-alone"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">2023</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2023" class="archive-year">2023</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/02/27/Android-Studio-Install-Q&A/" class="archive-article-date">
-  <time datetime="2023-02-27T12:48:46.000Z" itemprop="datePublished">02/27</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/02/27/Android-Studio-Install-Q&A/"
-    >Android Studio安装教程及踩坑</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  win10利用VMware安装StarVCenter(单机版)
+</h1>
  
 
-    </header>
-    
-    
-  </div>
-</article>
       
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/09/14/Win10-uses-VMware-to-install-StarVCenter-stand-alone/" class="article-date">
+  <time datetime="2022-09-14T03:22:22.000Z" itemprop="datePublished">2022-09-14</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Cloud-Computing/">Cloud Computing</a>
+  </div>
   
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/02/27/hexo-hello-world/" class="archive-article-date">
-  <time datetime="2023-02-27T03:11:11.000Z" itemprop="datePublished">02/27</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/02/27/hexo-hello-world/"
-    >Hello World</a> 
-</h2>
- 
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">348</span>
+        </span>
+    </span>
 
-    </header>
-    
-    
-  </div>
-</article>
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">1 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
       
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="0-文件准备"><a href="#0-文件准备" class="headerlink" title="0 文件准备"></a>0 文件准备</h2><p><a target="_blank" rel="noopener" href="http://download.starvcs.com/download/StarVCenter/StarVCenter_Community_Download/V4.2.20/starve4-x86_64-StarVCenter-mini-4.2.20.iso">starve4-x86_64-StarVCenter-mini-4.2.20.iso</a><br><a target="_blank" rel="noopener" href="https://www.vmware.com/go/getworkstation-win">VMware Workstation 16 Pro</a></p>
+<h2 id="1-创建虚拟机"><a href="#1-创建虚拟机" class="headerlink" title="1 创建虚拟机"></a>1 创建虚拟机</h2><ol start="0">
+<li><p>安装 VMware Workstation，序列号: ZF3R0-FHED2-M80TY-8QYGC-NPKYF；YF390-0HF8P-M81RQ-2DXQE-M2UT6；ZF71R-DMX85-08DQY-8YMNC-PPHV8.</p>
+</li>
+<li><p>创建新的虚拟机</p>
+<div align="center"> 
+ <img src="https://img-blog.csdnimg.cn/91556430407c432ca90c7be931897a15.png" width = "40%"/>
+</div>
+</li>
+<li><p>典型（推荐）（T）</p>
+</li>
+</ol>
+  <div align="center"> 
+      <img src="https://img-blog.csdnimg.cn/2893b563b8d9409a88c73ddd969ab3b7.png" width = "40%"/>
+  </div>
+
+<ol start="4">
+<li><p>安装程序光盘映像文件(iso)(M) -&gt;选择 iso文件</p>
+  <div align="center"> 
+   <img src="https://img-blog.csdnimg.cn/4e20e699630d4cea8ba8fc295e23d265.png" width = "40%"/>
+  </div>
+
+</li>
+<li><p>客户机操作系统  -&gt; linux；<br> 版本 -&gt; CentOS 5 和更早版本64位</p>
+ <div align="center"> 
+ <img src="https://img-blog.csdnimg.cn/542ae2ef42724776bbbbca383936e0d0.png" width = "40%"/>
+   </div>
+ </li>
+<li><p>虚拟机名称 -&gt; 自己设置；<br> 位置 -&gt; 最好不要放在C盘</p>
+ <div align="center"> 
+   <img src="https://img-blog.csdnimg.cn/8b7af3ec31734b56ad8dee447c4ca7ec.png" width = "40%"/>
+ </div>
+</li>
+<li><p>最大磁盘大小 -&gt; 建议32~64G；将虚拟磁盘 存储&#x2F;拆分 应该都行</p>
+  <div align="center"> 
+   <img src="https://img-blog.csdnimg.cn/d6e5d3a864f5412c9af8dd9423b2a280.png" width = "40%"/>
+  </div>
+</li>
+<li><p>自定义硬件</p>
+  <div align="center"> 
+   <img src="https://img-blog.csdnimg.cn/e9a3e1c3ac1745e4a9119003c48f040b.png" width = "50%"/>
+  </div></li>
+</ol>
+<ul>
+<li>内存 8G（8192 MB）  <div align="center"> 
+  <img src="https://img-blog.csdnimg.cn/0cec64e96b4b4acfbf48268f4ce412ec.png" width = "50%"/>
+  </div></li>
+<li>处理器数量：2处理器 * 2核；开启 虚拟化  <div align="center"> 
+  <img src="https://img-blog.csdnimg.cn/d1e3f8e882d244d38481cf3b18ed0418.png" width = "50%"/>
+  </div></li>
+<li>网络连接 → 桥接模式 → 复制网络连接状态  <div align="center"> 
+  <img src="https://img-blog.csdnimg.cn/06eda98299e04c4b95a4a3c60817da39.png" width = "50%"/>
+  </div></li>
+</ul>
+<ol start="9">
+<li>点击 <strong>完成</strong> 即可</li>
+</ol>
+<h2 id="2-运行虚拟机"><a href="#2-运行虚拟机" class="headerlink" title="2 运行虚拟机"></a>2 运行虚拟机</h2><ol>
+<li><p>开启此虚拟机</p>
+<div align="center"> 
+   <img src="https://img-blog.csdnimg.cn/29d25f6972ed442aacabb0e1169f0271.png" 
+   width = "50%"/>
+  </div></li>
+<li><p>选择”Test this media &amp; install StarVE 4”</p>
+<div align="center"> 
+   <img src="https://img-blog.csdnimg.cn/2ac123b2795b4e5e8776c34e53889c58.png" 
+   width = "50%"/>
+  </div></li>
+<li><p>设置 节点模式（&#x3D;&#x3D;Basic node&#x3D;&#x3D;） 和 硬盘选项（&#x3D;&#x3D;硬盘的对号打勾&#x3D;&#x3D;）</p>
+<div align="center"> 
+   <img src="https://img-blog.csdnimg.cn/85131a03b51b4262a97130865ea31166.png" 
+   width = "50%"/>
+  </div>
+</li>
+<li><p>设置网络</p>
+<div align="center"> 
+   <img src="https://img-blog.csdnimg.cn/4091b6b8f1c8421f9dbf03a91848d4d2.png" 
+   width = "50%"/>
+  </div>
+**IPv4 Settings** -> Method: **Manual** → **Add**（==Address填 不与物理主机IP相同的 “任意无关IP”；Netmask 和 Gateway为 Deploy 节点的物理主机的子网掩码【255.255.255.0】 和 默认网关【192.168.43.1】（需要取证一下）==）
+<div align="center"> 
+   <img src="https://img-blog.csdnimg.cn/693ad5c91df443c0905207d2f24dffec.png" 
+   width = "50%"/>
+  </div>
+Save后，改个主机字（有自己特色的），再点Apply
+<div align="center"> 
+   <img src="https://img-blog.csdnimg.cn/cac9d2c3bc184137ad7e15124cf6467c.png" 
+   width = "50%"/>
+  </div></li>
+<li><p>点击左上角 <code>Done</code>，回到首页，点击开始安装</p>
+</li>
+<li><p>设置 root密码 和 用户账户</p>
+<div align="center"> 
+   <img src="https://img-blog.csdnimg.cn/df964438db2544588d2ff62a4066baab.png" 
+   width = "50%"/>
+  </div></li>
+<li><p>安装完成后 reboot</p>
+</li>
+</ol>
+ 
+      <!-- reward -->
       
     </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://safforn.github.io/2022/09/14/Win10-uses-VMware-to-install-StarVCenter-stand-alone/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StarVCenter/" rel="tag">StarVCenter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMware/" rel="tag">VMware</a></li></ul>
+
+    </footer>
   </div>
-  
-  
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/02/27/hexo-hello-world/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Hello World
+          
+        </div>
+      </a>
+    
+    
+  </nav>
 
   
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -267,6 +458,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
