@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Android Studio安装教程及踩坑</title>
-    <url>/2023/02/27/Android-Studio-Install-Q&amp;A/</url>
-    <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
-<hr>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
-<hr>
-<h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
+    <title>Hello World</title>
+    <url>/2023/02/27/hexo-hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My-New-Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android Studio</tag>
-        <tag>Software Install</tag>
-      </tags>
   </entry>
   <entry>
     <title>win10利用VMware安装StarVCenter(单机版)</title>
@@ -129,21 +130,20 @@ Save后，改个主机字（有自己特色的），再点Apply
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/02/27/hexo-hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My-New-Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>Android Studio安装教程及踩坑</title>
+    <url>/2023/02/27/Android-Studio-Install-Q&amp;A/</url>
+    <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
+<hr>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
+<hr>
+<h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
 ]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android Studio</tag>
+        <tag>Software Install</tag>
+      </tags>
   </entry>
 </search>
