@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Android Studio安装教程及踩坑</title>
-    <url>/2023/02/27/Android-Studio-Install-Q&amp;A/</url>
-    <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
-<hr>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
-<hr>
-<h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Android Studio</tag>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>位运算与取模运算%</title>
     <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
     <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
@@ -77,6 +59,24 @@
       <tags>
         <tag>C</tag>
         <tag>bit Operation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android Studio安装教程及踩坑</title>
+    <url>/2023/02/27/Android-Studio-Install-Q&amp;A/</url>
+    <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
+<hr>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
+<hr>
+<h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Android Studio</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -241,7 +241,7 @@
 </li>
 </ol>
 <hr>
-<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装&#x3D;&#x3D;Notepad++&#x3D;&#x3D;）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
+<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
 <hr>
 ]]></content>
       <categories>
@@ -349,6 +349,20 @@
       <tags>
         <tag>C++</tag>
         <tag>Visual Studio</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu问题及解决方案汇总</title>
+    <url>/2023/03/07/Ubuntu-problems-and-solutions/</url>
+    <content><![CDATA[<hr>
+<p><a href="https://www.cnblogs.com/nuochengze/p/12642282.html">解决Ubuntu连不上网络，输入ifconfig只显示本地环回问题</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
