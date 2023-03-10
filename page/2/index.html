@@ -149,6 +149,406 @@
     
     
     <article
+  id="post-SQL"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/03/14/SQL/"
+    >常用数据库的异同</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/03/14/SQL/" class="article-date">
+  <time datetime="2022-03-14T06:45:59.000Z" itemprop="datePublished">2022-03-14</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/362598819">MySQL 与 PostgreSQL 比较</a></p>
+<hr>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PostgreSQ/" rel="tag">PostgreSQ</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-Win10-64bit-Installation-Assembly-Environment-masm"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/03/14/Win10-64bit-Installation-Assembly-Environment-masm/"
+    >Win10安装汇编环境masm x64</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/03/14/Win10-64bit-Installation-Assembly-Environment-masm/" class="article-date">
+  <time datetime="2022-03-14T06:45:59.000Z" itemprop="datePublished">2022-03-14</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>本文转载自 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/dgwblog/p/11865850.html">Win10(64位)安装汇编环境(MASM) - 博客园</a>，亲自尝试之后决定转载，并在原文基础上补充了一些 <strong>操作细节</strong>，也<strong>删去了少许内容</strong>，鼓励读者看一遍<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dgwblog/p/11865850.html">原文</a>。</p>
+<hr>
+<ol start="0">
+<li>需要的文件：<a target="_blank" rel="noopener" href="https://files-cdn.cnblogs.com/files/dgwblog/DOSBox.rar">DOSBox.rar</a></li>
+</ol>
+<hr>
+<ol>
+<li><p>将压缩包解压到某一目录下，运行 DOSBox.exe</p>
+<img src="https://img-blog.csdnimg.cn/55ae9806ba264c2e83a5df57783b95e8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li><p>在弹出的小窗口中 输入命令 <code>mount c: d://DOSBox/masm</code>，将指定目录下的 masm 部署到 c: 目录下 <em>（如果你想安装在D盘目录下，<code>d://DOSBox/masm </code>是 DOSBox 下 masm文件夹的目录地址）</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount c: d://DOSBox/masm</span><br></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/3ff2f91d01e440b3863e59915afd432b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+</li>
+<li><p>查看是否部署成功</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c:</span><br><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
+<p>运行结果如下：<br><img src="https://img-blog.csdnimg.cn/c19cbc5dd00d47079f0bec30676d1f56.png" style="zoom: 80%;" /></p>
+<ol start="4">
+<li>在 masm 目录下创建 test.asm 文件，编写 helloworld 程序（可以先在 txt 文件中编写，再改文件名和后缀名），保存文件，关闭</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.model small</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">    strs DB <span class="string">&#x27;hello world&#x27;</span>,<span class="number">13</span>,<span class="number">10</span>,<span class="string">&#x27;$&#x27;</span></span><br><span class="line">.code</span><br><span class="line">start:</span><br><span class="line">    mov ax,@data</span><br><span class="line">    mov ds,ax</span><br><span class="line">    mov dx,offset strs</span><br><span class="line">    mov ah,09h</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">    mov ah,4ch</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/c79972c356ab4c4e8bf19d87e6b8f0fc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_19,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+
+<ol start="5">
+<li>（假设你之前解压在D盘目录下）再利用 <code>mount c: d://DOSBox/masm</code> 命令 将 test.asm 文件复制到 c: 目录下，利用 <code>dir</code> 命令 检查是否成功 <em>（即 c: 目录下出现 <code>test.asm</code> 文件）</em><img src="https://img-blog.csdnimg.cn/845b2e08b170456e8eefc04a5828055e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_14,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
+<li>输入汇编命令 <code>masm test.asm</code>，遇到选项默认回车即可<img src="https://img-blog.csdnimg.cn/7e52953540d84130b80472f63bcadbdd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+可以发现目录下出现了 `test.obj` 文件
+<img src="https://img-blog.csdnimg.cn/adf9efd443454715812869b1bdacb4ed.png" style="zoom:80%;" /></li>
+<li>运行链接命令 <code>link test.obj</code>，遇到选项默认回车，目录下产生 <code>test.exe</code> 文件；<strong>Link : warning xxxxx: no stack segment 是在提示编程人员程序中没有堆栈段，并非程序或配置出现错误</strong><img src="https://img-blog.csdnimg.cn/226f478f4e2d4f898edd60e8a084dd12.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" /></li>
+<li>输入运行命令 <code>test.exe</code> 运行exe文件，显示 hello world 即成功<br><img src="https://img-blog.csdnimg.cn/fc4274d37d59444aa99155277d84241c.png"></li>
+</ol>
+<hr>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Assembly/" rel="tag">Assembly</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOSBox/" rel="tag">DOSBox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MASM/" rel="tag">MASM</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-CSAPP-5.1-optimizes-compiler-capabilities-and-limitations"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/"
+    >CSAPP 5.1 优化编译器的能力和局限性</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/" class="article-date">
+  <time datetime="2022-02-21T14:34:32.000Z" itemprop="datePublished">2022-02-21</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="5-1-优化编译器的能力和局限性"><a href="#5-1-优化编译器的能力和局限性" class="headerlink" title="5.1 优化编译器的能力和局限性"></a>5.1 优化编译器的能力和局限性</h2><p>现代编译器运用复杂精细的算法来确定一个程序中计算的值，以及他们是被如何使用的，然后利用一些机会来简化表达式，如：在几个不同的地方使用同一个计算，以及降低一个给定的计算必须被执行的次数。大多数编译器，包括 GCC，向用户提供了一些对它们所使用的优化的控制。就像在第3章中讨论过的，最简单的控制就是指定<code>优先级别</code>。例如，以命令行选项 “-Og” 调用 GCC 是让 GCC 使用一组基本的优化。以选项 “-O1” 或更高(如 “-O2” 或 “-O3” ) 调用 GCC 会让他使用更多的优化，进一步提高程序的性能，但是也可能增加程序的规模，也可能使标准的调试工具更难对程序进行调试。</p>
+<p>编译器必须很小心地对程序进行<code>安全</code>的优化，即对于程序可能遇到的所有可能的情况，在C语言标准提供的保证之下，优化后得到的程序和为优化的版本有一样的行为。这一限制消除了一些造成不希望的运行时行为的隐患，但是也意味着程序员要花费更多精力写出编译器能够将之转换成有效及其代码的程序。下面这个简单的例子帮助理解编译器优化限制：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">twiddle1</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">twiddle2</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">	*xp += <span class="number">2</span>* *yp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>twiddle1 和 twiddle2 两个函数“似乎”有相同的功能（把存储在指针yp指向的值两次加到指针xp所指的值上）。从另一个角度来看，函数 twiddle2 效率更高一些，它只要求三次内存引用（读*xp、读*yp、写*xp），而 twiddle1需要6次（重复twiddle2需要的内存引用操作两次）。因此，如果要编译器编译函数 twiddle1，我们认为基于 twiddle2 执行的计算能产生更有效的代码。.</p>
+<p>不过，考虑到 xp 和 yp 指向同一地址（xp 和 yp相等）的情况，此时，函数 twiddle1 的结果使 xp 变为原来的 4 倍，函数 twiddle2 的结果使 xp 变为原来的 3 倍。编译器不知道 twiddle1 会在何种情况被调用，因此必须假设 xp 和 yp 可能会相等。因此，编译器不能产生 twiddle2 风格的代码作为 twiddle1 的优化版本。这种两个指针指向同一个内存地址的情况称为 <strong><code>memory aliasing</code>（内存别名使用）</strong>，这可能会造成一个主要的<code>妨碍优化</code>的因素，限制了可能的优化策略。</p>
+<hr>
+<p>第二个妨碍优化的因素是 <strong>函数调用</strong>。考虑下面这个示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func1</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> f()+f()+f()+f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func2</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">4</span> * f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最初看上去两个函数实现的都是相同的功能，但是 func2() 只调用 f() 1次，而 func1() 调用 f() 4次。以func1() 作为源代码时，会很想产生 func2()  风格的代码。不过考虑下面 有关 f() 的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个函数有个“副作用”，他修改了全局程序状态的一部分，改变该函数的调用次数会改变程序的功能。假设开始时去全局变量 counter 的值设为0，调用 func1() 会返回 0+1+2+3&#x3D;6，而调用 func2()返回 4*0&#x3D;0。大多数编译器会试图判断一个函数是否有副作用，如果有，编译器会假设最坏的情况并保持所有的函数调用不变。反之，则会进行一定程度的优化。</p>
+<hr>
+<h3 id="用内联优化函数调用"><a href="#用内联优化函数调用" class="headerlink" title="用内联优化函数调用"></a>用内联优化函数调用</h3><p>包含函数函数调用的代码可以用 <strong><code>inline substitution</code>（内敛函数替换）</strong> 或者简称 <strong><code>inlining</code>（内联）</strong> 的过程进行优化，此时，将函数调用替换为函数体。下面是 func1() 的内联版代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Result of inlining f in func1 */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclin</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">long</span> t = counter++;  <span class="comment">/* +0 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +1 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +2 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +3 */</span></span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的转换即减少了函数调用的开销，也允许对展开的代码做进一步优化。例如，编译器可以统一funclin() 中对全局变量的更新，产生这个函数的一个优化版本：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Optimization of inlined func1 code */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclopt</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">long</span> t = <span class="number">4</span> * counter + <span class="number">6</span>;</span><br><span class="line">	counter += <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 对于这个特定的函数 f 的定义，上述代码重现了 func1 的行为。</p>
+<p>最近版本的 GCC 会尝试进行这种形式的优化，可以用命令行选项<code>-finline</code>指示编译器，或者使用优化等级 “-O1” 或更高等级。但是目前 GCC 尝试在单个文件中定义的函数的内联，意味着它无法用于常见的情况（<strong>一组库函数在一个文件中被定义，在其他文件的函数中被调用</strong>）。</p>
+<p>在某些情况下，最好能阻止编译器的内联优化。一种情况是 用符号调试器(如GDB)来评估代码，如果一个函数调用已经用内联替换优化过了，那么任何对这个调用进行追踪或设置断点的尝试都会失败。还有一种情况是用代码剖析的方式来评估程序性能，用内联替换消除的函数调用是不能被正确剖析的。</p>
+<hr>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSAPP/" rel="tag">CSAPP</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-Visual-Studio-2019-installation-tutorial-for-C++-development"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/09/30/Visual-Studio-2019-installation-tutorial-for-C++-development/"
+    >面向 C++ 开发的 Visual Studio 2019 安装教程</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/09/30/Visual-Studio-2019-installation-tutorial-for-C++-development/" class="article-date">
+  <time datetime="2021-09-30T05:58:15.000Z" itemprop="datePublished">2021-09-30</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Visual-Studio-2019-的下载与安装"><a href="#Visual-Studio-2019-的下载与安装" class="headerlink" title="Visual Studio 2019 的下载与安装"></a>Visual Studio 2019 的下载与安装</h2><p>注：<strong>过程中需要登陆 Microsoft 账户，正常登陆即可</strong></p>
+<ol>
+<li>到<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/vs/"> Visual Studio官网 </a>下载<strong>Visual Studio 2019 community</strong> ，点击后会自动下载<img src="https://img-blog.csdnimg.cn/8fd6889f973f4ec7b4b7a2dc9ecbd66a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>打开下载器，进入Visual Studio 2019 安装界面<img src="https://img-blog.csdnimg.cn/759ee143f64843b8a42f296ffc6fd45a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>设置安装选项。使用C++语言的开发者勾选<code>使用 C++ 的桌面开发</code>，使用Python语言的开发者勾选 <code> Python 开发</code><img src="https://img-blog.csdnimg.cn/e29fece6300f4d57a32c169ab147c006.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>在右侧的 <strong><code>使用C++的桌面开发</code></strong> 的子目录 <code>可选</code> 和 <strong><code>单个组件</code></strong> 中勾选下图所示组件：<img src="https://img-blog.csdnimg.cn/574083ab13e247888a73f092059f8f99.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_15,color_FFFFFF,t_70,g_se,x_16" style="zoom: 80%;" /></li>
+<li><strong>语言包</strong>选择 <code>中文(简体)</code> 或 <code>英文</code><img src="https://img-blog.csdnimg.cn/509c2fe2ffe24001937868ec1bb9d663.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li><strong>安装位置</strong>最好选择在 <strong>C盘以外 的其他地方</strong>，建议是在D盘或其他盘新建一个名为<code>Visual Studio 2019</code>的文件夹，在该文件夹中新建一个名为<code>community</code>的文件夹，将该文件夹设定为VS2019的安装目录；下载缓存和共享组件、工具、SDK等也建议都修改其默认目录<img src="https://img-blog.csdnimg.cn/4f06ba9b525241f4baba4dc64243fb38.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>点击 <b><code>安装</code></b>，期间不要断网，全部下载安装完毕后，即可使用VS2019进行C++开发</li>
+<li>如果你按照以上教程安装成功后，在<code>我的电脑 -&gt; D:\Visual Studio 2019\Community\Common7\IDE</code>目录下，找到名为 <code>devenv.exe</code> 应用程序，右键添加到桌面快捷方式 <em>（再给快捷方式改个名字就更好了）</em><img src="https://img-blog.csdnimg.cn/cf43915e615a488789d02b752862d7ff.png" style="zoom: 80%;" /></li>
+</ol>
+<h2 id="Visual-Studio-2019-的使用"><a href="#Visual-Studio-2019-的使用" class="headerlink" title="Visual Studio 2019 的使用"></a>Visual Studio 2019 的使用</h2><ol>
+<li>打开 Visual Studio 2019 的界面，选择 <strong><code>创建新项目</code></strong> 或者 **<code>继续但无需代码</code>**（选择后者VS2019将作为文件编辑器使用）<img src="https://img-blog.csdnimg.cn/ac9e74a0e5424be7b6353713c768c97e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>选择 <strong><code>创建空项目</code></strong> 后，选择<code>控制台应用</code> 或者 <code>空项目</code>，前者会创建默认有打印Hello World的代码，接着点击 <strong><code>下一步</code></strong><img src="https://img-blog.csdnimg.cn/92cadf51e01a4d90b98bac863d311e7b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>填写创建的<strong>项目名称</strong>，可以修改<strong>项目的存储位置</strong>（后面会介绍修改默认存储地址的方法），接着点击 **<code>创建</code>**即可<img src="https://img-blog.csdnimg.cn/d9ef172e1f0e49f49f32c99b904e33e8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" />
+<img src="https://img-blog.csdnimg.cn/64b4434941a64723925bac5ccd3218ab.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+</ol>
+<hr>
+<ol start="4">
+<li>如果选择 **<code>继续但无需代码</code>**，进入编辑器界面，选择最上方工具栏的 <strong><code>文件 -&gt; 新建 -&gt; 文件</code></strong><img src="https://img-blog.csdnimg.cn/425f4fd566e447d8ab2cf056c2108406.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>在侧栏中选择 <code>Visual C++</code>，中间栏选择 <code>C++ 文件(.cpp)</code> ，点击<code>打开</code>即可创建新的空文件<img src="https://img-blog.csdnimg.cn/3991e0c16e864090b6dc9b9a63149768.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>在中央的<strong>代码编辑区</strong>填写完代码后，点击左上角的<code>保存</code>按键或按下<code>Ctrl + S</code>保存文件；建议将代码文件放在 <strong>Visual Studio 2019 安装目录中的自定义文件夹</strong>里，或者放在 <strong>非C盘的集中的代码存放位置</strong>，便于以后查找<img src="https://img-blog.csdnimg.cn/2a699d16b84c45f3a23cfbe93dbcf020.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+</ol>
+<hr>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Visual-Studio/" rel="tag">Visual Studio</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-Bit-operation-and-modular-operation%"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/08/22/Bit-operation-and-modular-operation%25/"
+    >位运算与取模运算%</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/08/22/Bit-operation-and-modular-operation%25/" class="article-date">
+  <time datetime="2021-08-22T02:10:13.000Z" itemprop="datePublished">2021-08-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
+<ul>
+<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
+</ul>
+<hr>
+<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
+<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
+<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
+<li>应用：<ul>
+<li>清零：x&amp;0</li>
+<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
+<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
+<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
+<li>应用：<ul>
+<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
+<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
+<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
+<li>应用：<ul>
+<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
+<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
+<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
+</ul>
+<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
+<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
+</ul>
+<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
+<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
+</ul>
+<hr>
+<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
+<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
+<li>求绝对值： <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
+</ol>
+<hr>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bit-Operation/" rel="tag">bit Operation</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-Java-2048-game"
   class="article article-type-post"
   itemscope
