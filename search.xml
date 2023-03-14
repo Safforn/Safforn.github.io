@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Android Studio安装教程及踩坑</title>
+    <url>/2023/02/27/Android-Studio-Install-Q&amp;A/</url>
+    <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
+<hr>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
+<hr>
+<h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Android Studio</tag>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android 开发入门</title>
     <url>/2023/03/10/Android-develop-introduction/</url>
     <content><![CDATA[<h2 id="各种组件"><a href="#各种组件" class="headerlink" title="各种组件"></a>各种组件</h2><ol>
@@ -53,24 +71,6 @@
       </categories>
       <tags>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android Studio安装教程及踩坑</title>
-    <url>/2023/02/27/Android-Studio-Install-Q&amp;A/</url>
-    <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
-<hr>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
-<hr>
-<h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Android Studio</tag>
       </tags>
   </entry>
   <entry>
@@ -308,19 +308,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub入门</title>
-    <url>/2023/03/07/GitHub-Introduction/</url>
-    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>前端工具(框架)</title>
     <url>/2023/03/07/Front-end-tools/</url>
     <content><![CDATA[<p><a href="https://element.eleme.cn/#/zh-CN">Element - 网站快速成型工具</a></p>
@@ -331,6 +318,19 @@
 ]]></content>
       <tags>
         <tag>front-end</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub入门</title>
+    <url>/2023/03/07/GitHub-Introduction/</url>
+    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -388,21 +388,6 @@
       </tags>
   </entry>
   <entry>
-    <title>常用数据库的异同</title>
-    <url>/2022/03/14/SQL/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/362598819">MySQL 与 PostgreSQL 比较</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>PostgreSQ</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java-2048小游戏</title>
     <url>/2021/06/26/Java-2048-game/</url>
     <content><![CDATA[<h1 id="游戏规则"><a href="#游戏规则" class="headerlink" title="游戏规则"></a>游戏规则</h1><ol>
@@ -440,39 +425,18 @@
       </tags>
   </entry>
   <entry>
-    <title>面向 C++ 开发的 Visual Studio 2019 安装教程</title>
-    <url>/2021/09/30/Visual-Studio-2019-installation-tutorial-for-C++-development/</url>
-    <content><![CDATA[<h2 id="Visual-Studio-2019-的下载与安装"><a href="#Visual-Studio-2019-的下载与安装" class="headerlink" title="Visual Studio 2019 的下载与安装"></a>Visual Studio 2019 的下载与安装</h2><p>注：<strong>过程中需要登陆 Microsoft 账户，正常登陆即可</strong></p>
-<ol>
-<li>到<a href="https://visualstudio.microsoft.com/zh-hans/vs/"> Visual Studio官网 </a>下载<strong>Visual Studio 2019 community</strong> ，点击后会自动下载<img src="https://img-blog.csdnimg.cn/8fd6889f973f4ec7b4b7a2dc9ecbd66a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>打开下载器，进入Visual Studio 2019 安装界面<img src="https://img-blog.csdnimg.cn/759ee143f64843b8a42f296ffc6fd45a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>设置安装选项。使用C++语言的开发者勾选<code>使用 C++ 的桌面开发</code>，使用Python语言的开发者勾选 <code> Python 开发</code><img src="https://img-blog.csdnimg.cn/e29fece6300f4d57a32c169ab147c006.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>在右侧的 <strong><code>使用C++的桌面开发</code></strong> 的子目录 <code>可选</code> 和 <strong><code>单个组件</code></strong> 中勾选下图所示组件：<img src="https://img-blog.csdnimg.cn/574083ab13e247888a73f092059f8f99.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_15,color_FFFFFF,t_70,g_se,x_16" style="zoom: 80%;" /></li>
-<li><strong>语言包</strong>选择 <code>中文(简体)</code> 或 <code>英文</code><img src="https://img-blog.csdnimg.cn/509c2fe2ffe24001937868ec1bb9d663.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li><strong>安装位置</strong>最好选择在 <strong>C盘以外 的其他地方</strong>，建议是在D盘或其他盘新建一个名为<code>Visual Studio 2019</code>的文件夹，在该文件夹中新建一个名为<code>community</code>的文件夹，将该文件夹设定为VS2019的安装目录；下载缓存和共享组件、工具、SDK等也建议都修改其默认目录<img src="https://img-blog.csdnimg.cn/4f06ba9b525241f4baba4dc64243fb38.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>点击 <b><code>安装</code></b>，期间不要断网，全部下载安装完毕后，即可使用VS2019进行C++开发</li>
-<li>如果你按照以上教程安装成功后，在<code>我的电脑 -&gt; D:\Visual Studio 2019\Community\Common7\IDE</code>目录下，找到名为 <code>devenv.exe</code> 应用程序，右键添加到桌面快捷方式 <em>（再给快捷方式改个名字就更好了）</em><img src="https://img-blog.csdnimg.cn/cf43915e615a488789d02b752862d7ff.png" style="zoom: 80%;" /></li>
-</ol>
-<h2 id="Visual-Studio-2019-的使用"><a href="#Visual-Studio-2019-的使用" class="headerlink" title="Visual Studio 2019 的使用"></a>Visual Studio 2019 的使用</h2><ol>
-<li>打开 Visual Studio 2019 的界面，选择 <strong><code>创建新项目</code></strong> 或者 **<code>继续但无需代码</code>**（选择后者VS2019将作为文件编辑器使用）<img src="https://img-blog.csdnimg.cn/ac9e74a0e5424be7b6353713c768c97e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>选择 <strong><code>创建空项目</code></strong> 后，选择<code>控制台应用</code> 或者 <code>空项目</code>，前者会创建默认有打印Hello World的代码，接着点击 <strong><code>下一步</code></strong><img src="https://img-blog.csdnimg.cn/92cadf51e01a4d90b98bac863d311e7b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>填写创建的<strong>项目名称</strong>，可以修改<strong>项目的存储位置</strong>（后面会介绍修改默认存储地址的方法），接着点击 **<code>创建</code>**即可<img src="https://img-blog.csdnimg.cn/d9ef172e1f0e49f49f32c99b904e33e8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" />
-<img src="https://img-blog.csdnimg.cn/64b4434941a64723925bac5ccd3218ab.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-</ol>
-<hr>
-<ol start="4">
-<li>如果选择 **<code>继续但无需代码</code>**，进入编辑器界面，选择最上方工具栏的 <strong><code>文件 -&gt; 新建 -&gt; 文件</code></strong><img src="https://img-blog.csdnimg.cn/425f4fd566e447d8ab2cf056c2108406.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>在侧栏中选择 <code>Visual C++</code>，中间栏选择 <code>C++ 文件(.cpp)</code> ，点击<code>打开</code>即可创建新的空文件<img src="https://img-blog.csdnimg.cn/3991e0c16e864090b6dc9b9a63149768.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>在中央的<strong>代码编辑区</strong>填写完代码后，点击左上角的<code>保存</code>按键或按下<code>Ctrl + S</code>保存文件；建议将代码文件放在 <strong>Visual Studio 2019 安装目录中的自定义文件夹</strong>里，或者放在 <strong>非C盘的集中的代码存放位置</strong>，便于以后查找<img src="https://img-blog.csdnimg.cn/2a699d16b84c45f3a23cfbe93dbcf020.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-</ol>
+    <title>常用数据库的异同</title>
+    <url>/2022/03/14/SQL/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/362598819">MySQL 与 PostgreSQL 比较</a></p>
 <hr>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>C++</tag>
-        <tag>Visual Studio</tag>
+        <tag>MySQL</tag>
+        <tag>PostgreSQ</tag>
       </tags>
   </entry>
   <entry>
@@ -521,6 +485,60 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
         <tag>DOSBox</tag>
         <tag>MASM</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>面向 C++ 开发的 Visual Studio 2019 安装教程</title>
+    <url>/2021/09/30/Visual-Studio-2019-installation-tutorial-for-C++-development/</url>
+    <content><![CDATA[<h2 id="Visual-Studio-2019-的下载与安装"><a href="#Visual-Studio-2019-的下载与安装" class="headerlink" title="Visual Studio 2019 的下载与安装"></a>Visual Studio 2019 的下载与安装</h2><p>注：<strong>过程中需要登陆 Microsoft 账户，正常登陆即可</strong></p>
+<ol>
+<li>到<a href="https://visualstudio.microsoft.com/zh-hans/vs/"> Visual Studio官网 </a>下载<strong>Visual Studio 2019 community</strong> ，点击后会自动下载<img src="https://img-blog.csdnimg.cn/8fd6889f973f4ec7b4b7a2dc9ecbd66a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>打开下载器，进入Visual Studio 2019 安装界面<img src="https://img-blog.csdnimg.cn/759ee143f64843b8a42f296ffc6fd45a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>设置安装选项。使用C++语言的开发者勾选<code>使用 C++ 的桌面开发</code>，使用Python语言的开发者勾选 <code> Python 开发</code><img src="https://img-blog.csdnimg.cn/e29fece6300f4d57a32c169ab147c006.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>在右侧的 <strong><code>使用C++的桌面开发</code></strong> 的子目录 <code>可选</code> 和 <strong><code>单个组件</code></strong> 中勾选下图所示组件：<img src="https://img-blog.csdnimg.cn/574083ab13e247888a73f092059f8f99.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_15,color_FFFFFF,t_70,g_se,x_16" style="zoom: 80%;" /></li>
+<li><strong>语言包</strong>选择 <code>中文(简体)</code> 或 <code>英文</code><img src="https://img-blog.csdnimg.cn/509c2fe2ffe24001937868ec1bb9d663.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li><strong>安装位置</strong>最好选择在 <strong>C盘以外 的其他地方</strong>，建议是在D盘或其他盘新建一个名为<code>Visual Studio 2019</code>的文件夹，在该文件夹中新建一个名为<code>community</code>的文件夹，将该文件夹设定为VS2019的安装目录；下载缓存和共享组件、工具、SDK等也建议都修改其默认目录<img src="https://img-blog.csdnimg.cn/4f06ba9b525241f4baba4dc64243fb38.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>点击 <b><code>安装</code></b>，期间不要断网，全部下载安装完毕后，即可使用VS2019进行C++开发</li>
+<li>如果你按照以上教程安装成功后，在<code>我的电脑 -&gt; D:\Visual Studio 2019\Community\Common7\IDE</code>目录下，找到名为 <code>devenv.exe</code> 应用程序，右键添加到桌面快捷方式 <em>（再给快捷方式改个名字就更好了）</em><img src="https://img-blog.csdnimg.cn/cf43915e615a488789d02b752862d7ff.png" style="zoom: 80%;" /></li>
+</ol>
+<h2 id="Visual-Studio-2019-的使用"><a href="#Visual-Studio-2019-的使用" class="headerlink" title="Visual Studio 2019 的使用"></a>Visual Studio 2019 的使用</h2><ol>
+<li>打开 Visual Studio 2019 的界面，选择 <strong><code>创建新项目</code></strong> 或者 **<code>继续但无需代码</code>**（选择后者VS2019将作为文件编辑器使用）<img src="https://img-blog.csdnimg.cn/ac9e74a0e5424be7b6353713c768c97e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>选择 <strong><code>创建空项目</code></strong> 后，选择<code>控制台应用</code> 或者 <code>空项目</code>，前者会创建默认有打印Hello World的代码，接着点击 <strong><code>下一步</code></strong><img src="https://img-blog.csdnimg.cn/92cadf51e01a4d90b98bac863d311e7b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>填写创建的<strong>项目名称</strong>，可以修改<strong>项目的存储位置</strong>（后面会介绍修改默认存储地址的方法），接着点击 **<code>创建</code>**即可<img src="https://img-blog.csdnimg.cn/d9ef172e1f0e49f49f32c99b904e33e8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" />
+<img src="https://img-blog.csdnimg.cn/64b4434941a64723925bac5ccd3218ab.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+</ol>
+<hr>
+<ol start="4">
+<li>如果选择 **<code>继续但无需代码</code>**，进入编辑器界面，选择最上方工具栏的 <strong><code>文件 -&gt; 新建 -&gt; 文件</code></strong><img src="https://img-blog.csdnimg.cn/425f4fd566e447d8ab2cf056c2108406.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>在侧栏中选择 <code>Visual C++</code>，中间栏选择 <code>C++ 文件(.cpp)</code> ，点击<code>打开</code>即可创建新的空文件<img src="https://img-blog.csdnimg.cn/3991e0c16e864090b6dc9b9a63149768.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>在中央的<strong>代码编辑区</strong>填写完代码后，点击左上角的<code>保存</code>按键或按下<code>Ctrl + S</code>保存文件；建议将代码文件放在 <strong>Visual Studio 2019 安装目录中的自定义文件夹</strong>里，或者放在 <strong>非C盘的集中的代码存放位置</strong>，便于以后查找<img src="https://img-blog.csdnimg.cn/2a699d16b84c45f3a23cfbe93dbcf020.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Visual Studio</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World Hexo</title>
+    <url>/2020/12/27/hexo-hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My-New-Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>Win10利用VMware安装StarVCenter(单机版)</title>
@@ -634,23 +652,5 @@ Save后，改个主机字（有自己特色的），再点Apply
         <tag>VMware</tag>
         <tag>StarVCenter</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World Hexo</title>
-    <url>/2020/12/27/hexo-hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My-New-Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
