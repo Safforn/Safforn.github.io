@@ -37,144 +37,10 @@
 <hr>
 ]]></content>
       <categories>
-        <category>笔记</category>
+        <category>学习</category>
       </categories>
       <tags>
         <tag>A-Star</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android Studio安装教程及踩坑</title>
-    <url>/2023/02/27/Android-Studio-Install-Q&amp;A/</url>
-    <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
-<hr>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
-<hr>
-<h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Android Studio</tag>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>位运算与取模运算%</title>
-    <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
-    <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
-<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
-<ul>
-<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
-</ul>
-<hr>
-<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
-<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
-<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
-<li>应用：<ul>
-<li>清零：x&amp;0</li>
-<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
-<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
-<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
-<li>应用：<ul>
-<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
-<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
-<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
-<li>应用：<ul>
-<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
-<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
-<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
-</ul>
-<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
-<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
-</ul>
-<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
-<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
-</ul>
-<hr>
-<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
-<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
-<li>求绝对值： <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
-<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>bit Operation</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android 开发入门</title>
-    <url>/2023/03/10/Android-develop-introduction/</url>
-    <content><![CDATA[<h2 id="各种组件"><a href="#各种组件" class="headerlink" title="各种组件"></a>各种组件</h2><ol>
-<li><p>文本视图（TextView）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/tv_username&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span>  </span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_marginStart</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:text</span>=<span class="string">&quot;用户名&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:textColor</span>=<span class="string">&quot;#000000&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>图像视图（ImageView）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/img_id&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:src</span>=<span class="string">&quot;@drawable/img_name_without_suffix&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-<li><p>按钮（Button）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">       	<span class="attr">android:id</span>=<span class="string">&quot;@+id/login_btn&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;100dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:backgroundTint</span>=<span class="string">&quot;@android:color/background_dark&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;登录&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;#ffffff&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:visibility</span>=<span class="string">&quot;visible&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编辑框（EditText）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:id</span>=<span class="string">&quot;@+id/et_pwd&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;200dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_marginStart</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:hint</span>=<span class="string">&quot;请输入密码&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:textColorHint</span>=<span class="string">&quot;#747373&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>单选框（RadioButton）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RadioGroup</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:id</span>=<span class="string">&quot;@+id/rg&quot;</span></span></span><br><span class="line"><span class="tag">   	 	<span class="attr">android:layout_width</span>=<span class="string">&quot;250dp&quot;</span></span></span><br><span class="line"><span class="tag"> 		<span class="attr">android:layout_height</span>=<span class="string">&quot;230dp&quot;</span> &gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">RadioButton</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:id</span>=<span class="string">&quot;@+id/size_S&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_width</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_height</span>=<span class="string">&quot;30dp&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_weight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:text</span>=<span class="string">&quot;size_S&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RadioGroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>复选框（Checkbox）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">CheckBox</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/cb_run&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;30dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">&quot;50dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;早起跑10km&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>会话框（Dialog）</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">AlertDialog.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AlertDialog</span>.Builder(MainActivity.<span class="built_in">this</span>);</span><br><span class="line">builder.setTitle(<span class="string">&quot;尊敬的&quot;</span>+username+<span class="string">&quot; 舰长&quot;</span>);</span><br><span class="line">builder.setMessage(<span class="string">&quot;我是一个对话框~QwQ~&quot;</span>);</span><br><span class="line">builder.setPositiveButton(<span class="string">&quot;正面回答&quot;</span>, (dialog, which) -&gt; posOnClickListenerMethod());</span><br><span class="line">builder.setNegativeButton(<span class="string">&quot;消极回答&quot;</span>, <span class="literal">null</span>);</span><br><span class="line"><span class="type">AlertDialog</span> <span class="variable">dialog</span> <span class="operator">=</span> bd.create();</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Toast（短时提示信息）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Toast toast = Toast.makeText(getApplicationContext(), &quot;提示信息&quot;, Toast.LENGTH_SHORT);</span><br><span class="line">toast.show();</span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<h2 id="各种布局"><a href="#各种布局" class="headerlink" title="各种布局"></a>各种布局</h2><ol>
-<li><p>线性布局（水平）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">&quot;horizontal&quot;</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>相对布局（内部组件居中）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_centerHorizontal</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表格布局（首行为 文字+编辑框）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TableLayout</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">TableRow</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">				<span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:text</span>=<span class="string">&quot;@string/account&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textColor</span>=<span class="string">&quot;#000000&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">&quot;@+id/et_name&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">&quot;200dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:hint</span>=<span class="string">&quot;@string/input_account&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textColorHint</span>=<span class="string">&quot;#747373&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">TableRow</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TableLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>框架布局 &#x2F; 帧布局</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">FrameLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;50dp&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<h2 id="组件控制-与-监听函数"><a href="#组件控制-与-监听函数" class="headerlink" title="组件控制 与 监听函数"></a>组件控制 与 监听函数</h2><ul>
-<li>示例：<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_xxx);  <span class="comment">//设置activity</span></span><br><span class="line">        <span class="comment">// 为清除按钮绑定点击监听函数</span></span><br><span class="line">        <span class="type">Button</span> <span class="variable">btn</span> <span class="operator">=</span> findViewById(R.id.clear_btn);</span><br><span class="line">        btn.setOnClickListener(<span class="keyword">new</span> <span class="title class_">clearOnClickListener</span>());</span><br><span class="line">        <span class="comment">// findViewById(R.id.login_btn).setOnClickListener(new loginOnClickListener());  //绑定(简写)</span></span><br><span class="line">    &#125; <span class="comment">// end onCreate</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">clearOnClickListener</span> <span class="keyword">implements</span> <span class="title class_">View</span>.OnClickListener &#123;</span><br><span class="line">        <span class="comment">// static防止内存泄露，但在使用findViewById函数时不能用</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(((CheckBox)findViewById(R.id.cb_dontclearme)).isChecked())</span><br><span class="line">                ((TextView)findViewById(R.id.tv_print)).setText(output_str);</span><br><span class="line">            ((EditText)findViewById(R.id.et_pwd)).setText(<span class="string">&quot;&quot;</span>);  <span class="comment">// 清空密码编辑框(简写)</span></span><br><span class="line">            <span class="type">EditText</span> <span class="variable">et</span> <span class="operator">=</span> findViewById(R.id.et_username);</span><br><span class="line">            et.setText(<span class="string">&quot;&quot;</span>);  <span class="comment">// 清空用户名编辑框</span></span><br><span class="line">            et.setHint(<span class="string">&quot;请输入姓名&quot;</span>);  <span class="comment">// 设置提示信息</span></span><br><span class="line">        &#125; <span class="comment">// end onClick</span></span><br><span class="line">    &#125; <span class="comment">// end class</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -284,6 +150,67 @@
       </tags>
   </entry>
   <entry>
+    <title>位运算与取模运算%</title>
+    <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
+    <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
+<ul>
+<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
+</ul>
+<hr>
+<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
+<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
+<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
+<li>应用：<ul>
+<li>清零：x&amp;0</li>
+<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
+<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
+<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
+<li>应用：<ul>
+<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
+<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
+<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
+<li>应用：<ul>
+<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
+<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
+<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
+</ul>
+<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
+<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
+</ul>
+<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
+<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
+</ul>
+<hr>
+<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
+<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
+<li>求绝对值： <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>bit Operation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSAPP 5.1 优化编译器的能力和局限性</title>
     <url>/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/</url>
     <content><![CDATA[<h2 id="5-1-优化编译器的能力和局限性"><a href="#5-1-优化编译器的能力和局限性" class="headerlink" title="5.1 优化编译器的能力和局限性"></a>5.1 优化编译器的能力和局限性</h2><p>现代编译器运用复杂精细的算法来确定一个程序中计算的值，以及他们是被如何使用的，然后利用一些机会来简化表达式，如：在几个不同的地方使用同一个计算，以及降低一个给定的计算必须被执行的次数。大多数编译器，包括 GCC，向用户提供了一些对它们所使用的优化的控制。就像在第3章中讨论过的，最简单的控制就是指定<code>优先级别</code>。例如，以命令行选项 “-Og” 调用 GCC 是让 GCC 使用一组基本的优化。以选项 “-O1” 或更高(如 “-O2” 或 “-O3” ) 调用 GCC 会让他使用更多的优化，进一步提高程序的性能，但是也可能增加程序的规模，也可能使标准的调试工具更难对程序进行调试。</p>
@@ -317,6 +244,79 @@
       </categories>
       <tags>
         <tag>CSAPP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android 开发入门</title>
+    <url>/2023/03/10/Android-develop-introduction/</url>
+    <content><![CDATA[<h2 id="各种组件"><a href="#各种组件" class="headerlink" title="各种组件"></a>各种组件</h2><ol>
+<li><p>文本视图（TextView）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/tv_username&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span>  </span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_marginStart</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:text</span>=<span class="string">&quot;用户名&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:textColor</span>=<span class="string">&quot;#000000&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>图像视图（ImageView）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/img_id&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:src</span>=<span class="string">&quot;@drawable/img_name_without_suffix&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>按钮（Button）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">       	<span class="attr">android:id</span>=<span class="string">&quot;@+id/login_btn&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;100dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:backgroundTint</span>=<span class="string">&quot;@android:color/background_dark&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;登录&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;#ffffff&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:visibility</span>=<span class="string">&quot;visible&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑框（EditText）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:id</span>=<span class="string">&quot;@+id/et_pwd&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;200dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_marginStart</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:hint</span>=<span class="string">&quot;请输入密码&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:textColorHint</span>=<span class="string">&quot;#747373&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单选框（RadioButton）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RadioGroup</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:id</span>=<span class="string">&quot;@+id/rg&quot;</span></span></span><br><span class="line"><span class="tag">   	 	<span class="attr">android:layout_width</span>=<span class="string">&quot;250dp&quot;</span></span></span><br><span class="line"><span class="tag"> 		<span class="attr">android:layout_height</span>=<span class="string">&quot;230dp&quot;</span> &gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">RadioButton</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:id</span>=<span class="string">&quot;@+id/size_S&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_width</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_height</span>=<span class="string">&quot;30dp&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_weight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:text</span>=<span class="string">&quot;size_S&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RadioGroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复选框（Checkbox）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">CheckBox</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/cb_run&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;30dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">&quot;50dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;早起跑10km&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>会话框（Dialog）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">AlertDialog.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AlertDialog</span>.Builder(MainActivity.<span class="built_in">this</span>);</span><br><span class="line">builder.setTitle(<span class="string">&quot;尊敬的&quot;</span>+username+<span class="string">&quot; 舰长&quot;</span>);</span><br><span class="line">builder.setMessage(<span class="string">&quot;我是一个对话框~QwQ~&quot;</span>);</span><br><span class="line">builder.setPositiveButton(<span class="string">&quot;正面回答&quot;</span>, (dialog, which) -&gt; posOnClickListenerMethod());</span><br><span class="line">builder.setNegativeButton(<span class="string">&quot;消极回答&quot;</span>, <span class="literal">null</span>);</span><br><span class="line"><span class="type">AlertDialog</span> <span class="variable">dialog</span> <span class="operator">=</span> bd.create();</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Toast（短时提示信息）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Toast toast = Toast.makeText(getApplicationContext(), &quot;提示信息&quot;, Toast.LENGTH_SHORT);</span><br><span class="line">toast.show();</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h2 id="各种布局"><a href="#各种布局" class="headerlink" title="各种布局"></a>各种布局</h2><ol>
+<li><p>线性布局（水平）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">&quot;horizontal&quot;</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相对布局（内部组件居中）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_centerHorizontal</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表格布局（首行为 文字+编辑框）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TableLayout</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">TableRow</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">				<span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:text</span>=<span class="string">&quot;@string/account&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textColor</span>=<span class="string">&quot;#000000&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">&quot;@+id/et_name&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">&quot;200dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:hint</span>=<span class="string">&quot;@string/input_account&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textColorHint</span>=<span class="string">&quot;#747373&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">TableRow</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TableLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>框架布局 &#x2F; 帧布局</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">FrameLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;50dp&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h2 id="组件控制-与-监听函数"><a href="#组件控制-与-监听函数" class="headerlink" title="组件控制 与 监听函数"></a>组件控制 与 监听函数</h2><ul>
+<li>示例：<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_xxx);  <span class="comment">//设置activity</span></span><br><span class="line">        <span class="comment">// 为清除按钮绑定点击监听函数</span></span><br><span class="line">        <span class="type">Button</span> <span class="variable">btn</span> <span class="operator">=</span> findViewById(R.id.clear_btn);</span><br><span class="line">        btn.setOnClickListener(<span class="keyword">new</span> <span class="title class_">clearOnClickListener</span>());</span><br><span class="line">        <span class="comment">// findViewById(R.id.login_btn).setOnClickListener(new loginOnClickListener());  //绑定(简写)</span></span><br><span class="line">    &#125; <span class="comment">// end onCreate</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">clearOnClickListener</span> <span class="keyword">implements</span> <span class="title class_">View</span>.OnClickListener &#123;</span><br><span class="line">        <span class="comment">// static防止内存泄露，但在使用findViewById函数时不能用</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(((CheckBox)findViewById(R.id.cb_dontclearme)).isChecked())</span><br><span class="line">                ((TextView)findViewById(R.id.tv_print)).setText(output_str);</span><br><span class="line">            ((EditText)findViewById(R.id.et_pwd)).setText(<span class="string">&quot;&quot;</span>);  <span class="comment">// 清空密码编辑框(简写)</span></span><br><span class="line">            <span class="type">EditText</span> <span class="variable">et</span> <span class="operator">=</span> findViewById(R.id.et_username);</span><br><span class="line">            et.setText(<span class="string">&quot;&quot;</span>);  <span class="comment">// 清空用户名编辑框</span></span><br><span class="line">            et.setHint(<span class="string">&quot;请输入姓名&quot;</span>);  <span class="comment">// 设置提示信息</span></span><br><span class="line">        &#125; <span class="comment">// end onClick</span></span><br><span class="line">    &#125; <span class="comment">// end class</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android Studio安装教程及踩坑</title>
+    <url>/2023/02/27/Android-Studio-Install-Q&amp;A/</url>
+    <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
+<hr>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
+<hr>
+<h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Android Studio</tag>
       </tags>
   </entry>
   <entry>
@@ -364,19 +364,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub入门</title>
-    <url>/2023/03/07/GitHub-Introduction/</url>
-    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IDEA生成可执行jar包及常见问题与解决</title>
     <url>/2022/11/27/IDEA-generates-executable-JAR-packages/</url>
     <content><![CDATA[<h3 id="打包过程"><a href="#打包过程" class="headerlink" title="打包过程"></a>打包过程</h3><ol>
@@ -417,6 +404,20 @@
       </tags>
   </entry>
   <entry>
+    <title>面试相关总结</title>
+    <url>/2023/03/07/Interview-related-content/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
+<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java-2048小游戏</title>
     <url>/2021/06/26/Java-2048-game/</url>
     <content><![CDATA[<h1 id="游戏规则"><a href="#游戏规则" class="headerlink" title="游戏规则"></a>游戏规则</h1><ol>
@@ -440,17 +441,16 @@
       </tags>
   </entry>
   <entry>
-    <title>面试相关总结</title>
-    <url>/2023/03/07/Interview-related-content/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
-<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
+    <title>GitHub入门</title>
+    <url>/2023/03/07/GitHub-Introduction/</url>
+    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
 <hr>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>面试</tag>
+        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
