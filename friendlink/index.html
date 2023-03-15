@@ -73,8 +73,7 @@
        
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="link.css">
-<body>
+  <body>
     <ul class="allLinks">
         <li>
             <img src="./LinkImage/cat001.jpg">
@@ -135,6 +134,42 @@
     </ul>
 </body>
 
+<style>
+    .allLinks {
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.allLinks li {
+    list-style: none;
+    display: inline-flex;
+    border-radius: 1rem;
+    width: 20rem;
+    height: 8rem;
+    margin-top: 3rem;
+    margin-right:2rem;
+    overflow: hidden; /*超出边界部分隐藏*/
+    background-color: #82f4bb;  /*卡片背景颜色*/
+}
+.allLinks li img {
+    width:6rem;
+    height:6rem;
+    border-radius: 50%;
+    margin: 1rem;
+}
+.allLinks li a {
+    width: 12rem;
+    padding-top: 10%;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.7rem;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", 微软雅黑, Arial, sans-serif;
+    color:#000000;  /*文字颜色*/
+    word-wrap: break-word; /*文字换行*/
+}
+</style>
  
       <!-- reward -->
       

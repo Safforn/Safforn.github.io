@@ -178,43 +178,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客优化</title>
-    <url>/archives/Blog-Hexo-customization-optimization.html</url>
-    <content><![CDATA[<h4 id="网页图标"><a href="#网页图标" class="headerlink" title="网页图标"></a>网页图标</h4><p>SVG素材库：<a href="https://www.iconfont.cn/collections/detail?spm=a313x.7781069.0.da5a778a4&cid=43742">iconfont-阿里巴巴矢量图标库 - Food</a></p>
-<p><a href="https://blog.csdn.net/qq_39181839/article/details/109477357">Hexo更换网页图标</a></p>
-<h4 id="友链"><a href="#友链" class="headerlink" title="友链"></a>友链</h4><p>在D:\blog\source\links下新建文件夹image用于存放图片，修改index.md</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;links.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;allLinks&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./image/图片1.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;图片描述1&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;友情链接地址1&quot;</span>&gt;</span>博客名1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./image/图片2.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;图片描述2&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;友情链接地址2&quot;</span>&gt;</span>博客名2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>新建样式文件links.css</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.allLinks</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-flex; <span class="comment">/* Safari */</span></span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">    <span class="attribute">display</span>: inline-flex;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">20rem</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">8rem</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>:<span class="number">2rem</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/*超出边界部分隐藏*/</span></span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ffffff</span>;  <span class="comment">/*卡片背景颜色*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12rem</span>;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">10%</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1.7rem</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, <span class="string">&quot;PingFang SC&quot;</span>, <span class="string">&quot;Hiragino Sans GB&quot;</span>, <span class="string">&quot;Microsoft YaHei&quot;</span>, 微软雅黑, Arial, sans-serif;</span><br><span class="line">    <span class="attribute">color</span>:<span class="number">#000000</span>;  <span class="comment">/*文字颜色*/</span></span><br><span class="line">    <span class="attribute">word-wrap</span>: break-word; <span class="comment">/*文字换行*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="2D看板娘"><a href="#2D看板娘" class="headerlink" title="2D看板娘"></a>2D看板娘</h4><p><a href="https://blog.csdn.net/u013467402/article/details/101443431">在hexo博客加上live2d看板娘</a><br><a href="https://github.com/EYHN/hexo-helper-live2d">插件官网文档 - hexo-helper-live2d: Add the live2d to your hexo!</a></p>
-<h4 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-<p>在 _config.yml 文件中添加：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># hexo-generator-searchdb</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<p>参考文章：</p>
-<ul>
-<li><p><a href="https://blog.csdn.net/qq_35982918/article/details/106728754">Hexo博客Ayer主题自定义配置</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/The_X_One/article/details/106753814">使用hexo框架+ayer主题+gitalk评论插件搭建个人博客</a> 的 优化部分</p>
-</li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用Hexo搭建个人博客并部署到Github</title>
     <url>/archives/Blog-Built-with-Hexo&amp;Github.html</url>
     <content><![CDATA[<p>若想部署到Gitee码云上，可以参考博客：<a href="https://blog.csdn.net/qq_46036214/article/details/110137239">在Gitee搭建属于自己的博客</a></p>
@@ -317,8 +280,47 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
-        <tag>Blog</tag>
         <tag>Github</tag>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客优化</title>
+    <url>/archives/Blog-Hexo-customization-optimization.html</url>
+    <content><![CDATA[<h4 id="网页图标"><a href="#网页图标" class="headerlink" title="网页图标"></a>网页图标</h4><p>SVG素材库：<a href="https://www.iconfont.cn/collections/detail?spm=a313x.7781069.0.da5a778a4&cid=43742">iconfont-阿里巴巴矢量图标库 - Food</a></p>
+<p><a href="https://blog.csdn.net/qq_39181839/article/details/109477357">Hexo更换网页图标</a></p>
+<h4 id="友链"><a href="#友链" class="headerlink" title="友链"></a>友链</h4><p>在D:\blog\source\links下新建文件夹image用于存放图片，修改index.md</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;links.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;allLinks&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./image/图片1.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;图片描述1&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;友情链接地址1&quot;</span>&gt;</span>博客名1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./image/图片2.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;图片描述2&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;友情链接地址2&quot;</span>&gt;</span>博客名2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>新建样式文件links.css</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.allLinks</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-flex; <span class="comment">/* Safari */</span></span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">    <span class="attribute">display</span>: inline-flex;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">20rem</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">8rem</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>:<span class="number">2rem</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/*超出边界部分隐藏*/</span></span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ffffff</span>;  <span class="comment">/*卡片背景颜色*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12rem</span>;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">10%</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1.7rem</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, <span class="string">&quot;PingFang SC&quot;</span>, <span class="string">&quot;Hiragino Sans GB&quot;</span>, <span class="string">&quot;Microsoft YaHei&quot;</span>, 微软雅黑, Arial, sans-serif;</span><br><span class="line">    <span class="attribute">color</span>:<span class="number">#000000</span>;  <span class="comment">/*文字颜色*/</span></span><br><span class="line">    <span class="attribute">word-wrap</span>: break-word; <span class="comment">/*文字换行*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2D看板娘"><a href="#2D看板娘" class="headerlink" title="2D看板娘"></a>2D看板娘</h4><p><a href="https://blog.csdn.net/u013467402/article/details/101443431">在hexo博客加上live2d看板娘</a><br><a href="https://github.com/EYHN/hexo-helper-live2d">插件官网文档 - hexo-helper-live2d: Add the live2d to your hexo!</a></p>
+<h4 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<p>在 _config.yml 文件中添加：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># hexo-generator-searchdb</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p>参考文章：</p>
+<ul>
+<li><p><a href="https://blog.csdn.net/qq_35982918/article/details/106728754">Hexo博客Ayer主题自定义配置</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/The_X_One/article/details/106753814">使用hexo框架+ayer主题+gitalk评论插件搭建个人博客</a> 的 优化部分</p>
+</li>
+<li><p><a href="https://thinkingreedi.github.io/categories/%E5%8D%9A%E5%AE%A2/">会思想的苇草i 从0开始搭建博客</a></p>
+</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Blog</tag>
       </tags>
   </entry>
   <entry>
@@ -455,20 +457,6 @@
       </tags>
   </entry>
   <entry>
-    <title>面试相关总结</title>
-    <url>/archives/Interview-related-content.html</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
-<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java-2048小游戏</title>
     <url>/archives/Java-2048-game.html</url>
     <content><![CDATA[<h1 id="游戏规则"><a href="#游戏规则" class="headerlink" title="游戏规则"></a>游戏规则</h1><ol>
@@ -503,6 +491,20 @@
       <tags>
         <tag>Python</tag>
         <tag>Pycharm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试相关总结</title>
+    <url>/archives/Interview-related-content.html</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
+<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
