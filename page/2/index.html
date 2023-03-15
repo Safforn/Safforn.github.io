@@ -149,6 +149,78 @@
     
     
     <article
+  id="post-DevC++annotation-zh-CN-garbled-code-problem-and-solution"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/"
+    >Dev C++注释中文乱码问题及解决方法</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/" class="article-date">
+  <time datetime="2022-07-29T03:20:28.000Z" itemprop="datePublished">2022-07-29</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
+
+<hr>
+<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
+<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
+<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
+<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
+</li>
+<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
+<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
+</li>
+<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
+<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
+<li><p>用DevC++打开即可</p>
+</li>
+</ol>
+<hr>
+<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
+<hr>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev-C/" rel="tag">Dev C++</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-SQL"
   class="article article-type-post"
   itemscope

@@ -149,6 +149,91 @@
     
     
     <article
+  id="post-AI-lab1-eight-figure-puzzle-and-heuristic-function"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/03/15/AI-lab1-eight-figure-puzzle-and-heuristic-function/"
+    >AI实验1 基于A*算法的8数码问题求解</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/15/AI-lab1-eight-figure-puzzle-and-heuristic-function/" class="article-date">
+  <time datetime="2023-03-15T01:23:28.000Z" itemprop="datePublished">2023-03-15</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="实验1-基于A-算法的8数码问题求解"><a href="#实验1-基于A-算法的8数码问题求解" class="headerlink" title="实验1 基于A*算法的8数码问题求解"></a>实验1 基于A*算法的8数码问题求解</h3><p>问题描述：在3*3的棋盘中有8个数码（数字块）和一个空格，只有与空格相邻的数码能移动到空格位置。从初始状态以最小的步长移动到目标状态。</p>
+<p>实验要求：参考A*算法核心代码，以8数码问题为例实现A*算法的求解程序。</p>
+<p>实验内容：</p>
+<p>1、基于参考代码，运行程序，并画出程序的总体流程图。自动统计并输出到达目标的总步数，自动记录并输出每次移动后open表与closed表的变化。<br>要求初始状态与目标状态分别为：</p>
+<p><strong>流程图</strong>：<br><img src="C:\Users\18049\AppData\Roaming\Typora\typora-user-images\image-20230315092602103.png"></p>
+<p><strong>Code（Python）</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">State</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, state, directionFlag=<span class="literal">None</span>, parent=<span class="literal">None</span>, f=<span class="number">0</span></span>):</span><br><span class="line">        self.state = state</span><br><span class="line">        self.direction = [<span class="string">&#x27;up&#x27;</span>, <span class="string">&#x27;down&#x27;</span>, <span class="string">&#x27;right&#x27;</span>, <span class="string">&#x27;left&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> directionFlag:</span><br><span class="line">            self.direction.remove(directionFlag)</span><br><span class="line">        self.parent = parent</span><br><span class="line">        self.f = f</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getDirection</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.direction</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setF</span>(<span class="params">self, f</span>):</span><br><span class="line">        self.f = f</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取0点</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getZeroPos</span>(<span class="params">self</span>):</span><br><span class="line">        postion = np.where(self.state == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> postion</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 曼哈顿距离  f = g + h，g=1，如果用宽度优先的评估函数可以不调用该函数</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getFunctionValue</span>(<span class="params">self</span>):</span><br><span class="line">        cur_node = self.state.copy()</span><br><span class="line">        fin_node = self.answer.copy()</span><br><span class="line">        dist = <span class="number">0</span></span><br><span class="line">        N = <span class="built_in">len</span>(cur_node)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">                <span class="keyword">if</span> cur_node[i][j] != fin_node[i][j]:</span><br><span class="line">                    <span class="comment"># 启发函数1: 取当前状态位置与目标状态不符的数码数目</span></span><br><span class="line">                    <span class="comment"># dist = dist + 1</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment"># 计算距离综合(启发函数 2, 3)</span></span><br><span class="line">                    index = np.argwhere(fin_node == cur_node[i][j])</span><br><span class="line">                    x = index[<span class="number">0</span>][<span class="number">0</span>]  <span class="comment"># 最终x距离</span></span><br><span class="line">                    y = index[<span class="number">0</span>][<span class="number">1</span>]  <span class="comment"># 最终y距离</span></span><br><span class="line">                    <span class="comment"># 启发函数2: 计算距离总和，使用曼哈顿算法</span></span><br><span class="line">                    dist += (<span class="built_in">abs</span>(x - i) + <span class="built_in">abs</span>(y - j))</span><br><span class="line">                    <span class="comment"># 启发函数3: 计算距离总和，使用欧几里得算法</span></span><br><span class="line">                    <span class="comment"># dist += ((x - i) ** 2 + (y - j) ** 2) ** 0.5</span></span><br><span class="line">        <span class="keyword">return</span> dist + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">nextStep</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.direction:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        subStates = []</span><br><span class="line">        boarder = <span class="built_in">len</span>(self.state) - <span class="number">1</span></span><br><span class="line">        x, y = self.getZeroPos()  <span class="comment"># 获取0点位置</span></span><br><span class="line">        <span class="comment"># 向左</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;left&#x27;</span> <span class="keyword">in</span> self.direction <span class="keyword">and</span> y &gt; <span class="number">0</span>:</span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x, y - <span class="number">1</span>]</span><br><span class="line">            s[x, y - <span class="number">1</span>] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;right&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 向上</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;up&#x27;</span> <span class="keyword">in</span> self.direction <span class="keyword">and</span> x &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="comment"># it can move to upper place</span></span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x - <span class="number">1</span>, y]</span><br><span class="line">            s[x - <span class="number">1</span>, y] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;down&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 向下</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;down&#x27;</span> <span class="keyword">in</span> self.direction <span class="keyword">and</span> x &lt; boarder:</span><br><span class="line">            <span class="comment"># it can move to down place</span></span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x + <span class="number">1</span>, y]</span><br><span class="line">            s[x + <span class="number">1</span>, y] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;up&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 向右</span></span><br><span class="line">        <span class="keyword">if</span> self.direction.count(<span class="string">&#x27;right&#x27;</span>) <span class="keyword">and</span> y &lt; boarder:</span><br><span class="line">            <span class="comment"># it can move to right place</span></span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x, y + <span class="number">1</span>]</span><br><span class="line">            s[x, y + <span class="number">1</span>] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;left&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 返回F值最小的下一个点</span></span><br><span class="line">        subStates.sort(key=compareNum)</span><br><span class="line">        <span class="keyword">return</span> subStates</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 横向打印结果</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">showInfoHorizontally</span>(<span class="params">self, table, sep=<span class="string">&quot;  &quot;</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param table: 需要显示的open|close表或者状态转移路径</span></span><br><span class="line"><span class="string">        :param sep: 显示的状态之间的间隔符号, 默认值为两个空格符</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> table:</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> table:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(item.state)):</span><br><span class="line">                    <span class="built_in">print</span>(item.state[<span class="number">0</span>, j], end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;  &quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> table:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(item.state)):</span><br><span class="line">                    <span class="built_in">print</span>(item.state[<span class="number">1</span>, j], end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                <span class="built_in">print</span>(sep, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> table:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(item.state)):</span><br><span class="line">                    <span class="built_in">print</span>(item.state[<span class="number">2</span>, j], end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;  &quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># A* 迭代</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">solve</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># openList</span></span><br><span class="line">        openTable = []</span><br><span class="line">        <span class="comment"># closeList</span></span><br><span class="line">        closeTable = []</span><br><span class="line">        openTable.append(self)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;_______初始状态______\nopenTable:&quot;</span>)</span><br><span class="line">        self.showInfoHorizontally(openTable)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;closeTable: len =&quot;</span>, <span class="built_in">len</span>(closeTable), <span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        self.showInfoHorizontally(closeTable)</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(openTable) &gt; <span class="number">0</span>:</span><br><span class="line">            n = openTable.pop(<span class="number">0</span>)  <span class="comment"># 下一步的点移除open</span></span><br><span class="line">            closeTable.append(n)  <span class="comment"># 加入close</span></span><br><span class="line">            subStates = n.nextStep()  <span class="comment"># 确定下一步点</span></span><br><span class="line">            path = []</span><br><span class="line">            optimal_state = subStates[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> (optimal_state.state == optimal_state.answer).<span class="built_in">all</span>():</span><br><span class="line">                <span class="keyword">while</span> optimal_state.parent <span class="keyword">and</span> optimal_state.parent != originState:</span><br><span class="line">                    path.append(optimal_state.parent)  <span class="comment"># 寻找父节点,回溯路径</span></span><br><span class="line">                    optimal_state = optimal_state.parent</span><br><span class="line">                path.reverse()  <span class="comment"># 将路径链表翻转即为来时的路径</span></span><br><span class="line">                <span class="keyword">return</span> path</span><br><span class="line">            openTable = openTable + subStates  <span class="comment"># 合并原open表和拓展节点列表</span></span><br><span class="line">            openTable.sort(key=compareNum)  <span class="comment"># 重新排序</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 输出显示open表</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;--------------------\nopenTable:&quot;</span>)</span><br><span class="line">            self.showInfoHorizontally(openTable)</span><br><span class="line">            <span class="comment"># 输出显示close表</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;closeTable: len =&quot;</span>, <span class="built_in">len</span>(closeTable), <span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            self.showInfoHorizontally(closeTable)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span>, <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">compareNum</span>(<span class="params">state</span>):</span><br><span class="line">    <span class="keyword">return</span> state.f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    originState = State(np.array([[<span class="number">2</span>, <span class="number">8</span>, <span class="number">3</span>], [<span class="number">1</span>, <span class="number">6</span>, <span class="number">4</span>], [<span class="number">7</span>, <span class="number">0</span>, <span class="number">5</span>]]))  <span class="comment"># 初始状态</span></span><br><span class="line">    State.answer = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">8</span>, <span class="number">0</span>, <span class="number">4</span>], [<span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>]])  <span class="comment"># 目标状态</span></span><br><span class="line">    s1 = State(state=originState.state)</span><br><span class="line">    path = s1.solve()</span><br><span class="line">    <span class="keyword">if</span> path:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;\n\nPath:&quot;</span>)  <span class="comment"># 显示路径</span></span><br><span class="line">        State.showInfoHorizontally(<span class="literal">None</span>, path, <span class="string">&quot;-&gt;&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(State.answer)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Total steps is %d&quot;</span> % <span class="built_in">len</span>(path))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>open表、close表、path输出截图：</strong></p>
+<p>略</p>
+<p>2、设计两种新的启发式函数，并运行程序。对包含示例在内的3种启发式函数的特点与结果进行对比分析。</p>
+<p><strong>启发函数1</strong>：采用曼哈顿算法计算距离总和，dist +&#x3D;|x-i|+|y-j|，结果参见实验内容1。</p>
+<p><strong>启发函数2</strong>：采用欧式算法计算距离总和，即dist +&#x3D;√((x-i)^2+(y-j)^2)。</p>
+<p><strong>启发函数3</strong>：取当前状态位置与目标状态不符的数码数目。</p>
+<p>综上，对于实验一中的初始状态和目标状态，三种启发函数路径相同，过程（每次循环的open表和close表）不完全相同。</p>
+<p>另外，当初始状态为[[1, 5, 3], [2, 4, 6], [7, 0, 8]]，目标状态为[[1, 2, 3], [4, 5, 6], [7, 8, 0]]时，</p>
+<p><strong>启发函数1</strong>（曼哈顿算法计算距离）：</p>
+<p><strong>启发函数2</strong>（欧式算法计算距离）：循环3000多次未果，程序被手动终止。</p>
+<p><strong>启发函数3</strong>（取当前状态位置与目标状态不符的数码数目）：</p>
+<p><strong>特点：</strong></p>
+<p>启发函数1的曼哈顿距离比较适合四方向（上下左右）网格地图。</p>
+<p>启发函数2的欧式距离比较适合可以任意方向移动的地图。</p>
+<p>启发函数3的取当前状态位置与目标状态不符的数码数目比较简单。</p>
+<hr>
+<p>相关文章：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Pericles_HAT/article/details/115516204">八数码难题(下): 启发式搜索(Python实现)</a>  有形象的图示</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/bob595078694/article/details/123362253">启发函数 (Heuristic Function)</a> 几种启发函数和搜索算法的理论对比</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63708623/article/details/129480238">python八数码问题 启发式搜索(Python实现)</a>包含三种启发函数（字符串距离、曼式距离、欧式距离）</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/SZU_Kwong/article/details/105897291">用两种启发函数的A*算法解决八数码问题(C++实现)</a> 两种启发函数（移位计数、欧氏距离）</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Big_xbc/article/details/116206930">人工智能-八数码问题-启发式搜索(C++实现)</a> 某校实验报告？？有流程图</li>
+</ol>
+<hr>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/A-Star/" rel="tag">A-Star</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-Android-develop-introduction"
   class="article article-type-post"
   itemscope
@@ -895,78 +980,6 @@ Save后，改个主机字（有自己特色的），再点Apply
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloud-Computing/" rel="tag">Cloud Computing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StarVCenter/" rel="tag">StarVCenter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMware/" rel="tag">VMware</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-DevC++annotation-zh-CN-garbled-code-problem-and-solution"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/"
-    >Dev C++注释中文乱码问题及解决方法</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/" class="article-date">
-  <time datetime="2022-07-29T03:20:28.000Z" itemprop="datePublished">2022-07-29</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
-
-<hr>
-<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
-<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
-<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
-<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
-</li>
-<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
-<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
-</li>
-<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
-<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
-<li><p>用DevC++打开即可</p>
-</li>
-</ol>
-<hr>
-<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
-<hr>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev-C/" rel="tag">Dev C++</a></li></ul>
 
     </footer>
   </div>
