@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>AI实验1 基于A*算法的8数码问题求解</title>
-    <url>/2023/03/15/AI-lab1-eight-figure-puzzle-and-heuristic-function/</url>
+    <title>人工智能导论实验</title>
+    <url>/2023/03/15/AI-Introduction-Experiment/</url>
     <content><![CDATA[<h3 id="实验1-基于A-算法的8数码问题求解"><a href="#实验1-基于A-算法的8数码问题求解" class="headerlink" title="实验1 基于A*算法的8数码问题求解"></a>实验1 基于A*算法的8数码问题求解</h3><p>问题描述：在3*3的棋盘中有8个数码（数字块）和一个空格，只有与空格相邻的数码能移动到空格位置。从初始状态以最小的步长移动到目标状态。</p>
 <p>实验要求：参考A*算法核心代码，以8数码问题为例实现A*算法的求解程序。</p>
 <p>实验内容：</p>
@@ -37,7 +37,7 @@
 <hr>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>笔记</category>
       </categories>
       <tags>
         <tag>A-Star</tag>
@@ -114,111 +114,6 @@
       </categories>
       <tags>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>位运算与取模运算%</title>
-    <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
-    <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
-<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
-<ul>
-<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
-</ul>
-<hr>
-<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
-<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
-<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
-<li>应用：<ul>
-<li>清零：x&amp;0</li>
-<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
-<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
-<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
-<li>应用：<ul>
-<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
-<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
-<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
-<li>应用：<ul>
-<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
-<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
-<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
-</ul>
-<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
-<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
-</ul>
-<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
-<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
-</ul>
-<hr>
-<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
-<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
-<li>求绝对值： <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
-<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>bit Operation</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Dev C++注释中文乱码问题及解决方法</title>
-    <url>/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/</url>
-    <content><![CDATA[<h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
-
-<hr>
-<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
-<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
-<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
-<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
-</li>
-<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
-<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
-</li>
-<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
-<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
-<li><p>用DevC++打开即可</p>
-</li>
-</ol>
-<hr>
-<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>Dev C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GitHub入门</title>
-    <url>/2023/03/07/GitHub-Introduction/</url>
-    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -328,6 +223,67 @@
       </tags>
   </entry>
   <entry>
+    <title>位运算与取模运算%</title>
+    <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
+    <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
+<ul>
+<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
+</ul>
+<hr>
+<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
+<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
+<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
+<li>应用：<ul>
+<li>清零：x&amp;0</li>
+<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
+<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
+<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
+<li>应用：<ul>
+<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
+<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
+<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
+<li>应用：<ul>
+<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
+<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
+<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
+</ul>
+<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
+<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
+</ul>
+<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
+<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
+</ul>
+<hr>
+<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
+<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
+<li>求绝对值： <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>bit Operation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSAPP 5.1 优化编译器的能力和局限性</title>
     <url>/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/</url>
     <content><![CDATA[<h2 id="5-1-优化编译器的能力和局限性"><a href="#5-1-优化编译器的能力和局限性" class="headerlink" title="5.1 优化编译器的能力和局限性"></a>5.1 优化编译器的能力和局限性</h2><p>现代编译器运用复杂精细的算法来确定一个程序中计算的值，以及他们是被如何使用的，然后利用一些机会来简化表达式，如：在几个不同的地方使用同一个计算，以及降低一个给定的计算必须被执行的次数。大多数编译器，包括 GCC，向用户提供了一些对它们所使用的优化的控制。就像在第3章中讨论过的，最简单的控制就是指定<code>优先级别</code>。例如，以命令行选项 “-Og” 调用 GCC 是让 GCC 使用一组基本的优化。以选项 “-O1” 或更高(如 “-O2” 或 “-O3” ) 调用 GCC 会让他使用更多的优化，进一步提高程序的性能，但是也可能增加程序的规模，也可能使标准的调试工具更难对程序进行调试。</p>
@@ -364,6 +320,37 @@
       </tags>
   </entry>
   <entry>
+    <title>Dev C++注释中文乱码问题及解决方法</title>
+    <url>/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/</url>
+    <content><![CDATA[<h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
+
+<hr>
+<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
+<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
+<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
+<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
+</li>
+<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
+<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
+</li>
+<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
+<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
+<li><p>用DevC++打开即可</p>
+</li>
+</ol>
+<hr>
+<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Dev C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>前端工具(框架)</title>
     <url>/2023/03/07/Front-end-tools/</url>
     <content><![CDATA[<p><a href="https://element.eleme.cn/#/zh-CN">Element - 网站快速成型工具</a></p>
@@ -374,6 +361,19 @@
 ]]></content>
       <tags>
         <tag>front-end</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub入门</title>
+    <url>/2023/03/07/GitHub-Introduction/</url>
+    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -417,49 +417,6 @@
       </tags>
   </entry>
   <entry>
-    <title>面试相关总结</title>
-    <url>/2023/03/07/Interview-related-content/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
-<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu问题及解决方案汇总</title>
-    <url>/2023/03/07/Ubuntu-problems-and-solutions/</url>
-    <content><![CDATA[<hr>
-<p><a href="https://www.cnblogs.com/nuochengze/p/12642282.html">解决Ubuntu连不上网络，输入ifconfig只显示本地环回问题</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常用数据库的异同</title>
-    <url>/2022/03/14/SQL/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/362598819">MySQL 与 PostgreSQL 比较</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>PostgreSQ</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java-2048小游戏</title>
     <url>/2021/06/26/Java-2048-game/</url>
     <content><![CDATA[<h1 id="游戏规则"><a href="#游戏规则" class="headerlink" title="游戏规则"></a>游戏规则</h1><ol>
@@ -483,39 +440,64 @@
       </tags>
   </entry>
   <entry>
-    <title>面向 C++ 开发的 Visual Studio 2019 安装教程</title>
-    <url>/2021/09/30/Visual-Studio-2019-installation-tutorial-for-C++-development/</url>
-    <content><![CDATA[<h2 id="Visual-Studio-2019-的下载与安装"><a href="#Visual-Studio-2019-的下载与安装" class="headerlink" title="Visual Studio 2019 的下载与安装"></a>Visual Studio 2019 的下载与安装</h2><p>注：<strong>过程中需要登陆 Microsoft 账户，正常登陆即可</strong></p>
-<ol>
-<li>到<a href="https://visualstudio.microsoft.com/zh-hans/vs/"> Visual Studio官网 </a>下载<strong>Visual Studio 2019 community</strong> ，点击后会自动下载<img src="https://img-blog.csdnimg.cn/8fd6889f973f4ec7b4b7a2dc9ecbd66a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>打开下载器，进入Visual Studio 2019 安装界面<img src="https://img-blog.csdnimg.cn/759ee143f64843b8a42f296ffc6fd45a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>设置安装选项。使用C++语言的开发者勾选<code>使用 C++ 的桌面开发</code>，使用Python语言的开发者勾选 <code> Python 开发</code><img src="https://img-blog.csdnimg.cn/e29fece6300f4d57a32c169ab147c006.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>在右侧的 <strong><code>使用C++的桌面开发</code></strong> 的子目录 <code>可选</code> 和 <strong><code>单个组件</code></strong> 中勾选下图所示组件：<img src="https://img-blog.csdnimg.cn/574083ab13e247888a73f092059f8f99.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_15,color_FFFFFF,t_70,g_se,x_16" style="zoom: 80%;" /></li>
-<li><strong>语言包</strong>选择 <code>中文(简体)</code> 或 <code>英文</code><img src="https://img-blog.csdnimg.cn/509c2fe2ffe24001937868ec1bb9d663.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li><strong>安装位置</strong>最好选择在 <strong>C盘以外 的其他地方</strong>，建议是在D盘或其他盘新建一个名为<code>Visual Studio 2019</code>的文件夹，在该文件夹中新建一个名为<code>community</code>的文件夹，将该文件夹设定为VS2019的安装目录；下载缓存和共享组件、工具、SDK等也建议都修改其默认目录<img src="https://img-blog.csdnimg.cn/4f06ba9b525241f4baba4dc64243fb38.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>点击 <b><code>安装</code></b>，期间不要断网，全部下载安装完毕后，即可使用VS2019进行C++开发</li>
-<li>如果你按照以上教程安装成功后，在<code>我的电脑 -&gt; D:\Visual Studio 2019\Community\Common7\IDE</code>目录下，找到名为 <code>devenv.exe</code> 应用程序，右键添加到桌面快捷方式 <em>（再给快捷方式改个名字就更好了）</em><img src="https://img-blog.csdnimg.cn/cf43915e615a488789d02b752862d7ff.png" style="zoom: 80%;" /></li>
-</ol>
-<h2 id="Visual-Studio-2019-的使用"><a href="#Visual-Studio-2019-的使用" class="headerlink" title="Visual Studio 2019 的使用"></a>Visual Studio 2019 的使用</h2><ol>
-<li>打开 Visual Studio 2019 的界面，选择 <strong><code>创建新项目</code></strong> 或者 **<code>继续但无需代码</code>**（选择后者VS2019将作为文件编辑器使用）<img src="https://img-blog.csdnimg.cn/ac9e74a0e5424be7b6353713c768c97e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>选择 <strong><code>创建空项目</code></strong> 后，选择<code>控制台应用</code> 或者 <code>空项目</code>，前者会创建默认有打印Hello World的代码，接着点击 <strong><code>下一步</code></strong><img src="https://img-blog.csdnimg.cn/92cadf51e01a4d90b98bac863d311e7b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>填写创建的<strong>项目名称</strong>，可以修改<strong>项目的存储位置</strong>（后面会介绍修改默认存储地址的方法），接着点击 **<code>创建</code>**即可<img src="https://img-blog.csdnimg.cn/d9ef172e1f0e49f49f32c99b904e33e8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" />
-<img src="https://img-blog.csdnimg.cn/64b4434941a64723925bac5ccd3218ab.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-</ol>
-<hr>
-<ol start="4">
-<li>如果选择 **<code>继续但无需代码</code>**，进入编辑器界面，选择最上方工具栏的 <strong><code>文件 -&gt; 新建 -&gt; 文件</code></strong><img src="https://img-blog.csdnimg.cn/425f4fd566e447d8ab2cf056c2108406.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>在侧栏中选择 <code>Visual C++</code>，中间栏选择 <code>C++ 文件(.cpp)</code> ，点击<code>打开</code>即可创建新的空文件<img src="https://img-blog.csdnimg.cn/3991e0c16e864090b6dc9b9a63149768.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>在中央的<strong>代码编辑区</strong>填写完代码后，点击左上角的<code>保存</code>按键或按下<code>Ctrl + S</code>保存文件；建议将代码文件放在 <strong>Visual Studio 2019 安装目录中的自定义文件夹</strong>里，或者放在 <strong>非C盘的集中的代码存放位置</strong>，便于以后查找<img src="https://img-blog.csdnimg.cn/2a699d16b84c45f3a23cfbe93dbcf020.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-</ol>
+    <title>Pycharm常见报错及解决方案</title>
+    <url>/2023/03/15/Pycharm-common-errors-and-solutions/</url>
+    <content><![CDATA[<ul>
+<li><a href="https://blog.csdn.net/qq_47733361/article/details/123658062">No Python at ‘D:\Python\python.exe’ and solution</a></li>
+</ul>
+<p>​	Solution：查看<code>File - Settings - Project: xxx - Python Interpreter</code><br>​	点击右侧齿轮图标，选择<code>Add</code>，勾选<code>Existing environment</code>，在<code>Interpreter</code>处选择本地Python路径即可</p>
+<p>- </p>
 <hr>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>C++</tag>
-        <tag>Visual Studio</tag>
+        <tag>Python</tag>
+        <tag>Pycharm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试相关总结</title>
+    <url>/2023/03/07/Interview-related-content/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
+<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用数据库的异同</title>
+    <url>/2022/03/14/SQL/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/362598819">MySQL 与 PostgreSQL 比较</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>PostgreSQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu问题及解决方案汇总</title>
+    <url>/2023/03/07/Ubuntu-problems-and-solutions/</url>
+    <content><![CDATA[<hr>
+<p><a href="https://www.cnblogs.com/nuochengze/p/12642282.html">解决Ubuntu连不上网络，输入ifconfig只显示本地环回问题</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -564,6 +546,24 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
         <tag>DOSBox</tag>
         <tag>MASM</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World Hexo</title>
+    <url>/2020/12/27/hexo-hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My-New-Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>Win10利用VMware安装StarVCenter(单机版)</title>
@@ -679,21 +679,39 @@ Save后，改个主机字（有自己特色的），再点Apply
       </tags>
   </entry>
   <entry>
-    <title>Hello World Hexo</title>
-    <url>/2020/12/27/hexo-hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My-New-Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>面向 C++ 开发的 Visual Studio 2019 安装教程</title>
+    <url>/2021/09/30/Visual-Studio-2019-installation-tutorial-for-C++-development/</url>
+    <content><![CDATA[<h2 id="Visual-Studio-2019-的下载与安装"><a href="#Visual-Studio-2019-的下载与安装" class="headerlink" title="Visual Studio 2019 的下载与安装"></a>Visual Studio 2019 的下载与安装</h2><p>注：<strong>过程中需要登陆 Microsoft 账户，正常登陆即可</strong></p>
+<ol>
+<li>到<a href="https://visualstudio.microsoft.com/zh-hans/vs/"> Visual Studio官网 </a>下载<strong>Visual Studio 2019 community</strong> ，点击后会自动下载<img src="https://img-blog.csdnimg.cn/8fd6889f973f4ec7b4b7a2dc9ecbd66a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>打开下载器，进入Visual Studio 2019 安装界面<img src="https://img-blog.csdnimg.cn/759ee143f64843b8a42f296ffc6fd45a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>设置安装选项。使用C++语言的开发者勾选<code>使用 C++ 的桌面开发</code>，使用Python语言的开发者勾选 <code> Python 开发</code><img src="https://img-blog.csdnimg.cn/e29fece6300f4d57a32c169ab147c006.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>在右侧的 <strong><code>使用C++的桌面开发</code></strong> 的子目录 <code>可选</code> 和 <strong><code>单个组件</code></strong> 中勾选下图所示组件：<img src="https://img-blog.csdnimg.cn/574083ab13e247888a73f092059f8f99.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_15,color_FFFFFF,t_70,g_se,x_16" style="zoom: 80%;" /></li>
+<li><strong>语言包</strong>选择 <code>中文(简体)</code> 或 <code>英文</code><img src="https://img-blog.csdnimg.cn/509c2fe2ffe24001937868ec1bb9d663.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li><strong>安装位置</strong>最好选择在 <strong>C盘以外 的其他地方</strong>，建议是在D盘或其他盘新建一个名为<code>Visual Studio 2019</code>的文件夹，在该文件夹中新建一个名为<code>community</code>的文件夹，将该文件夹设定为VS2019的安装目录；下载缓存和共享组件、工具、SDK等也建议都修改其默认目录<img src="https://img-blog.csdnimg.cn/4f06ba9b525241f4baba4dc64243fb38.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>点击 <b><code>安装</code></b>，期间不要断网，全部下载安装完毕后，即可使用VS2019进行C++开发</li>
+<li>如果你按照以上教程安装成功后，在<code>我的电脑 -&gt; D:\Visual Studio 2019\Community\Common7\IDE</code>目录下，找到名为 <code>devenv.exe</code> 应用程序，右键添加到桌面快捷方式 <em>（再给快捷方式改个名字就更好了）</em><img src="https://img-blog.csdnimg.cn/cf43915e615a488789d02b752862d7ff.png" style="zoom: 80%;" /></li>
+</ol>
+<h2 id="Visual-Studio-2019-的使用"><a href="#Visual-Studio-2019-的使用" class="headerlink" title="Visual Studio 2019 的使用"></a>Visual Studio 2019 的使用</h2><ol>
+<li>打开 Visual Studio 2019 的界面，选择 <strong><code>创建新项目</code></strong> 或者 **<code>继续但无需代码</code>**（选择后者VS2019将作为文件编辑器使用）<img src="https://img-blog.csdnimg.cn/ac9e74a0e5424be7b6353713c768c97e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>选择 <strong><code>创建空项目</code></strong> 后，选择<code>控制台应用</code> 或者 <code>空项目</code>，前者会创建默认有打印Hello World的代码，接着点击 <strong><code>下一步</code></strong><img src="https://img-blog.csdnimg.cn/92cadf51e01a4d90b98bac863d311e7b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>填写创建的<strong>项目名称</strong>，可以修改<strong>项目的存储位置</strong>（后面会介绍修改默认存储地址的方法），接着点击 **<code>创建</code>**即可<img src="https://img-blog.csdnimg.cn/d9ef172e1f0e49f49f32c99b904e33e8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" />
+<img src="https://img-blog.csdnimg.cn/64b4434941a64723925bac5ccd3218ab.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+</ol>
+<hr>
+<ol start="4">
+<li>如果选择 **<code>继续但无需代码</code>**，进入编辑器界面，选择最上方工具栏的 <strong><code>文件 -&gt; 新建 -&gt; 文件</code></strong><img src="https://img-blog.csdnimg.cn/425f4fd566e447d8ab2cf056c2108406.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>在侧栏中选择 <code>Visual C++</code>，中间栏选择 <code>C++ 文件(.cpp)</code> ，点击<code>打开</code>即可创建新的空文件<img src="https://img-blog.csdnimg.cn/3991e0c16e864090b6dc9b9a63149768.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>在中央的<strong>代码编辑区</strong>填写完代码后，点击左上角的<code>保存</code>按键或按下<code>Ctrl + S</code>保存文件；建议将代码文件放在 <strong>Visual Studio 2019 安装目录中的自定义文件夹</strong>里，或者放在 <strong>非C盘的集中的代码存放位置</strong>，便于以后查找<img src="https://img-blog.csdnimg.cn/2a699d16b84c45f3a23cfbe93dbcf020.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+</ol>
+<hr>
 ]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Visual Studio</tag>
+      </tags>
   </entry>
 </search>
