@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>人工智能导论实验</title>
-    <url>/2023/03/15/AI-Introduction-Experiment/</url>
+    <url>/archives/AI-Introduction-Experiment.html</url>
     <content><![CDATA[<h3 id="实验1-基于A-算法的8数码问题求解"><a href="#实验1-基于A-算法的8数码问题求解" class="headerlink" title="实验1 基于A*算法的8数码问题求解"></a>实验1 基于A*算法的8数码问题求解</h3><p>问题描述：在3*3的棋盘中有8个数码（数字块）和一个空格，只有与空格相邻的数码能移动到空格位置。从初始状态以最小的步长移动到目标状态。</p>
 <p>实验要求：参考A*算法核心代码，以8数码问题为例实现A*算法的求解程序。</p>
 <p>实验内容：</p>
@@ -45,7 +45,7 @@
   </entry>
   <entry>
     <title>Android Studio安装教程及踩坑</title>
-    <url>/2023/02/27/Android-Studio-Install-Q&amp;A/</url>
+    <url>/archives/Android-Studio-Install-Q&amp;A.html</url>
     <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
 <hr>
 <h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
@@ -63,7 +63,7 @@
   </entry>
   <entry>
     <title>位运算与取模运算%</title>
-    <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
+    <url>/archives/Bit-operation-and-modular-operation%25.html</url>
     <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
 <p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
@@ -124,7 +124,7 @@
   </entry>
   <entry>
     <title>Android 开发入门</title>
-    <url>/2023/03/10/Android-develop-introduction/</url>
+    <url>/archives/Android-develop-introduction.html</url>
     <content><![CDATA[<h2 id="各种组件"><a href="#各种组件" class="headerlink" title="各种组件"></a>各种组件</h2><ol>
 <li><p>文本视图（TextView）</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/tv_username&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span>  </span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_marginStart</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:text</span>=<span class="string">&quot;用户名&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:textColor</span>=<span class="string">&quot;#000000&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
@@ -178,44 +178,8 @@
       </tags>
   </entry>
   <entry>
-    <title>CSAPP 5.1 优化编译器的能力和局限性</title>
-    <url>/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/</url>
-    <content><![CDATA[<h2 id="5-1-优化编译器的能力和局限性"><a href="#5-1-优化编译器的能力和局限性" class="headerlink" title="5.1 优化编译器的能力和局限性"></a>5.1 优化编译器的能力和局限性</h2><p>现代编译器运用复杂精细的算法来确定一个程序中计算的值，以及他们是被如何使用的，然后利用一些机会来简化表达式，如：在几个不同的地方使用同一个计算，以及降低一个给定的计算必须被执行的次数。大多数编译器，包括 GCC，向用户提供了一些对它们所使用的优化的控制。就像在第3章中讨论过的，最简单的控制就是指定<code>优先级别</code>。例如，以命令行选项 “-Og” 调用 GCC 是让 GCC 使用一组基本的优化。以选项 “-O1” 或更高(如 “-O2” 或 “-O3” ) 调用 GCC 会让他使用更多的优化，进一步提高程序的性能，但是也可能增加程序的规模，也可能使标准的调试工具更难对程序进行调试。</p>
-<p>编译器必须很小心地对程序进行<code>安全</code>的优化，即对于程序可能遇到的所有可能的情况，在C语言标准提供的保证之下，优化后得到的程序和为优化的版本有一样的行为。这一限制消除了一些造成不希望的运行时行为的隐患，但是也意味着程序员要花费更多精力写出编译器能够将之转换成有效及其代码的程序。下面这个简单的例子帮助理解编译器优化限制：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">twiddle1</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">twiddle2</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">	*xp += <span class="number">2</span>* *yp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>twiddle1 和 twiddle2 两个函数“似乎”有相同的功能（把存储在指针yp指向的值两次加到指针xp所指的值上）。从另一个角度来看，函数 twiddle2 效率更高一些，它只要求三次内存引用（读*xp、读*yp、写*xp），而 twiddle1需要6次（重复twiddle2需要的内存引用操作两次）。因此，如果要编译器编译函数 twiddle1，我们认为基于 twiddle2 执行的计算能产生更有效的代码。.</p>
-<p>不过，考虑到 xp 和 yp 指向同一地址（xp 和 yp相等）的情况，此时，函数 twiddle1 的结果使 xp 变为原来的 4 倍，函数 twiddle2 的结果使 xp 变为原来的 3 倍。编译器不知道 twiddle1 会在何种情况被调用，因此必须假设 xp 和 yp 可能会相等。因此，编译器不能产生 twiddle2 风格的代码作为 twiddle1 的优化版本。这种两个指针指向同一个内存地址的情况称为 <strong><code>memory aliasing</code>（内存别名使用）</strong>，这可能会造成一个主要的<code>妨碍优化</code>的因素，限制了可能的优化策略。</p>
-<hr>
-<p>第二个妨碍优化的因素是 <strong>函数调用</strong>。考虑下面这个示例：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func1</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> f()+f()+f()+f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func2</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">4</span> * f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>最初看上去两个函数实现的都是相同的功能，但是 func2() 只调用 f() 1次，而 func1() 调用 f() 4次。以func1() 作为源代码时，会很想产生 func2()  风格的代码。不过考虑下面 有关 f() 的代码：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个函数有个“副作用”，他修改了全局程序状态的一部分，改变该函数的调用次数会改变程序的功能。假设开始时去全局变量 counter 的值设为0，调用 func1() 会返回 0+1+2+3&#x3D;6，而调用 func2()返回 4*0&#x3D;0。大多数编译器会试图判断一个函数是否有副作用，如果有，编译器会假设最坏的情况并保持所有的函数调用不变。反之，则会进行一定程度的优化。</p>
-<hr>
-<h3 id="用内联优化函数调用"><a href="#用内联优化函数调用" class="headerlink" title="用内联优化函数调用"></a>用内联优化函数调用</h3><p>包含函数函数调用的代码可以用 <strong><code>inline substitution</code>（内敛函数替换）</strong> 或者简称 <strong><code>inlining</code>（内联）</strong> 的过程进行优化，此时，将函数调用替换为函数体。下面是 func1() 的内联版代码：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Result of inlining f in func1 */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclin</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">long</span> t = counter++;  <span class="comment">/* +0 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +1 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +2 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +3 */</span></span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样的转换即减少了函数调用的开销，也允许对展开的代码做进一步优化。例如，编译器可以统一funclin() 中对全局变量的更新，产生这个函数的一个优化版本：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Optimization of inlined func1 code */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclopt</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">long</span> t = <span class="number">4</span> * counter + <span class="number">6</span>;</span><br><span class="line">	counter += <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 对于这个特定的函数 f 的定义，上述代码重现了 func1 的行为。</p>
-<p>最近版本的 GCC 会尝试进行这种形式的优化，可以用命令行选项<code>-finline</code>指示编译器，或者使用优化等级 “-O1” 或更高等级。但是目前 GCC 尝试在单个文件中定义的函数的内联，意味着它无法用于常见的情况（<strong>一组库函数在一个文件中被定义，在其他文件的函数中被调用</strong>）。</p>
-<p>在某些情况下，最好能阻止编译器的内联优化。一种情况是 用符号调试器(如GDB)来评估代码，如果一个函数调用已经用内联替换优化过了，那么任何对这个调用进行追踪或设置断点的尝试都会失败。还有一种情况是用代码剖析的方式来评估程序性能，用内联替换消除的函数调用是不能被正确剖析的。</p>
-<hr>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>CSAPP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用Hexo搭建个人博客并部署到Github</title>
-    <url>/2023/02/28/Blog-Built-with-Hexo&amp;Github/</url>
+    <url>/archives/Blog-Built-with-Hexo&amp;Github.html</url>
     <content><![CDATA[<p>若想部署到Gitee码云上，可以参考博客：<a href="https://blog.csdn.net/qq_46036214/article/details/110137239">在Gitee搭建属于自己的博客</a></p>
 <p>若想部署到已有域名上，可以参考视频：<a href="https://www.bilibili.com/video/BV1Vg411w7os">1小时WordPress从0到1建站系列</a> </p>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>下载 Git 和 Node.js 安装包，注册一个Github账号</p>
@@ -321,8 +285,73 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo博客优化</title>
+    <url>/archives/Blog-Hexo-customization-optimization.html</url>
+    <content><![CDATA[<h4 id="网页图标"><a href="#网页图标" class="headerlink" title="网页图标"></a>网页图标</h4><p>SVG素材库：<a href="https://www.iconfont.cn/collections/detail?spm=a313x.7781069.0.da5a778a4&cid=43742">iconfont-阿里巴巴矢量图标库 - Food</a></p>
+<p><a href="https://blog.csdn.net/qq_39181839/article/details/109477357">Hexo更换网页图标</a></p>
+<h4 id="友链"><a href="#友链" class="headerlink" title="友链"></a>友链</h4><p>在D:\blog\source\links下新建文件夹image用于存放图片，修改index.md</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;links.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;allLinks&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./image/图片1.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;图片描述1&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;友情链接地址1&quot;</span>&gt;</span>博客名1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./image/图片2.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;图片描述2&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;友情链接地址2&quot;</span>&gt;</span>博客名2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>新建样式文件links.css</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.allLinks</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-flex; <span class="comment">/* Safari */</span></span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">    <span class="attribute">display</span>: inline-flex;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">20rem</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">8rem</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>:<span class="number">2rem</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/*超出边界部分隐藏*/</span></span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ffffff</span>;  <span class="comment">/*卡片背景颜色*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12rem</span>;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">10%</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1.7rem</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, <span class="string">&quot;PingFang SC&quot;</span>, <span class="string">&quot;Hiragino Sans GB&quot;</span>, <span class="string">&quot;Microsoft YaHei&quot;</span>, 微软雅黑, Arial, sans-serif;</span><br><span class="line">    <span class="attribute">color</span>:<span class="number">#000000</span>;  <span class="comment">/*文字颜色*/</span></span><br><span class="line">    <span class="attribute">word-wrap</span>: break-word; <span class="comment">/*文字换行*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2D看板娘"><a href="#2D看板娘" class="headerlink" title="2D看板娘"></a>2D看板娘</h4><p><a href="https://blog.csdn.net/u013467402/article/details/101443431">在hexo博客加上live2d看板娘</a><br><a href="https://github.com/EYHN/hexo-helper-live2d">插件官网文档 - hexo-helper-live2d: Add the live2d to your hexo!</a></p>
+<h4 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<p>在 _config.yml 文件中添加：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># hexo-generator-searchdb</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="参考文章：-Hexo博客Ayer主题自定义配置-使用hexo框架-ayer主题-gitalk评论插件搭建个人博客-的-优化部分"><a href="#参考文章：-Hexo博客Ayer主题自定义配置-使用hexo框架-ayer主题-gitalk评论插件搭建个人博客-的-优化部分" class="headerlink" title="参考文章：- Hexo博客Ayer主题自定义配置- 使用hexo框架+ayer主题+gitalk评论插件搭建个人博客 的 优化部分"></a>参考文章：<br>- <a href="https://blog.csdn.net/qq_35982918/article/details/106728754">Hexo博客Ayer主题自定义配置</a><br>- <a href="https://blog.csdn.net/The_X_One/article/details/106753814">使用hexo框架+ayer主题+gitalk评论插件搭建个人博客</a> 的 优化部分</h2>]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSAPP 5.1 优化编译器的能力和局限性</title>
+    <url>/archives/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations.html</url>
+    <content><![CDATA[<h2 id="5-1-优化编译器的能力和局限性"><a href="#5-1-优化编译器的能力和局限性" class="headerlink" title="5.1 优化编译器的能力和局限性"></a>5.1 优化编译器的能力和局限性</h2><p>现代编译器运用复杂精细的算法来确定一个程序中计算的值，以及他们是被如何使用的，然后利用一些机会来简化表达式，如：在几个不同的地方使用同一个计算，以及降低一个给定的计算必须被执行的次数。大多数编译器，包括 GCC，向用户提供了一些对它们所使用的优化的控制。就像在第3章中讨论过的，最简单的控制就是指定<code>优先级别</code>。例如，以命令行选项 “-Og” 调用 GCC 是让 GCC 使用一组基本的优化。以选项 “-O1” 或更高(如 “-O2” 或 “-O3” ) 调用 GCC 会让他使用更多的优化，进一步提高程序的性能，但是也可能增加程序的规模，也可能使标准的调试工具更难对程序进行调试。</p>
+<p>编译器必须很小心地对程序进行<code>安全</code>的优化，即对于程序可能遇到的所有可能的情况，在C语言标准提供的保证之下，优化后得到的程序和为优化的版本有一样的行为。这一限制消除了一些造成不希望的运行时行为的隐患，但是也意味着程序员要花费更多精力写出编译器能够将之转换成有效及其代码的程序。下面这个简单的例子帮助理解编译器优化限制：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">twiddle1</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">twiddle2</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">	*xp += <span class="number">2</span>* *yp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>twiddle1 和 twiddle2 两个函数“似乎”有相同的功能（把存储在指针yp指向的值两次加到指针xp所指的值上）。从另一个角度来看，函数 twiddle2 效率更高一些，它只要求三次内存引用（读*xp、读*yp、写*xp），而 twiddle1需要6次（重复twiddle2需要的内存引用操作两次）。因此，如果要编译器编译函数 twiddle1，我们认为基于 twiddle2 执行的计算能产生更有效的代码。.</p>
+<p>不过，考虑到 xp 和 yp 指向同一地址（xp 和 yp相等）的情况，此时，函数 twiddle1 的结果使 xp 变为原来的 4 倍，函数 twiddle2 的结果使 xp 变为原来的 3 倍。编译器不知道 twiddle1 会在何种情况被调用，因此必须假设 xp 和 yp 可能会相等。因此，编译器不能产生 twiddle2 风格的代码作为 twiddle1 的优化版本。这种两个指针指向同一个内存地址的情况称为 <strong><code>memory aliasing</code>（内存别名使用）</strong>，这可能会造成一个主要的<code>妨碍优化</code>的因素，限制了可能的优化策略。</p>
+<hr>
+<p>第二个妨碍优化的因素是 <strong>函数调用</strong>。考虑下面这个示例：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func1</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> f()+f()+f()+f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func2</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">4</span> * f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最初看上去两个函数实现的都是相同的功能，但是 func2() 只调用 f() 1次，而 func1() 调用 f() 4次。以func1() 作为源代码时，会很想产生 func2()  风格的代码。不过考虑下面 有关 f() 的代码：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个函数有个“副作用”，他修改了全局程序状态的一部分，改变该函数的调用次数会改变程序的功能。假设开始时去全局变量 counter 的值设为0，调用 func1() 会返回 0+1+2+3&#x3D;6，而调用 func2()返回 4*0&#x3D;0。大多数编译器会试图判断一个函数是否有副作用，如果有，编译器会假设最坏的情况并保持所有的函数调用不变。反之，则会进行一定程度的优化。</p>
+<hr>
+<h3 id="用内联优化函数调用"><a href="#用内联优化函数调用" class="headerlink" title="用内联优化函数调用"></a>用内联优化函数调用</h3><p>包含函数函数调用的代码可以用 <strong><code>inline substitution</code>（内敛函数替换）</strong> 或者简称 <strong><code>inlining</code>（内联）</strong> 的过程进行优化，此时，将函数调用替换为函数体。下面是 func1() 的内联版代码：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Result of inlining f in func1 */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclin</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">long</span> t = counter++;  <span class="comment">/* +0 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +1 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +2 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +3 */</span></span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的转换即减少了函数调用的开销，也允许对展开的代码做进一步优化。例如，编译器可以统一funclin() 中对全局变量的更新，产生这个函数的一个优化版本：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Optimization of inlined func1 code */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclopt</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">long</span> t = <span class="number">4</span> * counter + <span class="number">6</span>;</span><br><span class="line">	counter += <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 对于这个特定的函数 f 的定义，上述代码重现了 func1 的行为。</p>
+<p>最近版本的 GCC 会尝试进行这种形式的优化，可以用命令行选项<code>-finline</code>指示编译器，或者使用优化等级 “-O1” 或更高等级。但是目前 GCC 尝试在单个文件中定义的函数的内联，意味着它无法用于常见的情况（<strong>一组库函数在一个文件中被定义，在其他文件的函数中被调用</strong>）。</p>
+<p>在某些情况下，最好能阻止编译器的内联优化。一种情况是 用符号调试器(如GDB)来评估代码，如果一个函数调用已经用内联替换优化过了，那么任何对这个调用进行追踪或设置断点的尝试都会失败。还有一种情况是用代码剖析的方式来评估程序性能，用内联替换消除的函数调用是不能被正确剖析的。</p>
+<hr>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>CSAPP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dev C++注释中文乱码问题及解决方法</title>
-    <url>/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/</url>
+    <url>/archives/DevC++annotation-zh-CN-garbled-code-problem-and-solution.html</url>
     <content><![CDATA[<h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
 
 <hr>
@@ -353,7 +382,7 @@
   </entry>
   <entry>
     <title>前端工具(框架)</title>
-    <url>/2023/03/07/Front-end-tools/</url>
+    <url>/archives/Front-end-tools.html</url>
     <content><![CDATA[<p><a href="https://element.eleme.cn/#/zh-CN">Element - 网站快速成型工具</a></p>
 <p><a href="http://www.quasarchs.com/">Quasar Framework</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/142346630">UI框架 Quasar Framework 简评 - 知乎</a></p>
@@ -366,7 +395,7 @@
   </entry>
   <entry>
     <title>GitHub入门</title>
-    <url>/2023/03/07/GitHub-Introduction/</url>
+    <url>/archives/GitHub-Introduction.html</url>
     <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
 <hr>
 ]]></content>
@@ -378,22 +407,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Pycharm常见报错及解决方案</title>
-    <url>/2023/03/15/Pycharm-common-errors-and-solutions/</url>
-    <content><![CDATA[<h5 id="No-Python-at-‘D-Python-python-exe’-and-solution"><a href="#No-Python-at-‘D-Python-python-exe’-and-solution" class="headerlink" title="No Python at ‘D:\Python\python.exe’ and solution"></a><a href="https://blog.csdn.net/qq_47733361/article/details/123658062">No Python at ‘D:\Python\python.exe’ and solution</a></h5><p><strong>Solution</strong>：查看<code>File - Settings - Project: xxx - Python Interpreter</code>，点击右侧齿轮图标，选择<code>Add</code>，勾选<code>Existing environment</code>，在<code>Interpreter</code>处选择本地Python路径即可</p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Pycharm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IDEA生成可执行jar包及常见问题与解决</title>
-    <url>/2022/11/27/IDEA-generates-executable-JAR-packages/</url>
+    <url>/archives/IDEA-generates-executable-JAR-packages.html</url>
     <content><![CDATA[<h3 id="打包过程"><a href="#打包过程" class="headerlink" title="打包过程"></a>打包过程</h3><ol>
 <li><p>进入需要打包的项目，选择 <strong>最上方菜单栏的 File → Project Structure</strong></p>
 <img src="https://img-blog.csdnimg.cn/f009a60263f0475fbe708203dfc03bb0.png" style="zoom: 80%;" /></li>
@@ -433,7 +448,7 @@
   </entry>
   <entry>
     <title>面试相关总结</title>
-    <url>/2023/03/07/Interview-related-content/</url>
+    <url>/archives/Interview-related-content.html</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
 <p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
 <hr>
@@ -447,7 +462,7 @@
   </entry>
   <entry>
     <title>Java-2048小游戏</title>
-    <url>/2021/06/26/Java-2048-game/</url>
+    <url>/archives/Java-2048-game.html</url>
     <content><![CDATA[<h1 id="游戏规则"><a href="#游戏规则" class="headerlink" title="游戏规则"></a>游戏规则</h1><ol>
 <li>通过上、下、左、右移动，使相邻的相同数值的数字块进行合并。</li>
 <li>每次生成得到的数字块是 2 或 4 ，生成的位置是在空白位置随机出现。</li>
@@ -469,8 +484,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Pycharm常见报错及解决方案</title>
+    <url>/archives/Pycharm-common-errors-and-solutions.html</url>
+    <content><![CDATA[<h5 id="No-Python-at-‘D-Python-python-exe’-and-solution"><a href="#No-Python-at-‘D-Python-python-exe’-and-solution" class="headerlink" title="No Python at ‘D:\Python\python.exe’ and solution"></a><a href="https://blog.csdn.net/qq_47733361/article/details/123658062">No Python at ‘D:\Python\python.exe’ and solution</a></h5><p><strong>Solution</strong>：查看<code>File - Settings - Project: xxx - Python Interpreter</code>，点击右侧齿轮图标，选择<code>Add</code>，勾选<code>Existing environment</code>，在<code>Interpreter</code>处选择本地Python路径即可</p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Pycharm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常用数据库的异同</title>
-    <url>/2022/03/14/SQL/</url>
+    <url>/archives/SQL.html</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/362598819">MySQL 与 PostgreSQL 比较</a></p>
 <hr>
@@ -485,7 +514,7 @@
   </entry>
   <entry>
     <title>Ubuntu问题及解决方案汇总</title>
-    <url>/2023/03/07/Ubuntu-problems-and-solutions/</url>
+    <url>/archives/Ubuntu-problems-and-solutions.html</url>
     <content><![CDATA[<hr>
 <p><a href="https://www.cnblogs.com/nuochengze/p/12642282.html">解决Ubuntu连不上网络，输入ifconfig只显示本地环回问题</a></p>
 <hr>
@@ -498,44 +527,8 @@
       </tags>
   </entry>
   <entry>
-    <title>面向 C++ 开发的 Visual Studio 2019 安装教程</title>
-    <url>/2021/09/30/Visual-Studio-2019-installation-tutorial-for-C++-development/</url>
-    <content><![CDATA[<h2 id="Visual-Studio-2019-的下载与安装"><a href="#Visual-Studio-2019-的下载与安装" class="headerlink" title="Visual Studio 2019 的下载与安装"></a>Visual Studio 2019 的下载与安装</h2><p>注：<strong>过程中需要登陆 Microsoft 账户，正常登陆即可</strong></p>
-<ol>
-<li>到<a href="https://visualstudio.microsoft.com/zh-hans/vs/"> Visual Studio官网 </a>下载<strong>Visual Studio 2019 community</strong> ，点击后会自动下载<img src="https://img-blog.csdnimg.cn/8fd6889f973f4ec7b4b7a2dc9ecbd66a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>打开下载器，进入Visual Studio 2019 安装界面<img src="https://img-blog.csdnimg.cn/759ee143f64843b8a42f296ffc6fd45a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>设置安装选项。使用C++语言的开发者勾选<code>使用 C++ 的桌面开发</code>，使用Python语言的开发者勾选 <code> Python 开发</code><img src="https://img-blog.csdnimg.cn/e29fece6300f4d57a32c169ab147c006.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>在右侧的 <strong><code>使用C++的桌面开发</code></strong> 的子目录 <code>可选</code> 和 <strong><code>单个组件</code></strong> 中勾选下图所示组件：<img src="https://img-blog.csdnimg.cn/574083ab13e247888a73f092059f8f99.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_15,color_FFFFFF,t_70,g_se,x_16" style="zoom: 80%;" /></li>
-<li><strong>语言包</strong>选择 <code>中文(简体)</code> 或 <code>英文</code><img src="https://img-blog.csdnimg.cn/509c2fe2ffe24001937868ec1bb9d663.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li><strong>安装位置</strong>最好选择在 <strong>C盘以外 的其他地方</strong>，建议是在D盘或其他盘新建一个名为<code>Visual Studio 2019</code>的文件夹，在该文件夹中新建一个名为<code>community</code>的文件夹，将该文件夹设定为VS2019的安装目录；下载缓存和共享组件、工具、SDK等也建议都修改其默认目录<img src="https://img-blog.csdnimg.cn/4f06ba9b525241f4baba4dc64243fb38.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>点击 <b><code>安装</code></b>，期间不要断网，全部下载安装完毕后，即可使用VS2019进行C++开发</li>
-<li>如果你按照以上教程安装成功后，在<code>我的电脑 -&gt; D:\Visual Studio 2019\Community\Common7\IDE</code>目录下，找到名为 <code>devenv.exe</code> 应用程序，右键添加到桌面快捷方式 <em>（再给快捷方式改个名字就更好了）</em><img src="https://img-blog.csdnimg.cn/cf43915e615a488789d02b752862d7ff.png" style="zoom: 80%;" /></li>
-</ol>
-<h2 id="Visual-Studio-2019-的使用"><a href="#Visual-Studio-2019-的使用" class="headerlink" title="Visual Studio 2019 的使用"></a>Visual Studio 2019 的使用</h2><ol>
-<li>打开 Visual Studio 2019 的界面，选择 <strong><code>创建新项目</code></strong> 或者 **<code>继续但无需代码</code>**（选择后者VS2019将作为文件编辑器使用）<img src="https://img-blog.csdnimg.cn/ac9e74a0e5424be7b6353713c768c97e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>选择 <strong><code>创建空项目</code></strong> 后，选择<code>控制台应用</code> 或者 <code>空项目</code>，前者会创建默认有打印Hello World的代码，接着点击 <strong><code>下一步</code></strong><img src="https://img-blog.csdnimg.cn/92cadf51e01a4d90b98bac863d311e7b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>填写创建的<strong>项目名称</strong>，可以修改<strong>项目的存储位置</strong>（后面会介绍修改默认存储地址的方法），接着点击 **<code>创建</code>**即可<img src="https://img-blog.csdnimg.cn/d9ef172e1f0e49f49f32c99b904e33e8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" />
-<img src="https://img-blog.csdnimg.cn/64b4434941a64723925bac5ccd3218ab.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-</ol>
-<hr>
-<ol start="4">
-<li>如果选择 **<code>继续但无需代码</code>**，进入编辑器界面，选择最上方工具栏的 <strong><code>文件 -&gt; 新建 -&gt; 文件</code></strong><img src="https://img-blog.csdnimg.cn/425f4fd566e447d8ab2cf056c2108406.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>在侧栏中选择 <code>Visual C++</code>，中间栏选择 <code>C++ 文件(.cpp)</code> ，点击<code>打开</code>即可创建新的空文件<img src="https://img-blog.csdnimg.cn/3991e0c16e864090b6dc9b9a63149768.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>在中央的<strong>代码编辑区</strong>填写完代码后，点击左上角的<code>保存</code>按键或按下<code>Ctrl + S</code>保存文件；建议将代码文件放在 <strong>Visual Studio 2019 安装目录中的自定义文件夹</strong>里，或者放在 <strong>非C盘的集中的代码存放位置</strong>，便于以后查找<img src="https://img-blog.csdnimg.cn/2a699d16b84c45f3a23cfbe93dbcf020.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>Visual Studio</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Win10安装汇编环境masm x64</title>
-    <url>/2022/03/14/Win10-64bit-Installation-Assembly-Environment-masm/</url>
+    <url>/archives/Win10-64bit-Installation-Assembly-Environment-masm.html</url>
     <content><![CDATA[<p>本文转载自 <a href="https://www.cnblogs.com/dgwblog/p/11865850.html">Win10(64位)安装汇编环境(MASM) - 博客园</a>，亲自尝试之后决定转载，并在原文基础上补充了一些 <strong>操作细节</strong>，也<strong>删去了少许内容</strong>，鼓励读者看一遍<a href="https://www.cnblogs.com/dgwblog/p/11865850.html">原文</a>。</p>
 <hr>
 <ol start="0">
@@ -581,8 +574,44 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
       </tags>
   </entry>
   <entry>
+    <title>面向 C++ 开发的 Visual Studio 2019 安装教程</title>
+    <url>/archives/Visual-Studio-2019-installation-tutorial-for-C++-development.html</url>
+    <content><![CDATA[<h2 id="Visual-Studio-2019-的下载与安装"><a href="#Visual-Studio-2019-的下载与安装" class="headerlink" title="Visual Studio 2019 的下载与安装"></a>Visual Studio 2019 的下载与安装</h2><p>注：<strong>过程中需要登陆 Microsoft 账户，正常登陆即可</strong></p>
+<ol>
+<li>到<a href="https://visualstudio.microsoft.com/zh-hans/vs/"> Visual Studio官网 </a>下载<strong>Visual Studio 2019 community</strong> ，点击后会自动下载<img src="https://img-blog.csdnimg.cn/8fd6889f973f4ec7b4b7a2dc9ecbd66a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>打开下载器，进入Visual Studio 2019 安装界面<img src="https://img-blog.csdnimg.cn/759ee143f64843b8a42f296ffc6fd45a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>设置安装选项。使用C++语言的开发者勾选<code>使用 C++ 的桌面开发</code>，使用Python语言的开发者勾选 <code> Python 开发</code><img src="https://img-blog.csdnimg.cn/e29fece6300f4d57a32c169ab147c006.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>在右侧的 <strong><code>使用C++的桌面开发</code></strong> 的子目录 <code>可选</code> 和 <strong><code>单个组件</code></strong> 中勾选下图所示组件：<img src="https://img-blog.csdnimg.cn/574083ab13e247888a73f092059f8f99.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_15,color_FFFFFF,t_70,g_se,x_16" style="zoom: 80%;" /></li>
+<li><strong>语言包</strong>选择 <code>中文(简体)</code> 或 <code>英文</code><img src="https://img-blog.csdnimg.cn/509c2fe2ffe24001937868ec1bb9d663.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li><strong>安装位置</strong>最好选择在 <strong>C盘以外 的其他地方</strong>，建议是在D盘或其他盘新建一个名为<code>Visual Studio 2019</code>的文件夹，在该文件夹中新建一个名为<code>community</code>的文件夹，将该文件夹设定为VS2019的安装目录；下载缓存和共享组件、工具、SDK等也建议都修改其默认目录<img src="https://img-blog.csdnimg.cn/4f06ba9b525241f4baba4dc64243fb38.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>点击 <b><code>安装</code></b>，期间不要断网，全部下载安装完毕后，即可使用VS2019进行C++开发</li>
+<li>如果你按照以上教程安装成功后，在<code>我的电脑 -&gt; D:\Visual Studio 2019\Community\Common7\IDE</code>目录下，找到名为 <code>devenv.exe</code> 应用程序，右键添加到桌面快捷方式 <em>（再给快捷方式改个名字就更好了）</em><img src="https://img-blog.csdnimg.cn/cf43915e615a488789d02b752862d7ff.png" style="zoom: 80%;" /></li>
+</ol>
+<h2 id="Visual-Studio-2019-的使用"><a href="#Visual-Studio-2019-的使用" class="headerlink" title="Visual Studio 2019 的使用"></a>Visual Studio 2019 的使用</h2><ol>
+<li>打开 Visual Studio 2019 的界面，选择 <strong><code>创建新项目</code></strong> 或者 **<code>继续但无需代码</code>**（选择后者VS2019将作为文件编辑器使用）<img src="https://img-blog.csdnimg.cn/ac9e74a0e5424be7b6353713c768c97e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li>选择 <strong><code>创建空项目</code></strong> 后，选择<code>控制台应用</code> 或者 <code>空项目</code>，前者会创建默认有打印Hello World的代码，接着点击 <strong><code>下一步</code></strong><img src="https://img-blog.csdnimg.cn/92cadf51e01a4d90b98bac863d311e7b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>填写创建的<strong>项目名称</strong>，可以修改<strong>项目的存储位置</strong>（后面会介绍修改默认存储地址的方法），接着点击 **<code>创建</code>**即可<img src="https://img-blog.csdnimg.cn/d9ef172e1f0e49f49f32c99b904e33e8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" />
+<img src="https://img-blog.csdnimg.cn/64b4434941a64723925bac5ccd3218ab.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+</ol>
+<hr>
+<ol start="4">
+<li>如果选择 **<code>继续但无需代码</code>**，进入编辑器界面，选择最上方工具栏的 <strong><code>文件 -&gt; 新建 -&gt; 文件</code></strong><img src="https://img-blog.csdnimg.cn/425f4fd566e447d8ab2cf056c2108406.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>在侧栏中选择 <code>Visual C++</code>，中间栏选择 <code>C++ 文件(.cpp)</code> ，点击<code>打开</code>即可创建新的空文件<img src="https://img-blog.csdnimg.cn/3991e0c16e864090b6dc9b9a63149768.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+<li>在中央的<strong>代码编辑区</strong>填写完代码后，点击左上角的<code>保存</code>按键或按下<code>Ctrl + S</code>保存文件；建议将代码文件放在 <strong>Visual Studio 2019 安装目录中的自定义文件夹</strong>里，或者放在 <strong>非C盘的集中的代码存放位置</strong>，便于以后查找<img src="https://img-blog.csdnimg.cn/2a699d16b84c45f3a23cfbe93dbcf020.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Visual Studio</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Win10利用VMware安装StarVCenter(单机版)</title>
-    <url>/2022/09/14/Win10-uses-VMware-to-install-StarVCenter-stand-alone/</url>
+    <url>/archives/Win10-uses-VMware-to-install-StarVCenter-stand-alone.html</url>
     <content><![CDATA[<h2 id="0-文件准备"><a href="#0-文件准备" class="headerlink" title="0 文件准备"></a>0 文件准备</h2><p><a href="http://download.starvcs.com/download/StarVCenter/StarVCenter_Community_Download/V4.2.20/starve4-x86_64-StarVCenter-mini-4.2.20.iso">starve4-x86_64-StarVCenter-mini-4.2.20.iso</a><br><a href="https://www.vmware.com/go/getworkstation-win">VMware Workstation 16 Pro</a></p>
 <h2 id="1-创建虚拟机"><a href="#1-创建虚拟机" class="headerlink" title="1 创建虚拟机"></a>1 创建虚拟机</h2><ol start="0">
 <li><p>安装 VMware Workstation，序列号: ZF3R0-FHED2-M80TY-8QYGC-NPKYF；YF390-0HF8P-M81RQ-2DXQE-M2UT6；ZF71R-DMX85-08DQY-8YMNC-PPHV8.</p>
@@ -695,7 +724,7 @@ Save后，改个主机字（有自己特色的），再点Apply
   </entry>
   <entry>
     <title>Hello World Hexo</title>
-    <url>/2020/12/27/hexo-hello-world/</url>
+    <url>/archives/hexo-hello-world.html</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My-New-Post&quot;</span></span><br></pre></td></tr></table></figure>
 

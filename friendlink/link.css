@@ -13,7 +13,7 @@
     margin-top: 3rem;
     margin-right:2rem;
     overflow: hidden; /*超出边界部分隐藏*/
-    background-color: #403e3e;
+    background-color: #82f4bb;  /*卡片背景颜色*/
 }
 .allLinks li img {
     width:6rem;
@@ -29,6 +29,6 @@
     text-decoration: none;
     font-size: 1.7rem;
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", 微软雅黑, Arial, sans-serif;
-    color:#bbb;
+    color:#000000;  /*文字颜色*/
     word-wrap: break-word; /*文字换行*/
 }

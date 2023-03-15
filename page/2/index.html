@@ -149,6 +149,86 @@
     
     
     <article
+  id="post-IDEA-generates-executable-JAR-packages"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/archives/IDEA-generates-executable-JAR-packages.html"
+    >IDEA生成可执行jar包及常见问题与解决</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/archives/IDEA-generates-executable-JAR-packages.html" class="article-date">
+  <time datetime="2022-11-27T11:08:08.000Z" itemprop="datePublished">2022-11-27</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="打包过程"><a href="#打包过程" class="headerlink" title="打包过程"></a>打包过程</h3><ol>
+<li><p>进入需要打包的项目，选择 <strong>最上方菜单栏的 File → Project Structure</strong></p>
+<img src="https://img-blog.csdnimg.cn/f009a60263f0475fbe708203dfc03bb0.png" style="zoom: 80%;" /></li>
+<li><p>选择 左侧菜单栏 <strong>Artifacts → + (加号) → JAR → from modules with dependencies</strong></p>
+<img src="https://img-blog.csdnimg.cn/2a53aa8a8a5a4fb399d5c0441ec25aaa.png" style="zoom: 80%;" />
+</li>
+<li><p>选择入口类 <strong>Main Class</strong>（点击文件夹图标可以快速选择），点击 <strong>OK</strong></p>
+<img src="https://img-blog.csdnimg.cn/07b53796d78644b7b90d0a5268ea181d.png" style="zoom:67%;" />
+
+
+</li>
+<li><p>返回到IDEA主界面，选择 最上方菜单栏 <strong>Build → Build Artifacts</strong>，再选择 <strong>Build 或 Rebuild</strong> 即可</p>
+<img src="https://img-blog.csdnimg.cn/60b0d2fa0df54fff8a0424207ec2082b.png" style="zoom: 80%;" /></li>
+<li><p>生成的Jar包 在 <strong>左侧文件列表 out&#x2F;artifacts&#x2F;xxx_jar</strong>文件夹下</p>
+<img src="https://img-blog.csdnimg.cn/267b17c4a3224a3c96b9b200d5d2cf15.png" style="zoom: 80%;" /></li>
+<li><p>在控制台执行下面命令 运行jar包进行测试</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar C:/xxx/xxx.jar</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h3 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h3><ul>
+<li>问题1：<strong>运行jar包时，报错 Error: A JNI error has occurred, please check your installation and try again</strong><br>  解决：在控制台运行 java -version 和 javac -version 命令查看两个java版本是否一样，<del>如果一样我就不知道了欸嘿</del>，如果不一样，则需要在系统环境变量里修改（具体参照问题2），修改后重启控制台，运行上述命令检查<br>  （<strong>重要</strong>）检查无误后，进入IDEA界面，在 <strong>File → Project Structure</strong> 中，选择<strong>环境变量对应版本</strong>的<strong>Project SDK 和 language level</strong>，<strong>重新build程序（上面步骤4）</strong> 即可  <img src="https://img-blog.csdnimg.cn/facc2f0d63ff46c5a7d81981d019f173.png" style="zoom:80%;" /></li>
+<li>问题2：<b>‘javac’不是内部或外部命令，也不是可运行的程序</b><br>解决：系统环境变量配置错误，检查环境变量中JAVA_HOME（应为 jdk安装的路径，如 D:\Java\jdk1.8.0_261） 和 Path（应为 %JAVA_HOME%\bin ）的内容，之后重启控制台运行 java -version 和 javac -version 检查，再执行问题一的最后一步更改IDEA的项目配置</li>
+<li>问题3：<strong>打完jar包后，不能正常读取原路径存在的文件</strong><br>解决：将 <code>原路径</code> 修改为 <code>System.getProperty(&quot;user.dir&quot;) +  jar包到文件的路径</code>，其中 <code>System.getProperty(&quot;user.dir&quot;)</code>为运行jar文件时jar包的位置，也是程序源位置，根据jar的存放位置修改路径即可</li>
+</ul>
+<hr>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/HighnessDragonfly/p/13924869.html">1. idea如何生成jar包 - 博客园</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Yimu_Wang/article/details/113666518">2. 使用java命令出现“Error: A JNI error…的一种解决方案</a><br><a target="_blank" rel="noopener" href="https://www.php.cn/java/guide/474272.html">3. 如何解决javac不是内部或外部命令，也不是可运行程序的问题</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dbei/articles/13355962.html">4. 打jar包之后读不到properties文件</a></p>
+<hr>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IntelliJ-IDEA/" rel="tag">IntelliJ IDEA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jar/" rel="tag">Jar</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-Win10-uses-VMware-to-install-StarVCenter-stand-alone"
   class="article article-type-post"
   itemscope
@@ -160,7 +240,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/09/14/Win10-uses-VMware-to-install-StarVCenter-stand-alone/"
+  <a class="article-title" href="/archives/Win10-uses-VMware-to-install-StarVCenter-stand-alone.html"
     >Win10利用VMware安装StarVCenter(单机版)</a> 
 </h2>
  
@@ -169,7 +249,7 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/09/14/Win10-uses-VMware-to-install-StarVCenter-stand-alone/" class="article-date">
+      <a href="/archives/Win10-uses-VMware-to-install-StarVCenter-stand-alone.html" class="article-date">
   <time datetime="2022-09-14T03:22:22.000Z" itemprop="datePublished">2022-09-14</time>
 </a> 
   <div class="article-category">
@@ -313,7 +393,7 @@ Save后，改个主机字（有自己特色的），再点Apply
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/"
+  <a class="article-title" href="/archives/DevC++annotation-zh-CN-garbled-code-problem-and-solution.html"
     >Dev C++注释中文乱码问题及解决方法</a> 
 </h2>
  
@@ -322,7 +402,7 @@ Save后，改个主机字（有自己特色的），再点Apply
     </header>
      
     <div class="article-meta">
-      <a href="/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/" class="article-date">
+      <a href="/archives/DevC++annotation-zh-CN-garbled-code-problem-and-solution.html" class="article-date">
   <time datetime="2022-07-29T03:20:28.000Z" itemprop="datePublished">2022-07-29</time>
 </a> 
   <div class="article-category">
@@ -385,7 +465,7 @@ Save后，改个主机字（有自己特色的），再点Apply
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/03/14/SQL/"
+  <a class="article-title" href="/archives/SQL.html"
     >常用数据库的异同</a> 
 </h2>
  
@@ -394,7 +474,7 @@ Save后，改个主机字（有自己特色的），再点Apply
     </header>
      
     <div class="article-meta">
-      <a href="/2022/03/14/SQL/" class="article-date">
+      <a href="/archives/SQL.html" class="article-date">
   <time datetime="2022-03-14T06:45:59.000Z" itemprop="datePublished">2022-03-14</time>
 </a> 
   <div class="article-category">
@@ -441,7 +521,7 @@ Save后，改个主机字（有自己特色的），再点Apply
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/03/14/Win10-64bit-Installation-Assembly-Environment-masm/"
+  <a class="article-title" href="/archives/Win10-64bit-Installation-Assembly-Environment-masm.html"
     >Win10安装汇编环境masm x64</a> 
 </h2>
  
@@ -450,7 +530,7 @@ Save后，改个主机字（有自己特色的），再点Apply
     </header>
      
     <div class="article-meta">
-      <a href="/2022/03/14/Win10-64bit-Installation-Assembly-Environment-masm/" class="article-date">
+      <a href="/archives/Win10-64bit-Installation-Assembly-Environment-masm.html" class="article-date">
   <time datetime="2022-03-14T06:45:59.000Z" itemprop="datePublished">2022-03-14</time>
 </a> 
   <div class="article-category">
@@ -528,7 +608,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/"
+  <a class="article-title" href="/archives/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations.html"
     >CSAPP 5.1 优化编译器的能力和局限性</a> 
 </h2>
  
@@ -537,7 +617,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     </header>
      
     <div class="article-meta">
-      <a href="/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/" class="article-date">
+      <a href="/archives/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations.html" class="article-date">
   <time datetime="2022-02-21T14:34:32.000Z" itemprop="datePublished">2022-02-21</time>
 </a> 
   <div class="article-category">
@@ -606,7 +686,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/09/30/Visual-Studio-2019-installation-tutorial-for-C++-development/"
+  <a class="article-title" href="/archives/Visual-Studio-2019-installation-tutorial-for-C++-development.html"
     >面向 C++ 开发的 Visual Studio 2019 安装教程</a> 
 </h2>
  
@@ -615,7 +695,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     </header>
      
     <div class="article-meta">
-      <a href="/2021/09/30/Visual-Studio-2019-installation-tutorial-for-C++-development/" class="article-date">
+      <a href="/archives/Visual-Studio-2019-installation-tutorial-for-C++-development.html" class="article-date">
   <time datetime="2021-09-30T05:58:15.000Z" itemprop="datePublished">2021-09-30</time>
 </a> 
   <div class="article-category">
@@ -683,7 +763,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/08/22/Bit-operation-and-modular-operation%25/"
+  <a class="article-title" href="/archives/Bit-operation-and-modular-operation%25.html"
     >位运算与取模运算%</a> 
 </h2>
  
@@ -692,7 +772,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     </header>
      
     <div class="article-meta">
-      <a href="/2021/08/22/Bit-operation-and-modular-operation%25/" class="article-date">
+      <a href="/archives/Bit-operation-and-modular-operation%25.html" class="article-date">
   <time datetime="2021-08-22T02:10:13.000Z" itemprop="datePublished">2021-08-22</time>
 </a> 
   <div class="article-category">
@@ -785,7 +865,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/06/26/Java-2048-game/"
+  <a class="article-title" href="/archives/Java-2048-game.html"
     >Java-2048小游戏</a> 
 </h2>
  
@@ -794,7 +874,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     </header>
      
     <div class="article-meta">
-      <a href="/2021/06/26/Java-2048-game/" class="article-date">
+      <a href="/archives/Java-2048-game.html" class="article-date">
   <time datetime="2021-06-26T14:08:59.000Z" itemprop="datePublished">2021-06-26</time>
 </a> 
   <div class="article-category">
@@ -850,7 +930,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/12/27/hexo-hello-world/"
+  <a class="article-title" href="/archives/hexo-hello-world.html"
     >Hello World Hexo</a> 
 </h2>
  
@@ -859,7 +939,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     </header>
      
     <div class="article-meta">
-      <a href="/2020/12/27/hexo-hello-world/" class="article-date">
+      <a href="/archives/hexo-hello-world.html" class="article-date">
   <time datetime="2020-12-27T03:11:11.000Z" itemprop="datePublished">2020-12-27</time>
 </a>    
     </div>
