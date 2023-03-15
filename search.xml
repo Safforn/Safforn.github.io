@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Android 开发入门</title>
+    <url>/2023/03/10/Android-develop-introduction/</url>
+    <content><![CDATA[<h2 id="各种组件"><a href="#各种组件" class="headerlink" title="各种组件"></a>各种组件</h2><ol>
+<li><p>文本视图（TextView）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/tv_username&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span>  </span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_marginStart</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:text</span>=<span class="string">&quot;用户名&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:textColor</span>=<span class="string">&quot;#000000&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>图像视图（ImageView）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/img_id&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:src</span>=<span class="string">&quot;@drawable/img_name_without_suffix&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>按钮（Button）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">       	<span class="attr">android:id</span>=<span class="string">&quot;@+id/login_btn&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;100dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:backgroundTint</span>=<span class="string">&quot;@android:color/background_dark&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;登录&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;#ffffff&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:visibility</span>=<span class="string">&quot;visible&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑框（EditText）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:id</span>=<span class="string">&quot;@+id/et_pwd&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;200dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_marginStart</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:hint</span>=<span class="string">&quot;请输入密码&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:textColorHint</span>=<span class="string">&quot;#747373&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单选框（RadioButton）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RadioGroup</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:id</span>=<span class="string">&quot;@+id/rg&quot;</span></span></span><br><span class="line"><span class="tag">   	 	<span class="attr">android:layout_width</span>=<span class="string">&quot;250dp&quot;</span></span></span><br><span class="line"><span class="tag"> 		<span class="attr">android:layout_height</span>=<span class="string">&quot;230dp&quot;</span> &gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">RadioButton</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:id</span>=<span class="string">&quot;@+id/size_S&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_width</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_height</span>=<span class="string">&quot;30dp&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_weight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:text</span>=<span class="string">&quot;size_S&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RadioGroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复选框（Checkbox）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">CheckBox</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/cb_run&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;30dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">&quot;50dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;早起跑10km&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>会话框（Dialog）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">AlertDialog.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AlertDialog</span>.Builder(MainActivity.<span class="built_in">this</span>);</span><br><span class="line">builder.setTitle(<span class="string">&quot;尊敬的&quot;</span>+username+<span class="string">&quot; 舰长&quot;</span>);</span><br><span class="line">builder.setMessage(<span class="string">&quot;我是一个对话框~QwQ~&quot;</span>);</span><br><span class="line">builder.setPositiveButton(<span class="string">&quot;正面回答&quot;</span>, (dialog, which) -&gt; posOnClickListenerMethod());</span><br><span class="line">builder.setNegativeButton(<span class="string">&quot;消极回答&quot;</span>, <span class="literal">null</span>);</span><br><span class="line"><span class="type">AlertDialog</span> <span class="variable">dialog</span> <span class="operator">=</span> bd.create();</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Toast（短时提示信息）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Toast toast = Toast.makeText(getApplicationContext(), &quot;提示信息&quot;, Toast.LENGTH_SHORT);</span><br><span class="line">toast.show();</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h2 id="各种布局"><a href="#各种布局" class="headerlink" title="各种布局"></a>各种布局</h2><ol>
+<li><p>线性布局（水平）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">&quot;horizontal&quot;</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相对布局（内部组件居中）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_centerHorizontal</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表格布局（首行为 文字+编辑框）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TableLayout</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">TableRow</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">				<span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:text</span>=<span class="string">&quot;@string/account&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textColor</span>=<span class="string">&quot;#000000&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">&quot;@+id/et_name&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">&quot;200dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:hint</span>=<span class="string">&quot;@string/input_account&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textColorHint</span>=<span class="string">&quot;#747373&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">TableRow</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TableLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>框架布局 &#x2F; 帧布局</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">FrameLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;50dp&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h2 id="组件控制-与-监听函数"><a href="#组件控制-与-监听函数" class="headerlink" title="组件控制 与 监听函数"></a>组件控制 与 监听函数</h2><ul>
+<li>示例：<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_xxx);  <span class="comment">//设置activity</span></span><br><span class="line">        <span class="comment">// 为清除按钮绑定点击监听函数</span></span><br><span class="line">        <span class="type">Button</span> <span class="variable">btn</span> <span class="operator">=</span> findViewById(R.id.clear_btn);</span><br><span class="line">        btn.setOnClickListener(<span class="keyword">new</span> <span class="title class_">clearOnClickListener</span>());</span><br><span class="line">        <span class="comment">// findViewById(R.id.login_btn).setOnClickListener(new loginOnClickListener());  //绑定(简写)</span></span><br><span class="line">    &#125; <span class="comment">// end onCreate</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">clearOnClickListener</span> <span class="keyword">implements</span> <span class="title class_">View</span>.OnClickListener &#123;</span><br><span class="line">        <span class="comment">// static防止内存泄露，但在使用findViewById函数时不能用</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(((CheckBox)findViewById(R.id.cb_dontclearme)).isChecked())</span><br><span class="line">                ((TextView)findViewById(R.id.tv_print)).setText(output_str);</span><br><span class="line">            ((EditText)findViewById(R.id.et_pwd)).setText(<span class="string">&quot;&quot;</span>);  <span class="comment">// 清空密码编辑框(简写)</span></span><br><span class="line">            <span class="type">EditText</span> <span class="variable">et</span> <span class="operator">=</span> findViewById(R.id.et_username);</span><br><span class="line">            et.setText(<span class="string">&quot;&quot;</span>);  <span class="comment">// 清空用户名编辑框</span></span><br><span class="line">            et.setHint(<span class="string">&quot;请输入姓名&quot;</span>);  <span class="comment">// 设置提示信息</span></span><br><span class="line">        &#125; <span class="comment">// end onClick</span></span><br><span class="line">    &#125; <span class="comment">// end class</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>人工智能导论实验</title>
     <url>/2023/03/15/AI-Introduction-Experiment/</url>
     <content><![CDATA[<h3 id="实验1-基于A-算法的8数码问题求解"><a href="#实验1-基于A-算法的8数码问题求解" class="headerlink" title="实验1 基于A*算法的8数码问题求解"></a>实验1 基于A*算法的8数码问题求解</h3><p>问题描述：在3*3的棋盘中有8个数码（数字块）和一个空格，只有与空格相邻的数码能移动到空格位置。从初始状态以最小的步长移动到目标状态。</p>
@@ -41,6 +96,24 @@
       </categories>
       <tags>
         <tag>A-Star</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android Studio安装教程及踩坑</title>
+    <url>/2023/02/27/Android-Studio-Install-Q&amp;A/</url>
+    <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
+<hr>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
+<hr>
+<h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Android Studio</tag>
       </tags>
   </entry>
   <entry>
@@ -147,6 +220,51 @@
       <tags>
         <tag>Hexo</tag>
         <tag>Github</tag>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端工具(框架)</title>
+    <url>/2023/03/07/Front-end-tools/</url>
+    <content><![CDATA[<p><a href="https://element.eleme.cn/#/zh-CN">Element - 网站快速成型工具</a></p>
+<p><a href="http://www.quasarchs.com/">Quasar Framework</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/142346630">UI框架 Quasar Framework 简评 - 知乎</a></p>
+<hr>
+<h3 id="html操作"><a href="#html操作" class="headerlink" title="html操作"></a>html操作</h3><p><a href="https://www.php.cn/div-tutorial-410402.html">html字体颜色设置的三种方法(font标签, 内置css-style, 引入外部css)</a></p>
+]]></content>
+      <tags>
+        <tag>front-end</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dev C++注释中文乱码问题及解决方法</title>
+    <url>/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/</url>
+    <content><![CDATA[<h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
+
+<hr>
+<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
+<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
+<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
+<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
+</li>
+<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
+<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
+</li>
+<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
+<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
+<li><p>用DevC++打开即可</p>
+</li>
+</ol>
+<hr>
+<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Dev C++</tag>
       </tags>
   </entry>
   <entry>
@@ -211,6 +329,19 @@
       </tags>
   </entry>
   <entry>
+    <title>GitHub入门</title>
+    <url>/2023/03/07/GitHub-Introduction/</url>
+    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSAPP 5.1 优化编译器的能力和局限性</title>
     <url>/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/</url>
     <content><![CDATA[<h2 id="5-1-优化编译器的能力和局限性"><a href="#5-1-优化编译器的能力和局限性" class="headerlink" title="5.1 优化编译器的能力和局限性"></a>5.1 优化编译器的能力和局限性</h2><p>现代编译器运用复杂精细的算法来确定一个程序中计算的值，以及他们是被如何使用的，然后利用一些机会来简化表达式，如：在几个不同的地方使用同一个计算，以及降低一个给定的计算必须被执行的次数。大多数编译器，包括 GCC，向用户提供了一些对它们所使用的优化的控制。就像在第3章中讨论过的，最简单的控制就是指定<code>优先级别</code>。例如，以命令行选项 “-Og” 调用 GCC 是让 GCC 使用一组基本的优化。以选项 “-O1” 或更高(如 “-O2” 或 “-O3” ) 调用 GCC 会让他使用更多的优化，进一步提高程序的性能，但是也可能增加程序的规模，也可能使标准的调试工具更难对程序进行调试。</p>
@@ -244,123 +375,6 @@
       </categories>
       <tags>
         <tag>CSAPP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android 开发入门</title>
-    <url>/2023/03/10/Android-develop-introduction/</url>
-    <content><![CDATA[<h2 id="各种组件"><a href="#各种组件" class="headerlink" title="各种组件"></a>各种组件</h2><ol>
-<li><p>文本视图（TextView）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/tv_username&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span>  </span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_marginStart</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:text</span>=<span class="string">&quot;用户名&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:textColor</span>=<span class="string">&quot;#000000&quot;</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>图像视图（ImageView）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/img_id&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:src</span>=<span class="string">&quot;@drawable/img_name_without_suffix&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-<li><p>按钮（Button）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">       	<span class="attr">android:id</span>=<span class="string">&quot;@+id/login_btn&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;100dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:backgroundTint</span>=<span class="string">&quot;@android:color/background_dark&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;登录&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;#ffffff&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:visibility</span>=<span class="string">&quot;visible&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编辑框（EditText）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:id</span>=<span class="string">&quot;@+id/et_pwd&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;200dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_marginStart</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:hint</span>=<span class="string">&quot;请输入密码&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:textColorHint</span>=<span class="string">&quot;#747373&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>单选框（RadioButton）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RadioGroup</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:id</span>=<span class="string">&quot;@+id/rg&quot;</span></span></span><br><span class="line"><span class="tag">   	 	<span class="attr">android:layout_width</span>=<span class="string">&quot;250dp&quot;</span></span></span><br><span class="line"><span class="tag"> 		<span class="attr">android:layout_height</span>=<span class="string">&quot;230dp&quot;</span> &gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">RadioButton</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:id</span>=<span class="string">&quot;@+id/size_S&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_width</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_height</span>=<span class="string">&quot;30dp&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_weight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:text</span>=<span class="string">&quot;size_S&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RadioGroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>复选框（Checkbox）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">CheckBox</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/cb_run&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;30dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">&quot;50dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;早起跑10km&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>会话框（Dialog）</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">AlertDialog.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AlertDialog</span>.Builder(MainActivity.<span class="built_in">this</span>);</span><br><span class="line">builder.setTitle(<span class="string">&quot;尊敬的&quot;</span>+username+<span class="string">&quot; 舰长&quot;</span>);</span><br><span class="line">builder.setMessage(<span class="string">&quot;我是一个对话框~QwQ~&quot;</span>);</span><br><span class="line">builder.setPositiveButton(<span class="string">&quot;正面回答&quot;</span>, (dialog, which) -&gt; posOnClickListenerMethod());</span><br><span class="line">builder.setNegativeButton(<span class="string">&quot;消极回答&quot;</span>, <span class="literal">null</span>);</span><br><span class="line"><span class="type">AlertDialog</span> <span class="variable">dialog</span> <span class="operator">=</span> bd.create();</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Toast（短时提示信息）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Toast toast = Toast.makeText(getApplicationContext(), &quot;提示信息&quot;, Toast.LENGTH_SHORT);</span><br><span class="line">toast.show();</span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<h2 id="各种布局"><a href="#各种布局" class="headerlink" title="各种布局"></a>各种布局</h2><ol>
-<li><p>线性布局（水平）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">&quot;horizontal&quot;</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>相对布局（内部组件居中）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_centerHorizontal</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表格布局（首行为 文字+编辑框）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TableLayout</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">TableRow</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">				<span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:text</span>=<span class="string">&quot;@string/account&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textColor</span>=<span class="string">&quot;#000000&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">&quot;@+id/et_name&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">&quot;200dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:hint</span>=<span class="string">&quot;@string/input_account&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textColorHint</span>=<span class="string">&quot;#747373&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">TableRow</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TableLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>框架布局 &#x2F; 帧布局</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">FrameLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;50dp&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<h2 id="组件控制-与-监听函数"><a href="#组件控制-与-监听函数" class="headerlink" title="组件控制 与 监听函数"></a>组件控制 与 监听函数</h2><ul>
-<li>示例：<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_xxx);  <span class="comment">//设置activity</span></span><br><span class="line">        <span class="comment">// 为清除按钮绑定点击监听函数</span></span><br><span class="line">        <span class="type">Button</span> <span class="variable">btn</span> <span class="operator">=</span> findViewById(R.id.clear_btn);</span><br><span class="line">        btn.setOnClickListener(<span class="keyword">new</span> <span class="title class_">clearOnClickListener</span>());</span><br><span class="line">        <span class="comment">// findViewById(R.id.login_btn).setOnClickListener(new loginOnClickListener());  //绑定(简写)</span></span><br><span class="line">    &#125; <span class="comment">// end onCreate</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">clearOnClickListener</span> <span class="keyword">implements</span> <span class="title class_">View</span>.OnClickListener &#123;</span><br><span class="line">        <span class="comment">// static防止内存泄露，但在使用findViewById函数时不能用</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(((CheckBox)findViewById(R.id.cb_dontclearme)).isChecked())</span><br><span class="line">                ((TextView)findViewById(R.id.tv_print)).setText(output_str);</span><br><span class="line">            ((EditText)findViewById(R.id.et_pwd)).setText(<span class="string">&quot;&quot;</span>);  <span class="comment">// 清空密码编辑框(简写)</span></span><br><span class="line">            <span class="type">EditText</span> <span class="variable">et</span> <span class="operator">=</span> findViewById(R.id.et_username);</span><br><span class="line">            et.setText(<span class="string">&quot;&quot;</span>);  <span class="comment">// 清空用户名编辑框</span></span><br><span class="line">            et.setHint(<span class="string">&quot;请输入姓名&quot;</span>);  <span class="comment">// 设置提示信息</span></span><br><span class="line">        &#125; <span class="comment">// end onClick</span></span><br><span class="line">    &#125; <span class="comment">// end class</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android Studio安装教程及踩坑</title>
-    <url>/2023/02/27/Android-Studio-Install-Q&amp;A/</url>
-    <content><![CDATA[<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
-<hr>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
-<hr>
-<h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Android Studio</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Dev C++注释中文乱码问题及解决方法</title>
-    <url>/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/</url>
-    <content><![CDATA[<h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
-
-<hr>
-<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
-<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
-<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
-<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
-</li>
-<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
-<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
-</li>
-<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
-<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
-<li><p>用DevC++打开即可</p>
-</li>
-</ol>
-<hr>
-<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>Dev C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>前端工具(框架)</title>
-    <url>/2023/03/07/Front-end-tools/</url>
-    <content><![CDATA[<p><a href="https://element.eleme.cn/#/zh-CN">Element - 网站快速成型工具</a></p>
-<p><a href="http://www.quasarchs.com/">Quasar Framework</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/142346630">UI框架 Quasar Framework 简评 - 知乎</a></p>
-<hr>
-<h3 id="html操作"><a href="#html操作" class="headerlink" title="html操作"></a>html操作</h3><p><a href="https://www.php.cn/div-tutorial-410402.html">html字体颜色设置的三种方法(font标签, 内置css-style, 引入外部css)</a></p>
-]]></content>
-      <tags>
-        <tag>front-end</tag>
       </tags>
   </entry>
   <entry>
@@ -441,19 +455,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub入门</title>
-    <url>/2023/03/07/GitHub-Introduction/</url>
-    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pycharm常见报错及解决方案</title>
     <url>/2023/03/15/Pycharm-common-errors-and-solutions/</url>
     <content><![CDATA[<h5 id="No-Python-at-‘D-Python-python-exe’-and-solution"><a href="#No-Python-at-‘D-Python-python-exe’-and-solution" class="headerlink" title="No Python at ‘D:\Python\python.exe’ and solution"></a><a href="https://blog.csdn.net/qq_47733361/article/details/123658062">No Python at ‘D:\Python\python.exe’ and solution</a></h5><p><strong>Solution</strong>：查看<code>File - Settings - Project: xxx - Python Interpreter</code>，点击右侧齿轮图标，选择<code>Add</code>，勾选<code>Existing environment</code>，在<code>Interpreter</code>处选择本地Python路径即可</p>
@@ -530,6 +531,53 @@
       <tags>
         <tag>C++</tag>
         <tag>Visual Studio</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Win10安装汇编环境masm x64</title>
+    <url>/2022/03/14/Win10-64bit-Installation-Assembly-Environment-masm/</url>
+    <content><![CDATA[<p>本文转载自 <a href="https://www.cnblogs.com/dgwblog/p/11865850.html">Win10(64位)安装汇编环境(MASM) - 博客园</a>，亲自尝试之后决定转载，并在原文基础上补充了一些 <strong>操作细节</strong>，也<strong>删去了少许内容</strong>，鼓励读者看一遍<a href="https://www.cnblogs.com/dgwblog/p/11865850.html">原文</a>。</p>
+<hr>
+<ol start="0">
+<li>需要的文件：<a href="https://files-cdn.cnblogs.com/files/dgwblog/DOSBox.rar">DOSBox.rar</a></li>
+</ol>
+<hr>
+<ol>
+<li><p>将压缩包解压到某一目录下，运行 DOSBox.exe</p>
+<img src="https://img-blog.csdnimg.cn/55ae9806ba264c2e83a5df57783b95e8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li><p>在弹出的小窗口中 输入命令 <code>mount c: d://DOSBox/masm</code>，将指定目录下的 masm 部署到 c: 目录下 <em>（如果你想安装在D盘目录下，<code>d://DOSBox/masm </code>是 DOSBox 下 masm文件夹的目录地址）</em></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mount c: d://DOSBox/masm</span><br></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/3ff2f91d01e440b3863e59915afd432b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+</li>
+<li><p>查看是否部署成功</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c:</span><br><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
+<p>运行结果如下：<br><img src="https://img-blog.csdnimg.cn/c19cbc5dd00d47079f0bec30676d1f56.png" style="zoom: 80%;" /></p>
+<ol start="4">
+<li>在 masm 目录下创建 test.asm 文件，编写 helloworld 程序（可以先在 txt 文件中编写，再改文件名和后缀名），保存文件，关闭</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.model small</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">    strs DB <span class="string">&#x27;hello world&#x27;</span>,<span class="number">13</span>,<span class="number">10</span>,<span class="string">&#x27;$&#x27;</span></span><br><span class="line">.code</span><br><span class="line">start:</span><br><span class="line">    mov ax,@data</span><br><span class="line">    mov ds,ax</span><br><span class="line">    mov dx,offset strs</span><br><span class="line">    mov ah,09h</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">    mov ah,4ch</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/c79972c356ab4c4e8bf19d87e6b8f0fc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_19,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+
+<ol start="5">
+<li>（假设你之前解压在D盘目录下）再利用 <code>mount c: d://DOSBox/masm</code> 命令 将 test.asm 文件复制到 c: 目录下，利用 <code>dir</code> 命令 检查是否成功 <em>（即 c: 目录下出现 <code>test.asm</code> 文件）</em><img src="https://img-blog.csdnimg.cn/845b2e08b170456e8eefc04a5828055e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_14,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
+<li>输入汇编命令 <code>masm test.asm</code>，遇到选项默认回车即可<img src="https://img-blog.csdnimg.cn/7e52953540d84130b80472f63bcadbdd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+可以发现目录下出现了 `test.obj` 文件
+<img src="https://img-blog.csdnimg.cn/adf9efd443454715812869b1bdacb4ed.png" style="zoom:80%;" /></li>
+<li>运行链接命令 <code>link test.obj</code>，遇到选项默认回车，目录下产生 <code>test.exe</code> 文件；<strong>Link : warning xxxxx: no stack segment 是在提示编程人员程序中没有堆栈段，并非程序或配置出现错误</strong><img src="https://img-blog.csdnimg.cn/226f478f4e2d4f898edd60e8a084dd12.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" /></li>
+<li>输入运行命令 <code>test.exe</code> 运行exe文件，显示 hello world 即成功<br><img src="https://img-blog.csdnimg.cn/fc4274d37d59444aa99155277d84241c.png"></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Assembly</tag>
+        <tag>DOSBox</tag>
+        <tag>MASM</tag>
       </tags>
   </entry>
   <entry>
@@ -643,53 +691,6 @@ Save后，改个主机字（有自己特色的），再点Apply
         <tag>Cloud Computing</tag>
         <tag>VMware</tag>
         <tag>StarVCenter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Win10安装汇编环境masm x64</title>
-    <url>/2022/03/14/Win10-64bit-Installation-Assembly-Environment-masm/</url>
-    <content><![CDATA[<p>本文转载自 <a href="https://www.cnblogs.com/dgwblog/p/11865850.html">Win10(64位)安装汇编环境(MASM) - 博客园</a>，亲自尝试之后决定转载，并在原文基础上补充了一些 <strong>操作细节</strong>，也<strong>删去了少许内容</strong>，鼓励读者看一遍<a href="https://www.cnblogs.com/dgwblog/p/11865850.html">原文</a>。</p>
-<hr>
-<ol start="0">
-<li>需要的文件：<a href="https://files-cdn.cnblogs.com/files/dgwblog/DOSBox.rar">DOSBox.rar</a></li>
-</ol>
-<hr>
-<ol>
-<li><p>将压缩包解压到某一目录下，运行 DOSBox.exe</p>
-<img src="https://img-blog.csdnimg.cn/55ae9806ba264c2e83a5df57783b95e8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li><p>在弹出的小窗口中 输入命令 <code>mount c: d://DOSBox/masm</code>，将指定目录下的 masm 部署到 c: 目录下 <em>（如果你想安装在D盘目录下，<code>d://DOSBox/masm </code>是 DOSBox 下 masm文件夹的目录地址）</em></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mount c: d://DOSBox/masm</span><br></pre></td></tr></table></figure>
-<img src="https://img-blog.csdnimg.cn/3ff2f91d01e440b3863e59915afd432b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-</li>
-<li><p>查看是否部署成功</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c:</span><br><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
-<p>运行结果如下：<br><img src="https://img-blog.csdnimg.cn/c19cbc5dd00d47079f0bec30676d1f56.png" style="zoom: 80%;" /></p>
-<ol start="4">
-<li>在 masm 目录下创建 test.asm 文件，编写 helloworld 程序（可以先在 txt 文件中编写，再改文件名和后缀名），保存文件，关闭</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.model small</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">    strs DB <span class="string">&#x27;hello world&#x27;</span>,<span class="number">13</span>,<span class="number">10</span>,<span class="string">&#x27;$&#x27;</span></span><br><span class="line">.code</span><br><span class="line">start:</span><br><span class="line">    mov ax,@data</span><br><span class="line">    mov ds,ax</span><br><span class="line">    mov dx,offset strs</span><br><span class="line">    mov ah,09h</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">    mov ah,4ch</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<img src="https://img-blog.csdnimg.cn/c79972c356ab4c4e8bf19d87e6b8f0fc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_19,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-
-<ol start="5">
-<li>（假设你之前解压在D盘目录下）再利用 <code>mount c: d://DOSBox/masm</code> 命令 将 test.asm 文件复制到 c: 目录下，利用 <code>dir</code> 命令 检查是否成功 <em>（即 c: 目录下出现 <code>test.asm</code> 文件）</em><img src="https://img-blog.csdnimg.cn/845b2e08b170456e8eefc04a5828055e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_14,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
-<li>输入汇编命令 <code>masm test.asm</code>，遇到选项默认回车即可<img src="https://img-blog.csdnimg.cn/7e52953540d84130b80472f63bcadbdd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-可以发现目录下出现了 `test.obj` 文件
-<img src="https://img-blog.csdnimg.cn/adf9efd443454715812869b1bdacb4ed.png" style="zoom:80%;" /></li>
-<li>运行链接命令 <code>link test.obj</code>，遇到选项默认回车，目录下产生 <code>test.exe</code> 文件；<strong>Link : warning xxxxx: no stack segment 是在提示编程人员程序中没有堆栈段，并非程序或配置出现错误</strong><img src="https://img-blog.csdnimg.cn/226f478f4e2d4f898edd60e8a084dd12.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" /></li>
-<li>输入运行命令 <code>test.exe</code> 运行exe文件，显示 hello world 即成功<br><img src="https://img-blog.csdnimg.cn/fc4274d37d59444aa99155277d84241c.png"></li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Assembly</tag>
-        <tag>DOSBox</tag>
-        <tag>MASM</tag>
       </tags>
   </entry>
   <entry>
