@@ -457,6 +457,20 @@
       </tags>
   </entry>
   <entry>
+    <title>面试相关总结</title>
+    <url>/archives/Interview-related-content.html</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
+<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java-2048小游戏</title>
     <url>/archives/Java-2048-game.html</url>
     <content><![CDATA[<h1 id="游戏规则"><a href="#游戏规则" class="headerlink" title="游戏规则"></a>游戏规则</h1><ol>
@@ -491,20 +505,6 @@
       <tags>
         <tag>Python</tag>
         <tag>Pycharm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面试相关总结</title>
-    <url>/archives/Interview-related-content.html</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
-<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
