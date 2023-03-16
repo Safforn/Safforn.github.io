@@ -110,25 +110,25 @@
        
   <h3 id="打包过程"><a href="#打包过程" class="headerlink" title="打包过程"></a>打包过程</h3><ol>
 <li><p>进入需要打包的项目，选择 <strong>最上方菜单栏的 File → Project Structure</strong></p>
-<img src="https://img-blog.csdnimg.cn/f009a60263f0475fbe708203dfc03bb0.png" style="zoom: 80%;" /></li>
+<img src="./post_images/idea-g-jar-package-Q&A-1.png" style="zoom: 67%;" /></li>
 <li><p>选择 左侧菜单栏 <strong>Artifacts → + (加号) → JAR → from modules with dependencies</strong></p>
-<img src="https://img-blog.csdnimg.cn/2a53aa8a8a5a4fb399d5c0441ec25aaa.png" style="zoom: 80%;" />
+<img src="./post_images/idea-g-jar-package-Q&A-2.png" style="zoom: 80%;" />
 </li>
 <li><p>选择入口类 <strong>Main Class</strong>（点击文件夹图标可以快速选择），点击 <strong>OK</strong></p>
-<img src="https://img-blog.csdnimg.cn/07b53796d78644b7b90d0a5268ea181d.png" style="zoom:67%;" />
+<img src="./post_images/idea-g-jar-package-Q&A-3.png" style="zoom:67%;" />
 
 
 </li>
 <li><p>返回到IDEA主界面，选择 最上方菜单栏 <strong>Build → Build Artifacts</strong>，再选择 <strong>Build 或 Rebuild</strong> 即可</p>
-<img src="https://img-blog.csdnimg.cn/60b0d2fa0df54fff8a0424207ec2082b.png" style="zoom: 80%;" /></li>
+<img src="./post_images/idea-g-jar-package-Q&A-4.png" style="zoom: 80%;" /></li>
 <li><p>生成的Jar包 在 <strong>左侧文件列表 out&#x2F;artifacts&#x2F;xxx_jar</strong>文件夹下</p>
-<img src="https://img-blog.csdnimg.cn/267b17c4a3224a3c96b9b200d5d2cf15.png" style="zoom: 80%;" /></li>
+<img src="./post_images/idea-g-jar-package-Q&A-5.png" style="zoom: 80%;" /></li>
 <li><p>在控制台执行下面命令 运行jar包进行测试</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar C:/xxx/xxx.jar</span><br></pre></td></tr></table></figure></li>
 </ol>
 <hr>
 <h3 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h3><ul>
-<li>问题1：<strong>运行jar包时，报错 Error: A JNI error has occurred, please check your installation and try again</strong><br>  解决：在控制台运行 java -version 和 javac -version 命令查看两个java版本是否一样，<del>如果一样我就不知道了欸嘿</del>，如果不一样，则需要在系统环境变量里修改（具体参照问题2），修改后重启控制台，运行上述命令检查<br>  （<strong>重要</strong>）检查无误后，进入IDEA界面，在 <strong>File → Project Structure</strong> 中，选择<strong>环境变量对应版本</strong>的<strong>Project SDK 和 language level</strong>，<strong>重新build程序（上面步骤4）</strong> 即可  <img src="https://img-blog.csdnimg.cn/facc2f0d63ff46c5a7d81981d019f173.png" style="zoom:80%;" /></li>
+<li>问题1：<strong>运行jar包时，报错 Error: A JNI error has occurred, please check your installation and try again</strong><br>  解决：在控制台运行 java -version 和 javac -version 命令查看两个java版本是否一样，<del>如果一样我就不知道了欸嘿</del>，如果不一样，则需要在系统环境变量里修改（具体参照问题2），修改后重启控制台，运行上述命令检查<br>  （<strong>重要</strong>）检查无误后，进入IDEA界面，在 <strong>File → Project Structure</strong> 中，选择<strong>环境变量对应版本</strong>的<strong>Project SDK 和 language level</strong>，<strong>重新build程序（上面步骤4）</strong> 即可  <img src="./post_images/idea-g-jar-package-Q&A-6.png" style="zoom:80%;" /></li>
 <li>问题2：<b>‘javac’不是内部或外部命令，也不是可运行的程序</b><br>解决：系统环境变量配置错误，检查环境变量中JAVA_HOME（应为 jdk安装的路径，如 D:\Java\jdk1.8.0_261） 和 Path（应为 %JAVA_HOME%\bin ）的内容，之后重启控制台运行 java -version 和 javac -version 检查，再执行问题一的最后一步更改IDEA的项目配置</li>
 <li>问题3：<strong>打完jar包后，不能正常读取原路径存在的文件</strong><br>解决：将 <code>原路径</code> 修改为 <code>System.getProperty(&quot;user.dir&quot;) +  jar包到文件的路径</code>，其中 <code>System.getProperty(&quot;user.dir&quot;)</code>为运行jar文件时jar包的位置，也是程序源位置，根据jar的存放位置修改路径即可</li>
 </ul>
