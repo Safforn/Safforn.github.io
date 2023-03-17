@@ -116,7 +116,7 @@
   <h3 id="实验一-静态随机存储器实验"><a href="#实验一-静态随机存储器实验" class="headerlink" title="实验一 静态随机存储器实验"></a>实验一 静态随机存储器实验</h3><h4 id="1-1-实验目的及内容"><a href="#1-1-实验目的及内容" class="headerlink" title="1.1 实验目的及内容"></a>1.1 实验目的及内容</h4><p><strong>实验目的</strong>：掌握静态随机存储器RAM工作特性及数据的读写方法</p>
 <p><strong>仪器设备</strong>：PC机一台，TD-CMA实验系统一套</p>
 <p><strong>实验内容</strong>：</p>
-<img src="./post_images/计组实验1-1.png" style="zoom: 25%;" />
+<img src="https://s1.ax1x.com/2023/03/17/ppGSz8A.jpg" alt="ppGSz8A.jpg" style="zoom:25%;" />
 
 <h4 id="1-2-实验步骤"><a href="#1-2-实验步骤" class="headerlink" title="1.2 实验步骤"></a>1.2 实验步骤</h4><blockquote>
 <p>(1) 关闭实验系统电源，连接实验电路，并检查无误<br>(2) 将时序与操作台单元的开关KK1，KK3置为运行档，开关KK2置为”单步”档，开关KK4置为”主存”档<br>(3) 将CON单元的IOR开关置1，打开电源开关（如果听到“嘀”的报警声，应立即关闭电源，重新检查接线直到错误排除）<br>(4) 给存储器的00H,01H,02H,03H,04H地址单元中分别写入数据11H,12H,13H,14H,15H。<br>(5) 依次读出第00,01,02,03,04号单元中的内容，观察上述单元中内容是否与前面输入的一致</p>
@@ -141,7 +141,7 @@
 <li>思考题1：存储器实验各个控制信号的初始状态如何设置？<br><strong>IOR 置 “1”，其他控制信号置 “0”</strong></li>
 <li>思考题2：所有的写操作要配合脉冲（边沿触发），为什么？<br><strong>为了防止误操作</strong></li>
 </ul>
-<h3 id="实验三-基本运算器实验"><a href="#实验三-基本运算器实验" class="headerlink" title="实验三 基本运算器实验"></a>实验三 基本运算器实验</h3><h4 id="3-1-实验目的及内容"><a href="#3-1-实验目的及内容" class="headerlink" title="3.1 实验目的及内容"></a>3.1 实验目的及内容</h4><img src="./post_images/计组实验3-1.png" style="zoom: 25%;" />
+<h3 id="实验三-基本运算器实验"><a href="#实验三-基本运算器实验" class="headerlink" title="实验三 基本运算器实验"></a>实验三 基本运算器实验</h3><h4 id="3-1-实验目的及内容"><a href="#3-1-实验目的及内容" class="headerlink" title="3.1 实验目的及内容"></a>3.1 实验目的及内容</h4><img src="https://s1.ax1x.com/2023/03/17/ppGpSgI.jpg" alt="ppGpSgI.jpg" style="zoom:25%;" />
 
 <h4 id="3-2-实验步骤"><a href="#3-2-实验步骤" class="headerlink" title="3.2 实验步骤"></a>3.2 实验步骤</h4><blockquote>
 <p>（1）关闭电源开关，连接实验电路，并检查无误<br>（2）将时序与操作台单元的开关KK2 置为“单步”档，开关KK1, KK3置为“运行”档<br>（3）打开电源开关，按动 CON单元 的 CLR按钮，将运算器的 A,B,FC,FZ 清零<br>（4）用输入开关向暂存器A 置数<br>（5）用输入开关向暂存器B 置数<br>（6）改变运算器的功能设置，观察运算器的输出</p>
@@ -268,20 +268,20 @@
 </section>
       <footer class="footer">
   <div class="outer">
-    <ul>
+    <ul> <!-- Copyrights -->
       <li>
         <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=52 
           src="//music.163.com/outchain/player?type=2&id=22636878&auto=0&height=32"></iframe>
       </li>
     </ul>
-    <ul>
+    <ul> <!-- Copyrights -->
       <li>
         Copyrights &copy;
         2020-2023
         <i class="ri-heart-fill heart_icon"></i> Safforn
       </li>
     </ul>
-    <ul>
+    <ul> <!-- Powered by -->
       <li>
         
       </li>
@@ -304,24 +304,23 @@
     <ul>
       
     </ul>
-    <ul>
+    <ul>  <!-- cnzz统计 -->
       <li>
-        <!-- cnzz统计 -->
         
         <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
         
       </li>
     </ul>
-    <!-- 运行天数 -->
-	  <ul>
+    
+	  <ul> <!-- Website Runtime -->
 		  <li>
         <span id="runtime_span"></span>
         <script type="text/javascript">			
           function show_runtime() {
               window.setTimeout("show_runtime()", 1000);
-              X = new Date("02/26/2023 08:07:08");
+              StartTime = new Date("02/26/2023 08:07:08");
               Y = new Date();
-              T = (Y.getTime() - X.getTime());
+              T = (Y.getTime() - StartTime.getTime());
               M = 24 * 60 * 60 * 1000;
               a = T / M;
               A = Math.floor(a);
@@ -330,13 +329,12 @@
               c = (b - B) * 60;
               C = Math.floor((b - B) * 60);
               D = Math.floor((c - C) * 60);
-              runtime_span.innerHTML = "在猫猫的庇护下存在了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
-          }
+              runtime_span.innerHTML = "在猫猫的庇护下存在了: "+A+"天"+B+"小时"+C+"分"+D+"秒"}
         show_runtime();
       </script>
-      
       </li>
 	  </ul>
+
   </div>
 </footer>    
     </main>

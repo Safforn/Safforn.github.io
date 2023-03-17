@@ -101,20 +101,20 @@
 </section>
       <footer class="footer">
   <div class="outer">
-    <ul>
+    <ul> <!-- Copyrights -->
       <li>
         <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=52 
           src="//music.163.com/outchain/player?type=2&id=22636878&auto=0&height=32"></iframe>
       </li>
     </ul>
-    <ul>
+    <ul> <!-- Copyrights -->
       <li>
         Copyrights &copy;
         2020-2023
         <i class="ri-heart-fill heart_icon"></i> Safforn
       </li>
     </ul>
-    <ul>
+    <ul> <!-- Powered by -->
       <li>
         
       </li>
@@ -137,24 +137,23 @@
     <ul>
       
     </ul>
-    <ul>
+    <ul>  <!-- cnzz统计 -->
       <li>
-        <!-- cnzz统计 -->
         
         <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
         
       </li>
     </ul>
-    <!-- 运行天数 -->
-	  <ul>
+    
+	  <ul> <!-- Website Runtime -->
 		  <li>
         <span id="runtime_span"></span>
         <script type="text/javascript">			
           function show_runtime() {
               window.setTimeout("show_runtime()", 1000);
-              X = new Date("02/26/2023 08:07:08");
+              StartTime = new Date("02/26/2023 08:07:08");
               Y = new Date();
-              T = (Y.getTime() - X.getTime());
+              T = (Y.getTime() - StartTime.getTime());
               M = 24 * 60 * 60 * 1000;
               a = T / M;
               A = Math.floor(a);
@@ -163,13 +162,12 @@
               c = (b - B) * 60;
               C = Math.floor((b - B) * 60);
               D = Math.floor((c - C) * 60);
-              runtime_span.innerHTML = "在猫猫的庇护下存在了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
-          }
+              runtime_span.innerHTML = "在猫猫的庇护下存在了: "+A+"天"+B+"小时"+C+"分"+D+"秒"}
         show_runtime();
       </script>
-      
       </li>
 	  </ul>
+
   </div>
 </footer>    
     </main>
