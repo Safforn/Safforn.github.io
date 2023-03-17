@@ -19,6 +19,67 @@
       </tags>
   </entry>
   <entry>
+    <title>位运算与取模运算%</title>
+    <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
+    <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
+<ul>
+<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
+</ul>
+<hr>
+<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
+<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
+<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
+<li>应用：<ul>
+<li>清零：x&amp;0</li>
+<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
+<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
+<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
+<li>应用：<ul>
+<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
+<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
+<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
+<li>应用：<ul>
+<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
+<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
+<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
+</ul>
+<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
+<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
+</ul>
+<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
+<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
+</ul>
+<hr>
+<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
+<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
+<li>求绝对值： <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>bit Operation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android 开发入门</title>
     <url>/2023/03/10/Android-develop-introduction/</url>
     <content><![CDATA[<h2 id="各种组件"><a href="#各种组件" class="headerlink" title="各种组件"></a>各种组件</h2><ol>
@@ -181,67 +242,6 @@
       </tags>
   </entry>
   <entry>
-    <title>位运算与取模运算%</title>
-    <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
-    <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
-<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
-<ul>
-<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
-</ul>
-<hr>
-<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
-<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
-<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
-<li>应用：<ul>
-<li>清零：x&amp;0</li>
-<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
-<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
-<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
-<li>应用：<ul>
-<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
-<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
-<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
-<li>应用：<ul>
-<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
-<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
-<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
-</ul>
-<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
-<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
-</ul>
-<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
-<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
-</ul>
-<hr>
-<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
-<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
-<li>求绝对值： <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
-<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>bit Operation</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客优化</title>
     <url>/2023/03/15/Blog-Hexo-customization-optimization/</url>
     <content><![CDATA[<h4 id="网页图标"><a href="#网页图标" class="headerlink" title="网页图标"></a>网页图标</h4><p>SVG素材库：<a href="https://www.iconfont.cn/collections/detail?spm=a313x.7781069.0.da5a778a4&cid=43742">iconfont-阿里巴巴矢量图标库 - Food</a></p>
@@ -356,6 +356,49 @@
       </tags>
   </entry>
   <entry>
+    <title>人工智能导论实验</title>
+    <url>/2023/03/15/Experiment-on-Introduction-of-AI/</url>
+    <content><![CDATA[<h3 id="实验1-基于A-算法的8数码问题求解"><a href="#实验1-基于A-算法的8数码问题求解" class="headerlink" title="实验1 基于A*算法的8数码问题求解"></a>实验1 基于A*算法的8数码问题求解</h3><p>问题描述：在3*3的棋盘中有8个数码（数字块）和一个空格，只有与空格相邻的数码能移动到空格位置。从初始状态以最小的步长移动到目标状态。</p>
+<p>实验要求：参考A*算法核心代码，以8数码问题为例实现A*算法的求解程序。</p>
+<p>实验内容：</p>
+<p>1、基于参考代码，运行程序，并画出程序的总体流程图。自动统计并输出到达目标的总步数，自动记录并输出每次移动后open表与closed表的变化。<br>要求初始状态与目标状态分别为：</p>
+<p><strong>流程图</strong>：<br><img src="C:\Users\18049\AppData\Roaming\Typora\typora-user-images\image-20230315092602103.png"></p>
+<p><strong>Code（Python）</strong>：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">State</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, state, directionFlag=<span class="literal">None</span>, parent=<span class="literal">None</span>, f=<span class="number">0</span></span>):</span><br><span class="line">        self.state = state</span><br><span class="line">        self.direction = [<span class="string">&#x27;up&#x27;</span>, <span class="string">&#x27;down&#x27;</span>, <span class="string">&#x27;right&#x27;</span>, <span class="string">&#x27;left&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> directionFlag:</span><br><span class="line">            self.direction.remove(directionFlag)</span><br><span class="line">        self.parent = parent</span><br><span class="line">        self.f = f</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getDirection</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.direction</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setF</span>(<span class="params">self, f</span>):</span><br><span class="line">        self.f = f</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取0点</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getZeroPos</span>(<span class="params">self</span>):</span><br><span class="line">        postion = np.where(self.state == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> postion</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 曼哈顿距离  f = g + h，g=1，如果用宽度优先的评估函数可以不调用该函数</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getFunctionValue</span>(<span class="params">self</span>):</span><br><span class="line">        cur_node = self.state.copy()</span><br><span class="line">        fin_node = self.answer.copy()</span><br><span class="line">        dist = <span class="number">0</span></span><br><span class="line">        N = <span class="built_in">len</span>(cur_node)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">                <span class="keyword">if</span> cur_node[i][j] != fin_node[i][j]:</span><br><span class="line">                    <span class="comment"># 启发函数1: 取当前状态位置与目标状态不符的数码数目</span></span><br><span class="line">                    <span class="comment"># dist = dist + 1</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment"># 计算距离综合(启发函数 2, 3)</span></span><br><span class="line">                    index = np.argwhere(fin_node == cur_node[i][j])</span><br><span class="line">                    x = index[<span class="number">0</span>][<span class="number">0</span>]  <span class="comment"># 最终x距离</span></span><br><span class="line">                    y = index[<span class="number">0</span>][<span class="number">1</span>]  <span class="comment"># 最终y距离</span></span><br><span class="line">                    <span class="comment"># 启发函数2: 计算距离总和，使用曼哈顿算法</span></span><br><span class="line">                    dist += (<span class="built_in">abs</span>(x - i) + <span class="built_in">abs</span>(y - j))</span><br><span class="line">                    <span class="comment"># 启发函数3: 计算距离总和，使用欧几里得算法</span></span><br><span class="line">                    <span class="comment"># dist += ((x - i) ** 2 + (y - j) ** 2) ** 0.5</span></span><br><span class="line">        <span class="keyword">return</span> dist + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">nextStep</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.direction:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        subStates = []</span><br><span class="line">        boarder = <span class="built_in">len</span>(self.state) - <span class="number">1</span></span><br><span class="line">        x, y = self.getZeroPos()  <span class="comment"># 获取0点位置</span></span><br><span class="line">        <span class="comment"># 向左</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;left&#x27;</span> <span class="keyword">in</span> self.direction <span class="keyword">and</span> y &gt; <span class="number">0</span>:</span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x, y - <span class="number">1</span>]</span><br><span class="line">            s[x, y - <span class="number">1</span>] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;right&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 向上</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;up&#x27;</span> <span class="keyword">in</span> self.direction <span class="keyword">and</span> x &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="comment"># it can move to upper place</span></span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x - <span class="number">1</span>, y]</span><br><span class="line">            s[x - <span class="number">1</span>, y] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;down&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 向下</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;down&#x27;</span> <span class="keyword">in</span> self.direction <span class="keyword">and</span> x &lt; boarder:</span><br><span class="line">            <span class="comment"># it can move to down place</span></span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x + <span class="number">1</span>, y]</span><br><span class="line">            s[x + <span class="number">1</span>, y] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;up&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 向右</span></span><br><span class="line">        <span class="keyword">if</span> self.direction.count(<span class="string">&#x27;right&#x27;</span>) <span class="keyword">and</span> y &lt; boarder:</span><br><span class="line">            <span class="comment"># it can move to right place</span></span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x, y + <span class="number">1</span>]</span><br><span class="line">            s[x, y + <span class="number">1</span>] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;left&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 返回F值最小的下一个点</span></span><br><span class="line">        subStates.sort(key=compareNum)</span><br><span class="line">        <span class="keyword">return</span> subStates</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 横向打印结果</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">showInfoHorizontally</span>(<span class="params">self, table, sep=<span class="string">&quot;  &quot;</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param table: 需要显示的open|close表或者状态转移路径</span></span><br><span class="line"><span class="string">        :param sep: 显示的状态之间的间隔符号, 默认值为两个空格符</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> table:</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> table:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(item.state)):</span><br><span class="line">                    <span class="built_in">print</span>(item.state[<span class="number">0</span>, j], end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;  &quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> table:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(item.state)):</span><br><span class="line">                    <span class="built_in">print</span>(item.state[<span class="number">1</span>, j], end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                <span class="built_in">print</span>(sep, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> table:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(item.state)):</span><br><span class="line">                    <span class="built_in">print</span>(item.state[<span class="number">2</span>, j], end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;  &quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># A* 迭代</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">solve</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># openList</span></span><br><span class="line">        openTable = []</span><br><span class="line">        <span class="comment"># closeList</span></span><br><span class="line">        closeTable = []</span><br><span class="line">        openTable.append(self)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;_______初始状态______\nopenTable:&quot;</span>)</span><br><span class="line">        self.showInfoHorizontally(openTable)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;closeTable: len =&quot;</span>, <span class="built_in">len</span>(closeTable), <span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        self.showInfoHorizontally(closeTable)</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(openTable) &gt; <span class="number">0</span>:</span><br><span class="line">            n = openTable.pop(<span class="number">0</span>)  <span class="comment"># 下一步的点移除open</span></span><br><span class="line">            closeTable.append(n)  <span class="comment"># 加入close</span></span><br><span class="line">            subStates = n.nextStep()  <span class="comment"># 确定下一步点</span></span><br><span class="line">            path = []</span><br><span class="line">            optimal_state = subStates[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> (optimal_state.state == optimal_state.answer).<span class="built_in">all</span>():</span><br><span class="line">                <span class="keyword">while</span> optimal_state.parent <span class="keyword">and</span> optimal_state.parent != originState:</span><br><span class="line">                    path.append(optimal_state.parent)  <span class="comment"># 寻找父节点,回溯路径</span></span><br><span class="line">                    optimal_state = optimal_state.parent</span><br><span class="line">                path.reverse()  <span class="comment"># 将路径链表翻转即为来时的路径</span></span><br><span class="line">                <span class="keyword">return</span> path</span><br><span class="line">            openTable = openTable + subStates  <span class="comment"># 合并原open表和拓展节点列表</span></span><br><span class="line">            openTable.sort(key=compareNum)  <span class="comment"># 重新排序</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 输出显示open表</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;--------------------\nopenTable:&quot;</span>)</span><br><span class="line">            self.showInfoHorizontally(openTable)</span><br><span class="line">            <span class="comment"># 输出显示close表</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;closeTable: len =&quot;</span>, <span class="built_in">len</span>(closeTable), <span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            self.showInfoHorizontally(closeTable)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span>, <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">compareNum</span>(<span class="params">state</span>):</span><br><span class="line">    <span class="keyword">return</span> state.f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    originState = State(np.array([[<span class="number">2</span>, <span class="number">8</span>, <span class="number">3</span>], [<span class="number">1</span>, <span class="number">6</span>, <span class="number">4</span>], [<span class="number">7</span>, <span class="number">0</span>, <span class="number">5</span>]]))  <span class="comment"># 初始状态</span></span><br><span class="line">    State.answer = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">8</span>, <span class="number">0</span>, <span class="number">4</span>], [<span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>]])  <span class="comment"># 目标状态</span></span><br><span class="line">    s1 = State(state=originState.state)</span><br><span class="line">    path = s1.solve()</span><br><span class="line">    <span class="keyword">if</span> path:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;\n\nPath:&quot;</span>)  <span class="comment"># 显示路径</span></span><br><span class="line">        State.showInfoHorizontally(<span class="literal">None</span>, path, <span class="string">&quot;-&gt;&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(State.answer)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Total steps is %d&quot;</span> % <span class="built_in">len</span>(path))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>open表、close表、path输出截图：</strong></p>
+<p>略</p>
+<p>2、设计两种新的启发式函数，并运行程序。对包含示例在内的3种启发式函数的特点与结果进行对比分析。</p>
+<p><strong>启发函数1</strong>：采用曼哈顿算法计算距离总和，dist +&#x3D;|x-i|+|y-j|，结果参见实验内容1。</p>
+<p><strong>启发函数2</strong>：采用欧式算法计算距离总和，即dist +&#x3D;√((x-i)^2+(y-j)^2)。</p>
+<p><strong>启发函数3</strong>：取当前状态位置与目标状态不符的数码数目。</p>
+<p>综上，对于实验一中的初始状态和目标状态，三种启发函数路径相同，过程（每次循环的open表和close表）不完全相同。</p>
+<p>另外，当初始状态为[[1, 5, 3], [2, 4, 6], [7, 0, 8]]，目标状态为[[1, 2, 3], [4, 5, 6], [7, 8, 0]]时，</p>
+<p><strong>启发函数1</strong>（曼哈顿算法计算距离）：</p>
+<p><strong>启发函数2</strong>（欧式算法计算距离）：循环3000多次未果，程序被手动终止。</p>
+<p><strong>启发函数3</strong>（取当前状态位置与目标状态不符的数码数目）：</p>
+<p><strong>特点：</strong></p>
+<p>启发函数1的曼哈顿距离比较适合四方向（上下左右）网格地图。</p>
+<p>启发函数2的欧式距离比较适合可以任意方向移动的地图。</p>
+<p>启发函数3的取当前状态位置与目标状态不符的数码数目比较简单。</p>
+<hr>
+<p>相关文章：</p>
+<ol>
+<li><a href="https://blog.csdn.net/Pericles_HAT/article/details/115516204">八数码难题(下): 启发式搜索(Python实现)</a>  有形象的图示</li>
+<li><a href="https://blog.csdn.net/bob595078694/article/details/123362253">启发函数 (Heuristic Function)</a> 几种启发函数和搜索算法的理论对比</li>
+<li><a href="https://blog.csdn.net/qq_63708623/article/details/129480238">python八数码问题 启发式搜索(Python实现)</a>包含三种启发函数（字符串距离、曼式距离、欧式距离）</li>
+<li><a href="https://blog.csdn.net/SZU_Kwong/article/details/105897291">用两种启发函数的A*算法解决八数码问题(C++实现)</a> 两种启发函数（移位计数、欧氏距离）</li>
+<li><a href="https://blog.csdn.net/Big_xbc/article/details/116206930">人工智能-八数码问题-启发式搜索(C++实现)</a> 某校实验报告？？有流程图</li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>A-Star</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计算机组成原理实验</title>
     <url>/2022/01/07/Experiment-on-Principles-of-Computer-Composition/</url>
     <content><![CDATA[<h3 id="实验一-静态随机存储器实验"><a href="#实验一-静态随机存储器实验" class="headerlink" title="实验一 静态随机存储器实验"></a>实验一 静态随机存储器实验</h3><h4 id="1-1-实验目的及内容"><a href="#1-1-实验目的及内容" class="headerlink" title="1.1 实验目的及内容"></a>1.1 实验目的及内容</h4><p><strong>实验目的</strong>：掌握静态随机存储器RAM工作特性及数据的读写方法</p>
@@ -427,49 +470,6 @@
       </tags>
   </entry>
   <entry>
-    <title>人工智能导论实验</title>
-    <url>/2023/03/15/Experiment-on-Introduction-of-AI/</url>
-    <content><![CDATA[<h3 id="实验1-基于A-算法的8数码问题求解"><a href="#实验1-基于A-算法的8数码问题求解" class="headerlink" title="实验1 基于A*算法的8数码问题求解"></a>实验1 基于A*算法的8数码问题求解</h3><p>问题描述：在3*3的棋盘中有8个数码（数字块）和一个空格，只有与空格相邻的数码能移动到空格位置。从初始状态以最小的步长移动到目标状态。</p>
-<p>实验要求：参考A*算法核心代码，以8数码问题为例实现A*算法的求解程序。</p>
-<p>实验内容：</p>
-<p>1、基于参考代码，运行程序，并画出程序的总体流程图。自动统计并输出到达目标的总步数，自动记录并输出每次移动后open表与closed表的变化。<br>要求初始状态与目标状态分别为：</p>
-<p><strong>流程图</strong>：<br><img src="C:\Users\18049\AppData\Roaming\Typora\typora-user-images\image-20230315092602103.png"></p>
-<p><strong>Code（Python）</strong>：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">State</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, state, directionFlag=<span class="literal">None</span>, parent=<span class="literal">None</span>, f=<span class="number">0</span></span>):</span><br><span class="line">        self.state = state</span><br><span class="line">        self.direction = [<span class="string">&#x27;up&#x27;</span>, <span class="string">&#x27;down&#x27;</span>, <span class="string">&#x27;right&#x27;</span>, <span class="string">&#x27;left&#x27;</span>]</span><br><span class="line">        <span class="keyword">if</span> directionFlag:</span><br><span class="line">            self.direction.remove(directionFlag)</span><br><span class="line">        self.parent = parent</span><br><span class="line">        self.f = f</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getDirection</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.direction</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setF</span>(<span class="params">self, f</span>):</span><br><span class="line">        self.f = f</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取0点</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getZeroPos</span>(<span class="params">self</span>):</span><br><span class="line">        postion = np.where(self.state == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> postion</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 曼哈顿距离  f = g + h，g=1，如果用宽度优先的评估函数可以不调用该函数</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getFunctionValue</span>(<span class="params">self</span>):</span><br><span class="line">        cur_node = self.state.copy()</span><br><span class="line">        fin_node = self.answer.copy()</span><br><span class="line">        dist = <span class="number">0</span></span><br><span class="line">        N = <span class="built_in">len</span>(cur_node)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">                <span class="keyword">if</span> cur_node[i][j] != fin_node[i][j]:</span><br><span class="line">                    <span class="comment"># 启发函数1: 取当前状态位置与目标状态不符的数码数目</span></span><br><span class="line">                    <span class="comment"># dist = dist + 1</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment"># 计算距离综合(启发函数 2, 3)</span></span><br><span class="line">                    index = np.argwhere(fin_node == cur_node[i][j])</span><br><span class="line">                    x = index[<span class="number">0</span>][<span class="number">0</span>]  <span class="comment"># 最终x距离</span></span><br><span class="line">                    y = index[<span class="number">0</span>][<span class="number">1</span>]  <span class="comment"># 最终y距离</span></span><br><span class="line">                    <span class="comment"># 启发函数2: 计算距离总和，使用曼哈顿算法</span></span><br><span class="line">                    dist += (<span class="built_in">abs</span>(x - i) + <span class="built_in">abs</span>(y - j))</span><br><span class="line">                    <span class="comment"># 启发函数3: 计算距离总和，使用欧几里得算法</span></span><br><span class="line">                    <span class="comment"># dist += ((x - i) ** 2 + (y - j) ** 2) ** 0.5</span></span><br><span class="line">        <span class="keyword">return</span> dist + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">nextStep</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.direction:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        subStates = []</span><br><span class="line">        boarder = <span class="built_in">len</span>(self.state) - <span class="number">1</span></span><br><span class="line">        x, y = self.getZeroPos()  <span class="comment"># 获取0点位置</span></span><br><span class="line">        <span class="comment"># 向左</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;left&#x27;</span> <span class="keyword">in</span> self.direction <span class="keyword">and</span> y &gt; <span class="number">0</span>:</span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x, y - <span class="number">1</span>]</span><br><span class="line">            s[x, y - <span class="number">1</span>] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;right&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 向上</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;up&#x27;</span> <span class="keyword">in</span> self.direction <span class="keyword">and</span> x &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="comment"># it can move to upper place</span></span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x - <span class="number">1</span>, y]</span><br><span class="line">            s[x - <span class="number">1</span>, y] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;down&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 向下</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;down&#x27;</span> <span class="keyword">in</span> self.direction <span class="keyword">and</span> x &lt; boarder:</span><br><span class="line">            <span class="comment"># it can move to down place</span></span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x + <span class="number">1</span>, y]</span><br><span class="line">            s[x + <span class="number">1</span>, y] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;up&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 向右</span></span><br><span class="line">        <span class="keyword">if</span> self.direction.count(<span class="string">&#x27;right&#x27;</span>) <span class="keyword">and</span> y &lt; boarder:</span><br><span class="line">            <span class="comment"># it can move to right place</span></span><br><span class="line">            s = self.state.copy()</span><br><span class="line">            tmp = s[x, y + <span class="number">1</span>]</span><br><span class="line">            s[x, y + <span class="number">1</span>] = s[x, y]</span><br><span class="line">            s[x, y] = tmp</span><br><span class="line">            news = State(s, directionFlag=<span class="string">&#x27;left&#x27;</span>, parent=self)</span><br><span class="line">            news.setF(news.getFunctionValue())</span><br><span class="line">            subStates.append(news)</span><br><span class="line">        <span class="comment"># 返回F值最小的下一个点</span></span><br><span class="line">        subStates.sort(key=compareNum)</span><br><span class="line">        <span class="keyword">return</span> subStates</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 横向打印结果</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">showInfoHorizontally</span>(<span class="params">self, table, sep=<span class="string">&quot;  &quot;</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param table: 需要显示的open|close表或者状态转移路径</span></span><br><span class="line"><span class="string">        :param sep: 显示的状态之间的间隔符号, 默认值为两个空格符</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> table:</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> table:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(item.state)):</span><br><span class="line">                    <span class="built_in">print</span>(item.state[<span class="number">0</span>, j], end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;  &quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> table:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(item.state)):</span><br><span class="line">                    <span class="built_in">print</span>(item.state[<span class="number">1</span>, j], end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                <span class="built_in">print</span>(sep, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> table:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(item.state)):</span><br><span class="line">                    <span class="built_in">print</span>(item.state[<span class="number">2</span>, j], end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;  &quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># A* 迭代</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">solve</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># openList</span></span><br><span class="line">        openTable = []</span><br><span class="line">        <span class="comment"># closeList</span></span><br><span class="line">        closeTable = []</span><br><span class="line">        openTable.append(self)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;_______初始状态______\nopenTable:&quot;</span>)</span><br><span class="line">        self.showInfoHorizontally(openTable)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;closeTable: len =&quot;</span>, <span class="built_in">len</span>(closeTable), <span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        self.showInfoHorizontally(closeTable)</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(openTable) &gt; <span class="number">0</span>:</span><br><span class="line">            n = openTable.pop(<span class="number">0</span>)  <span class="comment"># 下一步的点移除open</span></span><br><span class="line">            closeTable.append(n)  <span class="comment"># 加入close</span></span><br><span class="line">            subStates = n.nextStep()  <span class="comment"># 确定下一步点</span></span><br><span class="line">            path = []</span><br><span class="line">            optimal_state = subStates[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> (optimal_state.state == optimal_state.answer).<span class="built_in">all</span>():</span><br><span class="line">                <span class="keyword">while</span> optimal_state.parent <span class="keyword">and</span> optimal_state.parent != originState:</span><br><span class="line">                    path.append(optimal_state.parent)  <span class="comment"># 寻找父节点,回溯路径</span></span><br><span class="line">                    optimal_state = optimal_state.parent</span><br><span class="line">                path.reverse()  <span class="comment"># 将路径链表翻转即为来时的路径</span></span><br><span class="line">                <span class="keyword">return</span> path</span><br><span class="line">            openTable = openTable + subStates  <span class="comment"># 合并原open表和拓展节点列表</span></span><br><span class="line">            openTable.sort(key=compareNum)  <span class="comment"># 重新排序</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 输出显示open表</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;--------------------\nopenTable:&quot;</span>)</span><br><span class="line">            self.showInfoHorizontally(openTable)</span><br><span class="line">            <span class="comment"># 输出显示close表</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;closeTable: len =&quot;</span>, <span class="built_in">len</span>(closeTable), <span class="string">&quot;\n&quot;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            self.showInfoHorizontally(closeTable)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span>, <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">compareNum</span>(<span class="params">state</span>):</span><br><span class="line">    <span class="keyword">return</span> state.f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    originState = State(np.array([[<span class="number">2</span>, <span class="number">8</span>, <span class="number">3</span>], [<span class="number">1</span>, <span class="number">6</span>, <span class="number">4</span>], [<span class="number">7</span>, <span class="number">0</span>, <span class="number">5</span>]]))  <span class="comment"># 初始状态</span></span><br><span class="line">    State.answer = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">8</span>, <span class="number">0</span>, <span class="number">4</span>], [<span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>]])  <span class="comment"># 目标状态</span></span><br><span class="line">    s1 = State(state=originState.state)</span><br><span class="line">    path = s1.solve()</span><br><span class="line">    <span class="keyword">if</span> path:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;\n\nPath:&quot;</span>)  <span class="comment"># 显示路径</span></span><br><span class="line">        State.showInfoHorizontally(<span class="literal">None</span>, path, <span class="string">&quot;-&gt;&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(State.answer)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Total steps is %d&quot;</span> % <span class="built_in">len</span>(path))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>open表、close表、path输出截图：</strong></p>
-<p>略</p>
-<p>2、设计两种新的启发式函数，并运行程序。对包含示例在内的3种启发式函数的特点与结果进行对比分析。</p>
-<p><strong>启发函数1</strong>：采用曼哈顿算法计算距离总和，dist +&#x3D;|x-i|+|y-j|，结果参见实验内容1。</p>
-<p><strong>启发函数2</strong>：采用欧式算法计算距离总和，即dist +&#x3D;√((x-i)^2+(y-j)^2)。</p>
-<p><strong>启发函数3</strong>：取当前状态位置与目标状态不符的数码数目。</p>
-<p>综上，对于实验一中的初始状态和目标状态，三种启发函数路径相同，过程（每次循环的open表和close表）不完全相同。</p>
-<p>另外，当初始状态为[[1, 5, 3], [2, 4, 6], [7, 0, 8]]，目标状态为[[1, 2, 3], [4, 5, 6], [7, 8, 0]]时，</p>
-<p><strong>启发函数1</strong>（曼哈顿算法计算距离）：</p>
-<p><strong>启发函数2</strong>（欧式算法计算距离）：循环3000多次未果，程序被手动终止。</p>
-<p><strong>启发函数3</strong>（取当前状态位置与目标状态不符的数码数目）：</p>
-<p><strong>特点：</strong></p>
-<p>启发函数1的曼哈顿距离比较适合四方向（上下左右）网格地图。</p>
-<p>启发函数2的欧式距离比较适合可以任意方向移动的地图。</p>
-<p>启发函数3的取当前状态位置与目标状态不符的数码数目比较简单。</p>
-<hr>
-<p>相关文章：</p>
-<ol>
-<li><a href="https://blog.csdn.net/Pericles_HAT/article/details/115516204">八数码难题(下): 启发式搜索(Python实现)</a>  有形象的图示</li>
-<li><a href="https://blog.csdn.net/bob595078694/article/details/123362253">启发函数 (Heuristic Function)</a> 几种启发函数和搜索算法的理论对比</li>
-<li><a href="https://blog.csdn.net/qq_63708623/article/details/129480238">python八数码问题 启发式搜索(Python实现)</a>包含三种启发函数（字符串距离、曼式距离、欧式距离）</li>
-<li><a href="https://blog.csdn.net/SZU_Kwong/article/details/105897291">用两种启发函数的A*算法解决八数码问题(C++实现)</a> 两种启发函数（移位计数、欧氏距离）</li>
-<li><a href="https://blog.csdn.net/Big_xbc/article/details/116206930">人工智能-八数码问题-启发式搜索(C++实现)</a> 某校实验报告？？有流程图</li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>A-Star</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>GitHub入门</title>
     <url>/2023/03/07/GitHub-Introduction/</url>
     <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
@@ -480,6 +480,20 @@
       </categories>
       <tags>
         <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试相关总结</title>
+    <url>/2023/03/07/Interview-related-content/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
+<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
@@ -529,17 +543,17 @@
       </tags>
   </entry>
   <entry>
-    <title>面试相关总结</title>
-    <url>/2023/03/07/Interview-related-content/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
-<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
+    <title>Pycharm常见报错及解决方案</title>
+    <url>/2023/03/15/Pycharm-common-errors-and-solutions/</url>
+    <content><![CDATA[<h5 id="No-Python-at-‘D-Python-python-exe’-and-solution"><a href="#No-Python-at-‘D-Python-python-exe’-and-solution" class="headerlink" title="No Python at ‘D:\Python\python.exe’ and solution"></a><a href="https://blog.csdn.net/qq_47733361/article/details/123658062">No Python at ‘D:\Python\python.exe’ and solution</a></h5><p><strong>Solution</strong>：查看<code>File - Settings - Project: xxx - Python Interpreter</code>，点击右侧齿轮图标，选择<code>Add</code>，勾选<code>Existing environment</code>，在<code>Interpreter</code>处选择本地Python路径即可</p>
 <hr>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>面试</tag>
+        <tag>Python</tag>
+        <tag>Pycharm</tag>
       </tags>
   </entry>
   <entry>
@@ -578,20 +592,6 @@
       <tags>
         <tag>MySQL</tag>
         <tag>PostgreSQ</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pycharm常见报错及解决方案</title>
-    <url>/2023/03/15/Pycharm-common-errors-and-solutions/</url>
-    <content><![CDATA[<h5 id="No-Python-at-‘D-Python-python-exe’-and-solution"><a href="#No-Python-at-‘D-Python-python-exe’-and-solution" class="headerlink" title="No Python at ‘D:\Python\python.exe’ and solution"></a><a href="https://blog.csdn.net/qq_47733361/article/details/123658062">No Python at ‘D:\Python\python.exe’ and solution</a></h5><p><strong>Solution</strong>：查看<code>File - Settings - Project: xxx - Python Interpreter</code>，点击右侧齿轮图标，选择<code>Add</code>，勾选<code>Existing environment</code>，在<code>Interpreter</code>处选择本地Python路径即可</p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Pycharm</tag>
       </tags>
   </entry>
   <entry>
@@ -642,6 +642,53 @@
       <tags>
         <tag>C++</tag>
         <tag>Visual Studio</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Win10安装汇编环境masm x64</title>
+    <url>/2022/03/14/Win10-64bit-Installation-Assembly-Environment-masm/</url>
+    <content><![CDATA[<p>本文转载自 <a href="https://www.cnblogs.com/dgwblog/p/11865850.html">Win10(64位)安装汇编环境(MASM) - 博客园</a>，亲自尝试之后决定转载，并在原文基础上补充了一些 <strong>操作细节</strong>，也<strong>删去了少许内容</strong>，鼓励读者看一遍<a href="https://www.cnblogs.com/dgwblog/p/11865850.html">原文</a>。</p>
+<hr>
+<ol start="0">
+<li>需要的文件：<a href="https://files-cdn.cnblogs.com/files/dgwblog/DOSBox.rar">DOSBox.rar</a></li>
+</ol>
+<hr>
+<ol>
+<li><p>将压缩包解压到某一目录下，运行 DOSBox.exe</p>
+<img src="https://img-blog.csdnimg.cn/55ae9806ba264c2e83a5df57783b95e8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
+<li><p>在弹出的小窗口中 输入命令 <code>mount c: d://DOSBox/masm</code>，将指定目录下的 masm 部署到 c: 目录下 <em>（如果你想安装在D盘目录下，<code>d://DOSBox/masm </code>是 DOSBox 下 masm文件夹的目录地址）</em></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mount c: d://DOSBox/masm</span><br></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/3ff2f91d01e440b3863e59915afd432b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+</li>
+<li><p>查看是否部署成功</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c:</span><br><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
+<p>运行结果如下：<br><img src="https://img-blog.csdnimg.cn/c19cbc5dd00d47079f0bec30676d1f56.png" style="zoom: 80%;" /></p>
+<ol start="4">
+<li>在 masm 目录下创建 test.asm 文件，编写 helloworld 程序（可以先在 txt 文件中编写，再改文件名和后缀名），保存文件，关闭</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.model small</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">    strs DB <span class="string">&#x27;hello world&#x27;</span>,<span class="number">13</span>,<span class="number">10</span>,<span class="string">&#x27;$&#x27;</span></span><br><span class="line">.code</span><br><span class="line">start:</span><br><span class="line">    mov ax,@data</span><br><span class="line">    mov ds,ax</span><br><span class="line">    mov dx,offset strs</span><br><span class="line">    mov ah,09h</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">    mov ah,4ch</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<img src="https://img-blog.csdnimg.cn/c79972c356ab4c4e8bf19d87e6b8f0fc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_19,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+
+<ol start="5">
+<li>（假设你之前解压在D盘目录下）再利用 <code>mount c: d://DOSBox/masm</code> 命令 将 test.asm 文件复制到 c: 目录下，利用 <code>dir</code> 命令 检查是否成功 <em>（即 c: 目录下出现 <code>test.asm</code> 文件）</em><img src="https://img-blog.csdnimg.cn/845b2e08b170456e8eefc04a5828055e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_14,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
+<li>输入汇编命令 <code>masm test.asm</code>，遇到选项默认回车即可<img src="https://img-blog.csdnimg.cn/7e52953540d84130b80472f63bcadbdd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
+可以发现目录下出现了 `test.obj` 文件
+<img src="https://img-blog.csdnimg.cn/adf9efd443454715812869b1bdacb4ed.png" style="zoom:80%;" /></li>
+<li>运行链接命令 <code>link test.obj</code>，遇到选项默认回车，目录下产生 <code>test.exe</code> 文件；<strong>Link : warning xxxxx: no stack segment 是在提示编程人员程序中没有堆栈段，并非程序或配置出现错误</strong><img src="https://img-blog.csdnimg.cn/226f478f4e2d4f898edd60e8a084dd12.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" /></li>
+<li>输入运行命令 <code>test.exe</code> 运行exe文件，显示 hello world 即成功<br><img src="https://img-blog.csdnimg.cn/fc4274d37d59444aa99155277d84241c.png"></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Assembly</tag>
+        <tag>DOSBox</tag>
+        <tag>MASM</tag>
       </tags>
   </entry>
   <entry>
@@ -755,53 +802,6 @@ Save后，改个主机字（有自己特色的），再点Apply
         <tag>Cloud Computing</tag>
         <tag>VMware</tag>
         <tag>StarVCenter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Win10安装汇编环境masm x64</title>
-    <url>/2022/03/14/Win10-64bit-Installation-Assembly-Environment-masm/</url>
-    <content><![CDATA[<p>本文转载自 <a href="https://www.cnblogs.com/dgwblog/p/11865850.html">Win10(64位)安装汇编环境(MASM) - 博客园</a>，亲自尝试之后决定转载，并在原文基础上补充了一些 <strong>操作细节</strong>，也<strong>删去了少许内容</strong>，鼓励读者看一遍<a href="https://www.cnblogs.com/dgwblog/p/11865850.html">原文</a>。</p>
-<hr>
-<ol start="0">
-<li>需要的文件：<a href="https://files-cdn.cnblogs.com/files/dgwblog/DOSBox.rar">DOSBox.rar</a></li>
-</ol>
-<hr>
-<ol>
-<li><p>将压缩包解压到某一目录下，运行 DOSBox.exe</p>
-<img src="https://img-blog.csdnimg.cn/55ae9806ba264c2e83a5df57783b95e8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li><p>在弹出的小窗口中 输入命令 <code>mount c: d://DOSBox/masm</code>，将指定目录下的 masm 部署到 c: 目录下 <em>（如果你想安装在D盘目录下，<code>d://DOSBox/masm </code>是 DOSBox 下 masm文件夹的目录地址）</em></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mount c: d://DOSBox/masm</span><br></pre></td></tr></table></figure>
-<img src="https://img-blog.csdnimg.cn/3ff2f91d01e440b3863e59915afd432b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-</li>
-<li><p>查看是否部署成功</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c:</span><br><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
-<p>运行结果如下：<br><img src="https://img-blog.csdnimg.cn/c19cbc5dd00d47079f0bec30676d1f56.png" style="zoom: 80%;" /></p>
-<ol start="4">
-<li>在 masm 目录下创建 test.asm 文件，编写 helloworld 程序（可以先在 txt 文件中编写，再改文件名和后缀名），保存文件，关闭</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">.model small</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">    strs DB <span class="string">&#x27;hello world&#x27;</span>,<span class="number">13</span>,<span class="number">10</span>,<span class="string">&#x27;$&#x27;</span></span><br><span class="line">.code</span><br><span class="line">start:</span><br><span class="line">    mov ax,@data</span><br><span class="line">    mov ds,ax</span><br><span class="line">    mov dx,offset strs</span><br><span class="line">    mov ah,09h</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">    mov ah,4ch</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<img src="https://img-blog.csdnimg.cn/c79972c356ab4c4e8bf19d87e6b8f0fc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_19,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-
-<ol start="5">
-<li>（假设你之前解压在D盘目录下）再利用 <code>mount c: d://DOSBox/masm</code> 命令 将 test.asm 文件复制到 c: 目录下，利用 <code>dir</code> 命令 检查是否成功 <em>（即 c: 目录下出现 <code>test.asm</code> 文件）</em><img src="https://img-blog.csdnimg.cn/845b2e08b170456e8eefc04a5828055e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_14,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
-<li>输入汇编命令 <code>masm test.asm</code>，遇到选项默认回车即可<img src="https://img-blog.csdnimg.cn/7e52953540d84130b80472f63bcadbdd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-可以发现目录下出现了 `test.obj` 文件
-<img src="https://img-blog.csdnimg.cn/adf9efd443454715812869b1bdacb4ed.png" style="zoom:80%;" /></li>
-<li>运行链接命令 <code>link test.obj</code>，遇到选项默认回车，目录下产生 <code>test.exe</code> 文件；<strong>Link : warning xxxxx: no stack segment 是在提示编程人员程序中没有堆栈段，并非程序或配置出现错误</strong><img src="https://img-blog.csdnimg.cn/226f478f4e2d4f898edd60e8a084dd12.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" /></li>
-<li>输入运行命令 <code>test.exe</code> 运行exe文件，显示 hello world 即成功<br><img src="https://img-blog.csdnimg.cn/fc4274d37d59444aa99155277d84241c.png"></li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Assembly</tag>
-        <tag>DOSBox</tag>
-        <tag>MASM</tag>
       </tags>
   </entry>
   <entry>
