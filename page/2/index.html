@@ -1,12 +1,27 @@
 <!DOCTYPE html>
+<!-- 全站黑白(公祭日专用)
+<style>
+  html {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+} </style>
+-->
 
 
-<html lang="en">
+<html lang="zh-CN">
   
 
     <head>
       <meta charset="utf-8" />
-        
+       
+      <meta name="keywords" content="博客,思考" />
+       
+      <meta name="description" content="人生小站" />
+      
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -85,7 +100,7 @@
   <script>
     try {
       var typed = new Typed("#subtitle", {
-        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+        strings: ['改变自己，改变世界', '时有微凉不是风', '凡心所向，素履以往，生如逆旅，一苇以航'],
         startDelay: 0,
         typeSpeed: 200,
         loop: true,
@@ -149,6 +164,58 @@
     
     
     <article
+  id="post-Blog-Built-with-Hexo&amp;Github"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/02/28/Blog-Built-with-Hexo&Github/"
+    >用Hexo搭建个人博客并部署到Github</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/02/28/Blog-Built-with-Hexo&Github/" class="article-date">
+  <time datetime="2023-02-28T12:48:46.000Z" itemprop="datePublished">2023-02-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+ 
+       
+       
+      
+    </div>
+    
+       
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blog/" rel="tag">Blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+  
+</article>
+
+    
+    <article
   id="post-Android-Studio-Install-Q&amp;A"
   class="article article-type-post"
   itemscope
@@ -182,20 +249,7 @@
       
     </div>
     
-      
-    <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0. 准备"></a>0. 准备</h2><p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/archive?hl=zh-cn">Android Studio下载文件(推荐3.5.2)</a></p>
-<hr>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>教程1：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38076341/article/details/115562334">Android Studio（3.5.2）安装和配置</a><br>教程2(B站视频)：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1S44y1572j">保姆级Android Studio+JDK安装配置教程带字幕-bilibili</a><br>补充：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/martin-1/p/15240843.html">更换Android studio中的SDK和AVD位置</a></p>
-<hr>
-<h2 id="2-遇到问题及解决"><a href="#2-遇到问题及解决" class="headerlink" title="2. 遇到问题及解决"></a>2. 遇到问题及解决</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yw00yw/article/details/105397976">Android Studio 解决 Error : module not specified错误</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42473228/article/details/118542634">Could not install Gradle distribution from “https://services.gradle.org/..."</a></p>
-<hr>
- 
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -206,7 +260,8 @@
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -246,47 +301,7 @@
       
     </div>
     
-      
-    <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="打包过程"><a href="#打包过程" class="headerlink" title="打包过程"></a>打包过程</h3><ol>
-<li>进入需要打包的项目，选择 <strong>最上方菜单栏的 File → Project Structure</strong></li>
-</ol>
-  <img src="https://s1.ax1x.com/2023/03/17/ppGSXUe.png" alt="ppGSXUe.png" style="zoom:67%;" />
-
-<ol start="2">
-<li>选择 左侧菜单栏 <strong>Artifacts → + (加号) → JAR → from modules with dependencies</strong></li>
-</ol>
-  <img src="https://s1.ax1x.com/2023/03/17/ppGSj4H.png" alt="ppGSj4H.png" style="zoom:67%;" />
-
-<ol start="3">
-<li><p>选择入口类 <strong>Main Class</strong>（点击文件夹图标可以快速选择），点击 <strong>OK</strong></p>
-  <img src="https://s1.ax1x.com/2023/03/17/ppGSqHO.png" style="zoom:67%;" />
-</li>
-<li><p>返回到IDEA主界面，选择 最上方菜单栏 <strong>Build → Build Artifacts</strong>，再选择 <strong>Build 或 Rebuild</strong> 即可</p>
-<img src="https://s1.ax1x.com/2023/03/17/ppGSbDK.png" alt="ppGSbDK.png" style="zoom:67%;" /></li>
-<li><p>生成的Jar包 在 <strong>左侧文件列表 out&#x2F;artifacts&#x2F;xxx_jar</strong>文件夹下</p>
-<img src="https://s1.ax1x.com/2023/03/17/ppGSHu6.png" alt="ppGSHu6.png" style="zoom:67%;" /></li>
-<li><p>在控制台执行下面命令 运行jar包进行测试</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar C:/xxx/xxx.jar</span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<h3 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h3><ul>
-<li>问题1：<strong>运行jar包时，报错 Error: A JNI error has occurred, please check your installation and try again</strong><br>  解决：在控制台运行 java -version 和 javac -version 命令查看两个java版本是否一样，<del>如果一样我就不知道了欸嘿</del>，如果不一样，则需要在系统环境变量里修改（具体参照问题2），修改后重启控制台，运行上述命令检查<br>  （<strong>重要</strong>）检查无误后，进入IDEA界面，在 <strong>File → Project Structure</strong> 中，选择<strong>环境变量对应版本</strong>的<strong>Project SDK 和 language level</strong>，<strong>重新build程序（上面步骤4）</strong> 即可</li>
-</ul>
-<p>​	<img src="https://s1.ax1x.com/2023/03/17/ppGSOED.png" alt="ppGSOED.png" style="zoom:67%;" /></p>
-<ul>
-<li>问题2：<b>‘javac’不是内部或外部命令，也不是可运行的程序</b><br>解决：系统环境变量配置错误，检查环境变量中JAVA_HOME（应为 jdk安装的路径，如 D:\Java\jdk1.8.0_261） 和 Path（应为 %JAVA_HOME%\bin ）的内容，之后重启控制台运行 java -version 和 javac -version 检查，再执行问题一的最后一步更改IDEA的项目配置</li>
-<li>问题3：<strong>打完jar包后，不能正常读取原路径存在的文件</strong><br>解决：将 <code>原路径</code> 修改为 <code>System.getProperty(&quot;user.dir&quot;) +  jar包到文件的路径</code>，其中 <code>System.getProperty(&quot;user.dir&quot;)</code>为运行jar文件时jar包的位置，也是程序源位置，根据jar的存放位置修改路径即可</li>
-</ul>
-<hr>
-<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/HighnessDragonfly/p/13924869.html">1. idea如何生成jar包 - 博客园</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Yimu_Wang/article/details/113666518">2. 使用java命令出现“Error: A JNI error…的一种解决方案</a><br><a target="_blank" rel="noopener" href="https://www.php.cn/java/guide/474272.html">3. 如何解决javac不是内部或外部命令，也不是可运行程序的问题</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dbei/articles/13355962.html">4. 打jar包之后读不到properties文件</a></p>
-<hr>
- 
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -297,7 +312,8 @@
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -337,114 +353,7 @@
       
     </div>
     
-      
-    <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="0-文件准备"><a href="#0-文件准备" class="headerlink" title="0 文件准备"></a>0 文件准备</h2><p><a target="_blank" rel="noopener" href="http://download.starvcs.com/download/StarVCenter/StarVCenter_Community_Download/V4.2.20/starve4-x86_64-StarVCenter-mini-4.2.20.iso">starve4-x86_64-StarVCenter-mini-4.2.20.iso</a><br><a target="_blank" rel="noopener" href="https://www.vmware.com/go/getworkstation-win">VMware Workstation 16 Pro</a></p>
-<h2 id="1-创建虚拟机"><a href="#1-创建虚拟机" class="headerlink" title="1 创建虚拟机"></a>1 创建虚拟机</h2><ol start="0">
-<li><p>安装 VMware Workstation，序列号: ZF3R0-FHED2-M80TY-8QYGC-NPKYF；YF390-0HF8P-M81RQ-2DXQE-M2UT6；ZF71R-DMX85-08DQY-8YMNC-PPHV8.</p>
-</li>
-<li><p>创建新的虚拟机</p>
-<div align="center"> 
- <img src="https://img-blog.csdnimg.cn/91556430407c432ca90c7be931897a15.png" width = "40%"/>
-</div>
-</li>
-<li><p>典型（推荐）（T）</p>
-</li>
-</ol>
-  <div align="center"> 
-      <img src="https://img-blog.csdnimg.cn/2893b563b8d9409a88c73ddd969ab3b7.png" width = "40%"/>
-  </div>
-
-<ol start="4">
-<li><p>安装程序光盘映像文件(iso)(M) -&gt;选择 iso文件</p>
-  <div align="center"> 
-   <img src="https://img-blog.csdnimg.cn/4e20e699630d4cea8ba8fc295e23d265.png" width = "40%"/>
-  </div>
-
-</li>
-<li><p>客户机操作系统  -&gt; linux；<br> 版本 -&gt; CentOS 5 和更早版本64位</p>
- <div align="center"> 
- <img src="https://img-blog.csdnimg.cn/542ae2ef42724776bbbbca383936e0d0.png" width = "40%"/>
-   </div>
- </li>
-<li><p>虚拟机名称 -&gt; 自己设置；<br> 位置 -&gt; 最好不要放在C盘</p>
- <div align="center"> 
-   <img src="https://img-blog.csdnimg.cn/8b7af3ec31734b56ad8dee447c4ca7ec.png" width = "40%"/>
- </div>
-</li>
-<li><p>最大磁盘大小 -&gt; 建议32~64G；将虚拟磁盘 存储&#x2F;拆分 应该都行</p>
-  <div align="center"> 
-   <img src="https://img-blog.csdnimg.cn/d6e5d3a864f5412c9af8dd9423b2a280.png" width = "40%"/>
-  </div>
-</li>
-<li><p>自定义硬件</p>
-  <div align="center"> 
-   <img src="https://img-blog.csdnimg.cn/e9a3e1c3ac1745e4a9119003c48f040b.png" width = "50%"/>
-  </div></li>
-</ol>
-<ul>
-<li>内存 8G（8192 MB）  <div align="center"> 
-  <img src="https://img-blog.csdnimg.cn/0cec64e96b4b4acfbf48268f4ce412ec.png" width = "50%"/>
-  </div></li>
-<li>处理器数量：2处理器 * 2核；开启 虚拟化  <div align="center"> 
-  <img src="https://img-blog.csdnimg.cn/d1e3f8e882d244d38481cf3b18ed0418.png" width = "50%"/>
-  </div></li>
-<li>网络连接 → 桥接模式 → 复制网络连接状态  <div align="center"> 
-  <img src="https://img-blog.csdnimg.cn/06eda98299e04c4b95a4a3c60817da39.png" width = "50%"/>
-  </div></li>
-</ul>
-<ol start="9">
-<li>点击 <strong>完成</strong> 即可</li>
-</ol>
-<h2 id="2-运行虚拟机"><a href="#2-运行虚拟机" class="headerlink" title="2 运行虚拟机"></a>2 运行虚拟机</h2><ol>
-<li><p>开启此虚拟机</p>
-<div align="center"> 
-   <img src="https://img-blog.csdnimg.cn/29d25f6972ed442aacabb0e1169f0271.png" 
-   width = "50%"/>
-  </div></li>
-<li><p>选择”Test this media &amp; install StarVE 4”</p>
-<div align="center"> 
-   <img src="https://img-blog.csdnimg.cn/2ac123b2795b4e5e8776c34e53889c58.png" 
-   width = "50%"/>
-  </div></li>
-<li><p>设置 节点模式（&#x3D;&#x3D;Basic node&#x3D;&#x3D;） 和 硬盘选项（&#x3D;&#x3D;硬盘的对号打勾&#x3D;&#x3D;）</p>
-<div align="center"> 
-   <img src="https://img-blog.csdnimg.cn/85131a03b51b4262a97130865ea31166.png" 
-   width = "50%"/>
-  </div>
-</li>
-<li><p>设置网络</p>
-<div align="center"> 
-   <img src="https://img-blog.csdnimg.cn/4091b6b8f1c8421f9dbf03a91848d4d2.png" 
-   width = "50%"/>
-  </div>
-**IPv4 Settings** -> Method: **Manual** → **Add**（==Address填 不与物理主机IP相同的 “任意无关IP”；Netmask 和 Gateway为 Deploy 节点的物理主机的子网掩码【255.255.255.0】 和 默认网关【192.168.43.1】（需要取证一下）==）
-<div align="center"> 
-   <img src="https://img-blog.csdnimg.cn/693ad5c91df443c0905207d2f24dffec.png" 
-   width = "50%"/>
-  </div>
-Save后，改个主机字（有自己特色的），再点Apply
-<div align="center"> 
-   <img src="https://img-blog.csdnimg.cn/cac9d2c3bc184137ad7e15124cf6467c.png" 
-   width = "50%"/>
-  </div></li>
-<li><p>点击左上角 <code>Done</code>，回到首页，点击开始安装</p>
-</li>
-<li><p>设置 root密码 和 用户账户</p>
-<div align="center"> 
-   <img src="https://img-blog.csdnimg.cn/df964438db2544588d2ff62a4066baab.png" 
-   width = "50%"/>
-  </div></li>
-<li><p>安装完成后 reboot</p>
-</li>
-</ol>
-<hr>
- 
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -455,7 +364,8 @@ Save后，改个主机字（有自己特色的），再点Apply
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -495,33 +405,7 @@ Save后，改个主机字（有自己特色的），再点Apply
       
     </div>
     
-      
-    <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
-
-<hr>
-<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
-<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
-<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
-<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
-</li>
-<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
-<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
-</li>
-<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
-<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
-<li><p>用DevC++打开即可</p>
-</li>
-</ol>
-<hr>
-<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
-<hr>
- 
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -532,68 +416,8 @@ Save后，改个主机字（有自己特色的），再点Apply
     </footer>
   </div>
 
-   
-   
-  
-</article>
-
     
-    <article
-  id="post-SQL"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/14/SQL/"
-    >常用数据库的异同</a> 
-</h2>
  
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/14/SQL/" class="article-date">
-  <time datetime="2022-03-14T06:45:59.000Z" itemprop="datePublished">2022-03-14</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-  </div>
- 
-       
-       
-      
-    </div>
-    
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/362598819">MySQL 与 PostgreSQL 比较</a></p>
-<hr>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PostgreSQ/" rel="tag">PostgreSQ</a></li></ul>
-
-    </footer>
-  </div>
-
-   
    
   
 </article>
@@ -633,48 +457,7 @@ Save后，改个主机字（有自己特色的），再点Apply
       
     </div>
     
-      
-    <div class="article-entry" itemprop="articleBody">
        
-  <p>本文转载自 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/dgwblog/p/11865850.html">Win10(64位)安装汇编环境(MASM) - 博客园</a>，亲自尝试之后决定转载，并在原文基础上补充了一些 <strong>操作细节</strong>，也<strong>删去了少许内容</strong>，鼓励读者看一遍<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dgwblog/p/11865850.html">原文</a>。</p>
-<hr>
-<ol start="0">
-<li>需要的文件：<a target="_blank" rel="noopener" href="https://files-cdn.cnblogs.com/files/dgwblog/DOSBox.rar">DOSBox.rar</a></li>
-</ol>
-<hr>
-<ol>
-<li><p>将压缩包解压到某一目录下，运行 DOSBox.exe</p>
-<img src="https://img-blog.csdnimg.cn/55ae9806ba264c2e83a5df57783b95e8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li><p>在弹出的小窗口中 输入命令 <code>mount c: d://DOSBox/masm</code>，将指定目录下的 masm 部署到 c: 目录下 <em>（如果你想安装在D盘目录下，<code>d://DOSBox/masm </code>是 DOSBox 下 masm文件夹的目录地址）</em></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount c: d://DOSBox/masm</span><br></pre></td></tr></table></figure>
-<img src="https://img-blog.csdnimg.cn/3ff2f91d01e440b3863e59915afd432b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-</li>
-<li><p>查看是否部署成功</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c:</span><br><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
-<p>运行结果如下：<br><img src="https://img-blog.csdnimg.cn/c19cbc5dd00d47079f0bec30676d1f56.png" style="zoom: 80%;" /></p>
-<ol start="4">
-<li>在 masm 目录下创建 test.asm 文件，编写 helloworld 程序（可以先在 txt 文件中编写，再改文件名和后缀名），保存文件，关闭</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.model small</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">    strs DB <span class="string">&#x27;hello world&#x27;</span>,<span class="number">13</span>,<span class="number">10</span>,<span class="string">&#x27;$&#x27;</span></span><br><span class="line">.code</span><br><span class="line">start:</span><br><span class="line">    mov ax,@data</span><br><span class="line">    mov ds,ax</span><br><span class="line">    mov dx,offset strs</span><br><span class="line">    mov ah,09h</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">    mov ah,4ch</span><br><span class="line">    <span class="built_in">int</span> 21h</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<img src="https://img-blog.csdnimg.cn/c79972c356ab4c4e8bf19d87e6b8f0fc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_19,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-
-<ol start="5">
-<li>（假设你之前解压在D盘目录下）再利用 <code>mount c: d://DOSBox/masm</code> 命令 将 test.asm 文件复制到 c: 目录下，利用 <code>dir</code> 命令 检查是否成功 <em>（即 c: 目录下出现 <code>test.asm</code> 文件）</em><img src="https://img-blog.csdnimg.cn/845b2e08b170456e8eefc04a5828055e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_14,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
-<li>输入汇编命令 <code>masm test.asm</code>，遇到选项默认回车即可<img src="https://img-blog.csdnimg.cn/7e52953540d84130b80472f63bcadbdd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" />
-可以发现目录下出现了 `test.obj` 文件
-<img src="https://img-blog.csdnimg.cn/adf9efd443454715812869b1bdacb4ed.png" style="zoom:80%;" /></li>
-<li>运行链接命令 <code>link test.obj</code>，遇到选项默认回车，目录下产生 <code>test.exe</code> 文件；<strong>Link : warning xxxxx: no stack segment 是在提示编程人员程序中没有堆栈段，并非程序或配置出现错误</strong><img src="https://img-blog.csdnimg.cn/226f478f4e2d4f898edd60e8a084dd12.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:80%;" /></li>
-<li>输入运行命令 <code>test.exe</code> 运行exe文件，显示 hello world 即成功<br><img src="https://img-blog.csdnimg.cn/fc4274d37d59444aa99155277d84241c.png"></li>
-</ol>
-<hr>
- 
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -685,7 +468,8 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -725,39 +509,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
       
     </div>
     
-      
-    <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="5-1-优化编译器的能力和局限性"><a href="#5-1-优化编译器的能力和局限性" class="headerlink" title="5.1 优化编译器的能力和局限性"></a>5.1 优化编译器的能力和局限性</h2><p>现代编译器运用复杂精细的算法来确定一个程序中计算的值，以及他们是被如何使用的，然后利用一些机会来简化表达式，如：在几个不同的地方使用同一个计算，以及降低一个给定的计算必须被执行的次数。大多数编译器，包括 GCC，向用户提供了一些对它们所使用的优化的控制。就像在第3章中讨论过的，最简单的控制就是指定<code>优先级别</code>。例如，以命令行选项 “-Og” 调用 GCC 是让 GCC 使用一组基本的优化。以选项 “-O1” 或更高(如 “-O2” 或 “-O3” ) 调用 GCC 会让他使用更多的优化，进一步提高程序的性能，但是也可能增加程序的规模，也可能使标准的调试工具更难对程序进行调试。</p>
-<p>编译器必须很小心地对程序进行<code>安全</code>的优化，即对于程序可能遇到的所有可能的情况，在C语言标准提供的保证之下，优化后得到的程序和为优化的版本有一样的行为。这一限制消除了一些造成不希望的运行时行为的隐患，但是也意味着程序员要花费更多精力写出编译器能够将之转换成有效及其代码的程序。下面这个简单的例子帮助理解编译器优化限制：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">twiddle1</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">twiddle2</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">	*xp += <span class="number">2</span>* *yp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>twiddle1 和 twiddle2 两个函数“似乎”有相同的功能（把存储在指针yp指向的值两次加到指针xp所指的值上）。从另一个角度来看，函数 twiddle2 效率更高一些，它只要求三次内存引用（读*xp、读*yp、写*xp），而 twiddle1需要6次（重复twiddle2需要的内存引用操作两次）。因此，如果要编译器编译函数 twiddle1，我们认为基于 twiddle2 执行的计算能产生更有效的代码。.</p>
-<p>不过，考虑到 xp 和 yp 指向同一地址（xp 和 yp相等）的情况，此时，函数 twiddle1 的结果使 xp 变为原来的 4 倍，函数 twiddle2 的结果使 xp 变为原来的 3 倍。编译器不知道 twiddle1 会在何种情况被调用，因此必须假设 xp 和 yp 可能会相等。因此，编译器不能产生 twiddle2 风格的代码作为 twiddle1 的优化版本。这种两个指针指向同一个内存地址的情况称为 <strong><code>memory aliasing</code>（内存别名使用）</strong>，这可能会造成一个主要的<code>妨碍优化</code>的因素，限制了可能的优化策略。</p>
-<hr>
-<p>第二个妨碍优化的因素是 <strong>函数调用</strong>。考虑下面这个示例：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func1</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> f()+f()+f()+f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func2</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">4</span> * f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>最初看上去两个函数实现的都是相同的功能，但是 func2() 只调用 f() 1次，而 func1() 调用 f() 4次。以func1() 作为源代码时，会很想产生 func2()  风格的代码。不过考虑下面 有关 f() 的代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个函数有个“副作用”，他修改了全局程序状态的一部分，改变该函数的调用次数会改变程序的功能。假设开始时去全局变量 counter 的值设为0，调用 func1() 会返回 0+1+2+3&#x3D;6，而调用 func2()返回 4*0&#x3D;0。大多数编译器会试图判断一个函数是否有副作用，如果有，编译器会假设最坏的情况并保持所有的函数调用不变。反之，则会进行一定程度的优化。</p>
-<hr>
-<h3 id="用内联优化函数调用"><a href="#用内联优化函数调用" class="headerlink" title="用内联优化函数调用"></a>用内联优化函数调用</h3><p>包含函数函数调用的代码可以用 <strong><code>inline substitution</code>（内敛函数替换）</strong> 或者简称 <strong><code>inlining</code>（内联）</strong> 的过程进行优化，此时，将函数调用替换为函数体。下面是 func1() 的内联版代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Result of inlining f in func1 */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclin</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">long</span> t = counter++;  <span class="comment">/* +0 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +1 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +2 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +3 */</span></span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样的转换即减少了函数调用的开销，也允许对展开的代码做进一步优化。例如，编译器可以统一funclin() 中对全局变量的更新，产生这个函数的一个优化版本：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Optimization of inlined func1 code */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclopt</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">long</span> t = <span class="number">4</span> * counter + <span class="number">6</span>;</span><br><span class="line">	counter += <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 对于这个特定的函数 f 的定义，上述代码重现了 func1 的行为。</p>
-<p>最近版本的 GCC 会尝试进行这种形式的优化，可以用命令行选项<code>-finline</code>指示编译器，或者使用优化等级 “-O1” 或更高等级。但是目前 GCC 尝试在单个文件中定义的函数的内联，意味着它无法用于常见的情况（<strong>一组库函数在一个文件中被定义，在其他文件的函数中被调用</strong>）。</p>
-<p>在某些情况下，最好能阻止编译器的内联优化。一种情况是 用符号调试器(如GDB)来评估代码，如果一个函数调用已经用内联替换优化过了，那么任何对这个调用进行追踪或设置断点的尝试都会失败。还有一种情况是用代码剖析的方式来评估程序性能，用内联替换消除的函数调用是不能被正确剖析的。</p>
-<hr>
- 
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -768,7 +520,8 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -808,58 +561,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
       
     </div>
     
-      
-    <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="实验一-静态随机存储器实验"><a href="#实验一-静态随机存储器实验" class="headerlink" title="实验一 静态随机存储器实验"></a>实验一 静态随机存储器实验</h3><h4 id="1-1-实验目的及内容"><a href="#1-1-实验目的及内容" class="headerlink" title="1.1 实验目的及内容"></a>1.1 实验目的及内容</h4><p><strong>实验目的</strong>：掌握静态随机存储器RAM工作特性及数据的读写方法</p>
-<p><strong>仪器设备</strong>：PC机一台，TD-CMA实验系统一套</p>
-<p><strong>实验内容</strong>：</p>
-<img src="https://s1.ax1x.com/2023/03/17/ppGSz8A.jpg" alt="ppGSz8A.jpg" style="zoom:25%;" />
-
-<h4 id="1-2-实验步骤"><a href="#1-2-实验步骤" class="headerlink" title="1.2 实验步骤"></a>1.2 实验步骤</h4><blockquote>
-<p>(1) 关闭实验系统电源，连接实验电路，并检查无误<br>(2) 将时序与操作台单元的开关KK1，KK3置为运行档，开关KK2置为”单步”档，开关KK4置为”主存”档<br>(3) 将CON单元的IOR开关置1，打开电源开关（如果听到“嘀”的报警声，应立即关闭电源，重新检查接线直到错误排除）<br>(4) 给存储器的00H,01H,02H,03H,04H地址单元中分别写入数据11H,12H,13H,14H,15H。<br>(5) 依次读出第00,01,02,03,04号单元中的内容，观察上述单元中内容是否与前面输入的一致</p>
-</blockquote>
-<p>上述 (4) 具体操作：</p>
-<blockquote>
-<p>① 写地址：在IN单元处输入地址，IOR置“0”，LDAR置“1”，按一下“ST”，将地址传至地址总线处，LDAR置“0”恢复至初态<br>② 写数据：IOR置“1”，在IN单元处输入数据，后IOR置“0”<br>WR置“1”，按下“ST”，写入数据，WR置“0”，IOR置“1”释放总线<br>重复上述步骤，依次在5个地质单元中写入对应数据即可。</p>
-</blockquote>
-<p>上述 (5) 具体操作：</p>
-<blockquote>
-<p>① 写地址：IOR置“1”，在IN单元处输入待读取的地址，IOR置“0”，LDAR置“1”，按下“ST”，然后LDAR置“0”恢复初态，IOR置“1”<br>② 读数据：RD置“1”（此时IOR应为“1”，LDAR置”0“）观察总线显示数，观察后RD置“0”释放总线</p>
-</blockquote>
-<h4 id="1-3-实验结果分析"><a href="#1-3-实验结果分析" class="headerlink" title="1.3 实验结果分析"></a>1.3 实验结果分析</h4><p>实验结果：</p>
-<blockquote>
-<p>在存储器的00H,01H,02H,03H,04H地址单元中分别读取出的数据为11H,12H,13H,14H,15H。</p>
-</blockquote>
-<p>结果分析：</p>
-<blockquote>
-<p>以01H地址单元写入数据12H并读出的过程为例<br>(1) 首先地址和数据是由同一个数据开关给出的（实验箱IN单元）因此地址和数据要分别写入。先关掉存储器的读写，数据开关给出地址01H，将地址01H打入AR中，再关闭地址寄存器，数据开关给出数据12H，打开输入三态门(写状态)，即把12H传至存储器。<br>读数据也应该先给出地址，在进行读操作，地址01H的写入方式相同，关闭IN单元输出，使存储器处于读状态，此时CPU总线上显示12H。<br>(2) 存储器存储数据原理：<br>存储器中最小单元为一个双稳态半导体电路或CMOS晶体管，磁性材料的存储单元，它可以存储一个二进制数序列，若干存储元构成一个存储单元，若干存储单元构成存储器，可用于存放数据。</p>
-</blockquote>
-<h4 id="1-4-思考题"><a href="#1-4-思考题" class="headerlink" title="1.4 思考题"></a>1.4 思考题</h4><ul>
-<li>思考题1：存储器实验各个控制信号的初始状态如何设置？<br><strong>IOR 置 “1”，其他控制信号置 “0”</strong></li>
-<li>思考题2：所有的写操作要配合脉冲（边沿触发），为什么？<br><strong>为了防止误操作</strong></li>
-</ul>
-<h3 id="实验三-基本运算器实验"><a href="#实验三-基本运算器实验" class="headerlink" title="实验三 基本运算器实验"></a>实验三 基本运算器实验</h3><h4 id="3-1-实验目的及内容"><a href="#3-1-实验目的及内容" class="headerlink" title="3.1 实验目的及内容"></a>3.1 实验目的及内容</h4><img src="https://s1.ax1x.com/2023/03/17/ppGpSgI.jpg" alt="ppGpSgI.jpg" style="zoom:25%;" />
-
-<h4 id="3-2-实验步骤"><a href="#3-2-实验步骤" class="headerlink" title="3.2 实验步骤"></a>3.2 实验步骤</h4><blockquote>
-<p>（1）关闭电源开关，连接实验电路，并检查无误<br>（2）将时序与操作台单元的开关KK2 置为“单步”档，开关KK1, KK3置为“运行”档<br>（3）打开电源开关，按动 CON单元 的 CLR按钮，将运算器的 A,B,FC,FZ 清零<br>（4）用输入开关向暂存器A 置数<br>（5）用输入开关向暂存器B 置数<br>（6）改变运算器的功能设置，观察运算器的输出</p>
-</blockquote>
-<h4 id="3-3-实验结果分析"><a href="#3-3-实验结果分析" class="headerlink" title="3.3 实验结果分析"></a>3.3 实验结果分析</h4><blockquote>
-<p>（1）运算器能实现二进制算术和移位，逻辑运算<br>设置运算器的控制信号S_3, S_2, S_1, S_0, C_n 来选择运算器的不同功能<br>（2）数据的输入，输出以及 FC、FZ 标志状态要通过 LED观察灯 观察时<br>都需要按下脉冲单元的 ST按钮<br>（3）数据进入哪一寄存器就必须开启哪一个寄存器<br>如数据只进入暂存器A，必须设置LDA &#x3D; 1， LDB &#x3D; 0且获得脉冲信号</p>
-</blockquote>
-<h4 id="3-4-思考题"><a href="#3-4-思考题" class="headerlink" title="3.4 思考题"></a>3.4 思考题</h4><ul>
-<li>思考题3：采用单步模式时，实验箱是如何产生时序信号的？例如要产生T3需要按几次ST?<br><strong>按ST产生时序信号；单步模式下要产生T3需要按1次ST</strong></li>
-<li>思考题4：运算器实验中的FZ代表什么含义？FZ什么时候取值为1？<br><strong>FZ为零标志位（Flag Zero），表示运算是否为0，当运算结果为0时，FZ为1</strong></li>
-</ul>
-<h3 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h3><blockquote>
-<p>感谢一只路过的喵喵提供了相关照片、思考题的参考答案以及改正建议</p>
-</blockquote>
-<hr>
- 
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -870,7 +572,8 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -910,38 +613,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
       
     </div>
     
-      
-    <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="Visual-Studio-2019-的下载与安装"><a href="#Visual-Studio-2019-的下载与安装" class="headerlink" title="Visual Studio 2019 的下载与安装"></a>Visual Studio 2019 的下载与安装</h2><p>注：<strong>过程中需要登陆 Microsoft 账户，正常登陆即可</strong></p>
-<ol>
-<li>到<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/vs/"> Visual Studio官网 </a>下载<strong>Visual Studio 2019 community</strong> ，点击后会自动下载<img src="https://img-blog.csdnimg.cn/8fd6889f973f4ec7b4b7a2dc9ecbd66a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>打开下载器，进入Visual Studio 2019 安装界面<img src="https://img-blog.csdnimg.cn/759ee143f64843b8a42f296ffc6fd45a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>设置安装选项。使用C++语言的开发者勾选<code>使用 C++ 的桌面开发</code>，使用Python语言的开发者勾选 <code> Python 开发</code><img src="https://img-blog.csdnimg.cn/e29fece6300f4d57a32c169ab147c006.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>在右侧的 <strong><code>使用C++的桌面开发</code></strong> 的子目录 <code>可选</code> 和 <strong><code>单个组件</code></strong> 中勾选下图所示组件：<img src="https://img-blog.csdnimg.cn/574083ab13e247888a73f092059f8f99.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_15,color_FFFFFF,t_70,g_se,x_16" style="zoom: 80%;" /></li>
-<li><strong>语言包</strong>选择 <code>中文(简体)</code> 或 <code>英文</code><img src="https://img-blog.csdnimg.cn/509c2fe2ffe24001937868ec1bb9d663.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li><strong>安装位置</strong>最好选择在 <strong>C盘以外 的其他地方</strong>，建议是在D盘或其他盘新建一个名为<code>Visual Studio 2019</code>的文件夹，在该文件夹中新建一个名为<code>community</code>的文件夹，将该文件夹设定为VS2019的安装目录；下载缓存和共享组件、工具、SDK等也建议都修改其默认目录<img src="https://img-blog.csdnimg.cn/4f06ba9b525241f4baba4dc64243fb38.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>点击 <b><code>安装</code></b>，期间不要断网，全部下载安装完毕后，即可使用VS2019进行C++开发</li>
-<li>如果你按照以上教程安装成功后，在<code>我的电脑 -&gt; D:\Visual Studio 2019\Community\Common7\IDE</code>目录下，找到名为 <code>devenv.exe</code> 应用程序，右键添加到桌面快捷方式 <em>（再给快捷方式改个名字就更好了）</em><img src="https://img-blog.csdnimg.cn/cf43915e615a488789d02b752862d7ff.png" style="zoom: 80%;" /></li>
-</ol>
-<h2 id="Visual-Studio-2019-的使用"><a href="#Visual-Studio-2019-的使用" class="headerlink" title="Visual Studio 2019 的使用"></a>Visual Studio 2019 的使用</h2><ol>
-<li>打开 Visual Studio 2019 的界面，选择 <strong><code>创建新项目</code></strong> 或者 **<code>继续但无需代码</code>**（选择后者VS2019将作为文件编辑器使用）<img src="https://img-blog.csdnimg.cn/ac9e74a0e5424be7b6353713c768c97e.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom: 67%;" /></li>
-<li>选择 <strong><code>创建空项目</code></strong> 后，选择<code>控制台应用</code> 或者 <code>空项目</code>，前者会创建默认有打印Hello World的代码，接着点击 <strong><code>下一步</code></strong><img src="https://img-blog.csdnimg.cn/92cadf51e01a4d90b98bac863d311e7b.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>填写创建的<strong>项目名称</strong>，可以修改<strong>项目的存储位置</strong>（后面会介绍修改默认存储地址的方法），接着点击 **<code>创建</code>**即可<img src="https://img-blog.csdnimg.cn/d9ef172e1f0e49f49f32c99b904e33e8.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" />
-<img src="https://img-blog.csdnimg.cn/64b4434941a64723925bac5ccd3218ab.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-</ol>
-<hr>
-<ol start="4">
-<li>如果选择 **<code>继续但无需代码</code>**，进入编辑器界面，选择最上方工具栏的 <strong><code>文件 -&gt; 新建 -&gt; 文件</code></strong><img src="https://img-blog.csdnimg.cn/425f4fd566e447d8ab2cf056c2108406.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>在侧栏中选择 <code>Visual C++</code>，中间栏选择 <code>C++ 文件(.cpp)</code> ，点击<code>打开</code>即可创建新的空文件<img src="https://img-blog.csdnimg.cn/3991e0c16e864090b6dc9b9a63149768.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-<li>在中央的<strong>代码编辑区</strong>填写完代码后，点击左上角的<code>保存</code>按键或按下<code>Ctrl + S</code>保存文件；建议将代码文件放在 <strong>Visual Studio 2019 安装目录中的自定义文件夹</strong>里，或者放在 <strong>非C盘的集中的代码存放位置</strong>，便于以后查找<img src="https://img-blog.csdnimg.cn/2a699d16b84c45f3a23cfbe93dbcf020.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAU2FmZm9ybg==,size_20,color_FFFFFF,t_70,g_se,x_16" style="zoom:67%;" /></li>
-</ol>
-<hr>
- 
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -952,7 +624,8 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -992,63 +665,7 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
       
     </div>
     
-      
-    <div class="article-entry" itemprop="articleBody">
        
-  <p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
-<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
-<ul>
-<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
-</ul>
-<hr>
-<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
-<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
-<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
-<li>应用：<ul>
-<li>清零：x&amp;0</li>
-<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
-<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
-<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
-<li>应用：<ul>
-<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
-<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
-<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
-<li>应用：<ul>
-<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
-<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
-<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
-</ul>
-<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
-<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
-</ul>
-<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
-<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
-</ul>
-<hr>
-<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
-<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
-<li>求绝对值： <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
-<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
-</ol>
-<hr>
- 
-      <!-- reward -->
-      
-    </div>
-    
 
     <!-- copyright -->
     
@@ -1059,7 +676,8 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     </footer>
   </div>
 
-   
+    
+ 
    
   
 </article>
@@ -1081,12 +699,6 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
   <div class="outer">
     <ul> <!-- Copyrights -->
       <li>
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=52 
-          src="//music.163.com/outchain/player?type=2&id=22636878&auto=0&height=32"></iframe>
-      </li>
-    </ul>
-    <ul> <!-- Copyrights -->
-      <li>
         Copyrights &copy;
         2020-2023
         <i class="ri-heart-fill heart_icon"></i> Safforn
@@ -1102,9 +714,9 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
         
         
         <span>
-  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
   <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
 </span>
         
       </li>
@@ -1186,19 +798,11 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/tags/travel/">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="http://wallhaven.cc/">摄影</a>
-    </li>
-    
-    <li class="nav-item">
       <a class="nav-item-link" href="/friendlink">友链</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/about">关于我</a>
+      <a class="nav-item-link" href="/about">关于</a>
     </li>
     
   </ul>
@@ -1207,14 +811,10 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search"  title="Search">
+      <a class="nav-item-link nav-item-search"  title="搜索">
         <i class="ri-search-line"></i>
       </a>
       
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
       
     </li>
   </ul>
@@ -1451,6 +1051,23 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
 </script>
 
 
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=22636878&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
     
     
 

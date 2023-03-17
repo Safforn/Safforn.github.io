@@ -1,12 +1,27 @@
 <!DOCTYPE html>
+<!-- 全站黑白(公祭日专用)
+<style>
+  html {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+} </style>
+-->
 
 
-<html lang="en">
+<html lang="zh-CN">
   
 
     <head>
       <meta charset="utf-8" />
-        
+       
+      <meta name="keywords" content="博客,思考" />
+       
+      <meta name="description" content="人生小站" />
+      
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -86,7 +101,7 @@
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-meta-item-text"> 字数统计:</span>
             <span class="post-count">543</span>
         </span>
     </span>
@@ -95,8 +110,8 @@
         &nbsp; | &nbsp;
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
@@ -116,21 +131,21 @@
   <h3 id="打包过程"><a href="#打包过程" class="headerlink" title="打包过程"></a>打包过程</h3><ol>
 <li>进入需要打包的项目，选择 <strong>最上方菜单栏的 File → Project Structure</strong></li>
 </ol>
-  <img src="https://s1.ax1x.com/2023/03/17/ppGSXUe.png" alt="ppGSXUe.png" style="zoom:67%;" />
+  <img src="https://s1.ax1x.com/2023/03/17/ppGSXUe.png" style="zoom:67%;" />
 
 <ol start="2">
 <li>选择 左侧菜单栏 <strong>Artifacts → + (加号) → JAR → from modules with dependencies</strong></li>
 </ol>
-  <img src="https://s1.ax1x.com/2023/03/17/ppGSj4H.png" alt="ppGSj4H.png" style="zoom:67%;" />
+  <img src="https://s1.ax1x.com/2023/03/17/ppGSj4H.png" style="zoom:67%;" />
 
 <ol start="3">
 <li><p>选择入口类 <strong>Main Class</strong>（点击文件夹图标可以快速选择），点击 <strong>OK</strong></p>
-  <img src="https://s1.ax1x.com/2023/03/17/ppGSqHO.png" style="zoom:67%;" />
+ <img src="https://s1.ax1x.com/2023/03/17/ppGSqHO.png" style="zoom:67%;" />
 </li>
 <li><p>返回到IDEA主界面，选择 最上方菜单栏 <strong>Build → Build Artifacts</strong>，再选择 <strong>Build 或 Rebuild</strong> 即可</p>
-<img src="https://s1.ax1x.com/2023/03/17/ppGSbDK.png" alt="ppGSbDK.png" style="zoom:67%;" /></li>
+<img src="https://s1.ax1x.com/2023/03/17/ppGSbDK.png" style="zoom:67%;" /></li>
 <li><p>生成的Jar包 在 <strong>左侧文件列表 out&#x2F;artifacts&#x2F;xxx_jar</strong>文件夹下</p>
-<img src="https://s1.ax1x.com/2023/03/17/ppGSHu6.png" alt="ppGSHu6.png" style="zoom:67%;" /></li>
+<img src="https://s1.ax1x.com/2023/03/17/ppGSHu6.png" style="zoom:67%;" /></li>
 <li><p>在控制台执行下面命令 运行jar包进行测试</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar C:/xxx/xxx.jar</span><br></pre></td></tr></table></figure></li>
 </ol>
@@ -138,7 +153,7 @@
 <h3 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h3><ul>
 <li>问题1：<strong>运行jar包时，报错 Error: A JNI error has occurred, please check your installation and try again</strong><br>  解决：在控制台运行 java -version 和 javac -version 命令查看两个java版本是否一样，<del>如果一样我就不知道了欸嘿</del>，如果不一样，则需要在系统环境变量里修改（具体参照问题2），修改后重启控制台，运行上述命令检查<br>  （<strong>重要</strong>）检查无误后，进入IDEA界面，在 <strong>File → Project Structure</strong> 中，选择<strong>环境变量对应版本</strong>的<strong>Project SDK 和 language level</strong>，<strong>重新build程序（上面步骤4）</strong> 即可</li>
 </ul>
-<p>​	<img src="https://s1.ax1x.com/2023/03/17/ppGSOED.png" alt="ppGSOED.png" style="zoom:67%;" /></p>
+<p>​	<img src="https://s1.ax1x.com/2023/03/17/ppGSOED.png" style="zoom:67%;" /></p>
 <ul>
 <li>问题2：<b>‘javac’不是内部或外部命令，也不是可运行的程序</b><br>解决：系统环境变量配置错误，检查环境变量中JAVA_HOME（应为 jdk安装的路径，如 D:\Java\jdk1.8.0_261） 和 Path（应为 %JAVA_HOME%\bin ）的内容，之后重启控制台运行 java -version 和 javac -version 检查，再执行问题一的最后一步更改IDEA的项目配置</li>
 <li>问题3：<strong>打完jar包后，不能正常读取原路径存在的文件</strong><br>解决：将 <code>原路径</code> 修改为 <code>System.getProperty(&quot;user.dir&quot;) +  jar包到文件的路径</code>，其中 <code>System.getProperty(&quot;user.dir&quot;)</code>为运行jar文件时jar包的位置，也是程序源位置，根据jar的存放位置修改路径即可</li>
@@ -158,9 +173,9 @@
       <ul class="post-copyright">
         <li>
           <i class="ri-copyright-line"></i>
-          <strong>Copyright： </strong>
+          <strong>版权声明： </strong>
           
-          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
           
         </li>
       </ul>
@@ -240,29 +255,16 @@
     
   </nav>
 
-  
    
-  
-   
-    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
-    <div id="twikoo" class="twikoo"></div>
-    <script>
-        twikoo.init({
-            envId: ""
-        })
-    </script>
  
+   
+  
+    
 </article>
 
 </section>
       <footer class="footer">
   <div class="outer">
-    <ul> <!-- Copyrights -->
-      <li>
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=52 
-          src="//music.163.com/outchain/player?type=2&id=22636878&auto=0&height=32"></iframe>
-      </li>
-    </ul>
     <ul> <!-- Copyrights -->
       <li>
         Copyrights &copy;
@@ -280,9 +282,9 @@
         
         
         <span>
-  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
   <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
 </span>
         
       </li>
@@ -364,19 +366,11 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/tags/travel/">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="http://wallhaven.cc/">摄影</a>
-    </li>
-    
-    <li class="nav-item">
       <a class="nav-item-link" href="/friendlink">友链</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/about">关于我</a>
+      <a class="nav-item-link" href="/about">关于</a>
     </li>
     
   </ul>
@@ -385,14 +379,10 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search"  title="Search">
+      <a class="nav-item-link nav-item-search"  title="搜索">
         <i class="ri-search-line"></i>
       </a>
       
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
       
     </li>
   </ul>
@@ -645,6 +635,23 @@
 </script>
 
 
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=22636878&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
     
     
 

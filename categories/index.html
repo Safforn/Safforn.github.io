@@ -1,12 +1,27 @@
 <!DOCTYPE html>
+<!-- 全站黑白(公祭日专用)
+<style>
+  html {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+} </style>
+-->
 
 
-<html lang="en">
+<html lang="zh-CN">
   
 
     <head>
       <meta charset="utf-8" />
-        
+       
+      <meta name="keywords" content="博客,思考" />
+       
+      <meta name="description" content="人生小站" />
+      
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -53,7 +68,7 @@
     <main class="content on">
       <section class="outer">
   
-    <h1 class="page-type-title">Categories</h1>
+    <h1 class="page-type-title">分类</h1>
     <div class="categories-box">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span class="category-list-count">17</span></li></ul>
     </div>
@@ -61,12 +76,6 @@
 </section>
       <footer class="footer">
   <div class="outer">
-    <ul> <!-- Copyrights -->
-      <li>
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=52 
-          src="//music.163.com/outchain/player?type=2&id=22636878&auto=0&height=32"></iframe>
-      </li>
-    </ul>
     <ul> <!-- Copyrights -->
       <li>
         Copyrights &copy;
@@ -84,9 +93,9 @@
         
         
         <span>
-  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
   <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
 </span>
         
       </li>
@@ -168,19 +177,11 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/tags/travel/">旅行</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="http://wallhaven.cc/">摄影</a>
-    </li>
-    
-    <li class="nav-item">
       <a class="nav-item-link" href="/friendlink">友链</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/about">关于我</a>
+      <a class="nav-item-link" href="/about">关于</a>
     </li>
     
   </ul>
@@ -189,14 +190,10 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search"  title="Search">
+      <a class="nav-item-link nav-item-search"  title="搜索">
         <i class="ri-search-line"></i>
       </a>
       
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
       
     </li>
   </ul>
@@ -433,6 +430,23 @@
 </script>
 
 
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=22636878&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
     
     
 
