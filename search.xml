@@ -364,37 +364,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Dev C++注释中文乱码问题及解决方法</title>
-    <url>/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/</url>
-    <content><![CDATA[<h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
-
-<hr>
-<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
-<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
-<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
-<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
-</li>
-<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
-<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
-</li>
-<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
-<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
-<li><p>用DevC++打开即可</p>
-</li>
-</ol>
-<hr>
-<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>Dev C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>人工智能导论实验</title>
     <url>/2023/03/15/Experiment-on-Introduction-of-AI/</url>
     <content><![CDATA[<h3 id="实验1-基于A-算法的8数码问题求解"><a href="#实验1-基于A-算法的8数码问题求解" class="headerlink" title="实验1 基于A*算法的8数码问题求解"></a>实验1 基于A*算法的8数码问题求解</h3><p>问题描述：在3*3的棋盘中有8个数码（数字块）和一个空格，只有与空格相邻的数码能移动到空格位置。从初始状态以最小的步长移动到目标状态。</p>
@@ -435,6 +404,37 @@
       </categories>
       <tags>
         <tag>A-Star</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dev C++注释中文乱码问题及解决方法</title>
+    <url>/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/</url>
+    <content><![CDATA[<h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
+
+<hr>
+<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
+<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
+<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
+<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
+</li>
+<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
+<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
+</li>
+<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
+<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
+<li><p>用DevC++打开即可</p>
+</li>
+</ol>
+<hr>
+<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Dev C++</tag>
       </tags>
   </entry>
   <entry>
@@ -493,19 +493,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub入门</title>
-    <url>/2023/03/07/GitHub-Introduction/</url>
-    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>前端工具(框架)</title>
     <url>/2023/03/07/Front-end-tools/</url>
     <content><![CDATA[<p><a href="https://element.eleme.cn/#/zh-CN">Element - 网站快速成型工具</a></p>
@@ -519,6 +506,19 @@
 ]]></content>
       <tags>
         <tag>front-end</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub入门</title>
+    <url>/2023/03/07/GitHub-Introduction/</url>
+    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -568,6 +568,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Pycharm常见报错及解决方案</title>
+    <url>/2023/03/15/Pycharm-common-errors-and-solutions/</url>
+    <content><![CDATA[<h5 id="No-Python-at-‘D-Python-python-exe’-and-solution"><a href="#No-Python-at-‘D-Python-python-exe’-and-solution" class="headerlink" title="No Python at ‘D:\Python\python.exe’ and solution"></a><a href="https://blog.csdn.net/qq_47733361/article/details/123658062">No Python at ‘D:\Python\python.exe’ and solution</a></h5><p><strong>Solution</strong>：查看<code>File - Settings - Project: xxx - Python Interpreter</code>，点击右侧齿轮图标，选择<code>Add</code>，勾选<code>Existing environment</code>，在<code>Interpreter</code>处选择本地Python路径即可</p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Pycharm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面试相关总结</title>
     <url>/2023/03/07/Interview-related-content/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
@@ -602,20 +616,6 @@
       </categories>
       <tags>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pycharm常见报错及解决方案</title>
-    <url>/2023/03/15/Pycharm-common-errors-and-solutions/</url>
-    <content><![CDATA[<h5 id="No-Python-at-‘D-Python-python-exe’-and-solution"><a href="#No-Python-at-‘D-Python-python-exe’-and-solution" class="headerlink" title="No Python at ‘D:\Python\python.exe’ and solution"></a><a href="https://blog.csdn.net/qq_47733361/article/details/123658062">No Python at ‘D:\Python\python.exe’ and solution</a></h5><p><strong>Solution</strong>：查看<code>File - Settings - Project: xxx - Python Interpreter</code>，点击右侧齿轮图标，选择<code>Add</code>，勾选<code>Existing environment</code>，在<code>Interpreter</code>处选择本地Python路径即可</p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Pycharm</tag>
       </tags>
   </entry>
   <entry>
@@ -844,32 +844,6 @@ Save后，改个主机字（有自己特色的），再点Apply
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客现存问题及可能的解决方案</title>
-    <url>/2023/03/17/%60problem/</url>
-    <content><![CDATA[<ol>
-<li><p>切换刷新网页时，音乐播放器会刷新重置<br>​	solution: <a href="https://ariescat.top/2021/01/25/Pjax%E5%8A%A0%E6%8C%81APlayer-%E9%9F%B3%E4%B9%90%E6%97%A0%E9%97%B4%E6%96%AD/">Pjax加持APlayer，音乐无间断 Ariescat Blog</a></p>
-</li>
-<li><p>Artitalk说说心情发布<br>​	solution: <a href="https://blog.csdn.net/cungudafa/article/details/106224223">Artitalk说说心情发布页面（个性定制）</a></p>
-</li>
-<li><p>Valine 评论的进一步优化<br>​	solution：<a href="https://cungudafa.gitee.io/post/8202.html">Valine-1.4.4 个性制定（表情包、qq头像、UI样式）</a><br>​	<a href="https://blog.csdn.net/cungudafa/article/details/104281764">Valine - 一款快速、简洁且高效的无后端评论系统</a><br>​	<a href="https://blog.csdn.net/weixin_39531549/article/details/86651038">Valine – 一款极简的评论系统_AYXYJ的博客</a><br>​	<a href="http://www.luckysec.cn/posts/1d6f1579.html#toc-heading-5">Matery之Valine评论优化 | LuckySec</a><br>​	<a href="https://blog.justlovesmile.top/posts/27831.html">Hexo博客 | 如何让你的valine更好看 | Justlovesmile’s BLOG</a></p>
-</li>
-<li><p>搭建个人图床<br>​	solution：<a href="https://blog.csdn.net/qq_40531408/article/details/126070098">基于jsDelivr+GitHub的免费CDN</a> 他的其他博客也不错</p>
-</li>
-<li><p>Latex数学公式？？（急）</p>
-</li>
-</ol>
-<hr>
-<p>思考？（小心自我精神折磨）<a href="https://www.zhihu.com/question/438831051/answer/1891961165">如何废掉一个大学生？ - 知乎 (zhihu.com)</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Windows相关问题及解决方案</title>
     <url>/2023/03/16/Windows-related-issues-and-solutions/</url>
     <content><![CDATA[<p><a href="https://www.win7zhijia.cn/win10jc/win10_51994.html">删除文件提示你需要来自system的权限才能对此文件夹进行更改(win7,win10,win11通用)</a></p>
@@ -901,5 +875,31 @@ Save后，改个主机字（有自己特色的），再点Apply
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Hexo博客现存问题及可能的解决方案</title>
+    <url>/2023/03/17/%60problem/</url>
+    <content><![CDATA[<ol>
+<li><p>切换刷新网页时，音乐播放器会刷新重置<br>​	solution: <a href="https://ariescat.top/2021/01/25/Pjax%E5%8A%A0%E6%8C%81APlayer-%E9%9F%B3%E4%B9%90%E6%97%A0%E9%97%B4%E6%96%AD/">Pjax加持APlayer，音乐无间断 Ariescat Blog</a></p>
+</li>
+<li><p>Artitalk说说心情发布<br>​	solution: <a href="https://blog.csdn.net/cungudafa/article/details/106224223">Artitalk说说心情发布页面（个性定制）</a></p>
+</li>
+<li><p>Valine 评论的进一步优化<br>​	solution：<a href="https://cungudafa.gitee.io/post/8202.html">Valine-1.4.4 个性制定（表情包、qq头像、UI样式）</a><br>​	<a href="https://blog.csdn.net/cungudafa/article/details/104281764">Valine - 一款快速、简洁且高效的无后端评论系统</a><br>​	<a href="https://blog.csdn.net/weixin_39531549/article/details/86651038">Valine – 一款极简的评论系统_AYXYJ的博客</a><br>​	<a href="http://www.luckysec.cn/posts/1d6f1579.html#toc-heading-5">Matery之Valine评论优化 | LuckySec</a><br>​	<a href="https://blog.justlovesmile.top/posts/27831.html">Hexo博客 | 如何让你的valine更好看 | Justlovesmile’s BLOG</a></p>
+</li>
+<li><p>搭建个人图床<br>​	solution：<a href="https://blog.csdn.net/qq_40531408/article/details/126070098">基于jsDelivr+GitHub的免费CDN</a> 他的其他博客也不错</p>
+</li>
+<li><p>Latex数学公式？？（急）</p>
+</li>
+</ol>
+<hr>
+<p>思考？（小心自我精神折磨）<a href="https://www.zhihu.com/question/438831051/answer/1891961165">如何废掉一个大学生？ - 知乎 (zhihu.com)</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
   </entry>
 </search>
