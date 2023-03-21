@@ -27,24 +27,17 @@
 <p><code>android:autoLink</code> 属性用于识别链接，<code>&quot;web&quot;</code>识别web网址，<code>&quot;phone&quot;</code>识别电话号码，<code>&quot;email&quot;</code>识别邮件地址，<code>&quot;all&quot;</code>识别所有类型</p>
 </li>
 <li><p>图像视图（ImageView）</p>
-</li>
-</ol>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/img_id&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;150dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:src</span>=<span class="string">&quot;@drawable/img_name_without_suffix&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
-
-<ol start="3">
+</li>
 <li><p>按钮（Button）</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">       	<span class="attr">android:id</span>=<span class="string">&quot;@+id/login_btn&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;100dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:backgroundTint</span>=<span class="string">&quot;@android:color/background_dark&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;登录&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;#ffffff&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:onClick</span>=<span class="string">&quot;myClick&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:visibility</span>=<span class="string">&quot;visible&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>编辑框（EditText）</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:id</span>=<span class="string">&quot;@+id/et_pwd&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">&quot;200dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_height</span>=<span class="string">&quot;60dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_marginStart</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_marginTop</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:hint</span>=<span class="string">&quot;请输入密码&quot;</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:textColorHint</span>=<span class="string">&quot;#747373&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>android:inputType</code>属性用于识别输入文字类型，<code>&quot;phone&quot;</code>识别电话号码，……<br>关于更多inputType属性相关内容可以参考：<a href="https://www.jianshu.com/p/ca73cc4464f6">android: inputType - 简书</a></p>
-</li>
-</ol>
-<p>获取编辑框输入：</p>
+<p><code>android:inputType</code>属性用于识别输入文字类型，<code>&quot;phone&quot;</code>识别电话号码，……<br>关于更多inputType属性相关内容可以参考：<a href="https://www.jianshu.com/p/ca73cc4464f6">android: inputType - 简书</a><br>获取编辑框输入：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">EditText</span> <span class="variable">et_name</span> <span class="operator">=</span> findViewById(R.id.et_name);</span><br><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> et_name.getText().toString();</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
+</li>
 <li><p>单选框（RadioButton）</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RadioGroup</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:id</span>=<span class="string">&quot;@+id/rg&quot;</span></span></span><br><span class="line"><span class="tag">   	 	<span class="attr">android:layout_width</span>=<span class="string">&quot;250dp&quot;</span></span></span><br><span class="line"><span class="tag"> 		<span class="attr">android:layout_height</span>=<span class="string">&quot;230dp&quot;</span> &gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">RadioButton</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:id</span>=<span class="string">&quot;@+id/size_S&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_width</span>=<span class="string">&quot;160dp&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_height</span>=<span class="string">&quot;30dp&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:layout_weight</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:text</span>=<span class="string">&quot;size_S&quot;</span></span></span><br><span class="line"><span class="tag"> 			<span class="attr">android:textSize</span>=<span class="string">&quot;18sp&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RadioGroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>获取选中值（e.g. 男女性别选择）：</p>
@@ -402,22 +395,6 @@
       </tags>
   </entry>
   <entry>
-    <title>前端工具(框架)</title>
-    <url>/2023/03/07/Front-end-tools/</url>
-    <content><![CDATA[<p><a href="https://element.eleme.cn/#/zh-CN">Element - 网站快速成型工具</a></p>
-<p><a href="http://www.quasarchs.com/">Quasar Framework</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/142346630">UI框架 Quasar Framework 简评 - 知乎</a></p>
-<hr>
-<h3 id="html操作"><a href="#html操作" class="headerlink" title="html操作"></a>html操作</h3><p><a href="https://www.php.cn/div-tutorial-410402.html">html字体颜色设置的三种方法(font标签, 内置css-style, 引入外部css)</a></p>
-<h3 id="CSS操作"><a href="#CSS操作" class="headerlink" title="CSS操作"></a>CSS操作</h3><p><a href="https://tool.lu/css/">CSS在线工具(格式化, 去注释, 整理, 压缩)</a></p>
-<p><a href="https://blog.csdn.net/mygoes/article/details/116238484">VSCode插件实现 CSS自动梳理</a></p>
-<h3 id="调色"><a href="#调色" class="headerlink" title="调色"></a>调色</h3><p><a href="https://www.sojson.com/web/online.html">在线调色板</a></p>
-]]></content>
-      <tags>
-        <tag>front-end</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>人工智能导论实验</title>
     <url>/2023/03/15/Experiment-on-Introduction-of-AI/</url>
     <content><![CDATA[<h3 id="实验1-基于A-算法的8数码问题求解"><a href="#实验1-基于A-算法的8数码问题求解" class="headerlink" title="实验1 基于A*算法的8数码问题求解"></a>实验1 基于A*算法的8数码问题求解</h3><p>问题描述：在3*3的棋盘中有8个数码（数字块）和一个空格，只有与空格相邻的数码能移动到空格位置。从初始状态以最小的步长移动到目标状态。</p>
@@ -529,6 +506,22 @@
       </tags>
   </entry>
   <entry>
+    <title>前端工具(框架)</title>
+    <url>/2023/03/07/Front-end-tools/</url>
+    <content><![CDATA[<p><a href="https://element.eleme.cn/#/zh-CN">Element - 网站快速成型工具</a></p>
+<p><a href="http://www.quasarchs.com/">Quasar Framework</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/142346630">UI框架 Quasar Framework 简评 - 知乎</a></p>
+<hr>
+<h3 id="html操作"><a href="#html操作" class="headerlink" title="html操作"></a>html操作</h3><p><a href="https://www.php.cn/div-tutorial-410402.html">html字体颜色设置的三种方法(font标签, 内置css-style, 引入外部css)</a></p>
+<h3 id="CSS操作"><a href="#CSS操作" class="headerlink" title="CSS操作"></a>CSS操作</h3><p><a href="https://tool.lu/css/">CSS在线工具(格式化, 去注释, 整理, 压缩)</a></p>
+<p><a href="https://blog.csdn.net/mygoes/article/details/116238484">VSCode插件实现 CSS自动梳理</a></p>
+<h3 id="调色"><a href="#调色" class="headerlink" title="调色"></a>调色</h3><p><a href="https://www.sojson.com/web/online.html">在线调色板</a></p>
+]]></content>
+      <tags>
+        <tag>front-end</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>IDEA生成可执行jar包及常见问题与解决</title>
     <url>/2022/11/27/IDEA-generates-executable-JAR-packages/</url>
     <content><![CDATA[<h3 id="打包过程"><a href="#打包过程" class="headerlink" title="打包过程"></a>打包过程</h3><ol>
@@ -626,20 +619,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu问题及解决方案汇总</title>
-    <url>/2023/03/07/Ubuntu-problems-and-solutions/</url>
-    <content><![CDATA[<hr>
-<p><a href="https://www.cnblogs.com/nuochengze/p/12642282.html">解决Ubuntu连不上网络，输入ifconfig只显示本地环回问题</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>常用数据库的异同</title>
     <url>/2023/03/14/SQL/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
@@ -652,6 +631,20 @@
       <tags>
         <tag>MySQL</tag>
         <tag>PostgreSQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu问题及解决方案汇总</title>
+    <url>/2023/03/07/Ubuntu-problems-and-solutions/</url>
+    <content><![CDATA[<hr>
+<p><a href="https://www.cnblogs.com/nuochengze/p/12642282.html">解决Ubuntu连不上网络，输入ifconfig只显示本地环回问题</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -735,21 +728,6 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
         <tag>Assembly</tag>
         <tag>DOSBox</tag>
         <tag>MASM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows相关问题及解决方案</title>
-    <url>/2023/03/16/Windows-related-issues-and-solutions/</url>
-    <content><![CDATA[<p><a href="https://www.win7zhijia.cn/win10jc/win10_51994.html">删除文件提示你需要来自system的权限才能对此文件夹进行更改(win7,win10,win11通用)</a></p>
-<p><a href="https://www.disktool.cn/jiaocheng/extend-c-drive.html">在Windows中扩大C盘的4种方法</a></p>
-<p><a href="https://blog.csdn.net/lingbomanbu628/article/details/121198056">在文件夹页面检索文件的内容</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>
@@ -889,6 +867,21 @@ Save后，改个主机字（有自己特色的），再点Apply
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows相关问题及解决方案</title>
+    <url>/2023/03/16/Windows-related-issues-and-solutions/</url>
+    <content><![CDATA[<p><a href="https://www.win7zhijia.cn/win10jc/win10_51994.html">删除文件提示你需要来自system的权限才能对此文件夹进行更改(win7,win10,win11通用)</a></p>
+<p><a href="https://www.disktool.cn/jiaocheng/extend-c-drive.html">在Windows中扩大C盘的4种方法</a></p>
+<p><a href="https://blog.csdn.net/lingbomanbu628/article/details/121198056">在文件夹页面检索文件的内容</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>
