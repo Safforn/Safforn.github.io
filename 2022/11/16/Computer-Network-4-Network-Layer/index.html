@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<!-- 全站黑白(公祭日专用)
+<style>
+  html {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+} </style>
+-->
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="博客,思考" />
+       
+      <meta name="description" content="人生小站" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>计算机网络4 网络层 |  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Computer-Network-4-Network-Layer"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  计算机网络4 网络层
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/11/16/Computer-Network-4-Network-Layer/" class="article-date">
+  <time datetime="2022-11-16T13:11:07.000Z" itemprop="datePublished">2022-11-16</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+  </div>
+ 
+       
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">5.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">21 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+      
+    </div>
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="第4章-网络层：数据层面-Network-Layer-Data-Plane"><a href="#第4章-网络层：数据层面-Network-Layer-Data-Plane" class="headerlink" title="第4章 网络层：数据层面(Network Layer: Data Plane)"></a>第4章 网络层：数据层面(Network Layer: Data Plane)</h1><h2 id="4-1-网络层概述"><a href="#4-1-网络层概述" class="headerlink" title="4.1 网络层概述"></a>4.1 网络层概述</h2><ul>
+<li>网络层核心功能：<ul>
+<li><strong>转发</strong>：将 分组 从路由器的输入端口 转移到 合适的输出端口</li>
+<li><strong>路由</strong>：确定 分组 从源 到 目的 经过的路径</li>
+</ul>
+</li>
+<li>网络层连接 和 传输层连接 对比：<ul>
+<li><strong>网络层</strong>连接：两个主机之间（路径上的路由器等网络设备参与其中）</li>
+<li><strong>传输层</strong>连接：两个应用进程之间（对中间网络设备透明）</li>
+</ul>
+</li>
+<li>网络服务模型：<ul>
+<li><strong>无连接服务</strong>：<br>  **数据包网络(datagram network)**提供无连接服务<br>  不事先为分组的传输确定传输路径，每个分组独立确定路径，不同分组可能传输路径不同</li>
+<li><strong>连接服务</strong>：<br>  <strong>虚电路网络(virtual-circuit network)</strong> 提供连接服务<br>  首先为分组传输确定 从源主机到目的主机的路径(建立连接)<br>  然后 沿该路径传输 系列分组<br>  系列分组传输路径相同<br>  传输结束后拆除连接</li>
+</ul>
+</li>
+<li>网络层的设计思路<br>① 网络层向上只提供<strong>简单</strong>灵活的，<strong>无连接的</strong>、尽最大努力交付的<strong>数据报服务</strong><br>② 网络在发送分组时不需要先建立连接<br>③ 每一个分组独立发送，与其前后的分组无关<br>④ 网络层不保证分组传送服务的质量，由主机中的传输层负责可靠的通信</li>
+<li>在查找转发表时，采用<strong>最长前缀匹配</strong>原则 （与分组目的地址匹配前缀最长的输出端口）</li>
+</ul>
+<p><strong>路由(router)</strong></p>
+<ul>
+<li><strong>路由器 主要工作：转发分组</strong><br>把从某个输入端口收到的分组，按照分组要去的目的地，从当前路由器的某个合适的输出端口转发给下一跳路由器</li>
+<li><strong>转发</strong> 和 <strong>路由选择</strong> 区别<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/9e3cdc668ec349d382acb1508d6a6e15.png">https://img-blog.csdnimg.cn/9e3cdc668ec349d382acb1508d6a6e15.png</a> &#x3D;450x)</li>
+<li>路由器 输入端口<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/98bb98b5fdca4aad84ac9979b81e764f.png">https://img-blog.csdnimg.cn/98bb98b5fdca4aad84ac9979b81e764f.png</a> &#x3D;600x)</li>
+<li>路由器 输出端口<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2619555df2814e33b78e7f2d70a40ffd.png">https://img-blog.csdnimg.cn/2619555df2814e33b78e7f2d70a40ffd.png</a> &#x3D;600x)</li>
+<li>常用的三种交换结构：<ul>
+<li><strong>通过存储器</strong><br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/5f2873fd53f24e27b56c741fae89f178.png">https://img-blog.csdnimg.cn/5f2873fd53f24e27b56c741fae89f178.png</a> &#x3D;500x)</li>
+<li><strong>通过总线</strong><br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/62e68003bda140618715356fede6700b.png">https://img-blog.csdnimg.cn/62e68003bda140618715356fede6700b.png</a> &#x3D;500x)</li>
+<li><strong>通过互联网络 &#x2F; 纵横交换结构</strong><br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/5b4eeca4d2424886b4da1dcea85f97be.png">https://img-blog.csdnimg.cn/5b4eeca4d2424886b4da1dcea85f97be.png</a> &#x3D;500x)</li>
+</ul>
+</li>
+<li><strong>输出端口队列</strong><br>排队时延 和 丢失 的原因：输出端口缓冲区溢出</li>
+<li><strong>输入端口队列</strong><br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2cf30112690145329fdb0381b93774cd.png">https://img-blog.csdnimg.cn/2cf30112690145329fdb0381b93774cd.png</a> &#x3D;400x)</li>
+</ul>
+<h2 id="4-2-IP-Internet-Protocol"><a href="#4-2-IP-Internet-Protocol" class="headerlink" title="4.2 IP: Internet Protocol"></a>4.2 IP: Internet Protocol</h2><ul>
+<li>网络层功能<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/142d30ec84f04e3681d0a837a56bf423.png">https://img-blog.csdnimg.cn/142d30ec84f04e3681d0a837a56bf423.png</a> &#x3D;500x)</li>
+<li><strong>与 IP 协议配套使⽤</strong>的还有三个协议<ol>
+<li><strong>地址解析协议 ARP</strong> (Address Resolution Protocol)</li>
+<li><strong>网际控制报⽂协议 ICMP</strong> (Internet Control Message Protocol)</li>
+<li><strong>网际组管理协议 IGMP</strong> (Internet Group Management Protocol)</li>
+</ol>
+</li>
+</ul>
+<h3 id="分类-IP-地址"><a href="#分类-IP-地址" class="headerlink" title="分类 IP 地址"></a>分类 IP 地址</h3><ul>
+<li>分类<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/162f173cb3dc442e8f403d22cf962760.png">https://img-blog.csdnimg.cn/162f173cb3dc442e8f403d22cf962760.png</a> &#x3D;700x)<ul>
+<li>各类IP地址的 指派范围<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/69c1d9c831854612ab9a73de3df14acd.png">https://img-blog.csdnimg.cn/69c1d9c831854612ab9a73de3df14acd.png</a> &#x3D;600x)</li>
+<li>一般不使用的特殊IP地址<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/3ac5eef7986f4d689c66851c8d24674a.png">https://img-blog.csdnimg.cn/3ac5eef7986f4d689c66851c8d24674a.png</a> &#x3D;500x)</li>
+<li>私有 IP 地址<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/d74c9214f2c0482eb1c287a3504e3fd5.png">https://img-blog.csdnimg.cn/d74c9214f2c0482eb1c287a3504e3fd5.png</a> &#x3D;300x)</li>
+<li>分类的 IP地址 的优缺点<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/d040e261b8304731aa9e50fc6f7f1159.png">https://img-blog.csdnimg.cn/d040e261b8304731aa9e50fc6f7f1159.png</a> &#x3D;300x)</li>
+</ul>
+</li>
+</ul>
+<h3 id="子网划分"><a href="#子网划分" class="headerlink" title="子网划分"></a>子网划分</h3><p>参考资料：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ricklz/p/16519710.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91">划分子网</a></p>
+<ul>
+<li>为什么要划分子网<br>  ① 节省IP资源，提高IP地址利用率<br>  ② 给每一个物理网络分配一个网络号会导致路由表变大，网络性能变差<br>  ③ 减少广播的负面影响</li>
+<li>划分思路：从主机号借⽤n位作为⼦⽹号 subnet-id</li>
+<li>子网划分方法：<ul>
+<li>定长子网：固定长度子网，所划分的所有⼦⽹的⼦⽹掩码都是相同的</li>
+<li>变长子网：长度变化的子网</li>
+</ul>
+</li>
+<li>示例<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/95c966c4dc6249d1a84183d0e28f5d78.png">https://img-blog.csdnimg.cn/95c966c4dc6249d1a84183d0e28f5d78.png</a> &#x3D;600x)<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/f2295db6738e418f916f40ce14474d01.png">https://img-blog.csdnimg.cn/f2295db6738e418f916f40ce14474d01.png</a> &#x3D;600x)</li>
+<li><strong>子网掩码 (Subnet Mask &#x2F; Netmask)</strong><ul>
+<li><strong>32位地址</strong>，与IP地址结合使用的技术<br>  A类地址默认的子网掩码是 <code>255.0.0.0</code><br>  B类地址默认的子网掩码是 <code>255.255.0.0</code><br>  C类地址默认的子网掩码是 <code>255.255.255.0</code></li>
+<li>作用：<br>  ① 屏蔽IP地址的一部分以区别网络标识和主机标识，并说明该IP地址是在局域网上，还是在远程网上<br>  ② 将一个大的IP网络划分为若干小的子网络</li>
+<li>规则：<br>  将 32位的子网掩码 和 IP地址的二进制形式 进行“按位<strong>与</strong>”操作，得到的是 网络地址<br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/c2752111f2914ef3b722c1cb005b053b.png">https://img-blog.csdnimg.cn/c2752111f2914ef3b722c1cb005b053b.png</a> &#x3D;400x)</li>
+<li>具体使用：<br>  ① 路由器在和相邻路由器交换路由信息时，必须把自己所在网络（或子网）的子网掩码告诉相邻路由器<br>  ② 路由器的路由表中的每一个项目，要同时给出 目的网络地址 和 该网络的子网掩码<br>  ③ 一个路由器连接在两个子网上就拥有两个网络地址和两个子网掩码<br>  ④ 不同的子网掩码可能得出相同的网络地址，但其意义不同（子网的划分方式不同）</li>
+</ul>
+</li>
+</ul>
+<h3 id="无分类域间路由-CIDR"><a href="#无分类域间路由-CIDR" class="headerlink" title="无分类域间路由 CIDR"></a>无分类域间路由 CIDR</h3><ul>
+<li><strong>CIDR</strong> (Classless Inter-Domain Routing)：<strong>无分类域间路由选择</strong>，消除了传统的 A 类、B 类和 C 类地址以及划分子网的概念，可以更加有效地分配 IPv4 的地址空间，但是不能解决IP地址枯竭的问题</li>
+<li><strong>网络前缀</strong><ul>
+<li>示例：<code>128.14.35.7/20</code>中，斜线后的20代表 IP地址的前20位是网络前缀</li>
+</ul>
+</li>
+<li><strong>地址块</strong><ul>
+<li><strong>网络前缀都相同的所有连续的 IP 地址</strong>组成一个CIDR地址块</li>
+<li>示例：<code>128.14.35.7/20</code> 所在的地址块为 <code>128.14.32.0/20</code>；<br>  <code>128.14.35.7/24</code> 所在的地址块为 <code>128.14.35.0/24</code></li>
+</ul>
+</li>
+<li><strong>地址掩码 &#x2F; 子网掩码</strong><ul>
+<li>网络前缀的数值 &#x3D; 子网掩码中前面1的个数</li>
+<li>示例：<code>128.14.35.7/20</code>的地址掩码为<code>255.255.240.0</code></li>
+</ul>
+</li>
+<li>构造超网<br>每个CIDR地址块中的地址数一定是2 的整数次幂，此在文献中有时称 CIDR 编址为“构造超网”。</li>
+<li>特殊的CIDR地址块<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/a6af542f3855410998791e4e7c1a5df4.png">https://img-blog.csdnimg.cn/a6af542f3855410998791e4e7c1a5df4.png</a> &#x3D;500x)</li>
+<li><strong>路由聚合</strong><br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/b02f054c6d9b43c6ad3da3475c512508.png">https://img-blog.csdnimg.cn/b02f054c6d9b43c6ad3da3475c512508.png</a> &#x3D;500x)</li>
+</ul>
+<h3 id="IP-地址的特点"><a href="#IP-地址的特点" class="headerlink" title="IP 地址的特点"></a>IP 地址的特点</h3><ul>
+<li>①  <strong>每个 IP 地址都由网络前缀和主机号两部分组成</strong><br>IP 地址是一种<strong>分等级</strong>的地址结构<br>方便了IP 地址的分配和管理<br>实现路由聚合，减小了转发表所占的存储空间，以及查找转发表的时间</li>
+<li>② <strong>IP 地址是标志一台主机（或路由器）和一条链路的接口</strong><br>当<strong>一台主机同时连接到两个网络上</strong>时，该主机就必须同时<strong>具有两个相应的IP地址</strong>，<strong>其网络号必须是不同的</strong>。这种主机称为多归属主机<br>一个<strong>路由器</strong>至少应当连接到两个网络，因此至少应当有<strong>两个不同的 IP 地址</strong></li>
+<li>③ <strong>转发器或交换机连接起来的若干个局域网仍为一个网络</strong><br>一个网络（或子网）是指具有<strong>相同网络前缀</strong>的主机的集合<br>转发器或交换机连接起来的若干个局域网都具有同样的网络号，它们仍为一个网络<br><strong>具有不同网络号的局域网必须使用路由器进行互连</strong></li>
+<li>④ <strong>在 IP 地址中，所有分配到网络前缀的网络都是平等的</strong><br>互联网同等对待每一个IP地址，不管是范围很小的局域网，还是可能覆盖很大地理范围的广域网</li>
+</ul>
+<h2 id="4-3-地址解析协议-ARP"><a href="#4-3-地址解析协议-ARP" class="headerlink" title="4.3 地址解析协议 ARP"></a>4.3 地址解析协议 ARP</h2><ul>
+<li><p>作用：<strong>从 IP地址 解析出 MAC地址</strong></p>
+</li>
+<li><p><strong>ARP 工作原理 - 同局域网</strong><br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/43b38c373b584da5969368a19b79e984.png">https://img-blog.csdnimg.cn/43b38c373b584da5969368a19b79e984.png</a> &#x3D;450x)</p>
+<ul>
+<li>ARP 查找IP地址对应MAC地址<br>  <strong>在本局域网中广播发送 ARP请求</strong>（路由器不转发ARP请求）<br>  <strong>ARP 请求</strong>：<code>[源MAC | 源IP | 目的MAC或0 | 目的IP]</code> （目的MAC未知时 填0）</li>
+</ul>
+</li>
+<li><p><strong>ARP 缓存</strong><br> 存放 IP地址 到 MAC地址的 映射表，映射表动态更新 (新增或删除)</p>
+<ul>
+<li>作用：<br> ① 存放最近获得的 IP 地址到 MAC 地址的绑定<br> ② 减少 ARP 广播的通信量<br> ③ 为进一步减少 ARP 通信量，主机A 在发送其ARP请求分组时，就将自己的 IP 地址到 MAC 地址的映射写入ARP请求分组<br> ④ 当主机 B 收到 A 的 ARP 请求分组时，就将主机A的IP地址及其对应的 MAC 地址映射写入主机 B 自己的ARP 高速缓存中。不必在发送 ARP 请求</li>
+</ul>
+</li>
+<li><p><strong>ARP 工作原理 - 跨局域网</strong></p>
+<ul>
+<li>情景：<br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/a3e6e6937d434d639b9e4d9c24322c31.png">https://img-blog.csdnimg.cn/a3e6e6937d434d639b9e4d9c24322c31.png</a> &#x3D;500x)</li>
+<li>上图数据包传输流程：<br>  ① A主机 向本局域网广播发送 ARP请求，询问路由器 R<del>1</del> 的 MAC地址<br>  ② 路由器 R<del>1</del> 回复 A主机 R<del>1</del>的MAC地址<br>  ③ 主机A把 IP数据包 外层封上MAC(R<del>1</del>)，将该帧发给 路由器R<del>1</del><br>  ④ 路由器 R<del>1</del> 解包MAC帧，根据数据包的头部目的IP，向其他局域网广播发送 ARP请求，询问 B主机 的 MAC地址<br>  ⑤ B主机 回复R<del>1</del> B主机的MAC地址<br>  ⑥ 路由器R<del>1</del> 把 IP数据包 外层封上MAC(B)，将该帧发给 B主机</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-4-IP-数据包格式"><a href="#4-4-IP-数据包格式" class="headerlink" title="4.4 IP 数据包格式"></a>4.4 IP 数据包格式</h2><p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/70484f94ce7048c8afe9059b3bf5a9bd.png">https://img-blog.csdnimg.cn/70484f94ce7048c8afe9059b3bf5a9bd.png</a> &#x3D;500x)</p>
+<ul>
+<li>IP数据包头部结构<ul>
+<li><strong>版本</strong>：4位，IP协议的版本，IPv4 对应 4</li>
+<li><strong>首部长度</strong>：4位，首部长度的1表示<strong>1个单位4字节</strong>，即首部4位最大能表示的长度是15单位，<strong>首部最大60字节</strong>。</li>
+<li><strong>总长度</strong>：16位，首部和数据的总长度，单位字节</li>
+<li><strong>标识</strong> (<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lipx9527/p/14260381.html">identification</a>)：16位，通过计数器产生，可以唯一标识一个IP报文，同一IP报文的不同分片中标识相同</li>
+<li><strong>标志</strong> (flag)：3位，与分片相关<br>  第1位是 MF，MF&#x3D;1 后面还有分片，MF&#x3D;0 最后一片<br>  第2位是 DF，DF&#x3D;1 不允许分片，DF&#x3D;0 允许分片</li>
+<li><strong>片偏移</strong>：13位，当前分组的首单位在原数据包的位置，片偏移以8个字节为偏移单位</li>
+<li>**生存时间 (TTL)**：8位，指示数据报在网络中可通过的路由器数的最大值</li>
+<li><strong>协议</strong>：8位，表示数据包的数据使用什么协议（TCP &#x2F; UDP &#x2F; ICMP &#x2F; IGMP &#x2F; OSPF）</li>
+<li><strong>首部校验和</strong>：16位，<strong>只检验数据包首部</strong>，不校验数据，每经过一个路由器就校验一次，错误则丢弃</li>
+<li><strong>源地址 和 目的地址</strong>：32位</li>
+</ul>
+</li>
+</ul>
+<h3 id="路由转发示例"><a href="#路由转发示例" class="headerlink" title="路由转发示例"></a>路由转发示例</h3><ul>
+<li>主机跨局域网转发<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/06725092f2904afbbbccda423de60dd7.png">https://img-blog.csdnimg.cn/06725092f2904afbbbccda423de60dd7.png</a> &#x3D;500x)</li>
+<li>路由器转发<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/d5e6c641281c4b9d80b36d682c04a921.png">https://img-blog.csdnimg.cn/d5e6c641281c4b9d80b36d682c04a921.png</a> &#x3D;500x)</li>
+</ul>
+<h3 id="路由器转发算法"><a href="#路由器转发算法" class="headerlink" title="路由器转发算法"></a>路由器转发算法</h3><p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/7568185387db478ab7680f33fc503056.png">https://img-blog.csdnimg.cn/7568185387db478ab7680f33fc503056.png</a> &#x3D;500x)</p>
+<h3 id="使用二叉树查找转发表"><a href="#使用二叉树查找转发表" class="headerlink" title="使用二叉树查找转发表"></a>使用二叉树查找转发表</h3><ul>
+<li><strong>二叉树构造规则</strong><br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2e6e4377fb914bee98ca845352c6ba76.png">https://img-blog.csdnimg.cn/2e6e4377fb914bee98ca845352c6ba76.png</a> &#x3D;500x)</li>
+<li><strong>二叉树使用规则</strong><br>  ① 使用目的IP的网络地址 在二叉树中匹配<ul>
+<li>② if 找到一个叶节点，将目的IP与该叶结点对应的子网掩码 按位AND计算，看网络前缀是否匹配<br>  ③ 若匹配，转发分组到吓一跳路由器；否则丢弃该分组</li>
+<li>② if 在二叉树中找不到匹配的叶节点，则 检查是否存在默认路由<br>  ③ 若存在则转发分组到指定默认路由器，否则丢弃分组</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-5-IP分配技术"><a href="#4-5-IP分配技术" class="headerlink" title="4.5 IP分配技术"></a>4.5 IP分配技术</h2><h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><p>参考资料：	<a target="_blank" rel="noopener" href="https://blog.csdn.net/nb_zsy/article/details/106616483">DHCP相关报文 - CSDN</a></p>
+<ul>
+<li>DHCP (Dynamic Host Configuration Protocol) <strong>动态主机配置协议</strong>，基于<strong>UDP</strong>工作，DHCP <strong>Server</strong> Port &#x3D; <strong>67</strong>，DHCP <strong>Client</strong> Port &#x3D; <strong>68</strong></li>
+<li>作用：允许主机在加入网络时从网络服务器动态获取自己的IP地址<ul>
+<li>可以续租使用的IP地址上</li>
+<li>允许重用地址(只有保持地址时连接&#x2F;“on”)</li>
+<li>支持移动用户谁想加入网络(更简短)</li>
+</ul>
+</li>
+<li><strong>向DHCP申请IP地址</strong>流程：<br>  〇 Host 广播 - DHCP discover (可选操作)<br>  〇 DHCP服务器 回复 - DHCP offer (可选操作)<br>  ① Host 请求IP地址 - DHCP request<br>  ② DHCP服务器 发送地址 - DHCP ack<br>  其中 DHCP返回 IP地址，第一跳路由器IP地址，DNS服务器名和IP地址，子网掩码<br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/359db4d1884340bbb4a823f6deebbf68.png">https://img-blog.csdnimg.cn/359db4d1884340bbb4a823f6deebbf68.png</a> &#x3D;450x)</li>
+<li>运行示例：<br>① 联网笔记本需要获取自己的IP地址，第一跳路由器地址和DNS服务器：采用DHCP协议<br>② 客户端 DHCP 请求被封装在UDP段中,封装在IP数据报中，封装在以太网的帧中<br>③ 以太网帧在局域网范围内广播 (dest: 255.255.255.255) ，被运行DHCP服务的路由器收<br>到<br>④ 在DHCP路由器处，以太网帧解封装成IP，IP解封装成UDP，解封装成DHCP<br>⑤ DHCP服务器生成DHCP ACK，包含客户端的IP地址，第一跳路由器的IP地址和DNS域名服务器的IP地址<br>⑥ DHCP服务器封装的报文所在的帧转发到客户端，在客户端逐层解封装成DHCP报文<br>⑦ 客户端知道它自己的IP地址，DNS服务器的名字和IP地址，第一跳路由器的IP地址</li>
+</ul>
+<h3 id="NAT-网络地址转换"><a href="#NAT-网络地址转换" class="headerlink" title="NAT 网络地址转换"></a>NAT 网络地址转换</h3><ul>
+<li><strong>NAT (Network Address Translation)</strong> 在专用网连接到互联网的路由器上安装NAT软件，NAT路由器至少有一个有效的外部全球 IP 地址，所有使用本地地址的主机在和外界通信时，都要在NAT路由器上将其本地地址转换成全球 IP 地址，才能和互联网连接</li>
+<li>图示：<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/c480fad9b3d548829a9520310a99d11a.png">https://img-blog.csdnimg.cn/c480fad9b3d548829a9520310a99d11a.png</a> &#x3D;450x)</li>
+<li>NAT 特点：<ul>
+<li>本地网络只有一个有效IP地址，不要从ISP分配一块地址（省钱）</li>
+<li>可以在局域网改变设备地址的情况下无需通知外界</li>
+<li>改变ISP分配的地址时，不需要改变内部设备地址</li>
+<li>局域网内部设备没有明确的地址，对外不可见（安全）</li>
+</ul>
+</li>
+<li><strong>NAT 转换</strong>：<ul>
+<li>向外传输数据包时，替换<code>&lt;源IP地址, 端口号&gt;</code> 为 <code>&lt;NAT_IP, 新端口号&gt;</code>，目的IP地址和端口号不变</li>
+<li>NAT路由器 在NAT转换表中 记录每个替换对</li>
+<li>向内传输数据包时，替换<code>&lt;目的IP, 端口&gt;</code> 采用存储在NAT表中的mapping表项<code>&lt;源IP, 端口&gt;</code><br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/bd06da8182554eefb8f7f2f443aee4d5.png">https://img-blog.csdnimg.cn/bd06da8182554eefb8f7f2f443aee4d5.png</a> &#x3D;500x)</li>
+</ul>
+</li>
+<li>NAT穿越问题<ul>
+<li>问题：客户段需要连接NAT路由器下的服务器，整网对外只要有一个地址</li>
+<li>方法1：静态配置NAT：转发进来的分组对服务器特定端口连接请求</li>
+<li>方法2：允许NAT下的主机可以获知网络的公共IP，列举存在的端口映射，在租期内增删端口映射</li>
+<li>方法3：在NAT外建立中继连接，外部客户端和NAT内部的服务器在中继处桥接</li>
+</ul>
+</li>
+</ul>
+<h3 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h3><ul>
+<li><p><strong>ICMP (Internet Control Message Protocol)</strong> <strong>网际控制报文协议</strong>：允许主机或路由器<strong>报告差错</strong>情况和<strong>提供有关异常情况</strong>的报告</p>
+</li>
+<li><p>ICMP报文种类（2种）：<strong>差错报告报文，询问报文</strong></p>
+</li>
+<li><p>ICMP询问报文：<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/3f243a6bee6c4908bded3152e16ada69.png">https://img-blog.csdnimg.cn/3f243a6bee6c4908bded3152e16ada69.png</a> &#x3D;500x)</p>
+</li>
+<li><p>不应发送ICMP差错报文的情况<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/b930f787f1424d2a934f09b0324b4b7d.png">https://img-blog.csdnimg.cn/b930f787f1424d2a934f09b0324b4b7d.png</a> &#x3D;500x)</p>
+</li>
+<li><p>应用举例：</p>
+<ul>
+<li><strong>ping 命令</strong>：用来测试两个主机之间的连通性<br>  使用 <strong>ICMP回送请求和回送回答报文</strong><br>  <strong>应用层直接使用网络层ICMP</strong>，没有通过传输层</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-6-IPv6"><a href="#4-6-IPv6" class="headerlink" title="4.6 IPv6"></a>4.6 IPv6</h2><ul>
+<li>IPv6：Internet Protocol version 6，用于解决 IPv4 地址枯竭问题</li>
+<li>主要变化：<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/9c6720676b0845a9b66d5bab298d0cf9.png">https://img-blog.csdnimg.cn/9c6720676b0845a9b66d5bab298d0cf9.png</a> &#x3D;400x)<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/370562b059b14291a25c19ec25204e68.png">https://img-blog.csdnimg.cn/370562b059b14291a25c19ec25204e68.png</a> &#x3D;400x)</li>
+</ul>
+<h3 id="IPv6数据报结构"><a href="#IPv6数据报结构" class="headerlink" title="IPv6数据报结构"></a>IPv6数据报结构</h3><ul>
+<li><p><strong>基本首部</strong>：固定 40字节</p>
+<ul>
+<li><strong>版本</strong>：4位，IPv6对应6</li>
+<li><strong>流标号</strong>：路由相同的数据报具有相同的流标号</li>
+<li><strong>有效载荷长度</strong>：16位，拓展首部+数据部分的长度和，最大值为64KB</li>
+<li><strong>跳数限制</strong>：8位，类似IPv4首部的TTL字段</li>
+<li><strong>源地址 &#x2F; 目的地址</strong>：128位<br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/19cead9cb7dd460ba2eeeff9dd10ad4d.png">https://img-blog.csdnimg.cn/19cead9cb7dd460ba2eeeff9dd10ad4d.png</a> &#x3D;350x)</li>
+</ul>
+</li>
+<li><p><strong>有效载荷</strong>：0-n个拓展首部 + 数据部分</p>
+<ul>
+<li>拓展首部类型：逐跳选项，路由选择，分片，鉴别，封装安全有效载荷，目的站选项</li>
+</ul>
+</li>
+<li><p><strong>IPv6三种基本类型</strong></p>
+<ul>
+<li><strong>单播</strong>：一对一</li>
+<li><strong>多播</strong>：一对多</li>
+<li><strong>任播</strong>：交付目标为一组计算机中最近的一个(路由算法计算距离)</li>
+</ul>
+</li>
+<li><p>新概念：<strong>节点、接口</strong><br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/8d1cee2611c141c7bbd986b998d6e6c2.png">https://img-blog.csdnimg.cn/8d1cee2611c141c7bbd986b998d6e6c2.png</a> &#x3D;400x)</p>
+</li>
+<li><p><strong>IPv6地址写法</strong>：</p>
+<ul>
+<li><strong>冒号十六进制 记法</strong>：16个十进制数→8个4位十六进制数<br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/25ae5ea748ab4e85b3ad82b44a50d281.png">https://img-blog.csdnimg.cn/25ae5ea748ab4e85b3ad82b44a50d281.png</a> &#x3D;400x)</li>
+<li><strong>零压缩</strong>：一对冒号代表一串0，<code>0:0:0:0...</code> → <code>::</code>，一个地址只能用一次</li>
+<li><strong>点分十进制记法的后缀</strong>：斜线表示法<br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/bb4c161295c448468adbd6685e4ac310.png">https://img-blog.csdnimg.cn/bb4c161295c448468adbd6685e4ac310.png</a> &#x3D;400x)</li>
+</ul>
+</li>
+</ul>
+<h3 id="IPv4-向-IPv6-过渡"><a href="#IPv4-向-IPv6-过渡" class="headerlink" title="IPv4 向 IPv6 过渡"></a>IPv4 向 IPv6 过渡</h3><ul>
+<li>方法：<strong>逐步演进，向后兼容</strong>（IPv6 系统必须能够接收和转发IPv4分组，并且能够为IPv4 分组选择路由）</li>
+<li>两种过渡策略：<ul>
+<li><p>① <strong>双协议栈</strong><br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/4474d5e128de43d196c42a906e5f32c9.png">https://img-blog.csdnimg.cn/4474d5e128de43d196c42a906e5f32c9.png</a> &#x3D;300x)</p>
+</li>
+<li><p>② <strong>隧道技术</strong><br>  ![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/f7bfb6e926e54ada83e0da861c0d9e8b.png">https://img-blog.csdnimg.cn/f7bfb6e926e54ada83e0da861c0d9e8b.png</a> &#x3D;400x)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ICMPv6"><a href="#ICMPv6" class="headerlink" title="ICMPv6"></a>ICMPv6</h3><p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2619db4566aa452dab1953b3ff3c19a2.png">https://img-blog.csdnimg.cn/2619db4566aa452dab1953b3ff3c19a2.png</a> &#x3D;500x)<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/30141f26115348cf9ae862139c72f21e.png">https://img-blog.csdnimg.cn/30141f26115348cf9ae862139c72f21e.png</a> &#x3D;480x)</p>
+<h2 id="END-练习"><a href="#END-练习" class="headerlink" title="END 练习"></a>END 练习</h2><ul>
+<li>[子网掩码计算练习] 已知 IP 地址是 141.14.72.24，子网掩码是255.255.192.0。试求网络地址。<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/3a5af6cf35f84deab6ecee3bac84cd26.png">https://img-blog.csdnimg.cn/3a5af6cf35f84deab6ecee3bac84cd26.png</a> &#x3D;500x)</li>
+</ul>
+<h1 id="第5章-网络层：控制层面-Network-Layer-Control-Plane"><a href="#第5章-网络层：控制层面-Network-Layer-Control-Plane" class="headerlink" title="第5章 网络层：控制层面(Network Layer: Control Plane)"></a>第5章 网络层：控制层面(Network Layer: Control Plane)</h1><h2 id="5-1-路由选择算法"><a href="#5-1-路由选择算法" class="headerlink" title="5.1 路由选择算法"></a>5.1 路由选择算法</h2><h3 id="LS-link-state-链路状态算法"><a href="#LS-link-state-链路状态算法" class="headerlink" title="LS: link state 链路状态算法"></a>LS: link state 链路状态算法</h3><ul>
+<li>符号标记：<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/9afcbbf1a90244fb8ccdf997bd9d4851.png">https://img-blog.csdnimg.cn/9afcbbf1a90244fb8ccdf997bd9d4851.png</a> &#x3D;400x)</li>
+<li>LS算法<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/2d577be58803483aa18ce9f6a7d920af.png">https://img-blog.csdnimg.cn/2d577be58803483aa18ce9f6a7d920af.png</a> &#x3D;450x)<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/5bb9b45ce2a64585a0bcdac07f2c6dae.png">https://img-blog.csdnimg.cn/5bb9b45ce2a64585a0bcdac07f2c6dae.png</a> &#x3D;500x)</li>
+</ul>
+<h3 id="Flooding-洪泛算法"><a href="#Flooding-洪泛算法" class="headerlink" title="Flooding 洪泛算法"></a>Flooding 洪泛算法</h3><ul>
+<li>基本思想：把收到的每一个包，向除了该包到来的线路外的所有输出线路发送</li>
+<li>缺点：产生大量重复包</li>
+<li>解决方案：每个包头部包含计数器，每经过一站计数器减1，减至0丢弃该包<br>记录包经过的路径</li>
+</ul>
+<h3 id="DV-distance-vector-算法"><a href="#DV-distance-vector-算法" class="headerlink" title="DV: distance vector 算法"></a>DV: distance vector 算法</h3><ul>
+<li>基本思想：与相邻路由器交换路由表，更新自己的路由表</li>
+<li>示例：<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/fff070a5e3184499a9e5721ca9d2601d.png">https://img-blog.csdnimg.cn/fff070a5e3184499a9e5721ca9d2601d.png</a> &#x3D;600x)</li>
+<li>保证路由表正确性的方法（6种）<ul>
+<li><strong>最大度量值</strong>：针对不同协议有不同的最大度量值；当路由表中的度量值达到最大度量值时，认为路由失效，并移除这条路由。</li>
+<li><strong>水平分割</strong>：一个方向发来的路由信息，不能再放入该方向的路由更新包中 并且 又发回那个方向</li>
+<li><strong>路由中毒</strong>：网络中出现故障时，通知邻居节点该网段不可用</li>
+<li><strong>毒性反转 &#x2F; 反向下毒</strong>：被通知该网段不可用的邻居节点也会通知原节点，自己也不能使用该网段</li>
+<li><strong>保持时间</strong>：不可用信息还会再保持一定时间才会被删除</li>
+<li><strong>触发更新</strong>：当路由器<strong>发现某个网段出现故障</strong>时，<strong>立刻发送路由更新包</strong>来通知邻居，而不用等到下一次发送路由更新包的时间</li>
+</ul>
+</li>
+<li>6种方法联合应用示例：<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/5c1a9ba566484b81a200388bf9281f5a.png">https://img-blog.csdnimg.cn/5c1a9ba566484b81a200388bf9281f5a.png</a> &#x3D;500x)<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/134575accf374597bfa7c4905fc3d6f3.png">https://img-blog.csdnimg.cn/134575accf374597bfa7c4905fc3d6f3.png</a> &#x3D;500x)<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/64659be5a65e43deb1f941ce283bc5a2.png">https://img-blog.csdnimg.cn/64659be5a65e43deb1f941ce283bc5a2.png</a> &#x3D;500x)<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/5c513d2ba552445b8ee931d72b41b988.png">https://img-blog.csdnimg.cn/5c513d2ba552445b8ee931d72b41b988.png</a> &#x3D;500x)<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/805ad863cbd249ee936748604de8c3c5.png">https://img-blog.csdnimg.cn/805ad863cbd249ee936748604de8c3c5.png</a> &#x3D;500x)</li>
+</ul>
+<h3 id="层次路由算法"><a href="#层次路由算法" class="headerlink" title="层次路由算法"></a>层次路由算法</h3><h2 id="5-2-内部网关协议-RIP"><a href="#5-2-内部网关协议-RIP" class="headerlink" title="5.2 内部网关协议 RIP"></a>5.2 内部网关协议 RIP</h2><p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/4e8f4167099d4bb3842fa9a1745d299a.png">https://img-blog.csdnimg.cn/4e8f4167099d4bb3842fa9a1745d299a.png</a> &#x3D;400x)</p>
+<h3 id="RIP-路由信息协议"><a href="#RIP-路由信息协议" class="headerlink" title="RIP 路由信息协议"></a>RIP 路由信息协议</h3><h3 id="OSPF-开放最短路径协议"><a href="#OSPF-开放最短路径协议" class="headerlink" title="OSPF 开放最短路径协议"></a>OSPF 开放最短路径协议</h3><ul>
+<li>使用<strong>Dijkstra的最短路径算法</strong>，采用<strong>分布式的LS协议</strong></li>
+<li><strong>主要特点</strong>：<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/ebbbaf4a41224935892486666ca64a55.png">https://img-blog.csdnimg.cn/ebbbaf4a41224935892486666ca64a55.png</a> &#x3D;450x)</li>
+<li>高级特性：<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/09ade092c74c498582c6c9458d60bc06.png">https://img-blog.csdnimg.cn/09ade092c74c498582c6c9458d60bc06.png</a> &#x3D;450x)</li>
+</ul>
+<h3 id="BGP-协议"><a href="#BGP-协议" class="headerlink" title="BGP 协议"></a>BGP 协议</h3><ul>
+<li><strong>主要特点</strong><br><img src="https://img-blog.csdnimg.cn/cb140a091a1243189dfd0e21d0468759.png" alt="在这里插入图片描述"></li>
+<li>eBSP 和 iBGP连接<br><img src="https://img-blog.csdnimg.cn/b4df4d111b0548dda179483bd43289f1.png" alt="在这里插入图片描述"></li>
+</ul>
+<h2 id="END-练习-1"><a href="#END-练习-1" class="headerlink" title="END 练习"></a>END 练习</h2><ul>
+<li>考虑图中所示的网络。使用Dijkstra算法(LS Route)和一个类似于表5-1的表来说明你做的工作:<br>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/97475d2d5a214f3e96467d9df0dfe07c.png">https://img-blog.csdnimg.cn/97475d2d5a214f3e96467d9df0dfe07c.png</a> &#x3D;600x)![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/d90a63d4285646cd8766735149344bf7.png">https://img-blog.csdnimg.cn/d90a63d4285646cd8766735149344bf7.png</a> &#x3D;250x)<br>a. 计算出从 t 到所有网络节点的最短路径<br>b. 计算出从 u 到所有网络节点的最短路径<br>c. 计算出从 v 到所有网络节点的最短路径<br>d. 计算出从 w 到所有网络节点的最短路径<br>e. 计算出从 y 到所有网络节点的最短路径<br>f. 计算出从 z 到所有网络节点的最短路径</li>
+</ul>
+<p>答：解a，N&#x3D;tuvwxyz</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>N’</th>
+<th>D(t),p(t)</th>
+<th>D(u),p(u)</th>
+<th>D(v),p(v)</th>
+<th>D(w),p(w)</th>
+<th>D(x),p(x)</th>
+<th>D(y),p(y)</th>
+<th>D(z),p(z)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>t</td>
+<td></td>
+<td>2, t</td>
+<td>4, t</td>
+<td>∞</td>
+<td>∞</td>
+<td>7, t</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>2</td>
+<td>tu</td>
+<td></td>
+<td></td>
+<td>4, t</td>
+<td>5, u</td>
+<td>∞</td>
+<td>7, t</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>3</td>
+<td>tuv</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5, u</td>
+<td>7, v</td>
+<td>7, t</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>4</td>
+<td>tuvw</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>7, v</td>
+<td>7, t</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>5</td>
+<td>tuvwy</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>7, v</td>
+<td></td>
+<td>19, y</td>
+</tr>
+<tr>
+<td>6</td>
+<td>tuvwyx</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>15, y</td>
+</tr>
+<tr>
+<td>7</td>
+<td>tuvwyxz</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/c639f8b594b04a3e8df3c515dee9301d.png">https://img-blog.csdnimg.cn/c639f8b594b04a3e8df3c515dee9301d.png</a> &#x3D;400x)</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://safforn.github.io/2022/11/16/Computer-Network-4-Network-Layer/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Computer-Network/" rel="tag">Computer Network</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/11/16/Computer-Network-5-Link-Layer-and-LANs/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            计算机网络5 链路层
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/11/16/Computer-Network-3-Transport-Layer/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">计算机网络3 传输层</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "Mfj1ZnfVCAmY5dx71wOb68eU-gzGzoHsz",
+    app_key: "mzPI9zT9JlMSa66KB2mEaYzs",
+    path: window.location.pathname,
+    avatar: "mp",
+    placeholder: "来评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+
+  .v[data-class=v] .veditor {
+      background-image: url(https://s1.ax1x.com/2023/03/17/ppGUXXd.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
+      opacity: 0.75;
+  }
+
+</style>
+
+
+ 
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul> <!-- Copyrights -->
+      <li>
+        Copyrights &copy;
+        2020-2023
+        <i class="ri-heart-fill heart_icon"></i> Safforn
+      </li>
+    </ul>
+    <ul> <!-- Powered by -->
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>  <!-- cnzz统计 -->
+      <li>
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+    
+	  <ul> <!-- Website Runtime -->
+		  <li>
+        <span id="runtime_span"></span>
+        <script type="text/javascript">			
+          function show_runtime() {
+              window.setTimeout("show_runtime()", 1000);
+              StartTime = new Date("02/26/2023 08:07:08");
+              Y = new Date();
+              T = (Y.getTime() - StartTime.getTime());
+              M = 24 * 60 * 60 * 1000;
+              a = T / M;
+              A = Math.floor(a);
+              b = (a - A) * 24;
+              B = Math.floor(b);
+              c = (b - B) * 60;
+              C = Math.floor((b - B) * 60);
+              D = Math.floor((c - C) * 60);
+              runtime_span.innerHTML = "在猫猫的庇护下存在了: "+A+"天"+B+"小时"+C+"分"+D+"秒"}
+        show_runtime();
+      </script>
+      </li>
+	  </ul>
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt=""></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friendlink">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=22636878&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":170,"height":250,"hOffset":180,"vOffset":-100},"mobile":{"show":true,"scale":0.5},"log":false});</script></body>
+
+</html>
