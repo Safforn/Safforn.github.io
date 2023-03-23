@@ -26,7 +26,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>面试相关总结 |  </title>
+      <title>Java字符串拼接 |  </title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -68,7 +68,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Interview-related-content"
+  id="post-Java-Strings-Splicing-Tools-StringBuilder-StringBuffer - 副本"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -79,7 +79,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  面试相关总结
+  Java字符串拼接
 </h1>
  
 
@@ -87,12 +87,12 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/03/07/Interview-related-content/" class="article-date">
-  <time datetime="2023-03-07T12:21:00.000Z" itemprop="datePublished">2023-03-07</time>
+      <a href="/2023/03/23/Java-Strings-Splicing-Tools-StringBuilder-StringBuffer%20-%20%E5%89%AF%E6%9C%AC/" class="article-date">
+  <time datetime="2023-03-23T04:21:37.000Z" itemprop="datePublished">2023-03-23</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a>
   </div>
  
        
@@ -102,7 +102,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">20</span>
+            <span class="post-count">551</span>
         </span>
     </span>
 
@@ -111,7 +111,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
@@ -120,15 +120,34 @@
     </div>
     
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sihai12345/article/details/120387150">Java 资料汇总</a></p>
+  <h3 id="利用-拼接字符串"><a href="#利用-拼接字符串" class="headerlink" title="利用 + 拼接字符串"></a>利用 + 拼接字符串</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringSplicing</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">begin</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">            str += <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(end - begin);  <span class="comment">// 运行时间</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行花费时间：3703 ms</p>
+<p>分析：这种字符串拼接方式是创建一个新的字符串，然后将原来的字符串和将要拼接的字面量拼接起来赋给新的字符串。<br>这个过程中会不断创建新的字符串对象，所以会耗费大量时间，同时创建太多的新字符串会占用大量的内存，可能会导致方法区内存溢出。<br>如果是数据量较少的话可以使用该方法，数据量过多不建议使用。</p>
+<p>实际上，在代码中IDEA也会给出 <code>warning：String concatenation &#39;+=&#39; in loop</code>，并且推荐我们把字符串变量str改成 <code>StringBuilder</code>类型。</p>
+<h3 id="利用-StringBuilder-拼接字符串"><a href="#利用-StringBuilder-拼接字符串" class="headerlink" title="利用 StringBuilder 拼接字符串"></a>利用 StringBuilder 拼接字符串</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringSplicing</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">begin</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">str</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10000000</span>; i++) &#123;</span><br><span class="line">            str.append(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(end - begin);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行花费时间：80 ms</p>
+<p>分析：可以看出，在完成第1个示例百倍的字符串拼接任务，StringBuilder类花费的时间仍然大大缩短。<br>原因是，和 String 类不同，StringBuilder 和 StringBuffer类的对象能够被多次的修改，并且不产生新的未使用对象。</p>
+<p>StringBuilder 类在 Java 5 中被提出，它和 StringBuffer 之间的最大不同在于 StringBuilder 的方法不是线程安全的（不能同步访问）<br>而且， StringBuilder 相较于 StringBuffer 有速度优势，所以大多数情况下推荐使用 StringBuilder 类</p>
+<h3 id="利用-StringBuffer-拼接字符串"><a href="#利用-StringBuffer-拼接字符串" class="headerlink" title="利用 StringBuffer 拼接字符串"></a>利用 StringBuffer 拼接字符串</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringSplicing</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">begin</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="type">StringBuffer</span> <span class="variable">str</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10000000</span>; i++) &#123;</span><br><span class="line">            str.append(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(end - begin);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行花费时间：243 ms</p>
+<p>StringBuffer 与 StringBuilder类似，速度稍慢于后者；在应用程序要求线程安全的情况下，则必须使用 StringBuffer 类。</p>
+<hr>
+<p><strong>参考文章</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-stringbuffer.html">Java StringBuffer 和 StringBuilder 类 | 菜鸟教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30807677/article/details/98155146">Java 字符串拼接 StringBuilder 与 StringBuffer | CSDN转载</a></li>
+</ul>
 <hr>
  
       <!-- reward -->
@@ -194,12 +213,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://safforn.github.io/2023/03/07/Interview-related-content/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://safforn.github.io/2023/03/23/Java-Strings-Splicing-Tools-StringBuilder-StringBuffer%20-%20%E5%89%AF%E6%9C%AC/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/" rel="tag">String</a></li></ul>
 
     </footer>
   </div>
@@ -207,19 +226,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/03/10/Android-develop-introduction/" class="article-nav-link">
+      <a href="/2023/03/23/Java-ArrayList/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Android 开发入门
+            Java ArrayList集合
           
         </div>
       </a>
     
     
-      <a href="/2023/03/07/Front-end-tools/" class="article-nav-link">
+      <a href="/2023/03/17/%60problem/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">前端工具(框架)</div>
+        <div class="article-nav-title">Hexo博客现存问题及可能的解决方案</div>
       </a>
     
   </nav>

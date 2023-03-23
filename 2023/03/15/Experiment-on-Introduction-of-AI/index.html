@@ -102,7 +102,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.6k</span>
+            <span class="post-count">2.1k</span>
         </span>
     </span>
 
@@ -111,7 +111,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">7 分钟</span>
+            <span class="post-count">9 分钟</span>
         </span>
     </span>
 </div>
@@ -158,6 +158,22 @@
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63708623/article/details/129480238">python八数码问题 启发式搜索(Python实现)</a>包含三种启发函数（字符串距离、曼式距离、欧式距离）</li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/SZU_Kwong/article/details/105897291">用两种启发函数的A*算法解决八数码问题(C++实现)</a> 两种启发函数（移位计数、欧氏距离）</li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Big_xbc/article/details/116206930">人工智能-八数码问题-启发式搜索(C++实现)</a> 某校实验报告？？有流程图</li>
+</ol>
+<hr>
+<h3 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h3><p>问题描述：假设有一个旅行商人要拜访N个城市，他必须选择所要走的路径，路径的限制是每个城市只能拜访一次，而且最后要回到原来出发的城市。路径的选择目标是要求得的路径路程为所有路径之中的最小值。</p>
+<p>实验要求：参考遗传算法核心代码，以TSP问题为例实现遗传算法的求解程序。</p>
+<p>实验内容：<br>1、基于参考代码，运行程序，并画出程序的总体流程图。给出适应度函数的定义。城市数量设定为10个。</p>
+<p><strong>适应性函数的定义</strong>：<br>遗传算法中，一个个体(解)的好坏用适应度函数值来评价；<br>适应度函数值越大，解的质量越高；<br>适应度函数是进行自然选择的唯一标准，设计应结合求解问题本身的要求而定。</p>
+<p>2、基于某一个固定数量(10个)与位置的城市集合，修改种群数量、交叉概率、变异概率、迭代次数等参数，对比分析算法的特性与结果。</p>
+<p><strong>种群数量对结果的影响：</strong>种群数越多，效果越好(随机性较大，会出现种群数小但距离更短)<br>种群数200，最小距离133  种群数500，最小距离119  种群数1000，最小距离119</p>
+<p><strong>交叉率对结果的影响：</strong>交叉率不是越高越好（与变异率类似）<br>交叉率0.8，最小距离126  交叉率0.6，最小距离118  交叉率0.2，最小距离131 </p>
+<p><strong>变异率对结果的影响：</strong>变异率不是越高越好<br>迭代5000次, 变异率0.8,最优122；变异率0.5,最优118；变异率0.2, 最优122</p>
+<p><strong>迭代次数对结果的影响：</strong>迭代次数越多，效果越好<br>迭代1000次, 最小距离133  迭代2500次，最小距离123  迭代5000次，最小距离119</p>
+<hr>
+<p>相关文章：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136393730">通俗易懂地解释遗传算法 - 知乎</a></li>
+<li></li>
 </ol>
 <hr>
  
