@@ -20,6 +20,67 @@
       </tags>
   </entry>
   <entry>
+    <title>位运算与取模运算%</title>
+    <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
+    <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
+<ul>
+<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
+</ul>
+<hr>
+<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
+<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
+<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
+<li>应用：<ul>
+<li>清零：x&amp;0</li>
+<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
+<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
+<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
+<li>应用：<ul>
+<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
+<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
+<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
+<li>应用：<ul>
+<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
+<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
+<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
+</ul>
+<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
+<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
+</ul>
+<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
+<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
+</ul>
+<hr>
+<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
+<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
+<li>求绝对值： <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>bit Operation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android 开发入门</title>
     <url>/2023/03/10/Android-develop-introduction/</url>
     <content><![CDATA[<h2 id="各种布局"><a href="#各种布局" class="headerlink" title="各种布局"></a>各种布局</h2><ol start="0">
@@ -131,67 +192,6 @@
       </categories>
       <tags>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>位运算与取模运算%</title>
-    <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
-    <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
-<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
-<ul>
-<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
-</ul>
-<hr>
-<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
-<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
-<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
-<li>应用：<ul>
-<li>清零：x&amp;0</li>
-<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
-<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
-<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
-<li>应用：<ul>
-<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
-<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
-<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
-<li>应用：<ul>
-<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
-<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
-<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
-</ul>
-<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
-<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
-</ul>
-<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
-<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
-</ul>
-<hr>
-<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
-<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
-<li>求绝对值： <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
-<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>bit Operation</tag>
       </tags>
   </entry>
   <entry>
@@ -410,6 +410,172 @@
       </categories>
       <tags>
         <tag>CSAPP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络3 传输层</title>
+    <url>/2022/11/16/Computer-Network-3-Transport-Layer/</url>
+    <content><![CDATA[<h1 id="第3章-传输层-Transport-Layer"><a href="#第3章-传输层-Transport-Layer" class="headerlink" title="第3章 传输层(Transport Layer)"></a>第3章 传输层(Transport Layer)</h1><p><code>传输层</code> <strong>&#x3D;&#x3D;</strong> <code>运输层</code><br><code>套接字(Socket)</code> <strong>&#x3D;</strong> <code>IP地址</code> + <code>端口号(port)</code>，位于<strong>应用层</strong></p>
+<h2 id="3-1-传输层服务与协议"><a href="#3-1-传输层服务与协议" class="headerlink" title="3.1 传输层服务与协议"></a>3.1 传输层服务与协议</h2><ul>
+<li>运输层协议为运行在不同主机上的应用进程之间提供了<strong>逻辑通信</strong> (logic communication) 功能</li>
+<li>运输层协议是在<u>端系统</u>中实现。<u>发送端将从发送应用程序进程接收到的报文分段</u>(转换成运输层分组)，传递给网络层；<u>接收端将报文段重组成完整报文</u>，传递给应用层。</li>
+<li>关于 <strong>运输层 和 网络层 的关系</strong>：<br>1）网络层 负责在不同主机之间提供 逻辑通信 服务；<br>2）运输层 负责 通过网络层 进行不同主机的进程之间的 逻辑通信。</li>
+<li>两种主要的网络传输协议：TCP 和 UDP<br>1）TCP：可靠、有序传输、拥塞控制、流量控制、连接建立<br>2）UDP：不可靠、不保序传输、没有为尽力而为的IP服务添加更多的其它额外服务<br>3）都不提供的服务：延迟保证、带宽保证</li>
+</ul>
+<hr>
+<h2 id="3-2-复用-分用"><a href="#3-2-复用-分用" class="headerlink" title="3.2 复用 分用"></a>3.2 复用 分用</h2><ul>
+<li>**复用 &#x2F; 多路复用(multiplexing)**：<u>从源主机的不同套接字中收集数据块，并为每个数据块封装上首部信息(“传输头”)，进而生成报文段，然后将报文段传递到网络层</u>，就是 把多个数据流 (streams) 合并为一个数据流</li>
+<li>**分用 &#x2F; 多路分解(demultiplexing)**：<u>将运输层报文段中的数据交付到正确的套接字的工作</u>，就是 复用的逆过程，数据流被分离成单独的部分，相当于解码。具体操作为：接收端的运输层标识出报文段中的接受套接字，进而将报文段定向到该套接字</li>
+<li>多路复用和多路分解服务是所有计算机网络都需要的</li>
+</ul>
+<p>理解：你的的手机正在浏览网页，刷新电子邮件，同时连接到微信。所有这些连接都通过同一链路发送，这一过程为<u>复用</u>；手机接收到的数据包流将被分割并发送到相应的网络、电子邮件、微信程序，该过程为<u>分用</u></p>
+<h3 id="无连接的分用、复用-UDP"><a href="#无连接的分用、复用-UDP" class="headerlink" title="无连接的分用、复用(UDP)"></a>无连接的分用、复用(UDP)</h3><ul>
+<li>UDP Socket &#x3D; (dstIP, dstPort)<br><strong>UDP 套接字</strong> &#x3D; (<strong>目标IP地址</strong> + <strong>目标端口号</strong>)</li>
+<li><strong>发送方</strong>创建UDP套接字的数据报时，必须指定 <strong>目标IP地址</strong>、<strong>目标端口</strong>，而且包含<strong>源端口号</strong><br>（A send <u>b-ip, b-port, a-ip, a-port</u> to B，包含源端口号是为了 接受方B回发报文段给发送方A时，使用recvfrom()方法从发送方的UDP报文段中取源端口号的值，当然完整的返回地址为 源IP+源端口）</li>
+<li><strong>接收方</strong>接收UDP报文段时，<strong>检查段中的目的端口</strong>，<strong>将UDP报文段定向到 具有指定目标端口的套接字</strong></li>
+<li>不同源IP地址或源端口号的数据报，具有相同目标端口，发送到同一个目标IP地址，会定向到同一目标套接字<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/95cc2c4a0b844503810f60aa39fd6e65.png">https://img-blog.csdnimg.cn/95cc2c4a0b844503810f60aa39fd6e65.png</a> &#x3D;600x)</li>
+</ul>
+<h3 id="面向连接的分用、复用-TCP"><a href="#面向连接的分用、复用-TCP" class="headerlink" title="面向连接的分用、复用(TCP)"></a>面向连接的分用、复用(TCP)</h3><ul>
+<li>TCP socket &#x3D; (sourceIP, sourcePort, destIP, destPort)<br><strong>TCP 套接字</strong> &#x3D; (<strong>源IP地址</strong> + <strong>源端口号</strong> + <strong>目标IP地址</strong> + <strong>目标端口号</strong>)</li>
+<li>服务器主机支持许多并行的TCP套接字，<strong>每个套接字与 1 个进程&#x2F;线程相联系</strong>，且由四元组来标识套接字</li>
+<li>(与UDP不同) <u>两个不同源IP地址或源端口号的数据报，即使具有相同的目标端口和目标IP地址，也会定向到不同的套接字</u><br>（若TCP报文段中包含 初始创建TCP连接的请求，接收方服务器会创建新的套接字）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/a175ba3071e44ec486576df361ef1bf2.png">https://img-blog.csdnimg.cn/a175ba3071e44ec486576df361ef1bf2.png</a> &#x3D;600x)<br>参考上图3.5，主机A，Web服务器B，主机C的IP地址分别为A、B、C。主机C 与 服务器B 之间有两个HTTP会话连接，会话源端口号分别为7532、26145，目标端口号都为80，在服务器传输层 分用 至两个不同的套接字；主机A 与 服务器B 之间由一个HTTP会话连接，源端口号为26145，目标端口号为80，与主机A的其中一个会话源端口号相同，但在服务器传输层也会 分用 至两个套接字。（总结：每个套接字由其四元组标识；目标端口相同的数据被分用至不同的套接字）</li>
+</ul>
+<h3 id="持续-x2F-非持续HTTP连接-与-常见端口"><a href="#持续-x2F-非持续HTTP连接-与-常见端口" class="headerlink" title="持续&#x2F;非持续HTTP连接 与 常见端口"></a>持续&#x2F;非持续HTTP连接 与 常见端口</h3><ul>
+<li>持续HTTP：在整个连接持续期间，客户端与服务器之间 经由 同一个服务器套接字交换 HTTP报文</li>
+<li>非持续HTTP：对每一对请求&#x2F;响应都创建一个新的TCP连接和一个套接字并随后就关闭（这种套接字的频繁创建-关闭会严重影响服务器性能，即使可以通过操作系统技巧减轻影响）</li>
+<li><strong>常见端口</strong>：<br>Port 80：标准HTTP连接<br>Port 22：SSH 远程计算机而当路<br>Port 25：SMTP端口，邮件服务器使用的默认端口<br>Port 143：IMAP端口，接收电子邮件，类似与POP3<br>Port 443：标准HTTPS连接，安全<br><a href="https://www.ssl2buy.com/wiki/port-80-http-vs-port-443-https">端口对比：Port 80 (HTTP) vs. Port 443 (HTTPS)</a></li>
+</ul>
+<hr>
+<h2 id="3-3-无连接传输-UDP"><a href="#3-3-无连接传输-UDP" class="headerlink" title="3.3 无连接传输: UDP"></a>3.3 无连接传输: UDP</h2><ul>
+<li>UDP 协议 是 实现了端口的 IP协议，可以让数据包在送到某个IP地址的基础上，进而送到运行在某一端口的通信进程<br>UDP 协议是TCP 协议的简化版，出现于TCP之后<br>应用场景：直播等流媒体应用程序、域名系统DNS、NFS等</li>
+<li>UDP 协议的<strong>优点</strong>：<u>简单、快、高效(Efficient)、没有拥塞控制</u>；<strong>缺点</strong>：<u>传输不可靠、尽力而为(Best Effort)、UDP报文段可能会丢包、乱序</u></li>
+<li><strong>UDP 报文段(segment) &#x3D; [ 源端口号，目标端口号，长度，校验和，应用程序数据 ]</strong><br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/24d49240b961405ca5787d4ec99f771e.png">https://img-blog.csdnimg.cn/24d49240b961405ca5787d4ec99f771e.png</a> &#x3D;250x)<br><strong>length</strong>：<u>以 bytes 为单位的UDP报文段长度，包含传输头(UDP Segment Header)的长度 和 原始数据(Payload)长度</u>，其中 udpSegmentHeader &#x3D; sPort+dPort+Length+CheckSum &#x3D; 16 bits*4 &#x3D; 8 bytes)<br><strong>checksum</strong>：用于检测整个数据包是否损坏（包括整个UDP数据包，以及IP头部的源IP和目标IP等信息），没有改正能力，在IPv4中可以不使用checksum，即checksum为0</li>
+<li>检验和 checksum 的具体计算方式还没写, 可以先看书 ：）</li>
+</ul>
+<hr>
+<h2 id="3-4-可靠数据传输原理-rdt"><a href="#3-4-可靠数据传输原理-rdt" class="headerlink" title="3.4 可靠数据传输原理(rdt)"></a>3.4 可靠数据传输原理(rdt)</h2><ul>
+<li>背景：期望每次信息传输都是理想状态是不太可能的，而且 “Best Effort”的 IP协议不会修复，传输自己时还可能产生错误或丢失，所以需要可靠数据传输(Reliable Data Transfer)</li>
+</ul>
+<hr>
+<h3 id="rdt-1-0：经完全可靠信道的可靠数据传输"><a href="#rdt-1-0：经完全可靠信道的可靠数据传输" class="headerlink" title="rdt 1.0：经完全可靠信道的可靠数据传输"></a>rdt 1.0：经完全可靠信道的可靠数据传输</h3><p>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/2d26bd0af7de46dfbb1eb58e5d85c9fc.png">https://img-blog.csdnimg.cn/2d26bd0af7de46dfbb1eb58e5d85c9fc.png</a> &#x3D;420x)</p>
+<hr>
+<h3 id="rdt-2-0：发现并修复位差错"><a href="#rdt-2-0：发现并修复位差错" class="headerlink" title="rdt 2.0：发现并修复位差错"></a>rdt 2.0：发现并修复位差错</h3><p>引入3种功能：<br>    1. 通过 checksum 来校验错误<br>    2. 接收者 反馈接受 ACK 和 NAK信息<br>    3. 重传<br>    理解：传输层对应用层的数据进行打包处理时，新增checksum（校验和），从而接收端可以对其数据包进行检验，如果正确，返回ACK，发送者继续发送下一个数据包；如果不正确，返回NAK，发送者重传数据。</p>
+<ul>
+<li>rdt2.0 没有错误时的操作<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d5cf8c294ac049fd9cf878ceecbf8e37.png">https://img-blog.csdnimg.cn/d5cf8c294ac049fd9cf878ceecbf8e37.png</a> &#x3D;550x)</li>
+<li>rdt2.0 发生错误时的流程<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/b7c5d0f7f14d4c38ae99fb81c6ea2fb0.png">https://img-blog.csdnimg.cn/b7c5d0f7f14d4c38ae99fb81c6ea2fb0.png</a> &#x3D;600x)</li>
+</ul>
+<hr>
+<h3 id="rdt-2-1：数据包带序号"><a href="#rdt-2-1：数据包带序号" class="headerlink" title="rdt 2.1：数据包带序号"></a>rdt 2.1：数据包带序号</h3><ul>
+<li>背景：rdt2.0不能解决ACK和NAK出错的问题，重传可能会导致重复</li>
+<li><strong>解决</strong>：<br>  ① 发送方为每一个数据包添加 <strong>编号</strong>(seq)<br>  ② ACK &#x2F; NAK出错，发送方重传<br>  ③ 接收方丢弃重复的数据包<br>  ④ <strong>“stop and wait” 停等</strong>机制，发送方发送一个包，等待接收方回应</li>
+<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d58e985528844639aeaa4b31cbb05fc9.png">https://img-blog.csdnimg.cn/d58e985528844639aeaa4b31cbb05fc9.png</a> &#x3D;700x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/37207f40a6bd4f42999828b7573810f2.png">https://img-blog.csdnimg.cn/37207f40a6bd4f42999828b7573810f2.png</a> &#x3D;750x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/img_convert/e24ac0ff9649e468371040625179aaba.webp?x-oss-process=image/format,png">https://img-blog.csdnimg.cn/img_convert/e24ac0ff9649e468371040625179aaba.webp?x-oss-process=image/format,png</a> &#x3D;700x)</li>
+</ul>
+<h3 id="rdt-2-2：ACK取代NAK"><a href="#rdt-2-2：ACK取代NAK" class="headerlink" title="rdt 2.2：ACK取代NAK"></a>rdt 2.2：ACK取代NAK</h3><ul>
+<li>用 <strong>带序号的ACK</strong> 代替 ACK &#x2F; NAK，接收方接收ACK信号时检查ACK的序号</li>
+<li>机制<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/2a547ba52a1f4d15a009a9ff851fb393.png">https://img-blog.csdnimg.cn/2a547ba52a1f4d15a009a9ff851fb393.png</a> &#x3D;700x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/9f49bb550b4b4d3e95e5a64ef397ce1f.png">https://img-blog.csdnimg.cn/9f49bb550b4b4d3e95e5a64ef397ce1f.png</a> &#x3D;700x)</li>
+</ul>
+<h3 id="rdt-3-0：超时重传-治疗数据包丢失"><a href="#rdt-3-0：超时重传-治疗数据包丢失" class="headerlink" title="rdt 3.0：超时重传 治疗数据包丢失"></a>rdt 3.0：超时重传 治疗数据包丢失</h3><ul>
+<li>问题背景：数据包或ACK丢失，可能会导致重传和数据重复</li>
+<li>解决：<strong>超时重传</strong><br>发送端在设定时间内没有收到指定编号的ACK则重传<br>重传虽然会导致数据重复，但可以通过序列号解决</li>
+<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/e61f3b679814457eb1cc8afb17d2fbdc.png">https://img-blog.csdnimg.cn/e61f3b679814457eb1cc8afb17d2fbdc.png</a> &#x3D;700x)<br>![f3.0.1](<a href="https://img-blog.csdnimg.cn/ac2f28e9bb99482da4d0acee654a6767.png">https://img-blog.csdnimg.cn/ac2f28e9bb99482da4d0acee654a6767.png</a> &#x3D;700x)<br><img src="https://img-blog.csdnimg.cn/a35a79b156de4fc98f67b68d31f74725.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr>
+<h2 id="3-5-流水线技术-GoBackN-amp-Selective-Repeat"><a href="#3-5-流水线技术-GoBackN-amp-Selective-Repeat" class="headerlink" title="3.5 流水线技术(GoBackN &amp; Selective Repeat)"></a>3.5 流水线技术(GoBackN &amp; Selective Repeat)</h2><ul>
+<li>问题：1 Gbps link, 15ms 延迟, 8000bit 大小的包，将round-trip-time作为传播到那里和返回的时间（rtt，即两倍的end-to-end延时)，传输延时和信道利用率是多少？<br>答：$L$-包大小；$R$-传输速率。<br>$D_{trans}&#x3D;L&#x2F;R&#x3D;\frac{8000bits}{10^{9}bit&#x2F;s}&#x3D;8ms$<br>$U_{sender}&#x3D;\frac{L&#x2F;R}{RTT+L&#x2F;R}&#x3D;\frac{0.008}{15*2+0.008}&#x3D;0.027%$</li>
+<li><strong>流水线技术(Pipelining)<strong>：允许发送方在</strong>未得到对方确认</strong>的情况下<strong>一次发送多个包</strong></li>
+<li>条件：<br>① <strong>增加 包&#x2F;应答 的序号范围</strong><br>② <strong>发送方 设置缓存</strong>（未得到确认，可能需要重传 &#x3D;&#x3D;？&#x3D;&#x3D;）<br>③ <strong>接收方 设置缓存</strong>（上层用户取用数据的速率≠接收到的数据速率；接收的数据包可能乱序；可能需要重新排序后交付）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d33bc0ea55e24c5f90d14c8abe4447d4.png">https://img-blog.csdnimg.cn/d33bc0ea55e24c5f90d14c8abe4447d4.png</a> &#x3D;600x)<br><a href="https://www2.tkn.tu-berlin.de/teaching/rn/animations/gbn_sr/"><strong>Go-Back-N 与 Selective Repeat 过程动画演示</strong></a></li>
+</ul>
+<h3 id="Go-Back-N"><a href="#Go-Back-N" class="headerlink" title="Go-Back-N"></a>Go-Back-N</h3><ul>
+<li>核心：sender能够在收到确认之前发送多个分组，但receiver只能缓存一个符合要求的分组并回复确认<ul>
+<li><strong>发送方一次发送 N 个包</strong></li>
+<li><strong>接收方 只缓存并确认 按顺序正确到达的包</strong></li>
+<li>发送方设置计时器，<strong>超时(没收到回应)重传</strong></li>
+</ul>
+</li>
+<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/141038371226432eb82f13356dd72aab.png">https://img-blog.csdnimg.cn/141038371226432eb82f13356dd72aab.png</a> &#x3D;600x)</li>
+<li>缺点：<br>Go-Back-N在一定程度上避免了停等协议中信道利用率低下的问题，但在窗口N较大时，Go-Back-N需要重传的包较多，代价大</li>
+</ul>
+<h3 id="选择重传-Selective-Repeat"><a href="#选择重传-Selective-Repeat" class="headerlink" title="选择重传(Selective Repeat)"></a>选择重传(Selective Repeat)</h3><ul>
+<li>核心：<br>① <strong>接收方单独确认所有正确接受的包</strong>(不按顺序)<br>② 根据需要，将缓冲区中的包按顺序传给上层<br>③ 发送方仅发送 未收到ACK的包<br>④ 每个未确认的包都有计时器，超时重传</li>
+<li><strong>机制</strong>：<br><strong>Sender</strong>：<br>① 收到上层数据，如果 发送窗格的下一个序号可用，打包发送<br>② packet(n) 超时，重发n号包，计时器重置<br>③ 收到 ACK(n)，如果 n 是未确认的包中编号最小的，右移发送窗格<br><strong>Receiver</strong>：<br>① 收到 packet(n)后，回复 ACK(n)<br>② 如果编号顺序乱&#x2F;缺失，缓存并等待接受前面的包<br>③ 如果编号顺序正确，将包传给上层，移动 接收窗格<br>④ 重复的包直接丢弃<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/9a84cffaab7144e5b47d161c477d5e9f.png">https://img-blog.csdnimg.cn/9a84cffaab7144e5b47d161c477d5e9f.png</a> &#x3D;600x)</li>
+<li><strong>存在的问题</strong>：<ul>
+<li>设帧序号为0,1,2,3 重复使用但内容不同，窗格大小为3，传输过程如下图<br>  ![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/ece3d44fc32142d4b6debfee520e1393.png">https://img-blog.csdnimg.cn/ece3d44fc32142d4b6debfee520e1393.png</a> &#x3D;400x)</li>
+<li>当 receiver接受到 0,1,2号包之后，发送ACKs(0,1,2)，移动接收窗格到 [3,0,1] 等待接收packet(3,0,1)。<br>  如果 sender 没有在设定时间内接收到ACKs，会超时重传 packet(0,1,2)。<br>  当 receiver 接收到 sender 重发的 packet(0,1)时，会认为它们是新一轮序号的包，并将其缓存（正常应该直接丢弃的包），造成二义性</li>
+<li>解决：<br>  ① 发送窗格 &lt;&#x3D; 接受窗格<br>  ② <strong>发送窗格大小 &lt;&#x3D; $\frac{1}{2}*$序号数</strong>（n比特编码，发送窗格长度最大为$2^{n-1}$）</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-6-面向连接传输-TCP"><a href="#3-6-面向连接传输-TCP" class="headerlink" title="3.6 面向连接传输: TCP"></a>3.6 面向连接传输: TCP</h2><ul>
+<li><p><strong>面向连接</strong>：只有在确认通信对端存在时才会发送数据，从而可以控制通信流量的浪费</p>
+</li>
+<li><p><strong>TCP 报文段结构</strong>：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/89a1a4328a0c4d318e498b1d6a689e00.png">https://img-blog.csdnimg.cn/89a1a4328a0c4d318e498b1d6a689e00.png</a> &#x3D;500x)</p>
+<ul>
+<li><strong>源端口号 &#x2F; 目的端口号</strong>：16 bits</li>
+<li>**序号(sequence number)**：32 bits，段数据中第一个字节的在整个字节流中“编号”，用来标明位置</li>
+<li>**确认号(acknowledgements)**：32 bits，期望从对方收到的下一个字节的序号</li>
+</ul>
+</li>
+<li><p><strong>具体应用</strong>：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/69f75d2998b3474e8ccdb893185322d0.png">https://img-blog.csdnimg.cn/69f75d2998b3474e8ccdb893185322d0.png</a> &#x3D;550x)</p>
+</li>
+<li><p><a href="https://blog.csdn.net/wgl307293845/article/details/122403761">超时时长的设置</a><br>$DevRTT &#x3D; (1-\beta)<em>DevRTT + \beta</em>|SampleRTT-EstimatedRTT|$</p>
+<p>  $Timeout &#x3D; EstimatedRTT + 4 * DevRTT$</p>
+<p>  其中 $RTT$为 round-trip-time 往返时间；$DevRTT$为 RTT偏差值(safety margin)；</p>
+</li>
+</ul>
+<p>$SampleRTT$为 报文段的样本RTT； $EstimatedRTT$为TCP对下一个数据往返值进行的估计</p>
+<h3 id="TCP可靠数据传输"><a href="#TCP可靠数据传输" class="headerlink" title="TCP可靠数据传输"></a>TCP可靠数据传输</h3><ul>
+<li><p>实现：</p>
+<ul>
+<li><strong>收到上层应用层传来的数据</strong><br>  ① 将数据划分为多个数据段，并编号Seq_num<br>  ② 编号Seq_num是该段中第一个数据字节在整个字节流的位置<br>  ③ 没开始前设置计时器，超时周期为 刚计算出得TimeOutInterval</li>
+<li><strong>超时</strong><br>  重传导致超时的段，重启计时器</li>
+<li><strong>之前未确认过的段被确认了</strong><br>  ① 标记它被确认了<br>  ② 设置计时器，继续传没被确认的段</li>
+</ul>
+</li>
+<li><p>TCP 重传方案<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/f3c22bece2964deba7d6b10df47862e3.png">https://img-blog.csdnimg.cn/f3c22bece2964deba7d6b10df47862e3.png</a> &#x3D;600x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/4dba3bd0b4694a2f94ac6ce24bad8095.png">https://img-blog.csdnimg.cn/4dba3bd0b4694a2f94ac6ce24bad8095.png</a> &#x3D;450x)</p>
+</li>
+<li><p><strong>快速重传</strong><br>通过 <strong>重复的ACK</strong> 来检测报文段丢失：发送方通常连续发送大量报文段，如果报文段丢失，发送方一般会收到多个重复的ACK<br><strong>如果发送方收到同一数据的3个重复ACK，重传对方需要的数据段</strong>（第一个ACK正常，后面三个为重复ACK）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/3d3aab1eff184a189046a73ece95abfd.png">https://img-blog.csdnimg.cn/3d3aab1eff184a189046a73ece95abfd.png</a> &#x3D;600x)</p>
+</li>
+</ul>
+<h2 id="3-7-流量控制-flow-control"><a href="#3-7-流量控制-flow-control" class="headerlink" title="3.7 流量控制(flow control)"></a>3.7 流量控制(flow control)</h2><ul>
+<li>背景：应用层从传输层socket中提取数据，然而往往数据不会提的这么快，这时候要是 sender 还一直发数据就会挤满 接收端的缓存（RcvBuffer），挤满后传输的数据就只能作废。</li>
+</ul>
+<hr>
+<h2 id="END-练习"><a href="#END-练习" class="headerlink" title="END 练习"></a>END 练习</h2><ul>
+<li><p><strong>问题：考虑一个可靠的数据传输（rdt）协议，通过一个有比特错误的信道（数据包被破坏但没有丢失）。解释检测错误并恢复的过程</strong>。</p>
+<blockquote>
+<p>Q：Consider a reliable data transfer (rdt) protocol over a channel with bit errors (packets are corrupted but not lost). Explain the procedure to detect and recover from errors.</p>
+</blockquote>
+<p>  答：① 从数据包头部解析出校验和 checksum，② 通过数据包及头部计算新的校验和，③ 如果两者不匹配，则说明包错误，④ 接收方回应NAK(rdt2.1) 或 回应带有错误编号的ACK(rdt2.2&#x2F;rdt3.0)</p>
+</li>
+<li><p>(往年考题) <strong>rdt2.1相关问题</strong> (书 P191 第三章习题 P6)：<br><strong>考虑我们改正协议rdt2.1的动机。试说明如图3-57所示的接收方与如 图3-11 所示的发送方运行时，接收方可能会引起发送方和接收方进人死锁状态，即双方都在等待不可能发生的事件。</strong></p>
+<blockquote>
+<p>P6. Consider our motivation for correcting protocol rdt2.1 . Show that the receiver, shown in<br>Figure 3.57 , when operating with the sender shown in Figure 3.11 , can lead the sender and<br>receiver to enter into a deadlock state, where each is waiting for an event that will never occur.<br>![Figure 3.11](<a href="https://img-blog.csdnimg.cn/f48e7b617d0d442dac3605e877090c57.png">https://img-blog.csdnimg.cn/f48e7b617d0d442dac3605e877090c57.png</a> &#x3D;600x)<br>![Figure 3.57](<a href="https://img-blog.csdnimg.cn/1396c7f1a8ac4937a1719666015fc363.png">https://img-blog.csdnimg.cn/1396c7f1a8ac4937a1719666015fc363.png</a> &#x3D;600x)</p>
+</blockquote>
+<p>  参考答案：<!-- Edge_Explorer PDF Page: Page of Recver-208; Sender-157 --></p>
+</li>
+</ul>
+<p>假设发送方(图3-11)处于“等待来自上层的调用1”状态时，而接收方(图3-57)处于“等待来自下层的1”，<br>发送方发送1号数据包，并转换到“等待ACK或NAK 1”状态，等待ACK或NAK。<br>现在假设接收方正确地接受了1号数据包，发送了ACK，然后转换到“等待来自下层的0”状态，等待0号数据包。<br>但是，<strong>若ACK消息损坏</strong>，rdt2.1发送方接收到损坏的ACK，条件rdt_rcv(rcvpkt)&amp;&amp;(corrupt(rcvpkt)为 True，<br>发送方会执行udt_send(sndpkt)，重新发送1号数据包，而接收方在等待0号，has_seq1(rcvpkt)为 True,<br>在没接收到0号数据包时会始终返回NAK消息，而发送方处于当前状态时接收到NAK会始终发送1号数据包。<br>因此，发送方处于“等待ACK或NAK 1”状态，始终接收NAK并发送1号数据包，<br>接收方处于“等待来自下层的0”状态，始终接受1号数据包并丢弃，返回NAK，从而陷入死锁状态。</p>
+<ul>
+<li><p>Go-Back-N 理解练习<br><strong>Go-back-N 接收方收到了packets 1,2,3,5，下面说法正确的是：</strong><br>A) 回复 ACKs 1,2,3,5<br>B) 发送 packets 1,2,3,5 给应用层<br>C) 不应该向应用层发送包，因为缺失了部分数据(4)<br>D) 应该丢弃 packet 5 √</p>
+</li>
+<li><p>TCP快速重传练习<br>  <strong>TCP sender 窗格大小为5，待发送包共10个，sender发送pkt(1,2,3,4,5)。当sender收到下列情况的ACKs时会执行什么操作？<br>  ① 收到 ACK(1,2,3,4,5)<br>  ② 收到 ACK(1,3)<br>  ③ <font style="background:yellow">收到 4次 ACK1</font></strong><br>  答：① 正常发 pkt(6,7,8,9,10)；② <u>发 pkt(6,7,8)，等待pkt(4)是否超时</u>（收到ACK3说明pkt2肯定收到，发送方窗格移动到[45678]，pkt45已发，只需要发送pkt678即可）；③ <u>重发pkt(2)，正常发pkt(6)</u>（本题ACK n的序号与现实传输不同，表示对n号包的确认，而不是需要sender的pkt-n；第一次ACK1表示收到了pkt-1，pkt-2传输时丢失，后三次ACK1分别来自receiver接收到pkt-3,4,5时的反馈，因为没收到pkt-2，只能回复确认pkt-1收到了；收到ACK1，sender窗格移动到[23456]，可以正常发pkt-6）</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>参考资料</strong>：<ol>
+<li><a href="https://juejin.cn/user/2067532033034599/posts">网络协议：传输层概述</a></li>
+<li><a href=""></a></li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习</category>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>Computer Network</tag>
       </tags>
   </entry>
   <entry>
@@ -801,169 +967,34 @@
       </tags>
   </entry>
   <entry>
-    <title>计算机网络3 传输层</title>
-    <url>/2022/11/16/Computer-Network-3-Transport-Layer/</url>
-    <content><![CDATA[<h1 id="第3章-传输层-Transport-Layer"><a href="#第3章-传输层-Transport-Layer" class="headerlink" title="第3章 传输层(Transport Layer)"></a>第3章 传输层(Transport Layer)</h1><p><code>传输层</code> <strong>&#x3D;&#x3D;</strong> <code>运输层</code><br><code>套接字(Socket)</code> <strong>&#x3D;</strong> <code>IP地址</code> + <code>端口号(port)</code>，位于<strong>应用层</strong></p>
-<h2 id="3-1-传输层服务与协议"><a href="#3-1-传输层服务与协议" class="headerlink" title="3.1 传输层服务与协议"></a>3.1 传输层服务与协议</h2><ul>
-<li>运输层协议为运行在不同主机上的应用进程之间提供了<strong>逻辑通信</strong> (logic communication) 功能</li>
-<li>运输层协议是在<u>端系统</u>中实现。<u>发送端将从发送应用程序进程接收到的报文分段</u>(转换成运输层分组)，传递给网络层；<u>接收端将报文段重组成完整报文</u>，传递给应用层。</li>
-<li>关于 <strong>运输层 和 网络层 的关系</strong>：<br>1）网络层 负责在不同主机之间提供 逻辑通信 服务；<br>2）运输层 负责 通过网络层 进行不同主机的进程之间的 逻辑通信。</li>
-<li>两种主要的网络传输协议：TCP 和 UDP<br>1）TCP：可靠、有序传输、拥塞控制、流量控制、连接建立<br>2）UDP：不可靠、不保序传输、没有为尽力而为的IP服务添加更多的其它额外服务<br>3）都不提供的服务：延迟保证、带宽保证</li>
-</ul>
+    <title>Dev C++注释中文乱码问题及解决方法</title>
+    <url>/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/</url>
+    <content><![CDATA[<h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
+
 <hr>
-<h2 id="3-2-复用-分用"><a href="#3-2-复用-分用" class="headerlink" title="3.2 复用 分用"></a>3.2 复用 分用</h2><ul>
-<li>**复用 &#x2F; 多路复用(multiplexing)**：<u>从源主机的不同套接字中收集数据块，并为每个数据块封装上首部信息(“传输头”)，进而生成报文段，然后将报文段传递到网络层</u>，就是 把多个数据流 (streams) 合并为一个数据流</li>
-<li>**分用 &#x2F; 多路分解(demultiplexing)**：<u>将运输层报文段中的数据交付到正确的套接字的工作</u>，就是 复用的逆过程，数据流被分离成单独的部分，相当于解码。具体操作为：接收端的运输层标识出报文段中的接受套接字，进而将报文段定向到该套接字</li>
-<li>多路复用和多路分解服务是所有计算机网络都需要的</li>
-</ul>
-<p>理解：你的的手机正在浏览网页，刷新电子邮件，同时连接到微信。所有这些连接都通过同一链路发送，这一过程为<u>复用</u>；手机接收到的数据包流将被分割并发送到相应的网络、电子邮件、微信程序，该过程为<u>分用</u></p>
-<h3 id="无连接的分用、复用-UDP"><a href="#无连接的分用、复用-UDP" class="headerlink" title="无连接的分用、复用(UDP)"></a>无连接的分用、复用(UDP)</h3><ul>
-<li>UDP Socket &#x3D; (dstIP, dstPort)<br><strong>UDP 套接字</strong> &#x3D; (<strong>目标IP地址</strong> + <strong>目标端口号</strong>)</li>
-<li><strong>发送方</strong>创建UDP套接字的数据报时，必须指定 <strong>目标IP地址</strong>、<strong>目标端口</strong>，而且包含<strong>源端口号</strong><br>（A send <u>b-ip, b-port, a-ip, a-port</u> to B，包含源端口号是为了 接受方B回发报文段给发送方A时，使用recvfrom()方法从发送方的UDP报文段中取源端口号的值，当然完整的返回地址为 源IP+源端口）</li>
-<li><strong>接收方</strong>接收UDP报文段时，<strong>检查段中的目的端口</strong>，<strong>将UDP报文段定向到 具有指定目标端口的套接字</strong></li>
-<li>不同源IP地址或源端口号的数据报，具有相同目标端口，发送到同一个目标IP地址，会定向到同一目标套接字<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/95cc2c4a0b844503810f60aa39fd6e65.png">https://img-blog.csdnimg.cn/95cc2c4a0b844503810f60aa39fd6e65.png</a> &#x3D;600x)</li>
-</ul>
-<h3 id="面向连接的分用、复用-TCP"><a href="#面向连接的分用、复用-TCP" class="headerlink" title="面向连接的分用、复用(TCP)"></a>面向连接的分用、复用(TCP)</h3><ul>
-<li>TCP socket &#x3D; (sourceIP, sourcePort, destIP, destPort)<br><strong>TCP 套接字</strong> &#x3D; (<strong>源IP地址</strong> + <strong>源端口号</strong> + <strong>目标IP地址</strong> + <strong>目标端口号</strong>)</li>
-<li>服务器主机支持许多并行的TCP套接字，<strong>每个套接字与 1 个进程&#x2F;线程相联系</strong>，且由四元组来标识套接字</li>
-<li>(与UDP不同) <u>两个不同源IP地址或源端口号的数据报，即使具有相同的目标端口和目标IP地址，也会定向到不同的套接字</u><br>（若TCP报文段中包含 初始创建TCP连接的请求，接收方服务器会创建新的套接字）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/a175ba3071e44ec486576df361ef1bf2.png">https://img-blog.csdnimg.cn/a175ba3071e44ec486576df361ef1bf2.png</a> &#x3D;600x)<br>参考上图3.5，主机A，Web服务器B，主机C的IP地址分别为A、B、C。主机C 与 服务器B 之间有两个HTTP会话连接，会话源端口号分别为7532、26145，目标端口号都为80，在服务器传输层 分用 至两个不同的套接字；主机A 与 服务器B 之间由一个HTTP会话连接，源端口号为26145，目标端口号为80，与主机A的其中一个会话源端口号相同，但在服务器传输层也会 分用 至两个套接字。（总结：每个套接字由其四元组标识；目标端口相同的数据被分用至不同的套接字）</li>
-</ul>
-<h3 id="持续-x2F-非持续HTTP连接-与-常见端口"><a href="#持续-x2F-非持续HTTP连接-与-常见端口" class="headerlink" title="持续&#x2F;非持续HTTP连接 与 常见端口"></a>持续&#x2F;非持续HTTP连接 与 常见端口</h3><ul>
-<li>持续HTTP：在整个连接持续期间，客户端与服务器之间 经由 同一个服务器套接字交换 HTTP报文</li>
-<li>非持续HTTP：对每一对请求&#x2F;响应都创建一个新的TCP连接和一个套接字并随后就关闭（这种套接字的频繁创建-关闭会严重影响服务器性能，即使可以通过操作系统技巧减轻影响）</li>
-<li><strong>常见端口</strong>：<br>Port 80：标准HTTP连接<br>Port 22：SSH 远程计算机而当路<br>Port 25：SMTP端口，邮件服务器使用的默认端口<br>Port 143：IMAP端口，接收电子邮件，类似与POP3<br>Port 443：标准HTTPS连接，安全<br><a href="https://www.ssl2buy.com/wiki/port-80-http-vs-port-443-https">端口对比：Port 80 (HTTP) vs. Port 443 (HTTPS)</a></li>
-</ul>
-<hr>
-<h2 id="3-3-无连接传输-UDP"><a href="#3-3-无连接传输-UDP" class="headerlink" title="3.3 无连接传输: UDP"></a>3.3 无连接传输: UDP</h2><ul>
-<li>UDP 协议 是 实现了端口的 IP协议，可以让数据包在送到某个IP地址的基础上，进而送到运行在某一端口的通信进程<br>UDP 协议是TCP 协议的简化版，出现于TCP之后<br>应用场景：直播等流媒体应用程序、域名系统DNS、NFS等</li>
-<li>UDP 协议的<strong>优点</strong>：<u>简单、快、高效(Efficient)、没有拥塞控制</u>；<strong>缺点</strong>：<u>传输不可靠、尽力而为(Best Effort)、UDP报文段可能会丢包、乱序</u></li>
-<li><strong>UDP 报文段(segment) &#x3D; [ 源端口号，目标端口号，长度，校验和，应用程序数据 ]</strong><br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/24d49240b961405ca5787d4ec99f771e.png">https://img-blog.csdnimg.cn/24d49240b961405ca5787d4ec99f771e.png</a> &#x3D;250x)<br><strong>length</strong>：<u>以 bytes 为单位的UDP报文段长度，包含传输头(UDP Segment Header)的长度 和 原始数据(Payload)长度</u>，其中 udpSegmentHeader &#x3D; sPort+dPort+Length+CheckSum &#x3D; 16 bits*4 &#x3D; 8 bytes)<br><strong>checksum</strong>：用于检测整个数据包是否损坏（包括整个UDP数据包，以及IP头部的源IP和目标IP等信息），没有改正能力，在IPv4中可以不使用checksum，即checksum为0</li>
-<li>检验和 checksum 的具体计算方式还没写, 可以先看书 ：）</li>
-</ul>
-<hr>
-<h2 id="3-4-可靠数据传输原理-rdt"><a href="#3-4-可靠数据传输原理-rdt" class="headerlink" title="3.4 可靠数据传输原理(rdt)"></a>3.4 可靠数据传输原理(rdt)</h2><ul>
-<li>背景：期望每次信息传输都是理想状态是不太可能的，而且 “Best Effort”的 IP协议不会修复，传输自己时还可能产生错误或丢失，所以需要可靠数据传输(Reliable Data Transfer)</li>
-</ul>
-<hr>
-<h3 id="rdt-1-0：经完全可靠信道的可靠数据传输"><a href="#rdt-1-0：经完全可靠信道的可靠数据传输" class="headerlink" title="rdt 1.0：经完全可靠信道的可靠数据传输"></a>rdt 1.0：经完全可靠信道的可靠数据传输</h3><p>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/2d26bd0af7de46dfbb1eb58e5d85c9fc.png">https://img-blog.csdnimg.cn/2d26bd0af7de46dfbb1eb58e5d85c9fc.png</a> &#x3D;420x)</p>
-<hr>
-<h3 id="rdt-2-0：发现并修复位差错"><a href="#rdt-2-0：发现并修复位差错" class="headerlink" title="rdt 2.0：发现并修复位差错"></a>rdt 2.0：发现并修复位差错</h3><p>引入3种功能：<br>    1. 通过 checksum 来校验错误<br>    2. 接收者 反馈接受 ACK 和 NAK信息<br>    3. 重传<br>    理解：传输层对应用层的数据进行打包处理时，新增checksum（校验和），从而接收端可以对其数据包进行检验，如果正确，返回ACK，发送者继续发送下一个数据包；如果不正确，返回NAK，发送者重传数据。</p>
-<ul>
-<li>rdt2.0 没有错误时的操作<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d5cf8c294ac049fd9cf878ceecbf8e37.png">https://img-blog.csdnimg.cn/d5cf8c294ac049fd9cf878ceecbf8e37.png</a> &#x3D;550x)</li>
-<li>rdt2.0 发生错误时的流程<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/b7c5d0f7f14d4c38ae99fb81c6ea2fb0.png">https://img-blog.csdnimg.cn/b7c5d0f7f14d4c38ae99fb81c6ea2fb0.png</a> &#x3D;600x)</li>
-</ul>
-<hr>
-<h3 id="rdt-2-1：数据包带序号"><a href="#rdt-2-1：数据包带序号" class="headerlink" title="rdt 2.1：数据包带序号"></a>rdt 2.1：数据包带序号</h3><ul>
-<li>背景：rdt2.0不能解决ACK和NAK出错的问题，重传可能会导致重复</li>
-<li><strong>解决</strong>：<br>  ① 发送方为每一个数据包添加 <strong>编号</strong>(seq)<br>  ② ACK &#x2F; NAK出错，发送方重传<br>  ③ 接收方丢弃重复的数据包<br>  ④ <strong>“stop and wait” 停等</strong>机制，发送方发送一个包，等待接收方回应</li>
-<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d58e985528844639aeaa4b31cbb05fc9.png">https://img-blog.csdnimg.cn/d58e985528844639aeaa4b31cbb05fc9.png</a> &#x3D;700x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/37207f40a6bd4f42999828b7573810f2.png">https://img-blog.csdnimg.cn/37207f40a6bd4f42999828b7573810f2.png</a> &#x3D;750x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/img_convert/e24ac0ff9649e468371040625179aaba.webp?x-oss-process=image/format,png">https://img-blog.csdnimg.cn/img_convert/e24ac0ff9649e468371040625179aaba.webp?x-oss-process=image/format,png</a> &#x3D;700x)</li>
-</ul>
-<h3 id="rdt-2-2：ACK取代NAK"><a href="#rdt-2-2：ACK取代NAK" class="headerlink" title="rdt 2.2：ACK取代NAK"></a>rdt 2.2：ACK取代NAK</h3><ul>
-<li>用 <strong>带序号的ACK</strong> 代替 ACK &#x2F; NAK，接收方接收ACK信号时检查ACK的序号</li>
-<li>机制<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/2a547ba52a1f4d15a009a9ff851fb393.png">https://img-blog.csdnimg.cn/2a547ba52a1f4d15a009a9ff851fb393.png</a> &#x3D;700x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/9f49bb550b4b4d3e95e5a64ef397ce1f.png">https://img-blog.csdnimg.cn/9f49bb550b4b4d3e95e5a64ef397ce1f.png</a> &#x3D;700x)</li>
-</ul>
-<h3 id="rdt-3-0：超时重传-治疗数据包丢失"><a href="#rdt-3-0：超时重传-治疗数据包丢失" class="headerlink" title="rdt 3.0：超时重传 治疗数据包丢失"></a>rdt 3.0：超时重传 治疗数据包丢失</h3><ul>
-<li>问题背景：数据包或ACK丢失，可能会导致重传和数据重复</li>
-<li>解决：<strong>超时重传</strong><br>发送端在设定时间内没有收到指定编号的ACK则重传<br>重传虽然会导致数据重复，但可以通过序列号解决</li>
-<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/e61f3b679814457eb1cc8afb17d2fbdc.png">https://img-blog.csdnimg.cn/e61f3b679814457eb1cc8afb17d2fbdc.png</a> &#x3D;700x)<br>![f3.0.1](<a href="https://img-blog.csdnimg.cn/ac2f28e9bb99482da4d0acee654a6767.png">https://img-blog.csdnimg.cn/ac2f28e9bb99482da4d0acee654a6767.png</a> &#x3D;700x)<br><img src="https://img-blog.csdnimg.cn/a35a79b156de4fc98f67b68d31f74725.png" alt="在这里插入图片描述"></li>
-</ul>
-<hr>
-<h2 id="3-5-流水线技术-GoBackN-amp-Selective-Repeat"><a href="#3-5-流水线技术-GoBackN-amp-Selective-Repeat" class="headerlink" title="3.5 流水线技术(GoBackN &amp; Selective Repeat)"></a>3.5 流水线技术(GoBackN &amp; Selective Repeat)</h2><ul>
-<li>问题：1 Gbps link, 15ms 延迟, 8000bit 大小的包，将round-trip-time作为传播到那里和返回的时间（rtt，即两倍的end-to-end延时)，传输延时和信道利用率是多少？<br>答：$L$-包大小；$R$-传输速率。<br>$D_{trans}&#x3D;L&#x2F;R&#x3D;\frac{8000bits}{10^{9}bit&#x2F;s}&#x3D;8ms$<br>$U_{sender}&#x3D;\frac{L&#x2F;R}{RTT+L&#x2F;R}&#x3D;\frac{0.008}{15*2+0.008}&#x3D;0.027%$</li>
-<li><strong>流水线技术(Pipelining)<strong>：允许发送方在</strong>未得到对方确认</strong>的情况下<strong>一次发送多个包</strong></li>
-<li>条件：<br>① <strong>增加 包&#x2F;应答 的序号范围</strong><br>② <strong>发送方 设置缓存</strong>（未得到确认，可能需要重传 &#x3D;&#x3D;？&#x3D;&#x3D;）<br>③ <strong>接收方 设置缓存</strong>（上层用户取用数据的速率≠接收到的数据速率；接收的数据包可能乱序；可能需要重新排序后交付）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d33bc0ea55e24c5f90d14c8abe4447d4.png">https://img-blog.csdnimg.cn/d33bc0ea55e24c5f90d14c8abe4447d4.png</a> &#x3D;600x)<br><a href="https://www2.tkn.tu-berlin.de/teaching/rn/animations/gbn_sr/"><strong>Go-Back-N 与 Selective Repeat 过程动画演示</strong></a></li>
-</ul>
-<h3 id="Go-Back-N"><a href="#Go-Back-N" class="headerlink" title="Go-Back-N"></a>Go-Back-N</h3><ul>
-<li>核心：sender能够在收到确认之前发送多个分组，但receiver只能缓存一个符合要求的分组并回复确认<ul>
-<li><strong>发送方一次发送 N 个包</strong></li>
-<li><strong>接收方 只缓存并确认 按顺序正确到达的包</strong></li>
-<li>发送方设置计时器，<strong>超时(没收到回应)重传</strong></li>
-</ul>
+<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
+<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
+<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
+<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
 </li>
-<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/141038371226432eb82f13356dd72aab.png">https://img-blog.csdnimg.cn/141038371226432eb82f13356dd72aab.png</a> &#x3D;600x)</li>
-<li>缺点：<br>Go-Back-N在一定程度上避免了停等协议中信道利用率低下的问题，但在窗口N较大时，Go-Back-N需要重传的包较多，代价大</li>
-</ul>
-<h3 id="选择重传-Selective-Repeat"><a href="#选择重传-Selective-Repeat" class="headerlink" title="选择重传(Selective Repeat)"></a>选择重传(Selective Repeat)</h3><ul>
-<li>核心：<br>① <strong>接收方单独确认所有正确接受的包</strong>(不按顺序)<br>② 根据需要，将缓冲区中的包按顺序传给上层<br>③ 发送方仅发送 未收到ACK的包<br>④ 每个未确认的包都有计时器，超时重传</li>
-<li><strong>机制</strong>：<br><strong>Sender</strong>：<br>① 收到上层数据，如果 发送窗格的下一个序号可用，打包发送<br>② packet(n) 超时，重发n号包，计时器重置<br>③ 收到 ACK(n)，如果 n 是未确认的包中编号最小的，右移发送窗格<br><strong>Receiver</strong>：<br>① 收到 packet(n)后，回复 ACK(n)<br>② 如果编号顺序乱&#x2F;缺失，缓存并等待接受前面的包<br>③ 如果编号顺序正确，将包传给上层，移动 接收窗格<br>④ 重复的包直接丢弃<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/9a84cffaab7144e5b47d161c477d5e9f.png">https://img-blog.csdnimg.cn/9a84cffaab7144e5b47d161c477d5e9f.png</a> &#x3D;600x)</li>
-<li><strong>存在的问题</strong>：<ul>
-<li>设帧序号为0,1,2,3 重复使用但内容不同，窗格大小为3，传输过程如下图<br>  ![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/ece3d44fc32142d4b6debfee520e1393.png">https://img-blog.csdnimg.cn/ece3d44fc32142d4b6debfee520e1393.png</a> &#x3D;400x)</li>
-<li>当 receiver接受到 0,1,2号包之后，发送ACKs(0,1,2)，移动接收窗格到 [3,0,1] 等待接收packet(3,0,1)。<br>  如果 sender 没有在设定时间内接收到ACKs，会超时重传 packet(0,1,2)。<br>  当 receiver 接收到 sender 重发的 packet(0,1)时，会认为它们是新一轮序号的包，并将其缓存（正常应该直接丢弃的包），造成二义性</li>
-<li>解决：<br>  ① 发送窗格 &lt;&#x3D; 接受窗格<br>  ② <strong>发送窗格大小 &lt;&#x3D; $\frac{1}{2}*$序号数</strong>（n比特编码，发送窗格长度最大为$2^{n-1}$）</li>
-</ul>
+<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
+<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
 </li>
-</ul>
-<h2 id="3-6-面向连接传输-TCP"><a href="#3-6-面向连接传输-TCP" class="headerlink" title="3.6 面向连接传输: TCP"></a>3.6 面向连接传输: TCP</h2><ul>
-<li><p><strong>面向连接</strong>：只有在确认通信对端存在时才会发送数据，从而可以控制通信流量的浪费</p>
+<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
+<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
+<li><p>用DevC++打开即可</p>
 </li>
-<li><p><strong>TCP 报文段结构</strong>：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/89a1a4328a0c4d318e498b1d6a689e00.png">https://img-blog.csdnimg.cn/89a1a4328a0c4d318e498b1d6a689e00.png</a> &#x3D;500x)</p>
-<ul>
-<li><strong>源端口号 &#x2F; 目的端口号</strong>：16 bits</li>
-<li>**序号(sequence number)**：32 bits，段数据中第一个字节的在整个字节流中“编号”，用来标明位置</li>
-<li>**确认号(acknowledgements)**：32 bits，期望从对方收到的下一个字节的序号</li>
-</ul>
-</li>
-<li><p><strong>具体应用</strong>：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/69f75d2998b3474e8ccdb893185322d0.png">https://img-blog.csdnimg.cn/69f75d2998b3474e8ccdb893185322d0.png</a> &#x3D;550x)</p>
-</li>
-<li><p><a href="https://blog.csdn.net/wgl307293845/article/details/122403761">超时时长的设置</a><br>$DevRTT &#x3D; (1-\beta)<em>DevRTT + \beta</em>|SampleRTT-EstimatedRTT|$</p>
-<p>  $Timeout &#x3D; EstimatedRTT + 4 * DevRTT$</p>
-<p>  其中 $RTT$为 round-trip-time 往返时间；$DevRTT$为 RTT偏差值(safety margin)；</p>
-</li>
-</ul>
-<p>$SampleRTT$为 报文段的样本RTT； $EstimatedRTT$为TCP对下一个数据往返值进行的估计</p>
-<h3 id="TCP可靠数据传输"><a href="#TCP可靠数据传输" class="headerlink" title="TCP可靠数据传输"></a>TCP可靠数据传输</h3><ul>
-<li><p>实现：</p>
-<ul>
-<li><strong>收到上层应用层传来的数据</strong><br>  ① 将数据划分为多个数据段，并编号Seq_num<br>  ② 编号Seq_num是该段中第一个数据字节在整个字节流的位置<br>  ③ 没开始前设置计时器，超时周期为 刚计算出得TimeOutInterval</li>
-<li><strong>超时</strong><br>  重传导致超时的段，重启计时器</li>
-<li><strong>之前未确认过的段被确认了</strong><br>  ① 标记它被确认了<br>  ② 设置计时器，继续传没被确认的段</li>
-</ul>
-</li>
-<li><p>TCP 重传方案<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/f3c22bece2964deba7d6b10df47862e3.png">https://img-blog.csdnimg.cn/f3c22bece2964deba7d6b10df47862e3.png</a> &#x3D;600x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/4dba3bd0b4694a2f94ac6ce24bad8095.png">https://img-blog.csdnimg.cn/4dba3bd0b4694a2f94ac6ce24bad8095.png</a> &#x3D;450x)</p>
-</li>
-<li><p><strong>快速重传</strong><br>通过 <strong>重复的ACK</strong> 来检测报文段丢失：发送方通常连续发送大量报文段，如果报文段丢失，发送方一般会收到多个重复的ACK<br><strong>如果发送方收到同一数据的3个重复ACK，重传对方需要的数据段</strong>（第一个ACK正常，后面三个为重复ACK）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/3d3aab1eff184a189046a73ece95abfd.png">https://img-blog.csdnimg.cn/3d3aab1eff184a189046a73ece95abfd.png</a> &#x3D;600x)</p>
-</li>
-</ul>
-<h2 id="3-7-流量控制-flow-control"><a href="#3-7-流量控制-flow-control" class="headerlink" title="3.7 流量控制(flow control)"></a>3.7 流量控制(flow control)</h2><ul>
-<li>背景：应用层从传输层socket中提取数据，然而往往数据不会提的这么快，这时候要是 sender 还一直发数据就会挤满 接收端的缓存（RcvBuffer），挤满后传输的数据就只能作废。</li>
-</ul>
-<hr>
-<h2 id="END-练习"><a href="#END-练习" class="headerlink" title="END 练习"></a>END 练习</h2><ul>
-<li><p><strong>问题：考虑一个可靠的数据传输（rdt）协议，通过一个有比特错误的信道（数据包被破坏但没有丢失）。解释检测错误并恢复的过程</strong>。</p>
-<blockquote>
-<p>Q：Consider a reliable data transfer (rdt) protocol over a channel with bit errors (packets are corrupted but not lost). Explain the procedure to detect and recover from errors.</p>
-</blockquote>
-<p>  答：① 从数据包头部解析出校验和 checksum，② 通过数据包及头部计算新的校验和，③ 如果两者不匹配，则说明包错误，④ 接收方回应NAK(rdt2.1) 或 回应带有错误编号的ACK(rdt2.2&#x2F;rdt3.0)</p>
-</li>
-<li><p>(往年考题) <strong>rdt2.1相关问题</strong> (书 P191 第三章习题 P6)：<br><strong>考虑我们改正协议rdt2.1的动机。试说明如图3-57所示的接收方与如 图3-11 所示的发送方运行时，接收方可能会引起发送方和接收方进人死锁状态，即双方都在等待不可能发生的事件。</strong></p>
-<blockquote>
-<p>P6. Consider our motivation for correcting protocol rdt2.1 . Show that the receiver, shown in<br>Figure 3.57 , when operating with the sender shown in Figure 3.11 , can lead the sender and<br>receiver to enter into a deadlock state, where each is waiting for an event that will never occur.<br>![Figure 3.11](<a href="https://img-blog.csdnimg.cn/f48e7b617d0d442dac3605e877090c57.png">https://img-blog.csdnimg.cn/f48e7b617d0d442dac3605e877090c57.png</a> &#x3D;600x)<br>![Figure 3.57](<a href="https://img-blog.csdnimg.cn/1396c7f1a8ac4937a1719666015fc363.png">https://img-blog.csdnimg.cn/1396c7f1a8ac4937a1719666015fc363.png</a> &#x3D;600x)</p>
-</blockquote>
-<p>  参考答案：<!-- Edge_Explorer PDF Page: Page of Recver-208; Sender-157 --></p>
-</li>
-</ul>
-<p>假设发送方(图3-11)处于“等待来自上层的调用1”状态时，而接收方(图3-57)处于“等待来自下层的1”，<br>发送方发送1号数据包，并转换到“等待ACK或NAK 1”状态，等待ACK或NAK。<br>现在假设接收方正确地接受了1号数据包，发送了ACK，然后转换到“等待来自下层的0”状态，等待0号数据包。<br>但是，<strong>若ACK消息损坏</strong>，rdt2.1发送方接收到损坏的ACK，条件rdt_rcv(rcvpkt)&amp;&amp;(corrupt(rcvpkt)为 True，<br>发送方会执行udt_send(sndpkt)，重新发送1号数据包，而接收方在等待0号，has_seq1(rcvpkt)为 True,<br>在没接收到0号数据包时会始终返回NAK消息，而发送方处于当前状态时接收到NAK会始终发送1号数据包。<br>因此，发送方处于“等待ACK或NAK 1”状态，始终接收NAK并发送1号数据包，<br>接收方处于“等待来自下层的0”状态，始终接受1号数据包并丢弃，返回NAK，从而陷入死锁状态。</p>
-<ul>
-<li><p>Go-Back-N 理解练习<br><strong>Go-back-N 接收方收到了packets 1,2,3,5，下面说法正确的是：</strong><br>A) 回复 ACKs 1,2,3,5<br>B) 发送 packets 1,2,3,5 给应用层<br>C) 不应该向应用层发送包，因为缺失了部分数据(4)<br>D) 应该丢弃 packet 5 √</p>
-</li>
-<li><p>TCP快速重传练习<br>  <strong>TCP sender 窗格大小为5，待发送包共10个，sender发送pkt(1,2,3,4,5)。当sender收到下列情况的ACKs时会执行什么操作？<br>  ① 收到 ACK(1,2,3,4,5)<br>  ② 收到 ACK(1,3)<br>  ③ <font style="background:yellow">收到 4次 ACK1</font></strong><br>  答：① 正常发 pkt(6,7,8,9,10)；② <u>发 pkt(6,7,8)，等待pkt(4)是否超时</u>（收到ACK3说明pkt2肯定收到，发送方窗格移动到[45678]，pkt45已发，只需要发送pkt678即可）；③ <u>重发pkt(2)，正常发pkt(6)</u>（本题ACK n的序号与现实传输不同，表示对n号包的确认，而不是需要sender的pkt-n；第一次ACK1表示收到了pkt-1，pkt-2传输时丢失，后三次ACK1分别来自receiver接收到pkt-3,4,5时的反馈，因为没收到pkt-2，只能回复确认pkt-1收到了；收到ACK1，sender窗格移动到[23456]，可以正常发pkt-6）</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>参考资料</strong>：<ol>
-<li><a href="https://juejin.cn/user/2067532033034599/posts">网络协议：传输层概述</a></li>
-<li><a href=""></a></li>
 </ol>
-</li>
-</ul>
+<hr>
+<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
+<hr>
 ]]></content>
       <categories>
-        <category>学习</category>
-        <category>计算机网络</category>
+        <category>技术</category>
       </categories>
       <tags>
-        <tag>Computer Network</tag>
+        <tag>C++</tag>
+        <tag>Dev C++</tag>
       </tags>
   </entry>
   <entry>
@@ -1040,37 +1071,6 @@
       </categories>
       <tags>
         <tag>Computer Network</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Dev C++注释中文乱码问题及解决方法</title>
-    <url>/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/</url>
-    <content><![CDATA[<h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
-
-<hr>
-<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
-<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
-<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
-<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
-</li>
-<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
-<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
-</li>
-<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
-<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
-<li><p>用DevC++打开即可</p>
-</li>
-</ol>
-<hr>
-<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>Dev C++</tag>
       </tags>
   </entry>
   <entry>
@@ -1173,22 +1173,26 @@
 
 <hr>
 <h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><ol>
-<li><p><a href="https://blog.csdn.net/zfjBIT/article/details/88075569">CNN卷积层、池化层、全连接层 简述</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/rdd1117/article/details/82883522">卷积神经网络的训练过程</a></p>
-</li>
-<li><p><a href="https://www.cnblogs.com/skyfsm/p/6790245.html">卷积神经网络CNN的层级结构-博客园</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/LOVEmy134611/article/details/118991354">去噪自编码器(Denoising Autoencoder)的TensorFlow实现</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/weixin_45288820/article/details/104479682">变分自编码器(VAE)的TensorFlow实现</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/weixin_45954454/article/details/114455209">使用MNIST数据集训练手写数字识别模型附完整训练代码-路遥博客</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/qq_51235856/article/details/130043631">基于TensorFlow分析MNIST数据集-THE WHY的CSDN博客（一个同学写的博客?）</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/m0_56942491/article/details/129999988">Pytorch搭建卷积神经网络实现MNIST手写数字识别-LotusCL博客（注释很详细的同学博客）</a></p>
-</li>
+<li><a href="https://blog.csdn.net/zfjBIT/article/details/88075569">CNN卷积层、池化层、全连接层 简述</a></li>
+<li><a href="https://blog.csdn.net/rdd1117/article/details/82883522">卷积神经网络的训练过程</a></li>
+<li><a href="https://www.cnblogs.com/skyfsm/p/6790245.html">卷积神经网络CNN的层级结构-博客园</a></li>
+<li><a href="https://blog.csdn.net/LOVEmy134611/article/details/118991354">去噪自编码器(Denoising Autoencoder)的TensorFlow实现</a></li>
+<li><a href="https://blog.csdn.net/weixin_45288820/article/details/104479682">变分自编码器(VAE)的TensorFlow实现</a></li>
+<li><a href="https://blog.csdn.net/weixin_45954454/article/details/114455209">使用MNIST数据集训练手写数字识别模型附完整训练代码-路遥博客</a></li>
+<li><a href="https://blog.csdn.net/qq_51235856/article/details/130043631">基于TensorFlow分析MNIST数据集-THE WHY的CSDN博客（一个同学写的博客?）</a></li>
+<li><a href="https://blog.csdn.net/m0_56942491/article/details/129999988">Pytorch搭建卷积神经网络实现MNIST手写数字识别-LotusCL博客（注释很详细的同学博客）</a></li>
+<li><a href="https://blog.csdn.net/qq_44009891/article/details/111185000">TensorFlow 初步实现 CNN 卷积神经网络</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/100419971">如何确定神经网络的层数和隐藏层神经元数量 - 知乎</a></li>
+<li><a href="https://blog.csdn.net/weixin_51128278/article/details/125377203">机器学习深度神经网络实验报告</a></li>
+<li><a href="https://www.jianshu.com/p/a95af284012d">keras建立多层神经网络</a></li>
+<li><a href="https://www.cnblogs.com/moonspace/p/13005435.html">TensorFlow2.1入门学习笔记(10)——使用keras搭建神经网络(Mnist,Fashion) </a></li>
+</ol>
+<hr>
+<p><strong>遇到的问题及解决方案</strong></p>
+<ol>
+<li><a href="https://blog.csdn.net/qq_33343450/article/details/120646268">pytorch训练模型遇到问题：ValueError: Sum of input lengths does not equal the length of the input dataset!</a></li>
+<li><a href="https://blog.csdn.net/wuyanne/article/details/115033677">已解决-No module named ‘tensorflow.examples‘_</a></li>
+<li><a href="https://blog.csdn.net/sinat_26811377/article/details/100774586">Python 报错 AttributeError: module ‘tensorflow‘ has no attribute ‘placeholder‘_</a></li>
 </ol>
 <hr>
 <p><strong>相关文章</strong></p>
@@ -1198,6 +1202,8 @@
 <li><a href="https://blog.csdn.net/myCSDN3657/article/details/113097408">MNIST数据集转为图片形式输出（按标签分别存储，统一存储）</a></li>
 <li><a href="https://blog.csdn.net/qq_40367479/article/details/82530324">深度学习—学习率衰减(learning rate decay)_</a></li>
 <li><a href="https://blog.csdn.net/program_developer/article/details/80853425">深度学习中Flatten层的作用</a></li>
+<li><a href="https://www.cnblogs.com/Anita9002/p/9296014.html">深度学习基础（CNN详解以及训练过程1）- 博客园</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/392854482">神经网络入门及改进优化-CNN识别 Fashion-MNIST 数据集</a></li>
 </ol>
 <hr>
 ]]></content>
@@ -1266,6 +1272,20 @@
       </tags>
   </entry>
   <entry>
+    <title>GitHub入门</title>
+    <url>/2023/03/07/GitHub-Introduction/</url>
+    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>Github</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>前端工具(框架)</title>
     <url>/2023/03/07/Front-end-tools/</url>
     <content><![CDATA[<p><a href="https://element.eleme.cn/#/zh-CN">Element - 网站快速成型工具</a></p>
@@ -1283,45 +1303,6 @@
       </categories>
       <tags>
         <tag>front-end</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GitHub入门</title>
-    <url>/2023/03/07/GitHub-Introduction/</url>
-    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>Github</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>基于神经网络的图像分类</title>
-    <url>/2023/04/03/Image-Classification-Based-on-Neural-Network/</url>
-    <content><![CDATA[<h3 id="XXX"><a href="#XXX" class="headerlink" title="XXX"></a>XXX</h3><h3 id="相关基础知识"><a href="#相关基础知识" class="headerlink" title="相关基础知识"></a>相关基础知识</h3><p><a href="https://zhuanlan.zhihu.com/p/377396096">机器学习为什么要划分训练集、测试集和验证集？- 知乎</a></p>
-<h3 id="画图相关-pyplot-plt"><a href="#画图相关-pyplot-plt" class="headerlink" title="画图相关 pyplot (plt)"></a>画图相关 pyplot (plt)</h3><p><a href="https://blog.csdn.net/mighty13/article/details/113820798">pyplot.legend() 详解</a></p>
-<p><a href="https://blog.csdn.net/TeFuirnever/article/details/89842795">plt.subplot() 详解</a></p>
-<p><a href="https://blog.csdn.net/stefanjoe/article/details/112095856">plt.figure()详解</a></p>
-<h3 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h3><p><a href="https://blog.csdn.net/weixin_45954454/article/details/114455209">使用MNIST数据集训练手写数字识别模型-CSDN 路遥</a></p>
-<p><a href="https://blog.csdn.net/weixin_45954454/article/details/114437165">ValueError: Input 0 of layer dense is incompatible with the layer: expected axis -1 of input shape_-CSDN 路遥</a></p>
-<p><a href="https://blog.csdn.net/yunfeather/article/details/106461754">tensorflow中model.compile()用法-CSDN yunfeather</a></p>
-<p><a href="https://blog.csdn.net/qq_40367479/article/details/82530324">深度学习—学习率衰减(learning rate decay)_TianHongZXY的博客-CSDN博客</a></p>
-<p><a href="https://www.cnblogs.com/bjxqmy/p/13521516.html">tf.keras.models.Sequential-博客园</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/163254171">从零开始实现神经网络–基于MINIST手写数字数据集 - 知乎 (zhihu.com)</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/137571225">用PyTorch实现MNIST手写数字识别(非常详细) - 知乎 (zhihu.com)</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/112829371">使用Pytorch框架的CNN网络实现手写数字（MNIST）识别 - 知乎 (zhihu.com)</a></p>
-<h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><p><a href="https://blog.csdn.net/Gekkoou/article/details/50821519">python格式化输出dict等集合对象-CSDN博客</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
       </tags>
   </entry>
   <entry>
@@ -1382,6 +1363,31 @@
       </tags>
   </entry>
   <entry>
+    <title>基于神经网络的图像分类</title>
+    <url>/2023/04/03/Image-Classification-Based-on-Neural-Network/</url>
+    <content><![CDATA[<h3 id="XXX"><a href="#XXX" class="headerlink" title="XXX"></a>XXX</h3><h3 id="相关基础知识"><a href="#相关基础知识" class="headerlink" title="相关基础知识"></a>相关基础知识</h3><p><a href="https://zhuanlan.zhihu.com/p/377396096">机器学习为什么要划分训练集、测试集和验证集？- 知乎</a></p>
+<h3 id="画图相关-pyplot-plt"><a href="#画图相关-pyplot-plt" class="headerlink" title="画图相关 pyplot (plt)"></a>画图相关 pyplot (plt)</h3><p><a href="https://blog.csdn.net/mighty13/article/details/113820798">pyplot.legend() 详解</a></p>
+<p><a href="https://blog.csdn.net/TeFuirnever/article/details/89842795">plt.subplot() 详解</a></p>
+<p><a href="https://blog.csdn.net/stefanjoe/article/details/112095856">plt.figure()详解</a></p>
+<h3 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h3><p><a href="https://blog.csdn.net/weixin_45954454/article/details/114455209">使用MNIST数据集训练手写数字识别模型-CSDN 路遥</a></p>
+<p><a href="https://blog.csdn.net/weixin_45954454/article/details/114437165">ValueError: Input 0 of layer dense is incompatible with the layer: expected axis -1 of input shape_-CSDN 路遥</a></p>
+<p><a href="https://blog.csdn.net/yunfeather/article/details/106461754">tensorflow中model.compile()用法-CSDN yunfeather</a></p>
+<p><a href="https://blog.csdn.net/qq_40367479/article/details/82530324">深度学习—学习率衰减(learning rate decay)_TianHongZXY的博客-CSDN博客</a></p>
+<p><a href="https://www.cnblogs.com/bjxqmy/p/13521516.html">tf.keras.models.Sequential-博客园</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/163254171">从零开始实现神经网络–基于MINIST手写数字数据集 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/137571225">用PyTorch实现MNIST手写数字识别(非常详细) - 知乎 (zhihu.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/112829371">使用Pytorch框架的CNN网络实现手写数字（MNIST）识别 - 知乎 (zhihu.com)</a></p>
+<h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><p><a href="https://blog.csdn.net/Gekkoou/article/details/50821519">python格式化输出dict等集合对象-CSDN博客</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java-2048小游戏</title>
     <url>/2021/06/26/Java-2048-game/</url>
     <content><![CDATA[<h1 id="游戏规则"><a href="#游戏规则" class="headerlink" title="游戏规则"></a>游戏规则</h1><ol>
@@ -1425,6 +1431,55 @@
       </tags>
   </entry>
   <entry>
+    <title>人工智能概论复习</title>
+    <url>/2023/04/20/Review-of-Introduction-to-Artificial-Intelligence/</url>
+    <content><![CDATA[<blockquote>
+<p>备考核心：重点掌握核心知识点概念，理解意义及过程。考试不会难，不会考太多概念，重在理解运用，用自己的语言描述 (过程, 概念) 即可。实验相关内容要重点看，报告要认真写。</p>
+<p>考试题型：单选题，简答题，解答题，综合分析题<br>解答题包括简单的计算和问答，主要是问答。综合分析是基于已学知识的扩展，考察灵活应用与分析的能力，有一定难度。</p>
+</blockquote>
+<hr>
+<h3 id="第0章-课程内容简介"><a href="#第0章-课程内容简介" class="headerlink" title="第0章 课程内容简介"></a>第0章 课程内容简介</h3><p>以下课程中，黑色是了解内容，<font color="blue">蓝色是重点</font>，<font color="red">红色是重难点</font><br>第1章 绪论<br><font color="blue"> 第2章 知识表示与知识图谱（重点）</font><br>第3章 确定性推理方法<br>第4章 不确定性推理方法<br><font color="blue">第5章 搜索求解策略（重点）</font><br><font color="blue">第6章 智能计算及其应用（重点）</font><br>第7章 专家系统<br><font color="red">补充1 模式识别系统（重难点）</font><br><font color="red">补充2 模型评估方法（重难点）</font><br><font color="red">补充3 机器学习模型类型（重难点）</font><br><font color="red">补充4 线性模型与非线性扩展（重难点）</font><br><font color="red">第8章 人工神经网络及其应用(少部分书上+大部分补充)（重难点）</font></p>
+<h2 id="第10章-自然语言处理及其应用-NLP"><a href="#第10章-自然语言处理及其应用-NLP" class="headerlink" title="第10章 自然语言处理及其应用(NLP)"></a>第10章 自然语言处理及其应用(NLP)</h2><h3 id="第1章-绪论"><a href="#第1章-绪论" class="headerlink" title="第1章 绪论"></a>第1章 绪论</h3><ol>
+<li><p>人工智能研究的基本内容<br>(1) 知识表示：将人类知识形式化或者模型化（符号表示法、连接机制表示法）<br>(2) 机器感知：以 机器视觉 与 机器听觉 为主<br>(3) 机器思维：对通过感知得来的外部信息及机器内部的各种工作信息进行有目的的处理<br>(4) 机器学习：研究如何使计算机具有类似于人的学习能力，使它能通过学习自动地获取知识<br>(5) 机器行为：计算机的表达能力（说，写，画）</p>
+</li>
+<li><p>人工智能的主要研究领域<br>自动定理证明、博弈(下棋,打牌,战争等)、模式识别(研究对象描述和分类方法的学科)、机器视觉、机器听觉、机器翻译、智慧医疗、自然语言理解、智能信息检索、数据挖掘与知识发现、专家系统</p>
+</li>
+</ol>
+<hr>
+<h3 id="第2章-知识表示与知识图谱"><a href="#第2章-知识表示与知识图谱" class="headerlink" title="第2章 知识表示与知识图谱"></a>第2章 知识表示与知识图谱</h3><h4 id="2-1-知识-与-知识表示-的概念"><a href="#2-1-知识-与-知识表示-的概念" class="headerlink" title="2.1 知识 与 知识表示 的概念"></a>2.1 知识 与 知识表示 的概念</h4><ol>
+<li><p>知识<br>在长期的生活及社会实践中、在科学研究及实验中积累起来的对客观世界的认识与经验。知识 也是 把有关信息关联在一起所形成的信息结构。</p>
+</li>
+<li><p>知识的特性<br> (1) 相对正确性：任何知识都是在一定的条件及环境下产生的，在这种条件及环境下才是正确的。<br> (2) 不确定性：随机性、模糊性、经验、不完全性等因素引起的不确定性。<br> (3) 可表示性 与 可利用性</p>
+</li>
+<li><p>知识的表示<br> 知识表示是对知识的一种描述，或者说是一组约定，一种计算机可以接受的用于描述知识的数据结构。</p>
+</li>
+</ol>
+<h4 id="2-2-一阶谓词逻辑表示法"><a href="#2-2-一阶谓词逻辑表示法" class="headerlink" title="2.2 一阶谓词逻辑表示法"></a>2.2 一阶谓词逻辑表示法</h4><h4 id="2-3-产生式表示"><a href="#2-3-产生式表示" class="headerlink" title="2.3 产生式表示"></a>2.3 产生式表示</h4><h4 id="2-4-框架表示法"><a href="#2-4-框架表示法" class="headerlink" title="2.4 框架表示法"></a>2.4 框架表示法</h4><h4 id="2-5-知识图谱"><a href="#2-5-知识图谱" class="headerlink" title="2.5 知识图谱"></a>2.5 知识图谱</h4>]]></content>
+      <categories>
+        <category>学习</category>
+        <category>人工智能</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用数据库的异同</title>
+    <url>/2023/03/14/SQL/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/362598819">MySQL 与 PostgreSQL 比较</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>PostgreSQ</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java字符串拼接</title>
     <url>/2023/03/23/Java-Strings-Splicing-Tools-StringBuilder-StringBuffer%20-%20%E5%89%AF%E6%9C%AC/</url>
     <content><![CDATA[<h3 id="利用-拼接字符串"><a href="#利用-拼接字符串" class="headerlink" title="利用 + 拼接字符串"></a>利用 + 拼接字符串</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringSplicing</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">begin</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">            str += <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">long</span> <span class="variable">end</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        System.out.println(end - begin);  <span class="comment">// 运行时间</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1455,36 +1510,6 @@
       </categories>
       <tags>
         <tag>String</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常用数据库的异同</title>
-    <url>/2023/03/14/SQL/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/362598819">MySQL 与 PostgreSQL 比较</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>PostgreSQ</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pycharm常见报错及解决方案</title>
-    <url>/2023/03/15/Pycharm-common-errors-and-solutions/</url>
-    <content><![CDATA[<h5 id="No-Python-at-‘D-Python-python-exe’-and-solution"><a href="#No-Python-at-‘D-Python-python-exe’-and-solution" class="headerlink" title="No Python at ‘D:\Python\python.exe’ and solution"></a><a href="https://blog.csdn.net/qq_47733361/article/details/123658062">No Python at ‘D:\Python\python.exe’ and solution</a></h5><p><strong>Solution</strong>：查看<code>File - Settings - Project: xxx - Python Interpreter</code>，点击右侧齿轮图标，选择<code>Add</code>，勾选<code>Existing environment</code>，在<code>Interpreter</code>处选择本地Python路径即可</p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Pycharm</tag>
       </tags>
   </entry>
   <entry>
@@ -1585,18 +1610,17 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
       </tags>
   </entry>
   <entry>
-    <title>Windows相关问题及解决方案</title>
-    <url>/2023/03/16/Windows-related-issues-and-solutions/</url>
-    <content><![CDATA[<p><a href="https://www.win7zhijia.cn/win10jc/win10_51994.html">删除文件提示你需要来自system的权限才能对此文件夹进行更改(win7,win10,win11通用)</a></p>
-<p><a href="https://www.disktool.cn/jiaocheng/extend-c-drive.html">在Windows中扩大C盘的4种方法</a></p>
-<p><a href="https://blog.csdn.net/lingbomanbu628/article/details/121198056">在文件夹页面检索文件的内容</a></p>
+    <title>Pycharm常见报错及解决方案</title>
+    <url>/2023/03/15/Pycharm-common-errors-and-solutions/</url>
+    <content><![CDATA[<h5 id="No-Python-at-‘D-Python-python-exe’-and-solution"><a href="#No-Python-at-‘D-Python-python-exe’-and-solution" class="headerlink" title="No Python at ‘D:\Python\python.exe’ and solution"></a><a href="https://blog.csdn.net/qq_47733361/article/details/123658062">No Python at ‘D:\Python\python.exe’ and solution</a></h5><p><strong>Solution</strong>：查看<code>File - Settings - Project: xxx - Python Interpreter</code>，点击右侧齿轮图标，选择<code>Add</code>，勾选<code>Existing environment</code>，在<code>Interpreter</code>处选择本地Python路径即可</p>
 <hr>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>Windows</tag>
+        <tag>Python</tag>
+        <tag>Pycharm</tag>
       </tags>
   </entry>
   <entry>
@@ -1713,30 +1737,18 @@ Save后，改个主机字（有自己特色的），再点Apply
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客现存问题及可能的解决方案</title>
-    <url>/2023/03/17/%60problem/</url>
-    <content><![CDATA[<ol>
-<li><p>切换刷新网页时，音乐播放器会刷新重置<br>​	solution: <a href="https://ariescat.top/2021/01/25/Pjax%E5%8A%A0%E6%8C%81APlayer-%E9%9F%B3%E4%B9%90%E6%97%A0%E9%97%B4%E6%96%AD/">Pjax加持APlayer，音乐无间断 Ariescat Blog</a></p>
-</li>
-<li><p>Artitalk说说心情发布<br>​	solution: <a href="https://blog.csdn.net/cungudafa/article/details/106224223">Artitalk说说心情发布页面（个性定制）</a></p>
-</li>
-<li><p>Valine 评论的进一步优化<br>​	solution：<a href="https://cungudafa.gitee.io/post/8202.html">Valine-1.4.4 个性制定（表情包、qq头像、UI样式）</a><br>​	<a href="https://blog.csdn.net/cungudafa/article/details/104281764">Valine - 一款快速、简洁且高效的无后端评论系统</a><br>​	<a href="https://blog.csdn.net/weixin_39531549/article/details/86651038">Valine – 一款极简的评论系统_AYXYJ的博客</a><br>​	<a href="http://www.luckysec.cn/posts/1d6f1579.html#toc-heading-5">Matery之Valine评论优化 | LuckySec</a><br>​	<a href="https://blog.justlovesmile.top/posts/27831.html">Hexo博客 | 如何让你的valine更好看 | Justlovesmile’s BLOG</a></p>
-</li>
-<li><p>搭建个人图床<br>​	solution：<a href="https://blog.csdn.net/qq_40531408/article/details/126070098">基于jsDelivr+GitHub的免费CDN</a> 他的其他博客也不错</p>
-</li>
-<li><p>Latex数学公式？？（急）</p>
-</li>
-</ol>
-<hr>
-<p>思考？（小心自我精神折磨）<a href="https://www.zhihu.com/question/438831051/answer/1891961165">如何废掉一个大学生？ - 知乎 (zhihu.com)</a></p>
+    <title>Windows相关问题及解决方案</title>
+    <url>/2023/03/16/Windows-related-issues-and-solutions/</url>
+    <content><![CDATA[<p><a href="https://www.win7zhijia.cn/win10jc/win10_51994.html">删除文件提示你需要来自system的权限才能对此文件夹进行更改(win7,win10,win11通用)</a></p>
+<p><a href="https://www.disktool.cn/jiaocheng/extend-c-drive.html">在Windows中扩大C盘的4种方法</a></p>
+<p><a href="https://blog.csdn.net/lingbomanbu628/article/details/121198056">在文件夹页面检索文件的内容</a></p>
 <hr>
 ]]></content>
       <categories>
         <category>技术</category>
-        <category>博客</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
+        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>
@@ -1763,6 +1775,33 @@ Save后，改个主机字（有自己特色的），再点Apply
       <tags>
         <tag>Hexo</tag>
         <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客现存问题及可能的解决方案</title>
+    <url>/2023/03/17/%60problem/</url>
+    <content><![CDATA[<ol>
+<li><p>切换刷新网页时，音乐播放器会刷新重置<br>​	solution: <a href="https://ariescat.top/2021/01/25/Pjax%E5%8A%A0%E6%8C%81APlayer-%E9%9F%B3%E4%B9%90%E6%97%A0%E9%97%B4%E6%96%AD/">Pjax加持APlayer，音乐无间断 Ariescat Blog</a></p>
+</li>
+<li><p>Artitalk说说心情发布<br>​	solution: <a href="https://blog.csdn.net/cungudafa/article/details/106224223">Artitalk说说心情发布页面（个性定制）</a></p>
+</li>
+<li><p>Valine 评论的进一步优化<br>​	solution：<a href="https://cungudafa.gitee.io/post/8202.html">Valine-1.4.4 个性制定（表情包、qq头像、UI样式）</a><br>​	<a href="https://blog.csdn.net/cungudafa/article/details/104281764">Valine - 一款快速、简洁且高效的无后端评论系统</a><br>​	<a href="https://blog.csdn.net/weixin_39531549/article/details/86651038">Valine – 一款极简的评论系统_AYXYJ的博客</a><br>​	<a href="http://www.luckysec.cn/posts/1d6f1579.html#toc-heading-5">Matery之Valine评论优化 | LuckySec</a><br>​	<a href="https://blog.justlovesmile.top/posts/27831.html">Hexo博客 | 如何让你的valine更好看 | Justlovesmile’s BLOG</a></p>
+</li>
+<li><p>搭建个人图床<br>​	solution：<a href="https://blog.csdn.net/qq_40531408/article/details/126070098">基于jsDelivr+GitHub的免费CDN</a> 他的其他博客也不错</p>
+</li>
+<li><p>Latex数学公式？？（急）</p>
+</li>
+</ol>
+<hr>
+<p>思考？（小心自我精神折磨）<a href="https://www.zhihu.com/question/438831051/answer/1891961165">如何废掉一个大学生？ - 知乎 (zhihu.com)</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
 </search>
