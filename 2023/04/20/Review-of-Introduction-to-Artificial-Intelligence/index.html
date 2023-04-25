@@ -102,7 +102,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.3k</span>
+            <span class="post-count">3.8k</span>
         </span>
     </span>
 
@@ -111,7 +111,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4 分钟</span>
+            <span class="post-count">14 分钟</span>
         </span>
     </span>
 </div>
@@ -152,16 +152,60 @@
 <h4 id="2-2-一阶谓词逻辑表示法"><a href="#2-2-一阶谓词逻辑表示法" class="headerlink" title="2.2 一阶谓词逻辑表示法"></a>2.2 一阶谓词逻辑表示法</h4><ol>
 <li><p>命题<br>  命题是一个非真即假的陈述句。一个命题可以在一种条件下为真，在另一种条件下为假。<br>命题逻辑表示法：无法把它所描述的事物的结构及逻辑特征反映出来，也不能把不同事物间的共同特征表述出来。自然语言难以理解。</p>
 </li>
-<li><p>谓词 P(x1x2…xn)<br>  谓词名 P 表示 个体的性质、状态或个体间的关系<br>个体 x1, x2,…, xn ：某个独立存在的事物或者某个抽象的概念<br>注：个体可以是常量、变量、函数、谓词<br>如  老张是一个教师 -&gt; Teacher(Zhang)；x&gt;3 -&gt; Greater(x,3)；小李的父亲是教室 -&gt;  Teacher(father(Li))；Smith在IBM作为工程师工作 -&gt; Works(engineer(Smith), IBM)</p>
+<li><p>谓词 $P(x1x2…xn)$<br>  谓词名 P 表示 个体的性质、状态或个体间的关系<br>个体 $x1, x2,…, xn$ ：某个独立存在的事物或者某个抽象的概念<br>注：个体可以是常量、变量、函数、谓词<br>如  老张是一个教师 $\rightarrow Teacher(Zhang)$；x&gt;3 $\rightarrow Greater(x,3)$；小李的父亲是教室 $\rightarrow Teacher(father(Li))$；Smith在IBM作为工程师工作$\rightarrow Works(engineer(Smith), IBM)$</p>
 </li>
-<li><p>连接词（连词）<br>  (1) <code>﹁</code> ： 非；如 ﹁ Inroom (She, room2)<br>  (2) <code>∨</code> ：或；如 Plays (LiMing, basketball) ∨ Plays (LiMing, football)<br>  (3) <code>∧</code> ： 与；如 Like (I, music) ∧ Like (I, painting)<br>  (4) <code>$rightarrow$</code> ：蕴含，条件；如 RUNS (Liuhua，fastest)→WINS (Liuhua ，champion)<br>  (5) <code>⟷</code> ：等价，当且仅当；如 P⟷Q: “P当且仅当Q”<br>  (6)  谓词逻辑真值表</p>
+<li><p>连接词（连词）<br>  (1) <strong><code>﹁</code> ： 非</strong>；如 $\neg Inroom (She, room2)$<br>  (2) <strong><code>∨</code> ：或</strong>；如 $Plays (LiMing, basketball) ∨ Plays (LiMing, football)$<br>  (3) <strong><code>∧</code> ： 与</strong>；如 $Like (I, music) ∧ Like (I, painting)$<br>  (4) <strong>$\rightarrow$ ：蕴含</strong>，条件；如 $RUNS (Liuhua，fastest)→WINS (Liuhua ，champion)$<br>  (5) <strong><code>⟷</code> ：等价</strong>，当且仅当；如 $P \leftrightarrow Q: P当且仅当Q$<br>  (6)  谓词逻辑真值表</p>
 </li>
-<li><p>量词<br>  (1) 全称量词 $\forall x$：表示 个体域中任意，所有个体 $x$<br>  (2) 存在量词 $\exists x$：表示 个体域中存在个体 $x$<br>  注：全称量词和存在量词出现的次序将影响命题的意思<br>  $(\forall x)(\exists y)(Employee(x) \rightarrow Manager(y, x))$：每个雇员都有一个经理<br>  $(\exists y)(\forall x)(Employee(x) \rightarrow Manager(y, x))$：有一个人是所有雇员的经理</p>
+<li><p>量词<br> (1) **全称量词 $\forall x$**：表示 个体域中任意，所有个体 $x$<br> (2) **存在量词 $\exists x$**：表示 个体域中存在个体 $x$<br> 注1：<u>全称量词和存在量词出现的次序将影响命题的含义</u><br> $(\forall x)(\exists y)(Employee(x) \rightarrow Manager(y, x))$：每个雇员都有一个经理<br> $(\exists y)(\forall x)(Employee(x) \rightarrow Manager(y, x))$：有一个人是所有雇员的经理<br> 注2：<u>量词的辖域</u>：位于量词后面的单个谓词 或 用括号括起来的谓词公式<br> 注3：<u>约束变元与自由变元</u>：辖域内与量词中同名的变元为约束变元，不同名的变元为自由变元</p>
 </li>
-<li><p>谓词公式<br> (1) 单个谓词是谓词公式（原子谓词公式）<br> (2) 若 $A$ 是谓词公式，则 $\neg A$ 也是谓词公式。<br> (3) 若$A$，$B$都是谓词公式，则 $A \wedge B$，$A \vee B$，$A \rightarrow B$，$A \leftrightarrow B$ 也都是谓词公式。<br>  若A是谓词公式，则   (   x) A，(   x)A也是谓词公式。<br>  有限步应用（1）－（4）生成的公式也是谓词公式。</p>
+<li><p>谓词公式<br> (1) 单个谓词是谓词公式（原子谓词公式）<br> (2) 若 $A$ 是谓词公式，则 $\neg A$ 也是谓词公式。<br> (3) 若$A$，$B$都是谓词公式，则 $A \wedge B$，$A \vee B$，$A \rightarrow B$，$A \leftrightarrow B$ 也都是谓词公式。<br> (4) 若$A$是谓词公式，则   $(\forall x)A$，$(\exists x)A$也是谓词公式。<br> 有限次使用 (1) - (4) 生成的公式也是谓词公式。<br> 连接词优先级(由高到低)：$ \neg, \wedge, \vee, \rightarrow, \leftrightarrow$</p>
 </li>
 </ol>
-<h4 id="2-3-产生式表示"><a href="#2-3-产生式表示" class="headerlink" title="2.3 产生式表示"></a>2.3 产生式表示</h4><h4 id="2-4-框架表示法"><a href="#2-4-框架表示法" class="headerlink" title="2.4 框架表示法"></a>2.4 框架表示法</h4><h4 id="2-5-知识图谱"><a href="#2-5-知识图谱" class="headerlink" title="2.5 知识图谱"></a>2.5 知识图谱</h4> 
+<h4 id="2-3-产生式表示"><a href="#2-3-产生式表示" class="headerlink" title="2.3 产生式表示"></a>2.3 产生式表示</h4><h4 id="2-4-框架表示法"><a href="#2-4-框架表示法" class="headerlink" title="2.4 框架表示法"></a>2.4 框架表示法</h4><h4 id="2-5-知识图谱"><a href="#2-5-知识图谱" class="headerlink" title="2.5 知识图谱"></a>2.5 知识图谱</h4><h3 id="第6章-智能计算及其应用"><a href="#第6章-智能计算及其应用" class="headerlink" title="第6章 智能计算及其应用"></a>第6章 智能计算及其应用</h3><ul>
+<li>进化算法的设计原则<br>① 适用性原则<br>② 可靠性原则<br>③ 收敛性原则<br>④ 稳定性原则<br>⑤ 生物类比原则</li>
+</ul>
+<h4 id="6-2-基本遗传算法"><a href="#6-2-基本遗传算法" class="headerlink" title="6.2 基本遗传算法"></a>6.2 基本遗传算法</h4><ol>
+<li><p><strong>基本思想</strong>：求解问题时，从多个解开始，然后通过一定的法则进行逐步迭代以产生新的解。</p>
+</li>
+<li><p><strong>编码</strong><br> (1) 位串编码：主要采用一维染色体编码方法，将问题空间的参数编码为一维排列的染色体<br> a. 二进制编码：用若干二进制数表示一个个体<br> b. Gray编码：将二进制编码通过Gray变换进行转换得到编码<br> (2) 实数编码：不必进行数制转换，直接在解的表现形式上进行遗传操作<br> (3) 多参数级联编码：把每个参数先进行二进制编码得到子串，再把这些子串连成一个完整的染色体，可以有不同的串长度和参数的取值范围</p>
+</li>
+<li><p><strong>种群</strong><br> (1) <strong>初始种群的产生</strong><br> ① 随机产生群体规模数量的个体<br> ② 随机产生一定数目的个体，从中挑选最好的个体加到初始群体中。该过程不断循环迭代，直到达到了预先确定的种群规模数量<br> ③ 根据问题内容，把握最优解所占空间在整个问题空间中的分布范围，在该范围内设定初始群体。<br> (2) <strong>种群规模的确定</strong><br> 种群规模太小，遗传算法优化性能不好，容易产生局部最优解；种群规模太大计算复杂。根据模式定理，设种群规模为 $M$，则遗传操作可从$M$个个体中生成和检测$M^3$个模式，在再次基础上不断迭代优化，直到找到最优解。</p>
+</li>
+<li><p><strong>适应度函数</strong><br> (1) 将 <strong>目标函数映射成适应度函数</strong> 的方法<br> 若目标函数为<b>最大化</b>问题，则 $Fit(f(x)) &#x3D; f(x)$<br> 若目标函数为<b>最小化</b>问题，则 $Fit(f(x)) &#x3D; 1&#x2F;f(x) 或 -f(x)$<br> ↓ 将目标函数转换为求最大值的形式，且保证函数值非负<br> 若目标函数为最大化问题，则<br>  $$ f(n)&#x3D; \begin{cases} f(x)-C_{min}, &amp; \text {$f(x)&gt;C_{min}$} \ 0, &amp; \text{其他情况} \end{cases} $$<br> 若目标函数为最小化问题，则<br> $$ f(n)&#x3D; \begin{cases} C_{max}-f(x), &amp; \text {$f(x)&lt;C_{max}$} \ 0, &amp; \text{其他情况} \end{cases} $$<br> 其中 $C_{max}$ 和 $C_{min}$ 分别为 最大值估计和最小值估计<br> (2) <strong>适应度函数的尺度变换</strong><br> ① 线性变换：$f’&#x3D;af+b$，满足 $f’<em>{avg}&#x3D;f</em>{avg}$，$f’<em>{max}&#x3D;C</em>{mult}\cdot f_{avg}$<br> 结合图像得到线性参数：<br> $$<br> \begin{array}{cc}<br> a &#x3D; \frac{f_{avg}}{f_{avg}-f_{min}} &amp; b &#x3D; \frac{-f_{min}f_{avg}}{f_{avg}-f_{min}}<br> \end{array}<br> $$<br> <a target="_blank" rel="noopener" href="https://postimg.cc/FYr7WR7B"><img src="https://i.postimg.cc/qvny7604/6-1.png" alt="6-1.png"></a></p>
+<p> (2) 幂函数变换：$f’ &#x3D; f^{K}$<br> (3) 指数变换：$f’&#x3D;e^{-af}$</p>
+</li>
+<li><p><strong>选择（复制）</strong><br> 基于个体的适应度值，分配个体被选择的概率<br> (1) <strong>个体选择概论分配方法</strong><br> ① <strong>适应度比例法</strong>：个体被选择的概率与其适应度值成正比，个体 $i$ 概率为<br> $$<br> p_{si} &#x3D; \frac{f_{i}}{\sum^{M}<em>{i-1}f</em>{i}}<br> $$<br> ② <strong>线性排序</strong>：根据适应值将个体由好到坏排序，个体 $x_{i}$ 分配选择概率，采用转盘方式选择父体<br> $$<br> p_{i} &#x3D; \frac{a-bi}{M(M+1)}<br> $$<br> ③ <strong>非线性选择</strong>：根据适应值将个体由好到坏排序，按下方公式分配选择概率<br> $$<br> p_{i}&#x3D; \begin{cases} q(1-q)^{i-1}, &amp; \text {$i&#x3D;1,2,…,M-1$} \ (1-q)^{M-1}, &amp; \text{$i&#x3D;M$} \end{cases}<br> $$<br> 也可以使用其他非线性函数来分配选择概率，只要满足 <strong>适应度值大的个体被分配的概率大</strong>，且 <strong>所有个体选择概率和为 1</strong> 即可<br> (2) <strong>选择个体方法</strong><br> ① <strong>转盘赌</strong>选择：转盘的角度与选择概率成比例，产生随机数落入转盘进行选择<br> ② <strong>锦标赛</strong>选择：从群体中选择一定数量个体(有放回抽样)，将其中适应度值较高的个体保存到下一代，该过程循环直到下一代个数达到预设数量<br> ③ <strong>随机两两竞争</strong>：每次轮盘赌选择两个个体，选择其中适应度值较高的个体，该过程循环，直到选满为止<br> ④ <strong>最佳个体保存</strong>：把群体中适应度最高的个体不进行交叉变异直接复制到下一代，其他个体进行交叉变异，选择其他的本轮较优个体进入下一代（保证每轮迭代的最优解单调变化，不出现震荡情况）</p>
+</li>
+<li><p>交叉<br> (1) 一点交叉：在个体串中随机设定一个交叉点，实行交叉时，该点前或后的两个个体的部分结构进行互换，并生成两个新的个体<br> (2) 二点交叉：随机设置两个交叉点，将两个交叉点之间的码串相互交换</p>
+</li>
+<li><p>变异<br> (1) 位点变异<br> (2) 逆转变异<br> (3) 插入变异<br> (4) 互换变异<br> (5) 移动变异</p>
+</li>
+</ol>
+<h4 id="6-3-遗传算法的一般步骤与特点"><a href="#6-3-遗传算法的一般步骤与特点" class="headerlink" title="6.3 遗传算法的一般步骤与特点"></a>6.3 遗传算法的一般步骤与特点</h4><p>遗传算法的<strong>一般步骤</strong>：</p>
+<p><img src="https://i.postimg.cc/CxycRs3z/6-2.jpg" alt="6-2.jpg"></p>
+<ol>
+<li>创建一个有N个染色体的初始群体 $pop(t&#x3D;1)$，$t$ 表示种群迭代次数</li>
+<li>对群体中每一个染色体 $pop_{i}(t)$，计算适应度值 $f_{i} &#x3D; fitness(pop_{i}(t))$</li>
+<li>如满足算法终止条件，则停止；否则，以概率 $p_{i} &#x3D; f_{i} &#x2F; \sum^{N}<em>{j&#x3D;1}f</em>{j}$ 从 $pop(t)$ 中选择一些染色体构成新种群：$newpop(t+1)&#x3D;{pop_{j}(t)|j&#x3D;1,2,…,N}$</li>
+<li>以预设交叉概率 $p_{cross}$ 进行交叉产生新的染色体，得到同代的新群体 $crosspop(t+1)$</li>
+<li>以一个较小的预设变异概率 $p_{m}$ 使染色体的基因发生变异，形成同代的新群体 $mutpop(t+1)$，成为子代的新群体$pop(t+1) &#x3D; mutpop(t+1)$，返回步骤 $2$。</li>
+</ol>
+<p>遗传算法的<strong>主要特点</strong>：<br>(1) 遗传算法对所求解的优化问题没有太多的数学要求，由于进化特性，搜索过程中不需要问题的内在性质，可直接对结构对象进行操作。<br>(2) 利用随机技术指导对一个被编码的参数空间进行高效率搜索<br>(3) 采用群体搜索策略，易于并行化<br>(4) 只用适应度函数值来评估个体，并再次基础上进行遗传操作，使种群中个体之间进行信息交换<br>(5) 遗传算法能有效地进行概率意义的全局搜索</p>
+<h4 id="6-4-遗传算法的改进"><a href="#6-4-遗传算法的改进" class="headerlink" title="6.4 遗传算法的改进"></a>6.4 遗传算法的改进</h4><ol>
+<li><p><strong>双倍体遗传算法</strong><br> (1) <strong>基本思想</strong>：双倍体遗传算法采用<strong>显性和隐性两个染色体绑定并同时进化</strong>，提供了一种记忆以前有用的基因块的功能<br> (2) <strong>优点</strong>：双倍体遗传延长了有用基因块的寿命，提高了算法的收敛能力，在变异概率低的情况下能保持一定水平的多样性<br> (3) <strong>算法设计</strong>：<br> a. <strong>编码&#x2F;解码</strong>：一个个体 $i$ 由两个染色体组成(显性、隐性)<br> b. <strong>复制</strong>算子：计算显性染色体的适应度，按照显性染色体的复制概率复制该个体<br> c. <strong>交叉</strong>算子：两个个体的显性染色体和隐性染色体同时交叉<br> d. <strong>变异</strong>算子：个体的显性染色体按正常变异概率，隐性按较大变异概率变异<br> e. <strong>显隐性重排</strong>算子：个体中适应度较大的染色体设为显性，较小的设为隐性<br> 注：多过程&#x2F;复杂算法由一个个计算单元(算子)组成，每个算子对应子过程中的计算逻辑</p>
+</li>
+<li><p><strong>双种群遗传算法</strong><br> (1) <strong>基本思想</strong>：建立两个遗传算法群体，分别独立进行遗传操作，当每一代同时运行结束以后，<strong>选择两个种群中的随机个体及最优个体进行交换</strong><br> (2) <strong>优点</strong>：可以打破种群内的平衡态达到更高的平衡态，有利于算法跳出局部最优<br> (3) <strong>算法设计</strong>：<br> a. 编码&#x2F;解码    b. 复制算子    c. 交叉算子    d. 变异算子<br> e. <strong>杂交</strong>算子：产生一个随机数$n$，随机选择种群$A$中的$n$个个体与$A$中最优个体，随机选择种群$B$中$n$个个体与$B$中最优个体，交换两者，以打破平衡态</p>
+</li>
+<li><p><strong>自适应遗传算法</strong><br> (1) <strong>基本思想</strong>：<strong>交叉概率 $p_{c}$ 和变异概率 $p_{m}$ 能跟随适应度值 $f$ 自行改变</strong><br> (2) <strong>算法设计</strong>：<br> ① 当种群各个体适应度趋于一致或者趋于局部最优时，使$P_c$和$P_m$增加，以跳出局部最优；而当群体适应度比较分散时，使$P_c$和$P_m$减少，以利于优良个体的生存<br> ② 对于适应度高于群体平均适应值的个体，选择较低的$P_c$和$P_m$，使得该解得以保护进入下一代；对低于平均适应值的个体，选择较高的$P_c$和$P_m$值，使该解被淘汰。</p>
+</li>
+</ol>
+<h4 id="6-5-遗传算法的应用"><a href="#6-5-遗传算法的应用" class="headerlink" title="6.5 遗传算法的应用"></a>6.5 遗传算法的应用</h4><p>略</p>
+<h3 id="第7章-专家系统"><a href="#第7章-专家系统" class="headerlink" title="第7章 专家系统"></a>第7章 专家系统</h3><ol>
+<li>定义：专家系统是一种智能的计算机程序，它运用知识和推理来解决只有专家才能解决的复杂问题</li>
+<li>特点：具有专家水平的专业知识，能进行有效的推理，具有启发性、灵活性、透明性、交互性</li>
+<li>专家系统与传统程序比较<br> (1)</li>
+</ol>
+ 
       <!-- reward -->
       
     </div>
