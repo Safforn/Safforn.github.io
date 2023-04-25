@@ -102,7 +102,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">3.8k</span>
+            <span class="post-count">6.1k</span>
         </span>
     </span>
 
@@ -111,7 +111,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">14 分钟</span>
+            <span class="post-count">22 分钟</span>
         </span>
     </span>
 </div>
@@ -200,12 +200,100 @@
 </li>
 </ol>
 <h4 id="6-5-遗传算法的应用"><a href="#6-5-遗传算法的应用" class="headerlink" title="6.5 遗传算法的应用"></a>6.5 遗传算法的应用</h4><p>略</p>
+<hr>
 <h3 id="第7章-专家系统"><a href="#第7章-专家系统" class="headerlink" title="第7章 专家系统"></a>第7章 专家系统</h3><ol>
-<li>定义：专家系统是一种智能的计算机程序，它运用知识和推理来解决只有专家才能解决的复杂问题</li>
-<li>特点：具有专家水平的专业知识，能进行有效的推理，具有启发性、灵活性、透明性、交互性</li>
-<li>专家系统与传统程序比较<br> (1)</li>
+<li><p>定义：专家系统是一种智能的计算机程序，它运用知识和推理来解决只有专家才能解决的复杂问题</p>
+</li>
+<li><p>特点：具有专家水平的专业知识，能进行有效的推理，具有启发性、灵活性、透明性、交互性</p>
+</li>
+<li><p>专家系统与传统程序比较<br> (1) 编程思想不同<br> 传统程序 &#x3D; 数据结构 + 算法<br> 专家系统 &#x3D; 知识 + 推理<br> (2) 存储知识的位置不同<br> 传统程序：关于问题求解的知识隐含于程序中<br> 专家系统：知识单独组成知识库，与推理机分离<br> (3) 处理对象<br> 传统程序：数值计算 和 数据处理<br> 专家系统：符号处理<br> (4) 解释功能<br> 传统程序不具有解释功能，专家系统具有解释功能<br> (5) 答案正确性<br> 传统程序产生正确的答案，专家系统有时会产生错误的答案<br> (6) 系统的体系结构不同</p>
+</li>
+<li><p>工作原理<br> (1) 专家系统的核心：推理机 + 知识库<br> (2) 网络环境下专家系统结构：知识库和推理机部署在云端服务器<br> (3) 知识获取的过程：抽取知识、知识转换、知识输入、知识检测<br> (4) 知识获取的模式：非自动知识获取、自动知识获取</p>
+</li>
 </ol>
- 
+<hr>
+<h3 id="补充1-模式识别系统"><a href="#补充1-模式识别系统" class="headerlink" title="补充1 模式识别系统"></a>补充1 模式识别系统</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ol>
+<li><strong>模式</strong>：通过对具体的个别事物进行观测所得到的<strong>具有一定时间或空间分布的信息</strong>，模式不等于事物本身，而是从事物中获得的某些信息</li>
+<li><strong>模式识别</strong>：指计算机将某一模式进行分类、聚类或回归分析</li>
+<li><strong>模式类</strong>：模式所属的类别 或 同一类中模式的总体</li>
+</ol>
+<h4 id="系统组成"><a href="#系统组成" class="headerlink" title="系统组成"></a>系统组成</h4><ol>
+<li><strong>信息获取</strong>：从具体事物获取原始信息</li>
+<li><strong>预处理</strong>：对信息进行分割、增强、复原、去噪等操作</li>
+<li><strong>特征提取与选择</strong>：提取最能反映分类本质的特征，同时压缩数据量</li>
+<li><strong>分类器的训练&#x2F;设计</strong>：根据训练样本集，在特征空间中确定某种判决规则，该规则的确定是一个反复调整的过程，最后得到的规则即为 分类器</li>
+<li><strong>分类决策</strong>：在特征空间中，用设计的分类器将待识别模式归为某一模式类（简单讲，将目标分类）<br>常用 统计学的方法来分析所输入的模式进行识别。</li>
+</ol>
+<h4 id="主要研究方向"><a href="#主要研究方向" class="headerlink" title="主要研究方向"></a>主要研究方向</h4><ol>
+<li>特征选择<br> (1) 去除冗余特征，提高识别性能<br> (2) 减少特征数目，提高识别速度<br> (3) 降低系统成本</li>
+<li>监督学习(分类器设计、回归分析)、深度学习、无监督学习(聚类)、弱监督与半监督学习、强化学习</li>
+<li>集成学习<br> 如何设计集成方法：① 基分类器  ② 如何集成(融合)</li>
+<li>贝叶斯决策：$后验概率&#x3D;\frac{先验\cdot 似然函数}{数据分布}$，理解参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/479174192">贝叶斯公式理解</a></li>
+</ol>
+<hr>
+<h3 id="补充2-模型评估"><a href="#补充2-模型评估" class="headerlink" title="补充2 模型评估"></a>补充2 模型评估</h3><h4 id="机器学习定理"><a href="#机器学习定理" class="headerlink" title="机器学习定理"></a>机器学习定理</h4><ol>
+<li>没有天生优越的分类器（没有免费的午餐）</li>
+<li>没有天生优越的特征（丑小鸭定理）</li>
+<li>在性能得到满足的情况下，模型越简单越好（剃刀定理：避繁就简）</li>
+</ol>
+<h4 id="经验误差-与-过拟合"><a href="#经验误差-与-过拟合" class="headerlink" title="经验误差 与 过拟合"></a>经验误差 与 过拟合</h4><ol>
+<li>经验误差：模型在训练集上的误差</li>
+<li>泛化误差：模型在测试集上的误差</li>
+</ol>
+<h4 id="模型评估方法"><a href="#模型评估方法" class="headerlink" title="模型评估方法"></a>模型评估方法</h4><p>给定一个已知的数据集，将数据集分成训练集$S$ 和 测试集$T$</p>
+<ol>
+<li><p><strong>留空法</strong>：<br> 直接将数据集划分为两个互斥集合；<br> 训练&#x2F;测试集划分要尽可能保持数据分布的一致性<br> 一般若干次随机划分、重复实验取平均值<br> 训练&#x2F;测试样本比例通常为2:1~4:1</p>
+</li>
+<li><p><strong>交叉验证法</strong>：<br> 将数据集分层采样划分为k个大小相似的互斥子集，每次用k-1个子集的并集作为训练集，余下的子集作为测试集，最终返回k个测试结果的均值，k最常用的取值是10。<br> <a target="_blank" rel="noopener" href="https://postimg.cc/BtQR0BFH"><img src="https://i.postimg.cc/qB8r2mMb/b2-1.jpg" alt="b2-1.jpg"></a><br> 假设数据集D包含m个样本，若令k&#x3D;m，则得到留一法：不受随机样本划分方式的影响；结果往往比较准确；当数据集比较大时，计算开销很高</p>
+</li>
+<li><p><strong>自助法</strong>：<br> 以自助采样法为基础,对数据集D有放回采样m次得到训练集D’，D \D用做测试集<br> 实际模型与预期模型都使用m个训练样本<br> 约有1&#x2F;3的样本没在训练集中出现，用作测试集√从初始数据集中产生多个不同的训练集，对集成学习有很大的好处<br> 自助法在数据集较小、难以有效划分训练&#x2F;测试集时很有用；由于改变了数据集分布可能引入估计偏差，在数据量足够时，留出法和交叉验证法更常用。</p>
+</li>
+<li><p>模型评估<strong>三大原则</strong><br> (1) 在性能得到满足的情况下，模型越简单越好<br> (2) 训练集、测试集、验证集的分布应该尽量一致<br> (3) 训练阶段不能以任何理由偷看测试集，包括对测试集的反复评估也不行</p>
+</li>
+</ol>
+<h4 id="模型性能度量"><a href="#模型性能度量" class="headerlink" title="模型性能度量"></a>模型性能度量</h4><ol>
+<li><strong>准确率</strong>：分类结果正确的样本数量 占 总样本数 的比例</li>
+<li><strong>错误率</strong>：1 - 准确率</li>
+<li>准确率和错误率 要求：每个样本在统计时的权重相同，适用于样本平衡的数据集<br>注：10个稀有样本为正类，990个其余样本为负类，如果全部分类为负类，准确高但没有意义</li>
+<li><strong>查准率</strong> $P$：分类结果为正类的样本中，实际结果为正类的比例；$P&#x3D;TP&#x2F;(TP+FP)$</li>
+<li>查全率 $R$：实际结果为正类的样本中，实际结果为正类的比例；$R&#x3D;TP&#x2F;(TP+FN)$</li>
+<li><strong>平衡点</strong>：$P &#x3D; R$</li>
+<li><strong>$F1$度量</strong>：$F1&#x3D;2<em>P</em>R&#x2F;(P+R)$，比平衡点更高效</li>
+<li><strong>$F_{\beta}$度量</strong>：$F_{\beta}&#x3D;\frac{(1+\beta^{2})\times P\times R}{(\beta^{2}\times P)+R}$，其中$\beta&#x3D;1$为标准$F1$，$\beta&gt;1$为偏重查全率，$\beta&lt;1$为偏重查准率</li>
+</ol>
+<hr>
+<h3 id="补充3-机器学习模型"><a href="#补充3-机器学习模型" class="headerlink" title="补充3 机器学习模型"></a>补充3 机器学习模型</h3><h4 id="有监督学习-K最近邻-KNN"><a href="#有监督学习-K最近邻-KNN" class="headerlink" title="有监督学习 - K最近邻(KNN)"></a>有监督学习 - K最近邻(KNN)</h4><ol>
+<li>基本思想：如果一个待分类样本在特征空间中的k个最相似(即特征空间中K近邻)的样本中的大多数属于某一个类别，则该样本也属于这个类别。</li>
+<li>样本间距离的计算方法：欧氏距离、余弦距离、海明距离、曼哈顿距离</li>
+<li>K值的选取：K值较小边界复杂，容易过拟合；K值较大会导致模型简单。</li>
+<li>优点：简单，易于理解，易于实现，无需参数估计，无需训练；对异常值(个别噪音)不敏感；适合对稀有事件进行分类；适合多分类问题。</li>
+<li>缺点：计算量大，内存开销大；可解释性差，不能体现某些样本的重要性；样本不平衡会导致错误；KNN是一种消极学习方法、懒惰算法</li>
+</ol>
+<h4 id="无监督学习-K均值聚类-K-mean"><a href="#无监督学习-K均值聚类-K-mean" class="headerlink" title="无监督学习 - K均值聚类(K-mean)"></a>无监督学习 - K均值聚类(K-mean)</h4><ol>
+<li>k-means算法是一种简单的迭代型聚类算法，采用距离作为相似性指标，从而发现给定数据集中的K个类，且每个类的中心是根据类中所有值的均值得到，每个类用聚类中心来描述。</li>
+<li>算法步骤：<br> (1) 选择种子点：选取数据空间中的K个对象作为初始中心，每个对象代表一个聚类中心<br> (2) 样本分类：对于样本中的数据对象，根据它们与这些聚类中心的欧氏距离，按距离最近的准则将它们分到距离它们最近的聚类中心（最相似）所对应的类<br> (3) 更新聚类中心：将每个类别中所有对象所对应的均值作为该类别的新的聚类中心，计算目标函数的值<br> (4) 判断聚类中心和目标函数的值是否发生改变，若不变则输出结果，若改变则返回步骤(2)</li>
+</ol>
+<h4 id="半监督学习"><a href="#半监督学习" class="headerlink" title="半监督学习"></a>半监督学习</h4><p>只有少量样本带标签，更符合实际需求</p>
+<h4 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h4><p>单步没有标签，流程走完时有标签，常用于游戏等人工智能应用中</p>
+<h4 id="自监督学习"><a href="#自监督学习" class="headerlink" title="自监督学习"></a>自监督学习</h4><p>略</p>
+<hr>
+<h3 id="补充4-线性模型与非线性拓展"><a href="#补充4-线性模型与非线性拓展" class="headerlink" title="补充4 线性模型与非线性拓展"></a>补充4 线性模型与非线性拓展</h3><hr>
+<h3 id="第8章-人工神经网络及其应用"><a href="#第8章-人工神经网络及其应用" class="headerlink" title="第8章 人工神经网络及其应用"></a>第8章 人工神经网络及其应用</h3><h4 id="8-1-神经元与神经网络"><a href="#8-1-神经元与神经网络" class="headerlink" title="8.1 神经元与神经网络"></a>8.1 神经元与神经网络</h4><ol>
+<li><p>神经元数学模型</p>
+</li>
+<li><p>激活函数</p>
+</li>
+<li><p>感知机<br>参考文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/74568310">机器学习-单层感知机 - 知乎</a></p>
+</li>
+</ol>
+<h4 id="8-2-神经元与神经网络"><a href="#8-2-神经元与神经网络" class="headerlink" title="8.2 神经元与神经网络"></a>8.2 神经元与神经网络</h4><h4 id="8-3-神经元与神经网络"><a href="#8-3-神经元与神经网络" class="headerlink" title="8.3 神经元与神经网络"></a>8.3 神经元与神经网络</h4><h4 id="8-4-神经元与神经网络"><a href="#8-4-神经元与神经网络" class="headerlink" title="8.4 神经元与神经网络"></a>8.4 神经元与神经网络</h4><h4 id="8-5-神经元与神经网络"><a href="#8-5-神经元与神经网络" class="headerlink" title="8.5 神经元与神经网络"></a>8.5 神经元与神经网络</h4><h4 id="8-6-神经元与神经网络"><a href="#8-6-神经元与神经网络" class="headerlink" title="8.6 神经元与神经网络"></a>8.6 神经元与神经网络</h4><h4 id="8-7-神经元与神经网络"><a href="#8-7-神经元与神经网络" class="headerlink" title="8.7 神经元与神经网络"></a>8.7 神经元与神经网络</h4><h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/antkillerfarm/article/details/74187428">MP神经元模型, BP算法, 神经元激活函数, Dropout</a></p>
+<hr>
+<h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%A5%BF%E7%93%9C%E4%B9%A6%E3%80%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%AF%BE%E5%90%8E%E7%AD%94%E6%A1%88&t=blog&u=VictoriaW">机器学习(西瓜书) 课后习题答案 - CSDN 含详细代码</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/c_1013850291887845376">机器学习(西瓜书) 课后习题答案 - 知乎 分类明细</a></li>
+</ul>
+<hr>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1> 
       <!-- reward -->
       
     </div>
