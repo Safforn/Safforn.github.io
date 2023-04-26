@@ -195,282 +195,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo博客优化</title>
-    <url>/2023/03/15/Blog-Hexo-customization-optimization/</url>
-    <content><![CDATA[<h4 id="网页图标"><a href="#网页图标" class="headerlink" title="网页图标"></a>网页图标</h4><p>SVG素材库：<a href="https://www.iconfont.cn/collections/detail?spm=a313x.7781069.0.da5a778a4&cid=43742">iconfont-阿里巴巴矢量图标库 - Food</a>；<a href="https://www.bilibili.com/read/cv17346758">其他icon网站呢？</a></p>
-<p>参考：<a href="https://blog.csdn.net/qq_39181839/article/details/109477357">Hexo更换网页图标</a></p>
-<p>Ayer主题原本的网页图标在<code>./themes/ayer/source/favicon.ico</code><br>修改 <code>./themes/ayer/_config.yml</code>中的<code>favicon</code>字段</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 网站图标</span></span><br><span class="line"><span class="attr">favicon:</span> <span class="string">/favicon.ico</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="友链"><a href="#友链" class="headerlink" title="友链"></a>友链</h4><p>在<code>./source/links</code>下新建文件夹<code>image</code>用于存放图片，修改<code>index.md</code></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;links.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;allLinks&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./image/图片1.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;图片描述1&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;友情链接地址1&quot;</span>&gt;</span>博客名1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./image/图片2.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;图片描述2&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;友情链接地址2&quot;</span>&gt;</span>博客名2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>新建样式文件 <code>links.css</code></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.allLinks</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-flex; <span class="comment">/* Safari */</span></span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">    <span class="attribute">display</span>: inline-flex;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">20rem</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">8rem</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>:<span class="number">2rem</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/*超出边界部分隐藏*/</span></span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ffffff</span>;  <span class="comment">/*卡片背景颜色*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12rem</span>;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">10%</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1.7rem</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, <span class="string">&quot;PingFang SC&quot;</span>, <span class="string">&quot;Hiragino Sans GB&quot;</span>, <span class="string">&quot;Microsoft YaHei&quot;</span>, 微软雅黑, Arial, sans-serif;</span><br><span class="line">    <span class="attribute">color</span>:<span class="number">#000000</span>;  <span class="comment">/*文字颜色*/</span></span><br><span class="line">    <span class="attribute">word-wrap</span>: break-word; <span class="comment">/*文字换行*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="2D看板娘"><a href="#2D看板娘" class="headerlink" title="2D看板娘"></a>2D看板娘</h4><p><a href="https://blog.csdn.net/u013467402/article/details/101443431">在hexo博客加上live2d看板娘</a><br><a href="https://github.com/EYHN/hexo-helper-live2d">live2d官网文档 - hexo-helper-live2d: Add the live2d to your hexo!</a></p>
-<h4 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-<p>在  hexo 根目录下 <code>_config.yml</code> 文件中添加：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># hexo-generator-searchdb</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h4><ul>
-<li>Valine + LeanCloud<br>参考：<a href="">Valine官方文档 - 快速、简洁且高效的无后端评论系统</a><br>如果使用 Ayer 主题，完成LeanCloud仓库创建后可以直接去<code>./theme/ayer/</code>路径下的<code>_config.yml</code>文件中键入<code>appID</code>和<code>appKey</code>，开启 LeanCloud 和 Valine功能，无需其他操作</li>
-<li>Valine 评论背景</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  <span class="selector-class">.v</span><span class="selector-attr">[data-class=v]</span> <span class="selector-class">.veditor</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">https://xxx.xxx/u_pic.png</span>);</span><br><span class="line">    <span class="attribute">background-size</span>: contain;</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>: right;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.05</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="更改黑夜模式的背景黑度"><a href="#更改黑夜模式的背景黑度" class="headerlink" title="更改黑夜模式的背景黑度"></a>更改黑夜模式的背景黑度</h4><p>在 <code>./themes/ayer/source/dist</code>路径下的 <code>main.css</code> 中查找 <code>body.darkmode</code> 字段</p>
-<p>将 <code>background:rgba(0,0,0,.6)</code> 的第四项透明度<code>.6</code> 修改为 <code>.8</code>(变黑)</p>
-<h4 id="文章置顶"><a href="#文章置顶" class="headerlink" title="文章置顶"></a>文章置顶</h4><p>参考：<a href="https://blog.csdn.net/nineya_com/article/details/103394315">hexo博客文章置顶功能实现的两种方法</a></p>
-<p>Ayer主题包含有文章置顶相关的配置，可以修改<code>./node_modules/hexo-generator-index/lib</code>路径下的<code>generator.js</code>文件</p>
-<p>将原排序方式：<code>posts.data.sort((a,b) =&gt; (b.sticky||0)-(a.sticky||0));</code>，修改为：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">posts.<span class="property">data</span> = posts.<span class="property">data</span>.<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(a.<span class="property">top</span> &amp;&amp; b.<span class="property">top</span>) &#123; <span class="comment">// 两篇文章都有top，top大的在前</span></span><br><span class="line">    <span class="keyword">if</span>(a.<span class="property">top</span> == b.<span class="property">top</span>) </span><br><span class="line">      <span class="keyword">return</span> b.<span class="property">date</span> - a.<span class="property">date</span>; <span class="comment">// 若top值相等，最新的文章在前面</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span> b.<span class="property">top</span> - a.<span class="property">top</span>; <span class="comment">// top大的在前面</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(a.<span class="property">top</span> &amp;&amp; !b.<span class="property">top</span>) &#123; <span class="keyword">return</span> -<span class="number">1</span>; &#125;  <span class="comment">// 以下是只有一篇文章top有定义，那么将有top的排在前面</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(!a.<span class="property">top</span> &amp;&amp; b.<span class="property">top</span>) &#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">return</span> b.<span class="property">date</span> - a.<span class="property">date</span>; 	<span class="comment">//都没有top标签，最新的文章在前面</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>然后在需要置顶的文章首部，加入top属性即可，如:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: ...</span><br><span class="line">top: 10</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<hr>
-<p>参考文章：</p>
-<ul>
-<li><p><a href="https://easyhexo.com/2-Theme-use-and-config/2-19-hexo-theme-ayer/">hexo-theme-ayer | Easy Hexo</a></p>
-</li>
-<li><p><a href="https://blog.justlovesmile.top/posts/c8972b63.html">Hexo博客搭建+Butterfly主题魔改指南</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/qq_43701912/article/details/107056483">Hexo博客 | 前端美化</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/qq_35982918/article/details/106728754">Hexo博客Ayer主题自定义配置</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/The_X_One/article/details/106753814">使用hexo框架+ayer主题+gitalk评论插件搭建个人博客</a> 的 优化部分</p>
-</li>
-<li><p><a href="https://zhuanlan.zhihu.com/p/69211731">Hexo 博客美化合集</a> 音乐外链 </p>
-</li>
-<li><p><a href="https://thinkingreedi.github.io/categories/%E5%8D%9A%E5%AE%A2/">会思想的苇草i 从0开始搭建博客</a></p>
-</li>
-</ul>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSAPP 5.1 优化编译器的能力和局限性</title>
-    <url>/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/</url>
-    <content><![CDATA[<h2 id="5-1-优化编译器的能力和局限性"><a href="#5-1-优化编译器的能力和局限性" class="headerlink" title="5.1 优化编译器的能力和局限性"></a>5.1 优化编译器的能力和局限性</h2><p>现代编译器运用复杂精细的算法来确定一个程序中计算的值，以及他们是被如何使用的，然后利用一些机会来简化表达式，如：在几个不同的地方使用同一个计算，以及降低一个给定的计算必须被执行的次数。大多数编译器，包括 GCC，向用户提供了一些对它们所使用的优化的控制。就像在第3章中讨论过的，最简单的控制就是指定<code>优先级别</code>。例如，以命令行选项 “-Og” 调用 GCC 是让 GCC 使用一组基本的优化。以选项 “-O1” 或更高(如 “-O2” 或 “-O3” ) 调用 GCC 会让他使用更多的优化，进一步提高程序的性能，但是也可能增加程序的规模，也可能使标准的调试工具更难对程序进行调试。</p>
-<p>编译器必须很小心地对程序进行<code>安全</code>的优化，即对于程序可能遇到的所有可能的情况，在C语言标准提供的保证之下，优化后得到的程序和为优化的版本有一样的行为。这一限制消除了一些造成不希望的运行时行为的隐患，但是也意味着程序员要花费更多精力写出编译器能够将之转换成有效及其代码的程序。下面这个简单的例子帮助理解编译器优化限制：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">twiddle1</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">twiddle2</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">	*xp += <span class="number">2</span>* *yp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>twiddle1 和 twiddle2 两个函数“似乎”有相同的功能（把存储在指针yp指向的值两次加到指针xp所指的值上）。从另一个角度来看，函数 twiddle2 效率更高一些，它只要求三次内存引用（读*xp、读*yp、写*xp），而 twiddle1需要6次（重复twiddle2需要的内存引用操作两次）。因此，如果要编译器编译函数 twiddle1，我们认为基于 twiddle2 执行的计算能产生更有效的代码。.</p>
-<p>不过，考虑到 xp 和 yp 指向同一地址（xp 和 yp相等）的情况，此时，函数 twiddle1 的结果使 xp 变为原来的 4 倍，函数 twiddle2 的结果使 xp 变为原来的 3 倍。编译器不知道 twiddle1 会在何种情况被调用，因此必须假设 xp 和 yp 可能会相等。因此，编译器不能产生 twiddle2 风格的代码作为 twiddle1 的优化版本。这种两个指针指向同一个内存地址的情况称为 <strong><code>memory aliasing</code>（内存别名使用）</strong>，这可能会造成一个主要的<code>妨碍优化</code>的因素，限制了可能的优化策略。</p>
-<hr>
-<p>第二个妨碍优化的因素是 <strong>函数调用</strong>。考虑下面这个示例：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func1</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> f()+f()+f()+f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func2</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">4</span> * f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>最初看上去两个函数实现的都是相同的功能，但是 func2() 只调用 f() 1次，而 func1() 调用 f() 4次。以func1() 作为源代码时，会很想产生 func2()  风格的代码。不过考虑下面 有关 f() 的代码：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个函数有个“副作用”，他修改了全局程序状态的一部分，改变该函数的调用次数会改变程序的功能。假设开始时去全局变量 counter 的值设为0，调用 func1() 会返回 0+1+2+3&#x3D;6，而调用 func2()返回 4*0&#x3D;0。大多数编译器会试图判断一个函数是否有副作用，如果有，编译器会假设最坏的情况并保持所有的函数调用不变。反之，则会进行一定程度的优化。</p>
-<hr>
-<h3 id="用内联优化函数调用"><a href="#用内联优化函数调用" class="headerlink" title="用内联优化函数调用"></a>用内联优化函数调用</h3><p>包含函数函数调用的代码可以用 <strong><code>inline substitution</code>（内敛函数替换）</strong> 或者简称 <strong><code>inlining</code>（内联）</strong> 的过程进行优化，此时，将函数调用替换为函数体。下面是 func1() 的内联版代码：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Result of inlining f in func1 */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclin</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">long</span> t = counter++;  <span class="comment">/* +0 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +1 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +2 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +3 */</span></span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样的转换即减少了函数调用的开销，也允许对展开的代码做进一步优化。例如，编译器可以统一funclin() 中对全局变量的更新，产生这个函数的一个优化版本：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Optimization of inlined func1 code */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclopt</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">long</span> t = <span class="number">4</span> * counter + <span class="number">6</span>;</span><br><span class="line">	counter += <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 对于这个特定的函数 f 的定义，上述代码重现了 func1 的行为。</p>
-<p>最近版本的 GCC 会尝试进行这种形式的优化，可以用命令行选项<code>-finline</code>指示编译器，或者使用优化等级 “-O1” 或更高等级。但是目前 GCC 尝试在单个文件中定义的函数的内联，意味着它无法用于常见的情况（<strong>一组库函数在一个文件中被定义，在其他文件的函数中被调用</strong>）。</p>
-<p>在某些情况下，最好能阻止编译器的内联优化。一种情况是 用符号调试器(如GDB)来评估代码，如果一个函数调用已经用内联替换优化过了，那么任何对这个调用进行追踪或设置断点的尝试都会失败。还有一种情况是用代码剖析的方式来评估程序性能，用内联替换消除的函数调用是不能被正确剖析的。</p>
-<hr>
-]]></content>
-      <categories>
-        <category>学习</category>
-        <category>计算机系统</category>
-      </categories>
-      <tags>
-        <tag>CSAPP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络3 传输层</title>
-    <url>/2022/11/16/Computer-Network-3-Transport-Layer/</url>
-    <content><![CDATA[<h1 id="第3章-传输层-Transport-Layer"><a href="#第3章-传输层-Transport-Layer" class="headerlink" title="第3章 传输层(Transport Layer)"></a>第3章 传输层(Transport Layer)</h1><p><code>传输层</code> <strong>&#x3D;&#x3D;</strong> <code>运输层</code><br><code>套接字(Socket)</code> <strong>&#x3D;</strong> <code>IP地址</code> + <code>端口号(port)</code>，位于<strong>应用层</strong></p>
-<h2 id="3-1-传输层服务与协议"><a href="#3-1-传输层服务与协议" class="headerlink" title="3.1 传输层服务与协议"></a>3.1 传输层服务与协议</h2><ul>
-<li>运输层协议为运行在不同主机上的应用进程之间提供了<strong>逻辑通信</strong> (logic communication) 功能</li>
-<li>运输层协议是在<u>端系统</u>中实现。<u>发送端将从发送应用程序进程接收到的报文分段</u>(转换成运输层分组)，传递给网络层；<u>接收端将报文段重组成完整报文</u>，传递给应用层。</li>
-<li>关于 <strong>运输层 和 网络层 的关系</strong>：<br>1）网络层 负责在不同主机之间提供 逻辑通信 服务；<br>2）运输层 负责 通过网络层 进行不同主机的进程之间的 逻辑通信。</li>
-<li>两种主要的网络传输协议：TCP 和 UDP<br>1）TCP：可靠、有序传输、拥塞控制、流量控制、连接建立<br>2）UDP：不可靠、不保序传输、没有为尽力而为的IP服务添加更多的其它额外服务<br>3）都不提供的服务：延迟保证、带宽保证</li>
-</ul>
-<hr>
-<h2 id="3-2-复用-分用"><a href="#3-2-复用-分用" class="headerlink" title="3.2 复用 分用"></a>3.2 复用 分用</h2><ul>
-<li>**复用 &#x2F; 多路复用(multiplexing)**：<u>从源主机的不同套接字中收集数据块，并为每个数据块封装上首部信息(“传输头”)，进而生成报文段，然后将报文段传递到网络层</u>，就是 把多个数据流 (streams) 合并为一个数据流</li>
-<li>**分用 &#x2F; 多路分解(demultiplexing)**：<u>将运输层报文段中的数据交付到正确的套接字的工作</u>，就是 复用的逆过程，数据流被分离成单独的部分，相当于解码。具体操作为：接收端的运输层标识出报文段中的接受套接字，进而将报文段定向到该套接字</li>
-<li>多路复用和多路分解服务是所有计算机网络都需要的</li>
-</ul>
-<p>理解：你的的手机正在浏览网页，刷新电子邮件，同时连接到微信。所有这些连接都通过同一链路发送，这一过程为<u>复用</u>；手机接收到的数据包流将被分割并发送到相应的网络、电子邮件、微信程序，该过程为<u>分用</u></p>
-<h3 id="无连接的分用、复用-UDP"><a href="#无连接的分用、复用-UDP" class="headerlink" title="无连接的分用、复用(UDP)"></a>无连接的分用、复用(UDP)</h3><ul>
-<li>UDP Socket &#x3D; (dstIP, dstPort)<br><strong>UDP 套接字</strong> &#x3D; (<strong>目标IP地址</strong> + <strong>目标端口号</strong>)</li>
-<li><strong>发送方</strong>创建UDP套接字的数据报时，必须指定 <strong>目标IP地址</strong>、<strong>目标端口</strong>，而且包含<strong>源端口号</strong><br>（A send <u>b-ip, b-port, a-ip, a-port</u> to B，包含源端口号是为了 接受方B回发报文段给发送方A时，使用recvfrom()方法从发送方的UDP报文段中取源端口号的值，当然完整的返回地址为 源IP+源端口）</li>
-<li><strong>接收方</strong>接收UDP报文段时，<strong>检查段中的目的端口</strong>，<strong>将UDP报文段定向到 具有指定目标端口的套接字</strong></li>
-<li>不同源IP地址或源端口号的数据报，具有相同目标端口，发送到同一个目标IP地址，会定向到同一目标套接字<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/95cc2c4a0b844503810f60aa39fd6e65.png">https://img-blog.csdnimg.cn/95cc2c4a0b844503810f60aa39fd6e65.png</a> &#x3D;600x)</li>
-</ul>
-<h3 id="面向连接的分用、复用-TCP"><a href="#面向连接的分用、复用-TCP" class="headerlink" title="面向连接的分用、复用(TCP)"></a>面向连接的分用、复用(TCP)</h3><ul>
-<li>TCP socket &#x3D; (sourceIP, sourcePort, destIP, destPort)<br><strong>TCP 套接字</strong> &#x3D; (<strong>源IP地址</strong> + <strong>源端口号</strong> + <strong>目标IP地址</strong> + <strong>目标端口号</strong>)</li>
-<li>服务器主机支持许多并行的TCP套接字，<strong>每个套接字与 1 个进程&#x2F;线程相联系</strong>，且由四元组来标识套接字</li>
-<li>(与UDP不同) <u>两个不同源IP地址或源端口号的数据报，即使具有相同的目标端口和目标IP地址，也会定向到不同的套接字</u><br>（若TCP报文段中包含 初始创建TCP连接的请求，接收方服务器会创建新的套接字）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/a175ba3071e44ec486576df361ef1bf2.png">https://img-blog.csdnimg.cn/a175ba3071e44ec486576df361ef1bf2.png</a> &#x3D;600x)<br>参考上图3.5，主机A，Web服务器B，主机C的IP地址分别为A、B、C。主机C 与 服务器B 之间有两个HTTP会话连接，会话源端口号分别为7532、26145，目标端口号都为80，在服务器传输层 分用 至两个不同的套接字；主机A 与 服务器B 之间由一个HTTP会话连接，源端口号为26145，目标端口号为80，与主机A的其中一个会话源端口号相同，但在服务器传输层也会 分用 至两个套接字。（总结：每个套接字由其四元组标识；目标端口相同的数据被分用至不同的套接字）</li>
-</ul>
-<h3 id="持续-x2F-非持续HTTP连接-与-常见端口"><a href="#持续-x2F-非持续HTTP连接-与-常见端口" class="headerlink" title="持续&#x2F;非持续HTTP连接 与 常见端口"></a>持续&#x2F;非持续HTTP连接 与 常见端口</h3><ul>
-<li>持续HTTP：在整个连接持续期间，客户端与服务器之间 经由 同一个服务器套接字交换 HTTP报文</li>
-<li>非持续HTTP：对每一对请求&#x2F;响应都创建一个新的TCP连接和一个套接字并随后就关闭（这种套接字的频繁创建-关闭会严重影响服务器性能，即使可以通过操作系统技巧减轻影响）</li>
-<li><strong>常见端口</strong>：<br>Port 80：标准HTTP连接<br>Port 22：SSH 远程计算机而当路<br>Port 25：SMTP端口，邮件服务器使用的默认端口<br>Port 143：IMAP端口，接收电子邮件，类似与POP3<br>Port 443：标准HTTPS连接，安全<br><a href="https://www.ssl2buy.com/wiki/port-80-http-vs-port-443-https">端口对比：Port 80 (HTTP) vs. Port 443 (HTTPS)</a></li>
-</ul>
-<hr>
-<h2 id="3-3-无连接传输-UDP"><a href="#3-3-无连接传输-UDP" class="headerlink" title="3.3 无连接传输: UDP"></a>3.3 无连接传输: UDP</h2><ul>
-<li>UDP 协议 是 实现了端口的 IP协议，可以让数据包在送到某个IP地址的基础上，进而送到运行在某一端口的通信进程<br>UDP 协议是TCP 协议的简化版，出现于TCP之后<br>应用场景：直播等流媒体应用程序、域名系统DNS、NFS等</li>
-<li>UDP 协议的<strong>优点</strong>：<u>简单、快、高效(Efficient)、没有拥塞控制</u>；<strong>缺点</strong>：<u>传输不可靠、尽力而为(Best Effort)、UDP报文段可能会丢包、乱序</u></li>
-<li><strong>UDP 报文段(segment) &#x3D; [ 源端口号，目标端口号，长度，校验和，应用程序数据 ]</strong><br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/24d49240b961405ca5787d4ec99f771e.png">https://img-blog.csdnimg.cn/24d49240b961405ca5787d4ec99f771e.png</a> &#x3D;250x)<br><strong>length</strong>：<u>以 bytes 为单位的UDP报文段长度，包含传输头(UDP Segment Header)的长度 和 原始数据(Payload)长度</u>，其中 udpSegmentHeader &#x3D; sPort+dPort+Length+CheckSum &#x3D; 16 bits*4 &#x3D; 8 bytes)<br><strong>checksum</strong>：用于检测整个数据包是否损坏（包括整个UDP数据包，以及IP头部的源IP和目标IP等信息），没有改正能力，在IPv4中可以不使用checksum，即checksum为0</li>
-<li>检验和 checksum 的具体计算方式还没写, 可以先看书 ：）</li>
-</ul>
-<hr>
-<h2 id="3-4-可靠数据传输原理-rdt"><a href="#3-4-可靠数据传输原理-rdt" class="headerlink" title="3.4 可靠数据传输原理(rdt)"></a>3.4 可靠数据传输原理(rdt)</h2><ul>
-<li>背景：期望每次信息传输都是理想状态是不太可能的，而且 “Best Effort”的 IP协议不会修复，传输自己时还可能产生错误或丢失，所以需要可靠数据传输(Reliable Data Transfer)</li>
-</ul>
-<hr>
-<h3 id="rdt-1-0：经完全可靠信道的可靠数据传输"><a href="#rdt-1-0：经完全可靠信道的可靠数据传输" class="headerlink" title="rdt 1.0：经完全可靠信道的可靠数据传输"></a>rdt 1.0：经完全可靠信道的可靠数据传输</h3><p>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/2d26bd0af7de46dfbb1eb58e5d85c9fc.png">https://img-blog.csdnimg.cn/2d26bd0af7de46dfbb1eb58e5d85c9fc.png</a> &#x3D;420x)</p>
-<hr>
-<h3 id="rdt-2-0：发现并修复位差错"><a href="#rdt-2-0：发现并修复位差错" class="headerlink" title="rdt 2.0：发现并修复位差错"></a>rdt 2.0：发现并修复位差错</h3><p>引入3种功能：<br>    1. 通过 checksum 来校验错误<br>    2. 接收者 反馈接受 ACK 和 NAK信息<br>    3. 重传<br>    理解：传输层对应用层的数据进行打包处理时，新增checksum（校验和），从而接收端可以对其数据包进行检验，如果正确，返回ACK，发送者继续发送下一个数据包；如果不正确，返回NAK，发送者重传数据。</p>
-<ul>
-<li>rdt2.0 没有错误时的操作<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d5cf8c294ac049fd9cf878ceecbf8e37.png">https://img-blog.csdnimg.cn/d5cf8c294ac049fd9cf878ceecbf8e37.png</a> &#x3D;550x)</li>
-<li>rdt2.0 发生错误时的流程<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/b7c5d0f7f14d4c38ae99fb81c6ea2fb0.png">https://img-blog.csdnimg.cn/b7c5d0f7f14d4c38ae99fb81c6ea2fb0.png</a> &#x3D;600x)</li>
-</ul>
-<hr>
-<h3 id="rdt-2-1：数据包带序号"><a href="#rdt-2-1：数据包带序号" class="headerlink" title="rdt 2.1：数据包带序号"></a>rdt 2.1：数据包带序号</h3><ul>
-<li>背景：rdt2.0不能解决ACK和NAK出错的问题，重传可能会导致重复</li>
-<li><strong>解决</strong>：<br>  ① 发送方为每一个数据包添加 <strong>编号</strong>(seq)<br>  ② ACK &#x2F; NAK出错，发送方重传<br>  ③ 接收方丢弃重复的数据包<br>  ④ <strong>“stop and wait” 停等</strong>机制，发送方发送一个包，等待接收方回应</li>
-<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d58e985528844639aeaa4b31cbb05fc9.png">https://img-blog.csdnimg.cn/d58e985528844639aeaa4b31cbb05fc9.png</a> &#x3D;700x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/37207f40a6bd4f42999828b7573810f2.png">https://img-blog.csdnimg.cn/37207f40a6bd4f42999828b7573810f2.png</a> &#x3D;750x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/img_convert/e24ac0ff9649e468371040625179aaba.webp?x-oss-process=image/format,png">https://img-blog.csdnimg.cn/img_convert/e24ac0ff9649e468371040625179aaba.webp?x-oss-process=image/format,png</a> &#x3D;700x)</li>
-</ul>
-<h3 id="rdt-2-2：ACK取代NAK"><a href="#rdt-2-2：ACK取代NAK" class="headerlink" title="rdt 2.2：ACK取代NAK"></a>rdt 2.2：ACK取代NAK</h3><ul>
-<li>用 <strong>带序号的ACK</strong> 代替 ACK &#x2F; NAK，接收方接收ACK信号时检查ACK的序号</li>
-<li>机制<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/2a547ba52a1f4d15a009a9ff851fb393.png">https://img-blog.csdnimg.cn/2a547ba52a1f4d15a009a9ff851fb393.png</a> &#x3D;700x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/9f49bb550b4b4d3e95e5a64ef397ce1f.png">https://img-blog.csdnimg.cn/9f49bb550b4b4d3e95e5a64ef397ce1f.png</a> &#x3D;700x)</li>
-</ul>
-<h3 id="rdt-3-0：超时重传-治疗数据包丢失"><a href="#rdt-3-0：超时重传-治疗数据包丢失" class="headerlink" title="rdt 3.0：超时重传 治疗数据包丢失"></a>rdt 3.0：超时重传 治疗数据包丢失</h3><ul>
-<li>问题背景：数据包或ACK丢失，可能会导致重传和数据重复</li>
-<li>解决：<strong>超时重传</strong><br>发送端在设定时间内没有收到指定编号的ACK则重传<br>重传虽然会导致数据重复，但可以通过序列号解决</li>
-<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/e61f3b679814457eb1cc8afb17d2fbdc.png">https://img-blog.csdnimg.cn/e61f3b679814457eb1cc8afb17d2fbdc.png</a> &#x3D;700x)<br>![f3.0.1](<a href="https://img-blog.csdnimg.cn/ac2f28e9bb99482da4d0acee654a6767.png">https://img-blog.csdnimg.cn/ac2f28e9bb99482da4d0acee654a6767.png</a> &#x3D;700x)<br><img src="https://img-blog.csdnimg.cn/a35a79b156de4fc98f67b68d31f74725.png" alt="在这里插入图片描述"></li>
-</ul>
-<hr>
-<h2 id="3-5-流水线技术-GoBackN-amp-Selective-Repeat"><a href="#3-5-流水线技术-GoBackN-amp-Selective-Repeat" class="headerlink" title="3.5 流水线技术(GoBackN &amp; Selective Repeat)"></a>3.5 流水线技术(GoBackN &amp; Selective Repeat)</h2><ul>
-<li>问题：1 Gbps link, 15ms 延迟, 8000bit 大小的包，将round-trip-time作为传播到那里和返回的时间（rtt，即两倍的end-to-end延时)，传输延时和信道利用率是多少？<br>答：$L$-包大小；$R$-传输速率。<br>$D_{trans}&#x3D;L&#x2F;R&#x3D;\frac{8000bits}{10^{9}bit&#x2F;s}&#x3D;8ms$<br>$U_{sender}&#x3D;\frac{L&#x2F;R}{RTT+L&#x2F;R}&#x3D;\frac{0.008}{15*2+0.008}&#x3D;0.027%$</li>
-<li><strong>流水线技术(Pipelining)<strong>：允许发送方在</strong>未得到对方确认</strong>的情况下<strong>一次发送多个包</strong></li>
-<li>条件：<br>① <strong>增加 包&#x2F;应答 的序号范围</strong><br>② <strong>发送方 设置缓存</strong>（未得到确认，可能需要重传 &#x3D;&#x3D;？&#x3D;&#x3D;）<br>③ <strong>接收方 设置缓存</strong>（上层用户取用数据的速率≠接收到的数据速率；接收的数据包可能乱序；可能需要重新排序后交付）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d33bc0ea55e24c5f90d14c8abe4447d4.png">https://img-blog.csdnimg.cn/d33bc0ea55e24c5f90d14c8abe4447d4.png</a> &#x3D;600x)<br><a href="https://www2.tkn.tu-berlin.de/teaching/rn/animations/gbn_sr/"><strong>Go-Back-N 与 Selective Repeat 过程动画演示</strong></a></li>
-</ul>
-<h3 id="Go-Back-N"><a href="#Go-Back-N" class="headerlink" title="Go-Back-N"></a>Go-Back-N</h3><ul>
-<li>核心：sender能够在收到确认之前发送多个分组，但receiver只能缓存一个符合要求的分组并回复确认<ul>
-<li><strong>发送方一次发送 N 个包</strong></li>
-<li><strong>接收方 只缓存并确认 按顺序正确到达的包</strong></li>
-<li>发送方设置计时器，<strong>超时(没收到回应)重传</strong></li>
-</ul>
-</li>
-<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/141038371226432eb82f13356dd72aab.png">https://img-blog.csdnimg.cn/141038371226432eb82f13356dd72aab.png</a> &#x3D;600x)</li>
-<li>缺点：<br>Go-Back-N在一定程度上避免了停等协议中信道利用率低下的问题，但在窗口N较大时，Go-Back-N需要重传的包较多，代价大</li>
-</ul>
-<h3 id="选择重传-Selective-Repeat"><a href="#选择重传-Selective-Repeat" class="headerlink" title="选择重传(Selective Repeat)"></a>选择重传(Selective Repeat)</h3><ul>
-<li>核心：<br>① <strong>接收方单独确认所有正确接受的包</strong>(不按顺序)<br>② 根据需要，将缓冲区中的包按顺序传给上层<br>③ 发送方仅发送 未收到ACK的包<br>④ 每个未确认的包都有计时器，超时重传</li>
-<li><strong>机制</strong>：<br><strong>Sender</strong>：<br>① 收到上层数据，如果 发送窗格的下一个序号可用，打包发送<br>② packet(n) 超时，重发n号包，计时器重置<br>③ 收到 ACK(n)，如果 n 是未确认的包中编号最小的，右移发送窗格<br><strong>Receiver</strong>：<br>① 收到 packet(n)后，回复 ACK(n)<br>② 如果编号顺序乱&#x2F;缺失，缓存并等待接受前面的包<br>③ 如果编号顺序正确，将包传给上层，移动 接收窗格<br>④ 重复的包直接丢弃<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/9a84cffaab7144e5b47d161c477d5e9f.png">https://img-blog.csdnimg.cn/9a84cffaab7144e5b47d161c477d5e9f.png</a> &#x3D;600x)</li>
-<li><strong>存在的问题</strong>：<ul>
-<li>设帧序号为0,1,2,3 重复使用但内容不同，窗格大小为3，传输过程如下图<br>  ![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/ece3d44fc32142d4b6debfee520e1393.png">https://img-blog.csdnimg.cn/ece3d44fc32142d4b6debfee520e1393.png</a> &#x3D;400x)</li>
-<li>当 receiver接受到 0,1,2号包之后，发送ACKs(0,1,2)，移动接收窗格到 [3,0,1] 等待接收packet(3,0,1)。<br>  如果 sender 没有在设定时间内接收到ACKs，会超时重传 packet(0,1,2)。<br>  当 receiver 接收到 sender 重发的 packet(0,1)时，会认为它们是新一轮序号的包，并将其缓存（正常应该直接丢弃的包），造成二义性</li>
-<li>解决：<br>  ① 发送窗格 &lt;&#x3D; 接受窗格<br>  ② <strong>发送窗格大小 &lt;&#x3D; $\frac{1}{2}*$序号数</strong>（n比特编码，发送窗格长度最大为$2^{n-1}$）</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-6-面向连接传输-TCP"><a href="#3-6-面向连接传输-TCP" class="headerlink" title="3.6 面向连接传输: TCP"></a>3.6 面向连接传输: TCP</h2><ul>
-<li><p><strong>面向连接</strong>：只有在确认通信对端存在时才会发送数据，从而可以控制通信流量的浪费</p>
-</li>
-<li><p><strong>TCP 报文段结构</strong>：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/89a1a4328a0c4d318e498b1d6a689e00.png">https://img-blog.csdnimg.cn/89a1a4328a0c4d318e498b1d6a689e00.png</a> &#x3D;500x)</p>
-<ul>
-<li><strong>源端口号 &#x2F; 目的端口号</strong>：16 bits</li>
-<li>**序号(sequence number)**：32 bits，段数据中第一个字节的在整个字节流中“编号”，用来标明位置</li>
-<li>**确认号(acknowledgements)**：32 bits，期望从对方收到的下一个字节的序号</li>
-</ul>
-</li>
-<li><p><strong>具体应用</strong>：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/69f75d2998b3474e8ccdb893185322d0.png">https://img-blog.csdnimg.cn/69f75d2998b3474e8ccdb893185322d0.png</a> &#x3D;550x)</p>
-</li>
-<li><p><a href="https://blog.csdn.net/wgl307293845/article/details/122403761">超时时长的设置</a><br>$DevRTT &#x3D; (1-\beta)<em>DevRTT + \beta</em>|SampleRTT-EstimatedRTT|$</p>
-<p>  $Timeout &#x3D; EstimatedRTT + 4 * DevRTT$</p>
-<p>  其中 $RTT$为 round-trip-time 往返时间；$DevRTT$为 RTT偏差值(safety margin)；</p>
-</li>
-</ul>
-<p>$SampleRTT$为 报文段的样本RTT； $EstimatedRTT$为TCP对下一个数据往返值进行的估计</p>
-<h3 id="TCP可靠数据传输"><a href="#TCP可靠数据传输" class="headerlink" title="TCP可靠数据传输"></a>TCP可靠数据传输</h3><ul>
-<li><p>实现：</p>
-<ul>
-<li><strong>收到上层应用层传来的数据</strong><br>  ① 将数据划分为多个数据段，并编号Seq_num<br>  ② 编号Seq_num是该段中第一个数据字节在整个字节流的位置<br>  ③ 没开始前设置计时器，超时周期为 刚计算出得TimeOutInterval</li>
-<li><strong>超时</strong><br>  重传导致超时的段，重启计时器</li>
-<li><strong>之前未确认过的段被确认了</strong><br>  ① 标记它被确认了<br>  ② 设置计时器，继续传没被确认的段</li>
-</ul>
-</li>
-<li><p>TCP 重传方案<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/f3c22bece2964deba7d6b10df47862e3.png">https://img-blog.csdnimg.cn/f3c22bece2964deba7d6b10df47862e3.png</a> &#x3D;600x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/4dba3bd0b4694a2f94ac6ce24bad8095.png">https://img-blog.csdnimg.cn/4dba3bd0b4694a2f94ac6ce24bad8095.png</a> &#x3D;450x)</p>
-</li>
-<li><p><strong>快速重传</strong><br>通过 <strong>重复的ACK</strong> 来检测报文段丢失：发送方通常连续发送大量报文段，如果报文段丢失，发送方一般会收到多个重复的ACK<br><strong>如果发送方收到同一数据的3个重复ACK，重传对方需要的数据段</strong>（第一个ACK正常，后面三个为重复ACK）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/3d3aab1eff184a189046a73ece95abfd.png">https://img-blog.csdnimg.cn/3d3aab1eff184a189046a73ece95abfd.png</a> &#x3D;600x)</p>
-</li>
-</ul>
-<h2 id="3-7-流量控制-flow-control"><a href="#3-7-流量控制-flow-control" class="headerlink" title="3.7 流量控制(flow control)"></a>3.7 流量控制(flow control)</h2><ul>
-<li>背景：应用层从传输层socket中提取数据，然而往往数据不会提的这么快，这时候要是 sender 还一直发数据就会挤满 接收端的缓存（RcvBuffer），挤满后传输的数据就只能作废。</li>
-</ul>
-<hr>
-<h2 id="END-练习"><a href="#END-练习" class="headerlink" title="END 练习"></a>END 练习</h2><ul>
-<li><p><strong>问题：考虑一个可靠的数据传输（rdt）协议，通过一个有比特错误的信道（数据包被破坏但没有丢失）。解释检测错误并恢复的过程</strong>。</p>
-<blockquote>
-<p>Q：Consider a reliable data transfer (rdt) protocol over a channel with bit errors (packets are corrupted but not lost). Explain the procedure to detect and recover from errors.</p>
-</blockquote>
-<p>  答：① 从数据包头部解析出校验和 checksum，② 通过数据包及头部计算新的校验和，③ 如果两者不匹配，则说明包错误，④ 接收方回应NAK(rdt2.1) 或 回应带有错误编号的ACK(rdt2.2&#x2F;rdt3.0)</p>
-</li>
-<li><p>(往年考题) <strong>rdt2.1相关问题</strong> (书 P191 第三章习题 P6)：<br><strong>考虑我们改正协议rdt2.1的动机。试说明如图3-57所示的接收方与如 图3-11 所示的发送方运行时，接收方可能会引起发送方和接收方进人死锁状态，即双方都在等待不可能发生的事件。</strong></p>
-<blockquote>
-<p>P6. Consider our motivation for correcting protocol rdt2.1 . Show that the receiver, shown in<br>Figure 3.57 , when operating with the sender shown in Figure 3.11 , can lead the sender and<br>receiver to enter into a deadlock state, where each is waiting for an event that will never occur.<br>![Figure 3.11](<a href="https://img-blog.csdnimg.cn/f48e7b617d0d442dac3605e877090c57.png">https://img-blog.csdnimg.cn/f48e7b617d0d442dac3605e877090c57.png</a> &#x3D;600x)<br>![Figure 3.57](<a href="https://img-blog.csdnimg.cn/1396c7f1a8ac4937a1719666015fc363.png">https://img-blog.csdnimg.cn/1396c7f1a8ac4937a1719666015fc363.png</a> &#x3D;600x)</p>
-</blockquote>
-<p>  参考答案：<!-- Edge_Explorer PDF Page: Page of Recver-208; Sender-157 --></p>
-</li>
-</ul>
-<p>假设发送方(图3-11)处于“等待来自上层的调用1”状态时，而接收方(图3-57)处于“等待来自下层的1”，<br>发送方发送1号数据包，并转换到“等待ACK或NAK 1”状态，等待ACK或NAK。<br>现在假设接收方正确地接受了1号数据包，发送了ACK，然后转换到“等待来自下层的0”状态，等待0号数据包。<br>但是，<strong>若ACK消息损坏</strong>，rdt2.1发送方接收到损坏的ACK，条件rdt_rcv(rcvpkt)&amp;&amp;(corrupt(rcvpkt)为 True，<br>发送方会执行udt_send(sndpkt)，重新发送1号数据包，而接收方在等待0号，has_seq1(rcvpkt)为 True,<br>在没接收到0号数据包时会始终返回NAK消息，而发送方处于当前状态时接收到NAK会始终发送1号数据包。<br>因此，发送方处于“等待ACK或NAK 1”状态，始终接收NAK并发送1号数据包，<br>接收方处于“等待来自下层的0”状态，始终接受1号数据包并丢弃，返回NAK，从而陷入死锁状态。</p>
-<ul>
-<li><p>Go-Back-N 理解练习<br><strong>Go-back-N 接收方收到了packets 1,2,3,5，下面说法正确的是：</strong><br>A) 回复 ACKs 1,2,3,5<br>B) 发送 packets 1,2,3,5 给应用层<br>C) 不应该向应用层发送包，因为缺失了部分数据(4)<br>D) 应该丢弃 packet 5 √</p>
-</li>
-<li><p>TCP快速重传练习<br>  <strong>TCP sender 窗格大小为5，待发送包共10个，sender发送pkt(1,2,3,4,5)。当sender收到下列情况的ACKs时会执行什么操作？<br>  ① 收到 ACK(1,2,3,4,5)<br>  ② 收到 ACK(1,3)<br>  ③ <font style="background:yellow">收到 4次 ACK1</font></strong><br>  答：① 正常发 pkt(6,7,8,9,10)；② <u>发 pkt(6,7,8)，等待pkt(4)是否超时</u>（收到ACK3说明pkt2肯定收到，发送方窗格移动到[45678]，pkt45已发，只需要发送pkt678即可）；③ <u>重发pkt(2)，正常发pkt(6)</u>（本题ACK n的序号与现实传输不同，表示对n号包的确认，而不是需要sender的pkt-n；第一次ACK1表示收到了pkt-1，pkt-2传输时丢失，后三次ACK1分别来自receiver接收到pkt-3,4,5时的反馈，因为没收到pkt-2，只能回复确认pkt-1收到了；收到ACK1，sender窗格移动到[23456]，可以正常发pkt-6）</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>参考资料</strong>：<ol>
-<li><a href="https://juejin.cn/user/2067532033034599/posts">网络协议：传输层概述</a></li>
-<li><a href=""></a></li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学习</category>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>Computer Network</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用Hexo搭建个人博客并部署到Github</title>
     <url>/2023/02/28/Blog-Built-with-Hexo&amp;Github/</url>
     <content><![CDATA[<p>若想部署到Gitee码云上，可以参考博客：<a href="https://blog.csdn.net/qq_46036214/article/details/110137239">在Gitee搭建属于自己的博客</a></p>
@@ -574,8 +298,118 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
-        <tag>Blog</tag>
         <tag>Github</tag>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSAPP 5.1 优化编译器的能力和局限性</title>
+    <url>/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/</url>
+    <content><![CDATA[<h2 id="5-1-优化编译器的能力和局限性"><a href="#5-1-优化编译器的能力和局限性" class="headerlink" title="5.1 优化编译器的能力和局限性"></a>5.1 优化编译器的能力和局限性</h2><p>现代编译器运用复杂精细的算法来确定一个程序中计算的值，以及他们是被如何使用的，然后利用一些机会来简化表达式，如：在几个不同的地方使用同一个计算，以及降低一个给定的计算必须被执行的次数。大多数编译器，包括 GCC，向用户提供了一些对它们所使用的优化的控制。就像在第3章中讨论过的，最简单的控制就是指定<code>优先级别</code>。例如，以命令行选项 “-Og” 调用 GCC 是让 GCC 使用一组基本的优化。以选项 “-O1” 或更高(如 “-O2” 或 “-O3” ) 调用 GCC 会让他使用更多的优化，进一步提高程序的性能，但是也可能增加程序的规模，也可能使标准的调试工具更难对程序进行调试。</p>
+<p>编译器必须很小心地对程序进行<code>安全</code>的优化，即对于程序可能遇到的所有可能的情况，在C语言标准提供的保证之下，优化后得到的程序和为优化的版本有一样的行为。这一限制消除了一些造成不希望的运行时行为的隐患，但是也意味着程序员要花费更多精力写出编译器能够将之转换成有效及其代码的程序。下面这个简单的例子帮助理解编译器优化限制：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">twiddle1</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">twiddle2</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">	*xp += <span class="number">2</span>* *yp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>twiddle1 和 twiddle2 两个函数“似乎”有相同的功能（把存储在指针yp指向的值两次加到指针xp所指的值上）。从另一个角度来看，函数 twiddle2 效率更高一些，它只要求三次内存引用（读*xp、读*yp、写*xp），而 twiddle1需要6次（重复twiddle2需要的内存引用操作两次）。因此，如果要编译器编译函数 twiddle1，我们认为基于 twiddle2 执行的计算能产生更有效的代码。.</p>
+<p>不过，考虑到 xp 和 yp 指向同一地址（xp 和 yp相等）的情况，此时，函数 twiddle1 的结果使 xp 变为原来的 4 倍，函数 twiddle2 的结果使 xp 变为原来的 3 倍。编译器不知道 twiddle1 会在何种情况被调用，因此必须假设 xp 和 yp 可能会相等。因此，编译器不能产生 twiddle2 风格的代码作为 twiddle1 的优化版本。这种两个指针指向同一个内存地址的情况称为 <strong><code>memory aliasing</code>（内存别名使用）</strong>，这可能会造成一个主要的<code>妨碍优化</code>的因素，限制了可能的优化策略。</p>
+<hr>
+<p>第二个妨碍优化的因素是 <strong>函数调用</strong>。考虑下面这个示例：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func1</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> f()+f()+f()+f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func2</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">4</span> * f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最初看上去两个函数实现的都是相同的功能，但是 func2() 只调用 f() 1次，而 func1() 调用 f() 4次。以func1() 作为源代码时，会很想产生 func2()  风格的代码。不过考虑下面 有关 f() 的代码：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个函数有个“副作用”，他修改了全局程序状态的一部分，改变该函数的调用次数会改变程序的功能。假设开始时去全局变量 counter 的值设为0，调用 func1() 会返回 0+1+2+3&#x3D;6，而调用 func2()返回 4*0&#x3D;0。大多数编译器会试图判断一个函数是否有副作用，如果有，编译器会假设最坏的情况并保持所有的函数调用不变。反之，则会进行一定程度的优化。</p>
+<hr>
+<h3 id="用内联优化函数调用"><a href="#用内联优化函数调用" class="headerlink" title="用内联优化函数调用"></a>用内联优化函数调用</h3><p>包含函数函数调用的代码可以用 <strong><code>inline substitution</code>（内敛函数替换）</strong> 或者简称 <strong><code>inlining</code>（内联）</strong> 的过程进行优化，此时，将函数调用替换为函数体。下面是 func1() 的内联版代码：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Result of inlining f in func1 */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclin</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">long</span> t = counter++;  <span class="comment">/* +0 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +1 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +2 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +3 */</span></span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的转换即减少了函数调用的开销，也允许对展开的代码做进一步优化。例如，编译器可以统一funclin() 中对全局变量的更新，产生这个函数的一个优化版本：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Optimization of inlined func1 code */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclopt</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">long</span> t = <span class="number">4</span> * counter + <span class="number">6</span>;</span><br><span class="line">	counter += <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 对于这个特定的函数 f 的定义，上述代码重现了 func1 的行为。</p>
+<p>最近版本的 GCC 会尝试进行这种形式的优化，可以用命令行选项<code>-finline</code>指示编译器，或者使用优化等级 “-O1” 或更高等级。但是目前 GCC 尝试在单个文件中定义的函数的内联，意味着它无法用于常见的情况（<strong>一组库函数在一个文件中被定义，在其他文件的函数中被调用</strong>）。</p>
+<p>在某些情况下，最好能阻止编译器的内联优化。一种情况是 用符号调试器(如GDB)来评估代码，如果一个函数调用已经用内联替换优化过了，那么任何对这个调用进行追踪或设置断点的尝试都会失败。还有一种情况是用代码剖析的方式来评估程序性能，用内联替换消除的函数调用是不能被正确剖析的。</p>
+<hr>
+]]></content>
+      <categories>
+        <category>学习</category>
+        <category>计算机系统</category>
+      </categories>
+      <tags>
+        <tag>CSAPP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客优化</title>
+    <url>/2023/03/15/Blog-Hexo-customization-optimization/</url>
+    <content><![CDATA[<h4 id="网页图标"><a href="#网页图标" class="headerlink" title="网页图标"></a>网页图标</h4><p>SVG素材库：<a href="https://www.iconfont.cn/collections/detail?spm=a313x.7781069.0.da5a778a4&cid=43742">iconfont-阿里巴巴矢量图标库 - Food</a>；<a href="https://www.bilibili.com/read/cv17346758">其他icon网站呢？</a></p>
+<p>参考：<a href="https://blog.csdn.net/qq_39181839/article/details/109477357">Hexo更换网页图标</a></p>
+<p>Ayer主题原本的网页图标在<code>./themes/ayer/source/favicon.ico</code><br>修改 <code>./themes/ayer/_config.yml</code>中的<code>favicon</code>字段</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 网站图标</span></span><br><span class="line"><span class="attr">favicon:</span> <span class="string">/favicon.ico</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="友链"><a href="#友链" class="headerlink" title="友链"></a>友链</h4><p>在<code>./source/links</code>下新建文件夹<code>image</code>用于存放图片，修改<code>index.md</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;links.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;allLinks&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./image/图片1.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;图片描述1&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;友情链接地址1&quot;</span>&gt;</span>博客名1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./image/图片2.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;图片描述2&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;友情链接地址2&quot;</span>&gt;</span>博客名2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>新建样式文件 <code>links.css</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.allLinks</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-flex; <span class="comment">/* Safari */</span></span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">    <span class="attribute">display</span>: inline-flex;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">1rem</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">20rem</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">8rem</span>;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">3rem</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>:<span class="number">2rem</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden; <span class="comment">/*超出边界部分隐藏*/</span></span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ffffff</span>;  <span class="comment">/*卡片背景颜色*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">6rem</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.allLinks</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">12rem</span>;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">10%</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1.7rem</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;Helvetica Neue&quot;</span>, Helvetica, <span class="string">&quot;PingFang SC&quot;</span>, <span class="string">&quot;Hiragino Sans GB&quot;</span>, <span class="string">&quot;Microsoft YaHei&quot;</span>, 微软雅黑, Arial, sans-serif;</span><br><span class="line">    <span class="attribute">color</span>:<span class="number">#000000</span>;  <span class="comment">/*文字颜色*/</span></span><br><span class="line">    <span class="attribute">word-wrap</span>: break-word; <span class="comment">/*文字换行*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2D看板娘"><a href="#2D看板娘" class="headerlink" title="2D看板娘"></a>2D看板娘</h4><p><a href="https://blog.csdn.net/u013467402/article/details/101443431">在hexo博客加上live2d看板娘</a><br><a href="https://github.com/EYHN/hexo-helper-live2d">live2d官网文档 - hexo-helper-live2d: Add the live2d to your hexo!</a></p>
+<h4 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<p>在  hexo 根目录下 <code>_config.yml</code> 文件中添加：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># hexo-generator-searchdb</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h4><ul>
+<li>Valine + LeanCloud<br>参考：<a href="">Valine官方文档 - 快速、简洁且高效的无后端评论系统</a><br>如果使用 Ayer 主题，完成LeanCloud仓库创建后可以直接去<code>./theme/ayer/</code>路径下的<code>_config.yml</code>文件中键入<code>appID</code>和<code>appKey</code>，开启 LeanCloud 和 Valine功能，无需其他操作</li>
+<li>Valine 评论背景</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  <span class="selector-class">.v</span><span class="selector-attr">[data-class=v]</span> <span class="selector-class">.veditor</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">https://xxx.xxx/u_pic.png</span>);</span><br><span class="line">    <span class="attribute">background-size</span>: contain;</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>: right;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.05</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="更改黑夜模式的背景黑度"><a href="#更改黑夜模式的背景黑度" class="headerlink" title="更改黑夜模式的背景黑度"></a>更改黑夜模式的背景黑度</h4><p>在 <code>./themes/ayer/source/dist</code>路径下的 <code>main.css</code> 中查找 <code>body.darkmode</code> 字段</p>
+<p>将 <code>background:rgba(0,0,0,.6)</code> 的第四项透明度<code>.6</code> 修改为 <code>.8</code>(变黑)</p>
+<h4 id="文章置顶"><a href="#文章置顶" class="headerlink" title="文章置顶"></a>文章置顶</h4><p>参考：<a href="https://blog.csdn.net/nineya_com/article/details/103394315">hexo博客文章置顶功能实现的两种方法</a></p>
+<p>Ayer主题包含有文章置顶相关的配置，可以修改<code>./node_modules/hexo-generator-index/lib</code>路径下的<code>generator.js</code>文件</p>
+<p>将原排序方式：<code>posts.data.sort((a,b) =&gt; (b.sticky||0)-(a.sticky||0));</code>，修改为：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">posts.<span class="property">data</span> = posts.<span class="property">data</span>.<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(a.<span class="property">top</span> &amp;&amp; b.<span class="property">top</span>) &#123; <span class="comment">// 两篇文章都有top，top大的在前</span></span><br><span class="line">    <span class="keyword">if</span>(a.<span class="property">top</span> == b.<span class="property">top</span>) </span><br><span class="line">      <span class="keyword">return</span> b.<span class="property">date</span> - a.<span class="property">date</span>; <span class="comment">// 若top值相等，最新的文章在前面</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span> b.<span class="property">top</span> - a.<span class="property">top</span>; <span class="comment">// top大的在前面</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(a.<span class="property">top</span> &amp;&amp; !b.<span class="property">top</span>) &#123; <span class="keyword">return</span> -<span class="number">1</span>; &#125;  <span class="comment">// 以下是只有一篇文章top有定义，那么将有top的排在前面</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(!a.<span class="property">top</span> &amp;&amp; b.<span class="property">top</span>) &#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">return</span> b.<span class="property">date</span> - a.<span class="property">date</span>; 	<span class="comment">//都没有top标签，最新的文章在前面</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>然后在需要置顶的文章首部，加入top属性即可，如:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: ...</span><br><span class="line">top: 10</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<p>参考文章：</p>
+<ul>
+<li><p><a href="https://easyhexo.com/2-Theme-use-and-config/2-19-hexo-theme-ayer/">hexo-theme-ayer | Easy Hexo</a></p>
+</li>
+<li><p><a href="https://blog.justlovesmile.top/posts/c8972b63.html">Hexo博客搭建+Butterfly主题魔改指南</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/qq_43701912/article/details/107056483">Hexo博客 | 前端美化</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/qq_35982918/article/details/106728754">Hexo博客Ayer主题自定义配置</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/The_X_One/article/details/106753814">使用hexo框架+ayer主题+gitalk评论插件搭建个人博客</a> 的 优化部分</p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/69211731">Hexo 博客美化合集</a> 音乐外链 </p>
+</li>
+<li><p><a href="https://thinkingreedi.github.io/categories/%E5%8D%9A%E5%AE%A2/">会思想的苇草i 从0开始搭建博客</a></p>
+</li>
+</ul>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Blog</tag>
       </tags>
   </entry>
   <entry>
@@ -967,6 +801,172 @@
       </tags>
   </entry>
   <entry>
+    <title>计算机网络3 传输层</title>
+    <url>/2022/11/16/Computer-Network-3-Transport-Layer/</url>
+    <content><![CDATA[<h1 id="第3章-传输层-Transport-Layer"><a href="#第3章-传输层-Transport-Layer" class="headerlink" title="第3章 传输层(Transport Layer)"></a>第3章 传输层(Transport Layer)</h1><p><code>传输层</code> <strong>&#x3D;&#x3D;</strong> <code>运输层</code><br><code>套接字(Socket)</code> <strong>&#x3D;</strong> <code>IP地址</code> + <code>端口号(port)</code>，位于<strong>应用层</strong></p>
+<h2 id="3-1-传输层服务与协议"><a href="#3-1-传输层服务与协议" class="headerlink" title="3.1 传输层服务与协议"></a>3.1 传输层服务与协议</h2><ul>
+<li>运输层协议为运行在不同主机上的应用进程之间提供了<strong>逻辑通信</strong> (logic communication) 功能</li>
+<li>运输层协议是在<u>端系统</u>中实现。<u>发送端将从发送应用程序进程接收到的报文分段</u>(转换成运输层分组)，传递给网络层；<u>接收端将报文段重组成完整报文</u>，传递给应用层。</li>
+<li>关于 <strong>运输层 和 网络层 的关系</strong>：<br>1）网络层 负责在不同主机之间提供 逻辑通信 服务；<br>2）运输层 负责 通过网络层 进行不同主机的进程之间的 逻辑通信。</li>
+<li>两种主要的网络传输协议：TCP 和 UDP<br>1）TCP：可靠、有序传输、拥塞控制、流量控制、连接建立<br>2）UDP：不可靠、不保序传输、没有为尽力而为的IP服务添加更多的其它额外服务<br>3）都不提供的服务：延迟保证、带宽保证</li>
+</ul>
+<hr>
+<h2 id="3-2-复用-分用"><a href="#3-2-复用-分用" class="headerlink" title="3.2 复用 分用"></a>3.2 复用 分用</h2><ul>
+<li>**复用 &#x2F; 多路复用(multiplexing)**：<u>从源主机的不同套接字中收集数据块，并为每个数据块封装上首部信息(“传输头”)，进而生成报文段，然后将报文段传递到网络层</u>，就是 把多个数据流 (streams) 合并为一个数据流</li>
+<li>**分用 &#x2F; 多路分解(demultiplexing)**：<u>将运输层报文段中的数据交付到正确的套接字的工作</u>，就是 复用的逆过程，数据流被分离成单独的部分，相当于解码。具体操作为：接收端的运输层标识出报文段中的接受套接字，进而将报文段定向到该套接字</li>
+<li>多路复用和多路分解服务是所有计算机网络都需要的</li>
+</ul>
+<p>理解：你的的手机正在浏览网页，刷新电子邮件，同时连接到微信。所有这些连接都通过同一链路发送，这一过程为<u>复用</u>；手机接收到的数据包流将被分割并发送到相应的网络、电子邮件、微信程序，该过程为<u>分用</u></p>
+<h3 id="无连接的分用、复用-UDP"><a href="#无连接的分用、复用-UDP" class="headerlink" title="无连接的分用、复用(UDP)"></a>无连接的分用、复用(UDP)</h3><ul>
+<li>UDP Socket &#x3D; (dstIP, dstPort)<br><strong>UDP 套接字</strong> &#x3D; (<strong>目标IP地址</strong> + <strong>目标端口号</strong>)</li>
+<li><strong>发送方</strong>创建UDP套接字的数据报时，必须指定 <strong>目标IP地址</strong>、<strong>目标端口</strong>，而且包含<strong>源端口号</strong><br>（A send <u>b-ip, b-port, a-ip, a-port</u> to B，包含源端口号是为了 接受方B回发报文段给发送方A时，使用recvfrom()方法从发送方的UDP报文段中取源端口号的值，当然完整的返回地址为 源IP+源端口）</li>
+<li><strong>接收方</strong>接收UDP报文段时，<strong>检查段中的目的端口</strong>，<strong>将UDP报文段定向到 具有指定目标端口的套接字</strong></li>
+<li>不同源IP地址或源端口号的数据报，具有相同目标端口，发送到同一个目标IP地址，会定向到同一目标套接字<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/95cc2c4a0b844503810f60aa39fd6e65.png">https://img-blog.csdnimg.cn/95cc2c4a0b844503810f60aa39fd6e65.png</a> &#x3D;600x)</li>
+</ul>
+<h3 id="面向连接的分用、复用-TCP"><a href="#面向连接的分用、复用-TCP" class="headerlink" title="面向连接的分用、复用(TCP)"></a>面向连接的分用、复用(TCP)</h3><ul>
+<li>TCP socket &#x3D; (sourceIP, sourcePort, destIP, destPort)<br><strong>TCP 套接字</strong> &#x3D; (<strong>源IP地址</strong> + <strong>源端口号</strong> + <strong>目标IP地址</strong> + <strong>目标端口号</strong>)</li>
+<li>服务器主机支持许多并行的TCP套接字，<strong>每个套接字与 1 个进程&#x2F;线程相联系</strong>，且由四元组来标识套接字</li>
+<li>(与UDP不同) <u>两个不同源IP地址或源端口号的数据报，即使具有相同的目标端口和目标IP地址，也会定向到不同的套接字</u><br>（若TCP报文段中包含 初始创建TCP连接的请求，接收方服务器会创建新的套接字）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/a175ba3071e44ec486576df361ef1bf2.png">https://img-blog.csdnimg.cn/a175ba3071e44ec486576df361ef1bf2.png</a> &#x3D;600x)<br>参考上图3.5，主机A，Web服务器B，主机C的IP地址分别为A、B、C。主机C 与 服务器B 之间有两个HTTP会话连接，会话源端口号分别为7532、26145，目标端口号都为80，在服务器传输层 分用 至两个不同的套接字；主机A 与 服务器B 之间由一个HTTP会话连接，源端口号为26145，目标端口号为80，与主机A的其中一个会话源端口号相同，但在服务器传输层也会 分用 至两个套接字。（总结：每个套接字由其四元组标识；目标端口相同的数据被分用至不同的套接字）</li>
+</ul>
+<h3 id="持续-x2F-非持续HTTP连接-与-常见端口"><a href="#持续-x2F-非持续HTTP连接-与-常见端口" class="headerlink" title="持续&#x2F;非持续HTTP连接 与 常见端口"></a>持续&#x2F;非持续HTTP连接 与 常见端口</h3><ul>
+<li>持续HTTP：在整个连接持续期间，客户端与服务器之间 经由 同一个服务器套接字交换 HTTP报文</li>
+<li>非持续HTTP：对每一对请求&#x2F;响应都创建一个新的TCP连接和一个套接字并随后就关闭（这种套接字的频繁创建-关闭会严重影响服务器性能，即使可以通过操作系统技巧减轻影响）</li>
+<li><strong>常见端口</strong>：<br>Port 80：标准HTTP连接<br>Port 22：SSH 远程计算机而当路<br>Port 25：SMTP端口，邮件服务器使用的默认端口<br>Port 143：IMAP端口，接收电子邮件，类似与POP3<br>Port 443：标准HTTPS连接，安全<br><a href="https://www.ssl2buy.com/wiki/port-80-http-vs-port-443-https">端口对比：Port 80 (HTTP) vs. Port 443 (HTTPS)</a></li>
+</ul>
+<hr>
+<h2 id="3-3-无连接传输-UDP"><a href="#3-3-无连接传输-UDP" class="headerlink" title="3.3 无连接传输: UDP"></a>3.3 无连接传输: UDP</h2><ul>
+<li>UDP 协议 是 实现了端口的 IP协议，可以让数据包在送到某个IP地址的基础上，进而送到运行在某一端口的通信进程<br>UDP 协议是TCP 协议的简化版，出现于TCP之后<br>应用场景：直播等流媒体应用程序、域名系统DNS、NFS等</li>
+<li>UDP 协议的<strong>优点</strong>：<u>简单、快、高效(Efficient)、没有拥塞控制</u>；<strong>缺点</strong>：<u>传输不可靠、尽力而为(Best Effort)、UDP报文段可能会丢包、乱序</u></li>
+<li><strong>UDP 报文段(segment) &#x3D; [ 源端口号，目标端口号，长度，校验和，应用程序数据 ]</strong><br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/24d49240b961405ca5787d4ec99f771e.png">https://img-blog.csdnimg.cn/24d49240b961405ca5787d4ec99f771e.png</a> &#x3D;250x)<br><strong>length</strong>：<u>以 bytes 为单位的UDP报文段长度，包含传输头(UDP Segment Header)的长度 和 原始数据(Payload)长度</u>，其中 udpSegmentHeader &#x3D; sPort+dPort+Length+CheckSum &#x3D; 16 bits*4 &#x3D; 8 bytes)<br><strong>checksum</strong>：用于检测整个数据包是否损坏（包括整个UDP数据包，以及IP头部的源IP和目标IP等信息），没有改正能力，在IPv4中可以不使用checksum，即checksum为0</li>
+<li>检验和 checksum 的具体计算方式还没写, 可以先看书 ：）</li>
+</ul>
+<hr>
+<h2 id="3-4-可靠数据传输原理-rdt"><a href="#3-4-可靠数据传输原理-rdt" class="headerlink" title="3.4 可靠数据传输原理(rdt)"></a>3.4 可靠数据传输原理(rdt)</h2><ul>
+<li>背景：期望每次信息传输都是理想状态是不太可能的，而且 “Best Effort”的 IP协议不会修复，传输自己时还可能产生错误或丢失，所以需要可靠数据传输(Reliable Data Transfer)</li>
+</ul>
+<hr>
+<h3 id="rdt-1-0：经完全可靠信道的可靠数据传输"><a href="#rdt-1-0：经完全可靠信道的可靠数据传输" class="headerlink" title="rdt 1.0：经完全可靠信道的可靠数据传输"></a>rdt 1.0：经完全可靠信道的可靠数据传输</h3><p>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/2d26bd0af7de46dfbb1eb58e5d85c9fc.png">https://img-blog.csdnimg.cn/2d26bd0af7de46dfbb1eb58e5d85c9fc.png</a> &#x3D;420x)</p>
+<hr>
+<h3 id="rdt-2-0：发现并修复位差错"><a href="#rdt-2-0：发现并修复位差错" class="headerlink" title="rdt 2.0：发现并修复位差错"></a>rdt 2.0：发现并修复位差错</h3><p>引入3种功能：<br>    1. 通过 checksum 来校验错误<br>    2. 接收者 反馈接受 ACK 和 NAK信息<br>    3. 重传<br>    理解：传输层对应用层的数据进行打包处理时，新增checksum（校验和），从而接收端可以对其数据包进行检验，如果正确，返回ACK，发送者继续发送下一个数据包；如果不正确，返回NAK，发送者重传数据。</p>
+<ul>
+<li>rdt2.0 没有错误时的操作<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d5cf8c294ac049fd9cf878ceecbf8e37.png">https://img-blog.csdnimg.cn/d5cf8c294ac049fd9cf878ceecbf8e37.png</a> &#x3D;550x)</li>
+<li>rdt2.0 发生错误时的流程<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/b7c5d0f7f14d4c38ae99fb81c6ea2fb0.png">https://img-blog.csdnimg.cn/b7c5d0f7f14d4c38ae99fb81c6ea2fb0.png</a> &#x3D;600x)</li>
+</ul>
+<hr>
+<h3 id="rdt-2-1：数据包带序号"><a href="#rdt-2-1：数据包带序号" class="headerlink" title="rdt 2.1：数据包带序号"></a>rdt 2.1：数据包带序号</h3><ul>
+<li>背景：rdt2.0不能解决ACK和NAK出错的问题，重传可能会导致重复</li>
+<li><strong>解决</strong>：<br>  ① 发送方为每一个数据包添加 <strong>编号</strong>(seq)<br>  ② ACK &#x2F; NAK出错，发送方重传<br>  ③ 接收方丢弃重复的数据包<br>  ④ <strong>“stop and wait” 停等</strong>机制，发送方发送一个包，等待接收方回应</li>
+<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d58e985528844639aeaa4b31cbb05fc9.png">https://img-blog.csdnimg.cn/d58e985528844639aeaa4b31cbb05fc9.png</a> &#x3D;700x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/37207f40a6bd4f42999828b7573810f2.png">https://img-blog.csdnimg.cn/37207f40a6bd4f42999828b7573810f2.png</a> &#x3D;750x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/img_convert/e24ac0ff9649e468371040625179aaba.webp?x-oss-process=image/format,png">https://img-blog.csdnimg.cn/img_convert/e24ac0ff9649e468371040625179aaba.webp?x-oss-process=image/format,png</a> &#x3D;700x)</li>
+</ul>
+<h3 id="rdt-2-2：ACK取代NAK"><a href="#rdt-2-2：ACK取代NAK" class="headerlink" title="rdt 2.2：ACK取代NAK"></a>rdt 2.2：ACK取代NAK</h3><ul>
+<li>用 <strong>带序号的ACK</strong> 代替 ACK &#x2F; NAK，接收方接收ACK信号时检查ACK的序号</li>
+<li>机制<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/2a547ba52a1f4d15a009a9ff851fb393.png">https://img-blog.csdnimg.cn/2a547ba52a1f4d15a009a9ff851fb393.png</a> &#x3D;700x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/9f49bb550b4b4d3e95e5a64ef397ce1f.png">https://img-blog.csdnimg.cn/9f49bb550b4b4d3e95e5a64ef397ce1f.png</a> &#x3D;700x)</li>
+</ul>
+<h3 id="rdt-3-0：超时重传-治疗数据包丢失"><a href="#rdt-3-0：超时重传-治疗数据包丢失" class="headerlink" title="rdt 3.0：超时重传 治疗数据包丢失"></a>rdt 3.0：超时重传 治疗数据包丢失</h3><ul>
+<li>问题背景：数据包或ACK丢失，可能会导致重传和数据重复</li>
+<li>解决：<strong>超时重传</strong><br>发送端在设定时间内没有收到指定编号的ACK则重传<br>重传虽然会导致数据重复，但可以通过序列号解决</li>
+<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/e61f3b679814457eb1cc8afb17d2fbdc.png">https://img-blog.csdnimg.cn/e61f3b679814457eb1cc8afb17d2fbdc.png</a> &#x3D;700x)<br>![f3.0.1](<a href="https://img-blog.csdnimg.cn/ac2f28e9bb99482da4d0acee654a6767.png">https://img-blog.csdnimg.cn/ac2f28e9bb99482da4d0acee654a6767.png</a> &#x3D;700x)<br><img src="https://img-blog.csdnimg.cn/a35a79b156de4fc98f67b68d31f74725.png" alt="在这里插入图片描述"></li>
+</ul>
+<hr>
+<h2 id="3-5-流水线技术-GoBackN-amp-Selective-Repeat"><a href="#3-5-流水线技术-GoBackN-amp-Selective-Repeat" class="headerlink" title="3.5 流水线技术(GoBackN &amp; Selective Repeat)"></a>3.5 流水线技术(GoBackN &amp; Selective Repeat)</h2><ul>
+<li>问题：1 Gbps link, 15ms 延迟, 8000bit 大小的包，将round-trip-time作为传播到那里和返回的时间（rtt，即两倍的end-to-end延时)，传输延时和信道利用率是多少？<br>答：$L$-包大小；$R$-传输速率。<br>$D_{trans}&#x3D;L&#x2F;R&#x3D;\frac{8000bits}{10^{9}bit&#x2F;s}&#x3D;8ms$<br>$U_{sender}&#x3D;\frac{L&#x2F;R}{RTT+L&#x2F;R}&#x3D;\frac{0.008}{15*2+0.008}&#x3D;0.027%$</li>
+<li><strong>流水线技术(Pipelining)<strong>：允许发送方在</strong>未得到对方确认</strong>的情况下<strong>一次发送多个包</strong></li>
+<li>条件：<br>① <strong>增加 包&#x2F;应答 的序号范围</strong><br>② <strong>发送方 设置缓存</strong>（未得到确认，可能需要重传 &#x3D;&#x3D;？&#x3D;&#x3D;）<br>③ <strong>接收方 设置缓存</strong>（上层用户取用数据的速率≠接收到的数据速率；接收的数据包可能乱序；可能需要重新排序后交付）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/d33bc0ea55e24c5f90d14c8abe4447d4.png">https://img-blog.csdnimg.cn/d33bc0ea55e24c5f90d14c8abe4447d4.png</a> &#x3D;600x)<br><a href="https://www2.tkn.tu-berlin.de/teaching/rn/animations/gbn_sr/"><strong>Go-Back-N 与 Selective Repeat 过程动画演示</strong></a></li>
+</ul>
+<h3 id="Go-Back-N"><a href="#Go-Back-N" class="headerlink" title="Go-Back-N"></a>Go-Back-N</h3><ul>
+<li>核心：sender能够在收到确认之前发送多个分组，但receiver只能缓存一个符合要求的分组并回复确认<ul>
+<li><strong>发送方一次发送 N 个包</strong></li>
+<li><strong>接收方 只缓存并确认 按顺序正确到达的包</strong></li>
+<li>发送方设置计时器，<strong>超时(没收到回应)重传</strong></li>
+</ul>
+</li>
+<li>机制：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/141038371226432eb82f13356dd72aab.png">https://img-blog.csdnimg.cn/141038371226432eb82f13356dd72aab.png</a> &#x3D;600x)</li>
+<li>缺点：<br>Go-Back-N在一定程度上避免了停等协议中信道利用率低下的问题，但在窗口N较大时，Go-Back-N需要重传的包较多，代价大</li>
+</ul>
+<h3 id="选择重传-Selective-Repeat"><a href="#选择重传-Selective-Repeat" class="headerlink" title="选择重传(Selective Repeat)"></a>选择重传(Selective Repeat)</h3><ul>
+<li>核心：<br>① <strong>接收方单独确认所有正确接受的包</strong>(不按顺序)<br>② 根据需要，将缓冲区中的包按顺序传给上层<br>③ 发送方仅发送 未收到ACK的包<br>④ 每个未确认的包都有计时器，超时重传</li>
+<li><strong>机制</strong>：<br><strong>Sender</strong>：<br>① 收到上层数据，如果 发送窗格的下一个序号可用，打包发送<br>② packet(n) 超时，重发n号包，计时器重置<br>③ 收到 ACK(n)，如果 n 是未确认的包中编号最小的，右移发送窗格<br><strong>Receiver</strong>：<br>① 收到 packet(n)后，回复 ACK(n)<br>② 如果编号顺序乱&#x2F;缺失，缓存并等待接受前面的包<br>③ 如果编号顺序正确，将包传给上层，移动 接收窗格<br>④ 重复的包直接丢弃<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/9a84cffaab7144e5b47d161c477d5e9f.png">https://img-blog.csdnimg.cn/9a84cffaab7144e5b47d161c477d5e9f.png</a> &#x3D;600x)</li>
+<li><strong>存在的问题</strong>：<ul>
+<li>设帧序号为0,1,2,3 重复使用但内容不同，窗格大小为3，传输过程如下图<br>  ![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/ece3d44fc32142d4b6debfee520e1393.png">https://img-blog.csdnimg.cn/ece3d44fc32142d4b6debfee520e1393.png</a> &#x3D;400x)</li>
+<li>当 receiver接受到 0,1,2号包之后，发送ACKs(0,1,2)，移动接收窗格到 [3,0,1] 等待接收packet(3,0,1)。<br>  如果 sender 没有在设定时间内接收到ACKs，会超时重传 packet(0,1,2)。<br>  当 receiver 接收到 sender 重发的 packet(0,1)时，会认为它们是新一轮序号的包，并将其缓存（正常应该直接丢弃的包），造成二义性</li>
+<li>解决：<br>  ① 发送窗格 &lt;&#x3D; 接受窗格<br>  ② <strong>发送窗格大小 &lt;&#x3D; $\frac{1}{2}*$序号数</strong>（n比特编码，发送窗格长度最大为$2^{n-1}$）</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-6-面向连接传输-TCP"><a href="#3-6-面向连接传输-TCP" class="headerlink" title="3.6 面向连接传输: TCP"></a>3.6 面向连接传输: TCP</h2><ul>
+<li><p><strong>面向连接</strong>：只有在确认通信对端存在时才会发送数据，从而可以控制通信流量的浪费</p>
+</li>
+<li><p><strong>TCP 报文段结构</strong>：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/89a1a4328a0c4d318e498b1d6a689e00.png">https://img-blog.csdnimg.cn/89a1a4328a0c4d318e498b1d6a689e00.png</a> &#x3D;500x)</p>
+<ul>
+<li><strong>源端口号 &#x2F; 目的端口号</strong>：16 bits</li>
+<li>**序号(sequence number)**：32 bits，段数据中第一个字节的在整个字节流中“编号”，用来标明位置</li>
+<li>**确认号(acknowledgements)**：32 bits，期望从对方收到的下一个字节的序号</li>
+</ul>
+</li>
+<li><p><strong>具体应用</strong>：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/69f75d2998b3474e8ccdb893185322d0.png">https://img-blog.csdnimg.cn/69f75d2998b3474e8ccdb893185322d0.png</a> &#x3D;550x)</p>
+</li>
+<li><p><a href="https://blog.csdn.net/wgl307293845/article/details/122403761">超时时长的设置</a><br>$DevRTT &#x3D; (1-\beta)<em>DevRTT + \beta</em>|SampleRTT-EstimatedRTT|$</p>
+<p>  $Timeout &#x3D; EstimatedRTT + 4 * DevRTT$</p>
+<p>  其中 $RTT$为 round-trip-time 往返时间；$DevRTT$为 RTT偏差值(safety margin)；</p>
+</li>
+</ul>
+<p>$SampleRTT$为 报文段的样本RTT； $EstimatedRTT$为TCP对下一个数据往返值进行的估计</p>
+<h3 id="TCP可靠数据传输"><a href="#TCP可靠数据传输" class="headerlink" title="TCP可靠数据传输"></a>TCP可靠数据传输</h3><ul>
+<li><p>实现：</p>
+<ul>
+<li><strong>收到上层应用层传来的数据</strong><br>  ① 将数据划分为多个数据段，并编号Seq_num<br>  ② 编号Seq_num是该段中第一个数据字节在整个字节流的位置<br>  ③ 没开始前设置计时器，超时周期为 刚计算出得TimeOutInterval</li>
+<li><strong>超时</strong><br>  重传导致超时的段，重启计时器</li>
+<li><strong>之前未确认过的段被确认了</strong><br>  ① 标记它被确认了<br>  ② 设置计时器，继续传没被确认的段</li>
+</ul>
+</li>
+<li><p>TCP 重传方案<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/f3c22bece2964deba7d6b10df47862e3.png">https://img-blog.csdnimg.cn/f3c22bece2964deba7d6b10df47862e3.png</a> &#x3D;600x)<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/4dba3bd0b4694a2f94ac6ce24bad8095.png">https://img-blog.csdnimg.cn/4dba3bd0b4694a2f94ac6ce24bad8095.png</a> &#x3D;450x)</p>
+</li>
+<li><p><strong>快速重传</strong><br>通过 <strong>重复的ACK</strong> 来检测报文段丢失：发送方通常连续发送大量报文段，如果报文段丢失，发送方一般会收到多个重复的ACK<br><strong>如果发送方收到同一数据的3个重复ACK，重传对方需要的数据段</strong>（第一个ACK正常，后面三个为重复ACK）<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/3d3aab1eff184a189046a73ece95abfd.png">https://img-blog.csdnimg.cn/3d3aab1eff184a189046a73ece95abfd.png</a> &#x3D;600x)</p>
+</li>
+</ul>
+<h2 id="3-7-流量控制-flow-control"><a href="#3-7-流量控制-flow-control" class="headerlink" title="3.7 流量控制(flow control)"></a>3.7 流量控制(flow control)</h2><ul>
+<li>背景：应用层从传输层socket中提取数据，然而往往数据不会提的这么快，这时候要是 sender 还一直发数据就会挤满 接收端的缓存（RcvBuffer），挤满后传输的数据就只能作废。</li>
+</ul>
+<hr>
+<h2 id="END-练习"><a href="#END-练习" class="headerlink" title="END 练习"></a>END 练习</h2><ul>
+<li><p><strong>问题：考虑一个可靠的数据传输（rdt）协议，通过一个有比特错误的信道（数据包被破坏但没有丢失）。解释检测错误并恢复的过程</strong>。</p>
+<blockquote>
+<p>Q：Consider a reliable data transfer (rdt) protocol over a channel with bit errors (packets are corrupted but not lost). Explain the procedure to detect and recover from errors.</p>
+</blockquote>
+<p>  答：① 从数据包头部解析出校验和 checksum，② 通过数据包及头部计算新的校验和，③ 如果两者不匹配，则说明包错误，④ 接收方回应NAK(rdt2.1) 或 回应带有错误编号的ACK(rdt2.2&#x2F;rdt3.0)</p>
+</li>
+<li><p>(往年考题) <strong>rdt2.1相关问题</strong> (书 P191 第三章习题 P6)：<br><strong>考虑我们改正协议rdt2.1的动机。试说明如图3-57所示的接收方与如 图3-11 所示的发送方运行时，接收方可能会引起发送方和接收方进人死锁状态，即双方都在等待不可能发生的事件。</strong></p>
+<blockquote>
+<p>P6. Consider our motivation for correcting protocol rdt2.1 . Show that the receiver, shown in<br>Figure 3.57 , when operating with the sender shown in Figure 3.11 , can lead the sender and<br>receiver to enter into a deadlock state, where each is waiting for an event that will never occur.<br>![Figure 3.11](<a href="https://img-blog.csdnimg.cn/f48e7b617d0d442dac3605e877090c57.png">https://img-blog.csdnimg.cn/f48e7b617d0d442dac3605e877090c57.png</a> &#x3D;600x)<br>![Figure 3.57](<a href="https://img-blog.csdnimg.cn/1396c7f1a8ac4937a1719666015fc363.png">https://img-blog.csdnimg.cn/1396c7f1a8ac4937a1719666015fc363.png</a> &#x3D;600x)</p>
+</blockquote>
+<p>  参考答案：<!-- Edge_Explorer PDF Page: Page of Recver-208; Sender-157 --></p>
+</li>
+</ul>
+<p>假设发送方(图3-11)处于“等待来自上层的调用1”状态时，而接收方(图3-57)处于“等待来自下层的1”，<br>发送方发送1号数据包，并转换到“等待ACK或NAK 1”状态，等待ACK或NAK。<br>现在假设接收方正确地接受了1号数据包，发送了ACK，然后转换到“等待来自下层的0”状态，等待0号数据包。<br>但是，<strong>若ACK消息损坏</strong>，rdt2.1发送方接收到损坏的ACK，条件rdt_rcv(rcvpkt)&amp;&amp;(corrupt(rcvpkt)为 True，<br>发送方会执行udt_send(sndpkt)，重新发送1号数据包，而接收方在等待0号，has_seq1(rcvpkt)为 True,<br>在没接收到0号数据包时会始终返回NAK消息，而发送方处于当前状态时接收到NAK会始终发送1号数据包。<br>因此，发送方处于“等待ACK或NAK 1”状态，始终接收NAK并发送1号数据包，<br>接收方处于“等待来自下层的0”状态，始终接受1号数据包并丢弃，返回NAK，从而陷入死锁状态。</p>
+<ul>
+<li><p>Go-Back-N 理解练习<br><strong>Go-back-N 接收方收到了packets 1,2,3,5，下面说法正确的是：</strong><br>A) 回复 ACKs 1,2,3,5<br>B) 发送 packets 1,2,3,5 给应用层<br>C) 不应该向应用层发送包，因为缺失了部分数据(4)<br>D) 应该丢弃 packet 5 √</p>
+</li>
+<li><p>TCP快速重传练习<br>  <strong>TCP sender 窗格大小为5，待发送包共10个，sender发送pkt(1,2,3,4,5)。当sender收到下列情况的ACKs时会执行什么操作？<br>  ① 收到 ACK(1,2,3,4,5)<br>  ② 收到 ACK(1,3)<br>  ③ <font style="background:yellow">收到 4次 ACK1</font></strong><br>  答：① 正常发 pkt(6,7,8,9,10)；② <u>发 pkt(6,7,8)，等待pkt(4)是否超时</u>（收到ACK3说明pkt2肯定收到，发送方窗格移动到[45678]，pkt45已发，只需要发送pkt678即可）；③ <u>重发pkt(2)，正常发pkt(6)</u>（本题ACK n的序号与现实传输不同，表示对n号包的确认，而不是需要sender的pkt-n；第一次ACK1表示收到了pkt-1，pkt-2传输时丢失，后三次ACK1分别来自receiver接收到pkt-3,4,5时的反馈，因为没收到pkt-2，只能回复确认pkt-1收到了；收到ACK1，sender窗格移动到[23456]，可以正常发pkt-6）</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>参考资料</strong>：<ol>
+<li><a href="https://juejin.cn/user/2067532033034599/posts">网络协议：传输层概述</a></li>
+<li><a href=""></a></li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习</category>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>Computer Network</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计算机网络5 链路层</title>
     <url>/2022/11/16/Computer-Network-5-Link-Layer-and-LANs/</url>
     <content><![CDATA[<h2 id="第6章-链路层和局域网-Link-Layer-and-LANs"><a href="#第6章-链路层和局域网-Link-Layer-and-LANs" class="headerlink" title="第6章 链路层和局域网(Link Layer and LANs)"></a>第6章 链路层和局域网(Link Layer and LANs)</h2><h3 id="6-2-差错检测-和-纠正"><a href="#6-2-差错检测-和-纠正" class="headerlink" title="6.2 差错检测 和 纠正"></a>6.2 差错检测 和 纠正</h3><ul>
@@ -1071,62 +1071,6 @@
       <tags>
         <tag>C++</tag>
         <tag>Dev C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机组成原理实验</title>
-    <url>/2022/01/07/Experiment-on-Principles-of-Computer-Composition/</url>
-    <content><![CDATA[<h3 id="实验一-静态随机存储器实验"><a href="#实验一-静态随机存储器实验" class="headerlink" title="实验一 静态随机存储器实验"></a>实验一 静态随机存储器实验</h3><h4 id="1-1-实验目的及内容"><a href="#1-1-实验目的及内容" class="headerlink" title="1.1 实验目的及内容"></a>1.1 实验目的及内容</h4><p><strong>实验目的</strong>：掌握静态随机存储器RAM工作特性及数据的读写方法</p>
-<p><strong>仪器设备</strong>：PC机一台，TD-CMA实验系统一套</p>
-<p><strong>实验内容</strong>：</p>
-<img src="https://s1.ax1x.com/2023/03/17/ppGSz8A.jpg" style="zoom:25%;" />
-
-<h4 id="1-2-实验步骤"><a href="#1-2-实验步骤" class="headerlink" title="1.2 实验步骤"></a>1.2 实验步骤</h4><blockquote>
-<p>(1) 关闭实验系统电源，连接实验电路，并检查无误<br>(2) 将时序与操作台单元的开关KK1，KK3置为运行档，开关KK2置为”单步”档，开关KK4置为”主存”档<br>(3) 将CON单元的IOR开关置1，打开电源开关（如果听到“嘀”的报警声，应立即关闭电源，重新检查接线直到错误排除）<br>(4) 给存储器的00H,01H,02H,03H,04H地址单元中分别写入数据11H,12H,13H,14H,15H。<br>(5) 依次读出第00,01,02,03,04号单元中的内容，观察上述单元中内容是否与前面输入的一致</p>
-</blockquote>
-<p>上述 (4) 具体操作：</p>
-<blockquote>
-<p>① 写地址：在IN单元处输入地址，IOR置“0”，LDAR置“1”，按一下“ST”，将地址传至地址总线处，LDAR置“0”恢复至初态<br>② 写数据：IOR置“1”，在IN单元处输入数据，后IOR置“0”<br>WR置“1”，按下“ST”，写入数据，WR置“0”，IOR置“1”释放总线<br>重复上述步骤，依次在5个地质单元中写入对应数据即可。</p>
-</blockquote>
-<p>上述 (5) 具体操作：</p>
-<blockquote>
-<p>① 写地址：IOR置“1”，在IN单元处输入待读取的地址，IOR置“0”，LDAR置“1”，按下“ST”，然后LDAR置“0”恢复初态，IOR置“1”<br>② 读数据：RD置“1”（此时IOR应为“1”，LDAR置”0“）观察总线显示数，观察后RD置“0”释放总线</p>
-</blockquote>
-<h4 id="1-3-实验结果分析"><a href="#1-3-实验结果分析" class="headerlink" title="1.3 实验结果分析"></a>1.3 实验结果分析</h4><p>实验结果：</p>
-<blockquote>
-<p>在存储器的00H,01H,02H,03H,04H地址单元中分别读取出的数据为11H,12H,13H,14H,15H。</p>
-</blockquote>
-<p>结果分析：</p>
-<blockquote>
-<p>以01H地址单元写入数据12H并读出的过程为例<br>(1) 首先地址和数据是由同一个数据开关给出的（实验箱IN单元）因此地址和数据要分别写入。先关掉存储器的读写，数据开关给出地址01H，将地址01H打入AR中，再关闭地址寄存器，数据开关给出数据12H，打开输入三态门(写状态)，即把12H传至存储器。<br>读数据也应该先给出地址，在进行读操作，地址01H的写入方式相同，关闭IN单元输出，使存储器处于读状态，此时CPU总线上显示12H。<br>(2) 存储器存储数据原理：<br>存储器中最小单元为一个双稳态半导体电路或CMOS晶体管，磁性材料的存储单元，它可以存储一个二进制数序列，若干存储元构成一个存储单元，若干存储单元构成存储器，可用于存放数据。</p>
-</blockquote>
-<h4 id="1-4-思考题"><a href="#1-4-思考题" class="headerlink" title="1.4 思考题"></a>1.4 思考题</h4><ul>
-<li>思考题1：存储器实验各个控制信号的初始状态如何设置？<br><strong>IOR 置 “1”，其他控制信号置 “0”</strong></li>
-<li>思考题2：所有的写操作要配合脉冲（边沿触发），为什么？<br><strong>为了防止误操作</strong></li>
-</ul>
-<h3 id="实验三-基本运算器实验"><a href="#实验三-基本运算器实验" class="headerlink" title="实验三 基本运算器实验"></a>实验三 基本运算器实验</h3><h4 id="3-1-实验目的及内容"><a href="#3-1-实验目的及内容" class="headerlink" title="3.1 实验目的及内容"></a>3.1 实验目的及内容</h4><img src="https://s1.ax1x.com/2023/03/17/ppGpSgI.jpg" style="zoom:25%;" />
-
-<h4 id="3-2-实验步骤"><a href="#3-2-实验步骤" class="headerlink" title="3.2 实验步骤"></a>3.2 实验步骤</h4><blockquote>
-<p>（1）关闭电源开关，连接实验电路，并检查无误<br>（2）将时序与操作台单元的开关KK2 置为“单步”档，开关KK1, KK3置为“运行”档<br>（3）打开电源开关，按动 CON单元 的 CLR按钮，将运算器的 A,B,FC,FZ 清零<br>（4）用输入开关向暂存器A 置数<br>（5）用输入开关向暂存器B 置数<br>（6）改变运算器的功能设置，观察运算器的输出</p>
-</blockquote>
-<h4 id="3-3-实验结果分析"><a href="#3-3-实验结果分析" class="headerlink" title="3.3 实验结果分析"></a>3.3 实验结果分析</h4><blockquote>
-<p>（1）运算器能实现二进制算术和移位，逻辑运算<br>设置运算器的控制信号S_3, S_2, S_1, S_0, C_n 来选择运算器的不同功能<br>（2）数据的输入，输出以及 FC、FZ 标志状态要通过 LED观察灯 观察时<br>都需要按下脉冲单元的 ST按钮<br>（3）数据进入哪一寄存器就必须开启哪一个寄存器<br>如数据只进入暂存器A，必须设置LDA &#x3D; 1， LDB &#x3D; 0且获得脉冲信号</p>
-</blockquote>
-<h4 id="3-4-思考题"><a href="#3-4-思考题" class="headerlink" title="3.4 思考题"></a>3.4 思考题</h4><ul>
-<li>思考题3：采用单步模式时，实验箱是如何产生时序信号的？例如要产生T3需要按几次ST?<br><strong>按ST产生时序信号；单步模式下要产生T3需要按1次ST</strong></li>
-<li>思考题4：运算器实验中的FZ代表什么含义？FZ什么时候取值为1？<br><strong>FZ为零标志位（Flag Zero），表示运算是否为0，当运算结果为0时，FZ为1</strong></li>
-</ul>
-<h3 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h3><blockquote>
-<p>感谢一只路过的喵喵提供了相关照片、思考题的参考答案以及改正建议</p>
-</blockquote>
-<hr>
-]]></content>
-      <categories>
-        <category>学习</category>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计组</tag>
       </tags>
   </entry>
   <entry>
@@ -1272,17 +1216,59 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub入门</title>
-    <url>/2023/03/07/GitHub-Introduction/</url>
-    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
+    <title>计算机组成原理实验</title>
+    <url>/2022/01/07/Experiment-on-Principles-of-Computer-Composition/</url>
+    <content><![CDATA[<h3 id="实验一-静态随机存储器实验"><a href="#实验一-静态随机存储器实验" class="headerlink" title="实验一 静态随机存储器实验"></a>实验一 静态随机存储器实验</h3><h4 id="1-1-实验目的及内容"><a href="#1-1-实验目的及内容" class="headerlink" title="1.1 实验目的及内容"></a>1.1 实验目的及内容</h4><p><strong>实验目的</strong>：掌握静态随机存储器RAM工作特性及数据的读写方法</p>
+<p><strong>仪器设备</strong>：PC机一台，TD-CMA实验系统一套</p>
+<p><strong>实验内容</strong>：</p>
+<img src="https://s1.ax1x.com/2023/03/17/ppGSz8A.jpg" style="zoom:25%;" />
+
+<h4 id="1-2-实验步骤"><a href="#1-2-实验步骤" class="headerlink" title="1.2 实验步骤"></a>1.2 实验步骤</h4><blockquote>
+<p>(1) 关闭实验系统电源，连接实验电路，并检查无误<br>(2) 将时序与操作台单元的开关KK1，KK3置为运行档，开关KK2置为”单步”档，开关KK4置为”主存”档<br>(3) 将CON单元的IOR开关置1，打开电源开关（如果听到“嘀”的报警声，应立即关闭电源，重新检查接线直到错误排除）<br>(4) 给存储器的00H,01H,02H,03H,04H地址单元中分别写入数据11H,12H,13H,14H,15H。<br>(5) 依次读出第00,01,02,03,04号单元中的内容，观察上述单元中内容是否与前面输入的一致</p>
+</blockquote>
+<p>上述 (4) 具体操作：</p>
+<blockquote>
+<p>① 写地址：在IN单元处输入地址，IOR置“0”，LDAR置“1”，按一下“ST”，将地址传至地址总线处，LDAR置“0”恢复至初态<br>② 写数据：IOR置“1”，在IN单元处输入数据，后IOR置“0”<br>WR置“1”，按下“ST”，写入数据，WR置“0”，IOR置“1”释放总线<br>重复上述步骤，依次在5个地质单元中写入对应数据即可。</p>
+</blockquote>
+<p>上述 (5) 具体操作：</p>
+<blockquote>
+<p>① 写地址：IOR置“1”，在IN单元处输入待读取的地址，IOR置“0”，LDAR置“1”，按下“ST”，然后LDAR置“0”恢复初态，IOR置“1”<br>② 读数据：RD置“1”（此时IOR应为“1”，LDAR置”0“）观察总线显示数，观察后RD置“0”释放总线</p>
+</blockquote>
+<h4 id="1-3-实验结果分析"><a href="#1-3-实验结果分析" class="headerlink" title="1.3 实验结果分析"></a>1.3 实验结果分析</h4><p>实验结果：</p>
+<blockquote>
+<p>在存储器的00H,01H,02H,03H,04H地址单元中分别读取出的数据为11H,12H,13H,14H,15H。</p>
+</blockquote>
+<p>结果分析：</p>
+<blockquote>
+<p>以01H地址单元写入数据12H并读出的过程为例<br>(1) 首先地址和数据是由同一个数据开关给出的（实验箱IN单元）因此地址和数据要分别写入。先关掉存储器的读写，数据开关给出地址01H，将地址01H打入AR中，再关闭地址寄存器，数据开关给出数据12H，打开输入三态门(写状态)，即把12H传至存储器。<br>读数据也应该先给出地址，在进行读操作，地址01H的写入方式相同，关闭IN单元输出，使存储器处于读状态，此时CPU总线上显示12H。<br>(2) 存储器存储数据原理：<br>存储器中最小单元为一个双稳态半导体电路或CMOS晶体管，磁性材料的存储单元，它可以存储一个二进制数序列，若干存储元构成一个存储单元，若干存储单元构成存储器，可用于存放数据。</p>
+</blockquote>
+<h4 id="1-4-思考题"><a href="#1-4-思考题" class="headerlink" title="1.4 思考题"></a>1.4 思考题</h4><ul>
+<li>思考题1：存储器实验各个控制信号的初始状态如何设置？<br><strong>IOR 置 “1”，其他控制信号置 “0”</strong></li>
+<li>思考题2：所有的写操作要配合脉冲（边沿触发），为什么？<br><strong>为了防止误操作</strong></li>
+</ul>
+<h3 id="实验三-基本运算器实验"><a href="#实验三-基本运算器实验" class="headerlink" title="实验三 基本运算器实验"></a>实验三 基本运算器实验</h3><h4 id="3-1-实验目的及内容"><a href="#3-1-实验目的及内容" class="headerlink" title="3.1 实验目的及内容"></a>3.1 实验目的及内容</h4><img src="https://s1.ax1x.com/2023/03/17/ppGpSgI.jpg" style="zoom:25%;" />
+
+<h4 id="3-2-实验步骤"><a href="#3-2-实验步骤" class="headerlink" title="3.2 实验步骤"></a>3.2 实验步骤</h4><blockquote>
+<p>（1）关闭电源开关，连接实验电路，并检查无误<br>（2）将时序与操作台单元的开关KK2 置为“单步”档，开关KK1, KK3置为“运行”档<br>（3）打开电源开关，按动 CON单元 的 CLR按钮，将运算器的 A,B,FC,FZ 清零<br>（4）用输入开关向暂存器A 置数<br>（5）用输入开关向暂存器B 置数<br>（6）改变运算器的功能设置，观察运算器的输出</p>
+</blockquote>
+<h4 id="3-3-实验结果分析"><a href="#3-3-实验结果分析" class="headerlink" title="3.3 实验结果分析"></a>3.3 实验结果分析</h4><blockquote>
+<p>（1）运算器能实现二进制算术和移位，逻辑运算<br>设置运算器的控制信号S_3, S_2, S_1, S_0, C_n 来选择运算器的不同功能<br>（2）数据的输入，输出以及 FC、FZ 标志状态要通过 LED观察灯 观察时<br>都需要按下脉冲单元的 ST按钮<br>（3）数据进入哪一寄存器就必须开启哪一个寄存器<br>如数据只进入暂存器A，必须设置LDA &#x3D; 1， LDB &#x3D; 0且获得脉冲信号</p>
+</blockquote>
+<h4 id="3-4-思考题"><a href="#3-4-思考题" class="headerlink" title="3.4 思考题"></a>3.4 思考题</h4><ul>
+<li>思考题3：采用单步模式时，实验箱是如何产生时序信号的？例如要产生T3需要按几次ST?<br><strong>按ST产生时序信号；单步模式下要产生T3需要按1次ST</strong></li>
+<li>思考题4：运算器实验中的FZ代表什么含义？FZ什么时候取值为1？<br><strong>FZ为零标志位（Flag Zero），表示运算是否为0，当运算结果为0时，FZ为1</strong></li>
+</ul>
+<h3 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h3><blockquote>
+<p>感谢一只路过的喵喵提供了相关照片、思考题的参考答案以及改正建议</p>
+</blockquote>
 <hr>
 ]]></content>
       <categories>
-        <category>技术</category>
-        <category>Github</category>
+        <category>学习</category>
+        <category>计算机组成原理</category>
       </categories>
       <tags>
-        <tag>GitHub</tag>
+        <tag>计组</tag>
       </tags>
   </entry>
   <entry>
@@ -1303,6 +1289,20 @@
       </categories>
       <tags>
         <tag>front-end</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub入门</title>
+    <url>/2023/03/07/GitHub-Introduction/</url>
+    <content><![CDATA[<p><a href="https://bbs.huaweicloud.com/blogs/336763">开发中时常提到的提交pr的意思: pull request</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>Github</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -1373,6 +1373,21 @@
       </tags>
   </entry>
   <entry>
+    <title>面试相关总结</title>
+    <url>/2023/03/07/Interview-related-content/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
+<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
+<p><a href="https://blog.csdn.net/sihai12345/article/details/120387150">Java 资料汇总</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java-2048小游戏</title>
     <url>/2021/06/26/Java-2048-game/</url>
     <content><![CDATA[<h1 id="游戏规则"><a href="#游戏规则" class="headerlink" title="游戏规则"></a>游戏规则</h1><ol>
@@ -1394,21 +1409,6 @@
       </categories>
       <tags>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面试相关总结</title>
-    <url>/2023/03/07/Interview-related-content/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
-<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
-<p><a href="https://blog.csdn.net/sihai12345/article/details/120387150">Java 资料汇总</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
@@ -1695,16 +1695,14 @@
 </ol>
 <h4 id="8-3-离散Hopfield神经网络"><a href="#8-3-离散Hopfield神经网络" class="headerlink" title="8.3 离散Hopfield神经网络"></a>8.3 离散Hopfield神经网络</h4><p>参考文章：<a href="https://zhuanlan.zhihu.com/p/457810569">反馈神经网络——Hopfield网络 - 知乎</a></p>
 <ol>
-<li><p>Hopfield网络的结构<br> 对于网络的中间层神经元节点，每个神经元的输出 都是 其他神经元的输入，每个神经元的输入都来自于其他神经元（<strong>除了输入输出的其他神经元全互连</strong>）</p>
-</li>
-<li><p>工作过程：由 初态的记忆样本部分信息，通过多次联想记忆循环，达到稳态获得记忆样本。网络计算的过程就是初始输入向量，经过逐次迭代，向吸引子演化的过程。演化的规则是向能量函数减小的方向演化，直到达到稳定状态。</p>
-</li>
-<li><p>若从某一时刻开始，网络中所有神经元状态不再改变，则<strong>Hopfield网络是稳定的</strong>，称一个或若干个稳定的状态为网络的<strong>吸引子</strong></p>
-</li>
-<li><p>无自反馈的HNN神经元输出：<br>$$<br>x_{i}(k+1)&#x3D;f(\sum^{n}<em>{j&#x3D;1}w</em>{ij}x_{j}(k)-\theta_{i} \text {，其中$w_{ii}&#x3D;0$}<br>$$<br>$$<br>\begin{array}{cc}<br> f(s)&#x3D; \begin{cases} 1, &amp; \text {$s \geq 0$} \ -1, &amp; \text{$s&lt;0$} \end{cases} &amp; 或 &amp; f(s)&#x3D; \begin{cases} 1, &amp; \text {$s \geq 0$} \ 0, &amp; \text{$s&lt;0$} \end{cases}<br> \end{array}<br>$$</p>
-</li>
-<li><p>应用示例<br><a href="https://imgse.com/i/p9MF0ot"><img src="https://s1.ax1x.com/2023/04/26/p9MF0ot.jpg" alt="p9MF0ot.jpg" border="0" style="zoom:50%;" /></a><br>步骤①：设计离散Hopfield神经网络结构(DHNN)，如下图所示<br><a href="https://imgse.com/i/p9MFDFP"><img src="https://s1.ax1x.com/2023/04/26/p9MFDFP.jpg" alt="p9MFDFP.jpg" border="0" style="zoom: 50%;" /></a><br>样本：$x^{(1)}&#x3D;[1,0,1]^{T}(桔子),x^{(2)}&#x3D;[0,1,0]^{T}(苹果)$，$\theta_{i}&#x3D;0(i&#x3D;1,2,3)$<br>步骤②：设计连接权矩阵<br><a href="https://imgse.com/i/p9Mk9SO"><img src="https://s1.ax1x.com/2023/04/26/p9Mk9SO.jpg" alt="p9Mk9SO.jpg" border="0" style="zoom:50%;" /></a><br>经过上面计算得到权重矩阵<br><a href="https://imgse.com/i/p9MkYt0"><img src="https://s1.ax1x.com/2023/04/26/p9MkYt0.jpg" alt="p9MkYt0.jpg" border="0" style="zoom:50%;" /></a><br>步骤③：测试<br>测试用例：$[1, 1, 1]^{T}$，即初始状态 $x_{1}(0)&#x3D;1, x_{2}(0)&#x3D;1, x_{3}(0)&#x3D;1$<br>确定调整次序为：$2 \rightarrow 1 \rightarrow 3$，开始调整<br>(<font color="purple">1</font>) 当前调整 ${\color{red} 2} \rightarrow 1 \rightarrow 3$，$k&#x3D;{\color{green}0}$，$x_{1}({\color{green}0})&#x3D;1，x_{2}({\color{green}0})&#x3D;1，x_{3}({\color{green}0})&#x3D;1$<br>$$<br>x_{\color{red} 2}({\color{purple} 1})&#x3D;f(\sum^{3}<em>{j&#x3D;1}w</em></p>
-</li>
+<li>Hopfield网络的结构<br> 对于网络的中间层神经元节点，每个神经元的输出 都是 其他神经元的输入，每个神经元的输入都来自于其他神经元（<strong>除了输入输出的其他神经元全互连</strong>）</li>
+<li>工作过程：由 初态的记忆样本部分信息，通过多次联想记忆循环，达到稳态获得记忆样本。网络计算的过程就是初始输入向量，经过逐次迭代，向吸引子演化的过程。演化的规则是向能量函数减小的方向演化，直到达到稳定状态。</li>
+<li>若从某一时刻开始，网络中所有神经元状态不再改变，则<strong>Hopfield网络是稳定的</strong>，称一个或若干个稳定的状态为网络的<strong>吸引子</strong></li>
+<li>无自反馈的HNN神经元输出：<br>$$<br>x_{i}(k+1)&#x3D;f(\sum^{n}<em>{j&#x3D;1}w</em>{ij}x_{j}(k)-\theta_{i} \text {，其中$w_{ii}&#x3D;0$}<br>$$</li>
+</ol>
+<p>$$<br>\begin{array}{cc}<br>        f(s)&#x3D; \begin{cases} 1, &amp; \text {$s \geq 0$} \ -1, &amp; \text{$s&lt;0$} \end{cases} &amp; 或 &amp; f(s)&#x3D; \begin{cases} 1, &amp; \text {$s \geq 0$} \ 0, &amp; \text{$s&lt;0$} \end{cases}<br>    \end{array}<br>$$</p>
+<ol start="5">
+<li>应用示例<br><a href="https://imgse.com/i/p9MF0ot"><img src="https://s1.ax1x.com/2023/04/26/p9MF0ot.jpg" alt="p9MF0ot.jpg" border="0" style="zoom:50%;" /></a><br>步骤①：设计离散Hopfield神经网络结构(DHNN)，如下图所示<br><a href="https://imgse.com/i/p9MFDFP"><img src="https://s1.ax1x.com/2023/04/26/p9MFDFP.jpg" alt="p9MFDFP.jpg" border="0" style="zoom: 50%;" /></a><br>样本：$x^{(1)}&#x3D;[1,0,1]^{T}(桔子),x^{(2)}&#x3D;[0,1,0]^{T}(苹果)$，$\theta_{i}&#x3D;0(i&#x3D;1,2,3)$<br>步骤②：设计连接权矩阵<br><a href="https://imgse.com/i/p9Mk9SO"><img src="https://s1.ax1x.com/2023/04/26/p9Mk9SO.jpg" alt="p9Mk9SO.jpg" border="0" style="zoom:50%;" /></a><br>经过上面计算得到权重矩阵<br><a href="https://imgse.com/i/p9MkYt0"><img src="https://s1.ax1x.com/2023/04/26/p9MkYt0.jpg" alt="p9MkYt0.jpg" border="0" style="zoom:50%;" /></a><br>步骤③：测试<br>测试用例：$[1, 1, 1]^{T}$，即初始状态 $x_{1}(0)&#x3D;1, x_{2}(0)&#x3D;1, x_{3}(0)&#x3D;1$<br>确定调整次序为：$2 \rightarrow 1 \rightarrow 3$，开始调整<br>(<font color="purple">1</font>) 当前调整 ${\color{red} 2} \rightarrow 1 \rightarrow 3$，$k&#x3D;{\color{green}0}$，$x_{1}({\color{green}0})&#x3D;1，x_{2}({\color{green}0})&#x3D;1，x_{3}({\color{green}0})&#x3D;1$<br>$$<br>x_{\color{red} 2}({\color{purple} 1})&#x3D;f(\sum^{3}<em>{j&#x3D;1}w</em></li>
 </ol>
 ]]></content>
       <categories>
@@ -1713,6 +1711,20 @@
       </categories>
       <tags>
         <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu问题及解决方案汇总</title>
+    <url>/2023/03/07/Ubuntu-problems-and-solutions/</url>
+    <content><![CDATA[<hr>
+<p><a href="https://www.cnblogs.com/nuochengze/p/12642282.html">解决Ubuntu连不上网络，输入ifconfig只显示本地环回问题</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -1729,20 +1741,6 @@
       <tags>
         <tag>MySQL</tag>
         <tag>PostgreSQ</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu问题及解决方案汇总</title>
-    <url>/2023/03/07/Ubuntu-problems-and-solutions/</url>
-    <content><![CDATA[<hr>
-<p><a href="https://www.cnblogs.com/nuochengze/p/12642282.html">解决Ubuntu连不上网络，输入ifconfig只显示本地环回问题</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>

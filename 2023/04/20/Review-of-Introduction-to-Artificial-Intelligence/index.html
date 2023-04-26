@@ -343,16 +343,14 @@
 </ol>
 <h4 id="8-3-离散Hopfield神经网络"><a href="#8-3-离散Hopfield神经网络" class="headerlink" title="8.3 离散Hopfield神经网络"></a>8.3 离散Hopfield神经网络</h4><p>参考文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/457810569">反馈神经网络——Hopfield网络 - 知乎</a></p>
 <ol>
-<li><p>Hopfield网络的结构<br> 对于网络的中间层神经元节点，每个神经元的输出 都是 其他神经元的输入，每个神经元的输入都来自于其他神经元（<strong>除了输入输出的其他神经元全互连</strong>）</p>
-</li>
-<li><p>工作过程：由 初态的记忆样本部分信息，通过多次联想记忆循环，达到稳态获得记忆样本。网络计算的过程就是初始输入向量，经过逐次迭代，向吸引子演化的过程。演化的规则是向能量函数减小的方向演化，直到达到稳定状态。</p>
-</li>
-<li><p>若从某一时刻开始，网络中所有神经元状态不再改变，则<strong>Hopfield网络是稳定的</strong>，称一个或若干个稳定的状态为网络的<strong>吸引子</strong></p>
-</li>
-<li><p>无自反馈的HNN神经元输出：<br>$$<br>x_{i}(k+1)&#x3D;f(\sum^{n}<em>{j&#x3D;1}w</em>{ij}x_{j}(k)-\theta_{i} \text {，其中$w_{ii}&#x3D;0$}<br>$$<br>$$<br>\begin{array}{cc}<br> f(s)&#x3D; \begin{cases} 1, &amp; \text {$s \geq 0$} \ -1, &amp; \text{$s&lt;0$} \end{cases} &amp; 或 &amp; f(s)&#x3D; \begin{cases} 1, &amp; \text {$s \geq 0$} \ 0, &amp; \text{$s&lt;0$} \end{cases}<br> \end{array}<br>$$</p>
-</li>
-<li><p>应用示例<br><a target="_blank" rel="noopener" href="https://imgse.com/i/p9MF0ot"><img src="https://s1.ax1x.com/2023/04/26/p9MF0ot.jpg" alt="p9MF0ot.jpg" border="0" style="zoom:50%;" /></a><br>步骤①：设计离散Hopfield神经网络结构(DHNN)，如下图所示<br><a target="_blank" rel="noopener" href="https://imgse.com/i/p9MFDFP"><img src="https://s1.ax1x.com/2023/04/26/p9MFDFP.jpg" alt="p9MFDFP.jpg" border="0" style="zoom: 50%;" /></a><br>样本：$x^{(1)}&#x3D;[1,0,1]^{T}(桔子),x^{(2)}&#x3D;[0,1,0]^{T}(苹果)$，$\theta_{i}&#x3D;0(i&#x3D;1,2,3)$<br>步骤②：设计连接权矩阵<br><a target="_blank" rel="noopener" href="https://imgse.com/i/p9Mk9SO"><img src="https://s1.ax1x.com/2023/04/26/p9Mk9SO.jpg" alt="p9Mk9SO.jpg" border="0" style="zoom:50%;" /></a><br>经过上面计算得到权重矩阵<br><a target="_blank" rel="noopener" href="https://imgse.com/i/p9MkYt0"><img src="https://s1.ax1x.com/2023/04/26/p9MkYt0.jpg" alt="p9MkYt0.jpg" border="0" style="zoom:50%;" /></a><br>步骤③：测试<br>测试用例：$[1, 1, 1]^{T}$，即初始状态 $x_{1}(0)&#x3D;1, x_{2}(0)&#x3D;1, x_{3}(0)&#x3D;1$<br>确定调整次序为：$2 \rightarrow 1 \rightarrow 3$，开始调整<br>(<font color="purple">1</font>) 当前调整 ${\color{red} 2} \rightarrow 1 \rightarrow 3$，$k&#x3D;{\color{green}0}$，$x_{1}({\color{green}0})&#x3D;1，x_{2}({\color{green}0})&#x3D;1，x_{3}({\color{green}0})&#x3D;1$<br>$$<br>x_{\color{red} 2}({\color{purple} 1})&#x3D;f(\sum^{3}<em>{j&#x3D;1}w</em></p>
-</li>
+<li>Hopfield网络的结构<br> 对于网络的中间层神经元节点，每个神经元的输出 都是 其他神经元的输入，每个神经元的输入都来自于其他神经元（<strong>除了输入输出的其他神经元全互连</strong>）</li>
+<li>工作过程：由 初态的记忆样本部分信息，通过多次联想记忆循环，达到稳态获得记忆样本。网络计算的过程就是初始输入向量，经过逐次迭代，向吸引子演化的过程。演化的规则是向能量函数减小的方向演化，直到达到稳定状态。</li>
+<li>若从某一时刻开始，网络中所有神经元状态不再改变，则<strong>Hopfield网络是稳定的</strong>，称一个或若干个稳定的状态为网络的<strong>吸引子</strong></li>
+<li>无自反馈的HNN神经元输出：<br>$$<br>x_{i}(k+1)&#x3D;f(\sum^{n}<em>{j&#x3D;1}w</em>{ij}x_{j}(k)-\theta_{i} \text {，其中$w_{ii}&#x3D;0$}<br>$$</li>
+</ol>
+<p>$$<br>\begin{array}{cc}<br>        f(s)&#x3D; \begin{cases} 1, &amp; \text {$s \geq 0$} \ -1, &amp; \text{$s&lt;0$} \end{cases} &amp; 或 &amp; f(s)&#x3D; \begin{cases} 1, &amp; \text {$s \geq 0$} \ 0, &amp; \text{$s&lt;0$} \end{cases}<br>    \end{array}<br>$$</p>
+<ol start="5">
+<li>应用示例<br><a target="_blank" rel="noopener" href="https://imgse.com/i/p9MF0ot"><img src="https://s1.ax1x.com/2023/04/26/p9MF0ot.jpg" alt="p9MF0ot.jpg" border="0" style="zoom:50%;" /></a><br>步骤①：设计离散Hopfield神经网络结构(DHNN)，如下图所示<br><a target="_blank" rel="noopener" href="https://imgse.com/i/p9MFDFP"><img src="https://s1.ax1x.com/2023/04/26/p9MFDFP.jpg" alt="p9MFDFP.jpg" border="0" style="zoom: 50%;" /></a><br>样本：$x^{(1)}&#x3D;[1,0,1]^{T}(桔子),x^{(2)}&#x3D;[0,1,0]^{T}(苹果)$，$\theta_{i}&#x3D;0(i&#x3D;1,2,3)$<br>步骤②：设计连接权矩阵<br><a target="_blank" rel="noopener" href="https://imgse.com/i/p9Mk9SO"><img src="https://s1.ax1x.com/2023/04/26/p9Mk9SO.jpg" alt="p9Mk9SO.jpg" border="0" style="zoom:50%;" /></a><br>经过上面计算得到权重矩阵<br><a target="_blank" rel="noopener" href="https://imgse.com/i/p9MkYt0"><img src="https://s1.ax1x.com/2023/04/26/p9MkYt0.jpg" alt="p9MkYt0.jpg" border="0" style="zoom:50%;" /></a><br>步骤③：测试<br>测试用例：$[1, 1, 1]^{T}$，即初始状态 $x_{1}(0)&#x3D;1, x_{2}(0)&#x3D;1, x_{3}(0)&#x3D;1$<br>确定调整次序为：$2 \rightarrow 1 \rightarrow 3$，开始调整<br>(<font color="purple">1</font>) 当前调整 ${\color{red} 2} \rightarrow 1 \rightarrow 3$，$k&#x3D;{\color{green}0}$，$x_{1}({\color{green}0})&#x3D;1，x_{2}({\color{green}0})&#x3D;1，x_{3}({\color{green}0})&#x3D;1$<br>$$<br>x_{\color{red} 2}({\color{purple} 1})&#x3D;f(\sum^{3}<em>{j&#x3D;1}w</em></li>
 </ol>
  
       <!-- reward -->
