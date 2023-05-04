@@ -134,104 +134,6 @@
       </tags>
   </entry>
   <entry>
-    <title>位运算与取模运算%</title>
-    <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
-    <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
-<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
-<ul>
-<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
-</ul>
-<hr>
-<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
-<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
-<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
-<li>应用：<ul>
-<li>清零：x&amp;0</li>
-<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
-<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
-<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
-<li>应用：<ul>
-<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
-<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
-<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
-<li>应用：<ul>
-<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
-<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
-</ul>
-</li>
-</ul>
-<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
-<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
-</ul>
-<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
-<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
-</ul>
-<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
-<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
-</ul>
-<hr>
-<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
-<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
-<li>求绝对值： <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
-<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
-</ol>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>bit Operation</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSAPP 5.1 优化编译器的能力和局限性</title>
-    <url>/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/</url>
-    <content><![CDATA[<h2 id="5-1-优化编译器的能力和局限性"><a href="#5-1-优化编译器的能力和局限性" class="headerlink" title="5.1 优化编译器的能力和局限性"></a>5.1 优化编译器的能力和局限性</h2><p>现代编译器运用复杂精细的算法来确定一个程序中计算的值，以及他们是被如何使用的，然后利用一些机会来简化表达式，如：在几个不同的地方使用同一个计算，以及降低一个给定的计算必须被执行的次数。大多数编译器，包括 GCC，向用户提供了一些对它们所使用的优化的控制。就像在第3章中讨论过的，最简单的控制就是指定<code>优先级别</code>。例如，以命令行选项 “-Og” 调用 GCC 是让 GCC 使用一组基本的优化。以选项 “-O1” 或更高(如 “-O2” 或 “-O3” ) 调用 GCC 会让他使用更多的优化，进一步提高程序的性能，但是也可能增加程序的规模，也可能使标准的调试工具更难对程序进行调试。</p>
-<p>编译器必须很小心地对程序进行<code>安全</code>的优化，即对于程序可能遇到的所有可能的情况，在C语言标准提供的保证之下，优化后得到的程序和为优化的版本有一样的行为。这一限制消除了一些造成不希望的运行时行为的隐患，但是也意味着程序员要花费更多精力写出编译器能够将之转换成有效及其代码的程序。下面这个简单的例子帮助理解编译器优化限制：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">twiddle1</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">twiddle2</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">	*xp += <span class="number">2</span>* *yp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>twiddle1 和 twiddle2 两个函数“似乎”有相同的功能（把存储在指针yp指向的值两次加到指针xp所指的值上）。从另一个角度来看，函数 twiddle2 效率更高一些，它只要求三次内存引用（读*xp、读*yp、写*xp），而 twiddle1需要6次（重复twiddle2需要的内存引用操作两次）。因此，如果要编译器编译函数 twiddle1，我们认为基于 twiddle2 执行的计算能产生更有效的代码。.</p>
-<p>不过，考虑到 xp 和 yp 指向同一地址（xp 和 yp相等）的情况，此时，函数 twiddle1 的结果使 xp 变为原来的 4 倍，函数 twiddle2 的结果使 xp 变为原来的 3 倍。编译器不知道 twiddle1 会在何种情况被调用，因此必须假设 xp 和 yp 可能会相等。因此，编译器不能产生 twiddle2 风格的代码作为 twiddle1 的优化版本。这种两个指针指向同一个内存地址的情况称为 <strong><code>memory aliasing</code>（内存别名使用）</strong>，这可能会造成一个主要的<code>妨碍优化</code>的因素，限制了可能的优化策略。</p>
-<hr>
-<p>第二个妨碍优化的因素是 <strong>函数调用</strong>。考虑下面这个示例：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func1</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> f()+f()+f()+f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func2</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">4</span> * f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>最初看上去两个函数实现的都是相同的功能，但是 func2() 只调用 f() 1次，而 func1() 调用 f() 4次。以func1() 作为源代码时，会很想产生 func2()  风格的代码。不过考虑下面 有关 f() 的代码：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个函数有个“副作用”，他修改了全局程序状态的一部分，改变该函数的调用次数会改变程序的功能。假设开始时去全局变量 counter 的值设为0，调用 func1() 会返回 0+1+2+3&#x3D;6，而调用 func2()返回 4*0&#x3D;0。大多数编译器会试图判断一个函数是否有副作用，如果有，编译器会假设最坏的情况并保持所有的函数调用不变。反之，则会进行一定程度的优化。</p>
-<hr>
-<h3 id="用内联优化函数调用"><a href="#用内联优化函数调用" class="headerlink" title="用内联优化函数调用"></a>用内联优化函数调用</h3><p>包含函数函数调用的代码可以用 <strong><code>inline substitution</code>（内敛函数替换）</strong> 或者简称 <strong><code>inlining</code>（内联）</strong> 的过程进行优化，此时，将函数调用替换为函数体。下面是 func1() 的内联版代码：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Result of inlining f in func1 */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclin</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">long</span> t = counter++;  <span class="comment">/* +0 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +1 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +2 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +3 */</span></span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样的转换即减少了函数调用的开销，也允许对展开的代码做进一步优化。例如，编译器可以统一funclin() 中对全局变量的更新，产生这个函数的一个优化版本：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Optimization of inlined func1 code */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclopt</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">long</span> t = <span class="number">4</span> * counter + <span class="number">6</span>;</span><br><span class="line">	counter += <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 对于这个特定的函数 f 的定义，上述代码重现了 func1 的行为。</p>
-<p>最近版本的 GCC 会尝试进行这种形式的优化，可以用命令行选项<code>-finline</code>指示编译器，或者使用优化等级 “-O1” 或更高等级。但是目前 GCC 尝试在单个文件中定义的函数的内联，意味着它无法用于常见的情况（<strong>一组库函数在一个文件中被定义，在其他文件的函数中被调用</strong>）。</p>
-<p>在某些情况下，最好能阻止编译器的内联优化。一种情况是 用符号调试器(如GDB)来评估代码，如果一个函数调用已经用内联替换优化过了，那么任何对这个调用进行追踪或设置断点的尝试都会失败。还有一种情况是用代码剖析的方式来评估程序性能，用内联替换消除的函数调用是不能被正确剖析的。</p>
-<hr>
-]]></content>
-      <categories>
-        <category>学习</category>
-        <category>计算机系统</category>
-      </categories>
-      <tags>
-        <tag>CSAPP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用Hexo搭建个人博客并部署到Github</title>
     <url>/2023/02/28/Blog-Built-with-Hexo&amp;Github/</url>
     <content><![CDATA[<p>若想部署到Gitee码云上，可以参考博客：<a href="https://blog.csdn.net/qq_46036214/article/details/110137239">在Gitee搭建属于自己的博客</a></p>
@@ -337,6 +239,104 @@
         <tag>Hexo</tag>
         <tag>Github</tag>
         <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>位运算与取模运算%</title>
+    <url>/2021/08/22/Bit-operation-and-modular-operation%25/</url>
+    <content><![CDATA[<p>在研究某大佬的代码时，突然发现了这样一条用来<strong>判断奇偶数</strong>的语句：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(x&amp;<span class="number">1</span>) &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>带着<del>想探究事物本质的好奇心</del> (想把代码变得高大上)，去搜了搜<code>取模运算%</code>和<code>按位与&amp;</code>的关系，<del>于是打开了新世界的大门</del>  <strong>(｢･ω･)｢</strong></p>
+<ul>
+<li>注：<code>位运算与&amp;</code>的效率要比<code>取模运算%</code>快<strong>10倍以上</strong></li>
+</ul>
+<hr>
+<h2 id="位运算符简介"><a href="#位运算符简介" class="headerlink" title="位运算符简介"></a>位运算符简介</h2><p>与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>、右移<code>&gt;&gt;</code>、左移<code>&lt;&lt; </code>，取反<code>~</code></p>
+<h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ul>
+<li>0&amp;0&#x3D;0；  0&amp;1&#x3D;0；  1&amp;0&#x3D;0；  1&amp;1&#x3D;1；  简记为“<strong>同1则1</strong>”</li>
+<li>应用：<ul>
+<li>清零：x&amp;0</li>
+<li><strong>取二进制数的某一位</strong>：例如取x&#x3D;10010110的右数第三位，则<code>x&amp;00000100 = 00000100</code>，说明x的右数第三位是1</li>
+<li><strong>判断奇偶数</strong>代替<code>取模运算x%2==1</code>: <strong>奇数x&amp;1&#x3D;1，偶数x&amp;1&#x3D;0</strong>，效率更高</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3><ul>
+<li>0|0&#x3D;0；  0|1&#x3D;1；  1|0&#x3D;1；  1|1&#x3D;1；  简记为“<strong>有1则1</strong>”</li>
+<li>应用：<ul>
+<li>使二进制数的某些位为1：例如使x&#x3D;10001000的右数第1,2位取1，则<code>x|00000011 = 10001011</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="按位异或 ^"></a>按位异或 ^</h3><ul>
+<li>0^0&#x3D;0；  0^1&#x3D;1；  1^0&#x3D;1；  1^1&#x3D;0；  简记为“<strong>同0异1</strong>”</li>
+<li>自反性： <code>x^y^y = x  </code>；<code>x^0 = 0</code>；<code>x^x = 0</code></li>
+<li>应用：<ul>
+<li><strong>不利用中间变量</strong>实现<strong>变量值互换</strong>：  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//x = 3 = 0011  y = 5 = 0101</span></span><br><span class="line">x = x^y; <span class="comment">// x1 = (x^y=0110)</span></span><br><span class="line">y = x^y; <span class="comment">// y = (x1^y=0110^0101=0011=3)</span></span><br><span class="line">x = x^y; <span class="comment">// x = (x1^y1=0110^0011=0101=5) 交换完成</span></span><br></pre></td></tr></table></figure></li>
+<li>特殊的数组筛选重复值：1~100放在长度为101的数组中，只有唯一的一个值重复，其它均只出现一次 -&gt; 将数组中的元素全部异或，再减去1-100的全部异或，即可得到重复的数值</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位右移-gt-gt"><a href="#按位右移-gt-gt" class="headerlink" title="按位右移 &gt;&gt;"></a>按位右移 &gt;&gt;</h3><ul>
+<li>将某数的二进制位全部右移指定位，相当于除以2^n^，正数左补0，负数左补1，右边移出去的位丢弃，例如<code>00100110&gt;&gt;2 = 00001001 即 38&gt;&gt;2 = 38/4 = 9（余数舍弃)</code></li>
+</ul>
+<h3 id="按位左移-lt-lt"><a href="#按位左移-lt-lt" class="headerlink" title="按位左移 &lt;&lt;"></a>按位左移 &lt;&lt;</h3><ul>
+<li>将某数的二进制位全部左移指定位（<strong>当移出的位中不含1时，相当于乘以2^n^</strong>）右补0，左边移出去的位丢弃，例如<code>00001101&lt;&lt;2 = 00110100 即 13&lt;&lt;2 = 13*4 =52</code></li>
+</ul>
+<h3 id="按位取反"><a href="#按位取反" class="headerlink" title="按位取反 ~"></a>按位取反 ~</h3><ul>
+<li>将某数的二进制位数全部取反，0变1，1变0，例如<code>~52 = ~00110100 = 11001011 = 203 = 255-52</code></li>
+</ul>
+<hr>
+<h2 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h2><ol>
+<li>防溢出求平均数：<code>(x+y)/2</code> ⇒ <code>(x&amp;y)+((x^y)&gt;&gt;1)</code></li>
+<li>求绝对值： <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">abs</span><span class="params">(<span class="type">int</span> x)</span> &#123; </span><br><span class="line">	<span class="type">int</span> y; </span><br><span class="line">	y = x &gt;&gt; <span class="number">31</span>; </span><br><span class="line">	<span class="keyword">return</span> (x^y)-y;  <span class="comment">//(x+y)^y </span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>替代部分条件语句：<code>if (x==a) x = b; else x = a;</code> ⇒ <code>x = (x==a ? b : a);</code> ⇒ <code>x = a ^ b ^ x;</code></li>
+</ol>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>bit Operation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSAPP 5.1 优化编译器的能力和局限性</title>
+    <url>/2022/02/21/CSAPP-5.1-optimizes-compiler-capabilities-and-limitations/</url>
+    <content><![CDATA[<h2 id="5-1-优化编译器的能力和局限性"><a href="#5-1-优化编译器的能力和局限性" class="headerlink" title="5.1 优化编译器的能力和局限性"></a>5.1 优化编译器的能力和局限性</h2><p>现代编译器运用复杂精细的算法来确定一个程序中计算的值，以及他们是被如何使用的，然后利用一些机会来简化表达式，如：在几个不同的地方使用同一个计算，以及降低一个给定的计算必须被执行的次数。大多数编译器，包括 GCC，向用户提供了一些对它们所使用的优化的控制。就像在第3章中讨论过的，最简单的控制就是指定<code>优先级别</code>。例如，以命令行选项 “-Og” 调用 GCC 是让 GCC 使用一组基本的优化。以选项 “-O1” 或更高(如 “-O2” 或 “-O3” ) 调用 GCC 会让他使用更多的优化，进一步提高程序的性能，但是也可能增加程序的规模，也可能使标准的调试工具更难对程序进行调试。</p>
+<p>编译器必须很小心地对程序进行<code>安全</code>的优化，即对于程序可能遇到的所有可能的情况，在C语言标准提供的保证之下，优化后得到的程序和为优化的版本有一样的行为。这一限制消除了一些造成不希望的运行时行为的隐患，但是也意味着程序员要花费更多精力写出编译器能够将之转换成有效及其代码的程序。下面这个简单的例子帮助理解编译器优化限制：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">twiddle1</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">    *xp += *yp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">twiddle2</span><span class="params">(<span class="type">long</span> *xp, <span class="type">long</span> *yp)</span> &#123;</span><br><span class="line">	*xp += <span class="number">2</span>* *yp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>twiddle1 和 twiddle2 两个函数“似乎”有相同的功能（把存储在指针yp指向的值两次加到指针xp所指的值上）。从另一个角度来看，函数 twiddle2 效率更高一些，它只要求三次内存引用（读*xp、读*yp、写*xp），而 twiddle1需要6次（重复twiddle2需要的内存引用操作两次）。因此，如果要编译器编译函数 twiddle1，我们认为基于 twiddle2 执行的计算能产生更有效的代码。.</p>
+<p>不过，考虑到 xp 和 yp 指向同一地址（xp 和 yp相等）的情况，此时，函数 twiddle1 的结果使 xp 变为原来的 4 倍，函数 twiddle2 的结果使 xp 变为原来的 3 倍。编译器不知道 twiddle1 会在何种情况被调用，因此必须假设 xp 和 yp 可能会相等。因此，编译器不能产生 twiddle2 风格的代码作为 twiddle1 的优化版本。这种两个指针指向同一个内存地址的情况称为 <strong><code>memory aliasing</code>（内存别名使用）</strong>，这可能会造成一个主要的<code>妨碍优化</code>的因素，限制了可能的优化策略。</p>
+<hr>
+<p>第二个妨碍优化的因素是 <strong>函数调用</strong>。考虑下面这个示例：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func1</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> f()+f()+f()+f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">func2</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">4</span> * f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最初看上去两个函数实现的都是相同的功能，但是 func2() 只调用 f() 1次，而 func1() 调用 f() 4次。以func1() 作为源代码时，会很想产生 func2()  风格的代码。不过考虑下面 有关 f() 的代码：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="title function_">f</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个函数有个“副作用”，他修改了全局程序状态的一部分，改变该函数的调用次数会改变程序的功能。假设开始时去全局变量 counter 的值设为0，调用 func1() 会返回 0+1+2+3&#x3D;6，而调用 func2()返回 4*0&#x3D;0。大多数编译器会试图判断一个函数是否有副作用，如果有，编译器会假设最坏的情况并保持所有的函数调用不变。反之，则会进行一定程度的优化。</p>
+<hr>
+<h3 id="用内联优化函数调用"><a href="#用内联优化函数调用" class="headerlink" title="用内联优化函数调用"></a>用内联优化函数调用</h3><p>包含函数函数调用的代码可以用 <strong><code>inline substitution</code>（内敛函数替换）</strong> 或者简称 <strong><code>inlining</code>（内联）</strong> 的过程进行优化，此时，将函数调用替换为函数体。下面是 func1() 的内联版代码：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Result of inlining f in func1 */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclin</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">long</span> t = counter++;  <span class="comment">/* +0 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +1 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +2 */</span></span><br><span class="line">    t += counter++;      <span class="comment">/* +3 */</span></span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的转换即减少了函数调用的开销，也允许对展开的代码做进一步优化。例如，编译器可以统一funclin() 中对全局变量的更新，产生这个函数的一个优化版本：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Optimization of inlined func1 code */</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">funclopt</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">long</span> t = <span class="number">4</span> * counter + <span class="number">6</span>;</span><br><span class="line">	counter += <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 对于这个特定的函数 f 的定义，上述代码重现了 func1 的行为。</p>
+<p>最近版本的 GCC 会尝试进行这种形式的优化，可以用命令行选项<code>-finline</code>指示编译器，或者使用优化等级 “-O1” 或更高等级。但是目前 GCC 尝试在单个文件中定义的函数的内联，意味着它无法用于常见的情况（<strong>一组库函数在一个文件中被定义，在其他文件的函数中被调用</strong>）。</p>
+<p>在某些情况下，最好能阻止编译器的内联优化。一种情况是 用符号调试器(如GDB)来评估代码，如果一个函数调用已经用内联替换优化过了，那么任何对这个调用进行追踪或设置断点的尝试都会失败。还有一种情况是用代码剖析的方式来评估程序性能，用内联替换消除的函数调用是不能被正确剖析的。</p>
+<hr>
+]]></content>
+      <categories>
+        <category>学习</category>
+        <category>计算机系统</category>
+      </categories>
+      <tags>
+        <tag>CSAPP</tag>
       </tags>
   </entry>
   <entry>
@@ -495,82 +495,6 @@
 <li><a href=""></a></li>
 </ol>
 </li>
-</ul>
-]]></content>
-      <categories>
-        <category>学习</category>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>Computer Network</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络5 链路层</title>
-    <url>/2022/11/16/Computer-Network-5-Link-Layer-and-LANs/</url>
-    <content><![CDATA[<h2 id="第6章-链路层和局域网-Link-Layer-and-LANs"><a href="#第6章-链路层和局域网-Link-Layer-and-LANs" class="headerlink" title="第6章 链路层和局域网(Link Layer and LANs)"></a>第6章 链路层和局域网(Link Layer and LANs)</h2><h3 id="6-2-差错检测-和-纠正"><a href="#6-2-差错检测-和-纠正" class="headerlink" title="6.2 差错检测 和 纠正"></a>6.2 差错检测 和 纠正</h3><ul>
-<li>误码率 BER：在一段时间内，传输错误的比特占所传输比特总数的比率</li>
-</ul>
-<h4 id="奇偶校验"><a href="#奇偶校验" class="headerlink" title="奇偶校验"></a>奇偶校验</h4><h4 id="校验和"><a href="#校验和" class="headerlink" title="校验和"></a>校验和</h4><p><a href="https://blog.csdn.net/qq_37174526/article/details/88407884">检验和（checksum）</a></p>
-<ul>
-<li>计算步骤：将数据中所有的字的二进制加在一起，高位移出要回卷(变成低位的1)，再进行反码运算(0, 1互换)。</li>
-</ul>
-<h4 id="CRC-循环冗余校验"><a href="#CRC-循环冗余校验" class="headerlink" title="CRC 循环冗余校验"></a>CRC 循环冗余校验</h4><p>计算过程：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">题目：收到的以太网帧为<span class="number">110101011011</span>，生成多项式为P(X)=X^<span class="number">4</span>+X^<span class="number">3</span>+<span class="number">1</span>，请检验该帧并给出检验过程。</span><br><span class="line">解答：</span><br><span class="line">根据多项式，CRC除数 = <span class="number">11001</span>，阶数 n=<span class="number">4</span></span><br><span class="line">后面 加 <span class="number">4</span>个</span><br><span class="line">			<span class="number">10010111</span> -&gt; 商</span><br><span class="line"><span class="number">11001</span> | <span class="number">110101011011</span></span><br><span class="line">		<span class="number">11001</span>  | | |</span><br><span class="line">----------<span class="number">-11101</span> | |</span><br><span class="line">		   <span class="number">11001</span> | |</span><br><span class="line">------------<span class="number">-10010</span> |</span><br><span class="line">		     <span class="number">11001</span> |</span><br><span class="line">-------------<span class="number">-10111</span>|</span><br><span class="line">		      <span class="number">11001</span>|</span><br><span class="line">--------------<span class="number">-11101</span></span><br><span class="line">		       <span class="number">11001</span></span><br><span class="line">		         <span class="number">100</span> -&gt; R</span><br><span class="line"></span><br><span class="line">经计算，余数R不为<span class="number">0</span>，说明接收到的数据是错误</span><br></pre></td></tr></table></figure>
-<h3 id="6-3-多路访问协议"><a href="#6-3-多路访问协议" class="headerlink" title="6.3 多路访问协议"></a>6.3 多路访问协议</h3><ul>
-<li>MAC协议的分类<ul>
-<li>① 信道划分：<br>  把信道划分成片（依据时间、频率、编码）<br>  把片分配给每个节点专用</li>
-<li>② 随机存取<br>  信道不划分，允许冲突，冲突后恢复</li>
-<li>③ 依次轮流<br>  节点依次轮流<br>  很多数据传输节点可以获得较长的信道使用权</li>
-</ul>
-</li>
-</ul>
-<h4 id="信道划分-MAC协议"><a href="#信道划分-MAC协议" class="headerlink" title="信道划分 MAC协议"></a>信道划分 MAC协议</h4><ul>
-<li><strong>TDMA 时分多路访问</strong><br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/8e7d3a3413a24d0ca701fa9f759ce100.png">https://img-blog.csdnimg.cn/8e7d3a3413a24d0ca701fa9f759ce100.png</a> &#x3D;400x)</li>
-<li><strong>FDMA 频分多路访问</strong><br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/66e3e4e7a92241d994d7f49fb002a002.png">https://img-blog.csdnimg.cn/66e3e4e7a92241d994d7f49fb002a002.png</a> &#x3D;400x)</li>
-<li><strong>CDMA 码分多路访问</strong><br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/e3dd5637ec9b4ed8a759dc85f1e39eec.png">https://img-blog.csdnimg.cn/e3dd5637ec9b4ed8a759dc85f1e39eec.png</a> &#x3D;400x)</li>
-</ul>
-<h4 id="随机存取MAC协议"><a href="#随机存取MAC协议" class="headerlink" title="随机存取MAC协议"></a>随机存取MAC协议</h4><ul>
-<li><p><strong>CSMA 载波侦听多路访问</strong></p>
-<ul>
-<li>工作方式<br>  传输前监听信道<br>  if 信道空闲 then 传送整个帧<br>  if 信道忙 then 推迟传送帧</li>
-<li>缺点<br>  冲突仍可能发生，冲突帧时间浪费</li>
-</ul>
-</li>
-<li><p><strong>CSMA&#x2F;CD 冲突检测</strong>（&#x3D;&#x3D;重点&#x3D;&#x3D;）</p>
-<ul>
-<li>算法：<br>  ① 适配器获取数据包，创建帧<br>  ② 发送前 监听信道CS，忙等，闲送<br>  ③ 发送过程中，进行冲突检测(CD)，没冲突则成功，有冲突则放弃，之后尝试重发<br>  ④ 发送方检测到冲突时，还要发送一个冲突信号，所有听到冲突的信号都发，让所有站点都知道冲突 <strong>(强化冲突)</strong><br>  ⑤ 放弃发送后，适配器进入指数退避状态，择机重发（等待2^n^ * 512位时间，n为[0~失败次数]）</li>
-</ul>
-</li>
-</ul>
-<h3 id="6-4-LAN-局域网"><a href="#6-4-LAN-局域网" class="headerlink" title="6.4 LAN 局域网"></a>6.4 LAN 局域网</h3><h4 id="MAC地址-和-ARP"><a href="#MAC地址-和-ARP" class="headerlink" title="MAC地址 和 ARP"></a>MAC地址 和 ARP</h4><ul>
-<li>MAC地址：48位，固化在适配器的ROM中<ul>
-<li>示例： 1A-2F-BB-76-09-AD 十六进制</li>
-</ul>
-</li>
-</ul>
-<h4 id="无效的MAC帧格式"><a href="#无效的MAC帧格式" class="headerlink" title="无效的MAC帧格式"></a>无效的MAC帧格式</h4><p>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/b7d91ebbfb964f28a82f5378b3616544.png">https://img-blog.csdnimg.cn/b7d91ebbfb964f28a82f5378b3616544.png</a> &#x3D;300x)</p>
-<h4 id="Ethernet-以太网"><a href="#Ethernet-以太网" class="headerlink" title="Ethernet 以太网"></a>Ethernet 以太网</h4><ul>
-<li>每个节点都与中心的交换机端口相连</li>
-<li>以太网使用CMDA&#x2F;CD<ul>
-<li>网卡如果侦听到其他网卡在发送，则不发送（<strong>载波监听</strong>）</li>
-<li>发送时，适配器侦听到其他适配器在发送就放弃对当前帧的发送（<strong>冲突检测</strong>）</li>
-<li>冲突后，适配器等待随机时间，尝试重传（<strong>随机访问</strong>）</li>
-</ul>
-</li>
-</ul>
-<h4 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h4><ul>
-<li><strong>交换机</strong>：能够实现将数据发送到指定的设备而不会转发到所有出口（广播）的情况<ul>
-<li>定位为<strong>数据链路层设备</strong></li>
-<li>存储和转发 帧、</li>
-<li>对于到来的帧，检查帧头，根据目标MAC地址选择性转发</li>
-<li>当帧需要发向某个网段时，需要使用CSMA&#x2F;CD进行接入控制</li>
-<li>通常一个交换机端口在一个独立网段</li>
-<li>交换机有MAC地址，没有IP地址</li>
-<li>交换机是二层设备，即 有数据链路层和物理层，没有网络层</li>
-</ul>
-</li>
-<li>每一台交换机内部维护一张 MAC 地址表，记录着每一个设备的 MAC 地址，连接在其哪一个端口上</li>
 </ul>
 ]]></content>
       <categories>
@@ -970,90 +894,79 @@
       </tags>
   </entry>
   <entry>
-    <title>Dev C++注释中文乱码问题及解决方法</title>
-    <url>/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/</url>
-    <content><![CDATA[<h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
-
-<hr>
-<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
-<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
-<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
-<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
-</li>
-<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
-<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
-</li>
-<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
-<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
-<li><p>用DevC++打开即可</p>
-</li>
-</ol>
-<hr>
-<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>Dev C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机组成原理实验</title>
-    <url>/2022/01/07/Experiment-on-Principles-of-Computer-Composition/</url>
-    <content><![CDATA[<h3 id="实验一-静态随机存储器实验"><a href="#实验一-静态随机存储器实验" class="headerlink" title="实验一 静态随机存储器实验"></a>实验一 静态随机存储器实验</h3><h4 id="1-1-实验目的及内容"><a href="#1-1-实验目的及内容" class="headerlink" title="1.1 实验目的及内容"></a>1.1 实验目的及内容</h4><p><strong>实验目的</strong>：掌握静态随机存储器RAM工作特性及数据的读写方法</p>
-<p><strong>仪器设备</strong>：PC机一台，TD-CMA实验系统一套</p>
-<p><strong>实验内容</strong>：</p>
-<img src="https://s1.ax1x.com/2023/03/17/ppGSz8A.jpg" style="zoom:25%;" />
-
-<h4 id="1-2-实验步骤"><a href="#1-2-实验步骤" class="headerlink" title="1.2 实验步骤"></a>1.2 实验步骤</h4><blockquote>
-<p>(1) 关闭实验系统电源，连接实验电路，并检查无误<br>(2) 将时序与操作台单元的开关KK1，KK3置为运行档，开关KK2置为”单步”档，开关KK4置为”主存”档<br>(3) 将CON单元的IOR开关置1，打开电源开关（如果听到“嘀”的报警声，应立即关闭电源，重新检查接线直到错误排除）<br>(4) 给存储器的00H,01H,02H,03H,04H地址单元中分别写入数据11H,12H,13H,14H,15H。<br>(5) 依次读出第00,01,02,03,04号单元中的内容，观察上述单元中内容是否与前面输入的一致</p>
-</blockquote>
-<p>上述 (4) 具体操作：</p>
-<blockquote>
-<p>① 写地址：在IN单元处输入地址，IOR置“0”，LDAR置“1”，按一下“ST”，将地址传至地址总线处，LDAR置“0”恢复至初态<br>② 写数据：IOR置“1”，在IN单元处输入数据，后IOR置“0”<br>WR置“1”，按下“ST”，写入数据，WR置“0”，IOR置“1”释放总线<br>重复上述步骤，依次在5个地质单元中写入对应数据即可。</p>
-</blockquote>
-<p>上述 (5) 具体操作：</p>
-<blockquote>
-<p>① 写地址：IOR置“1”，在IN单元处输入待读取的地址，IOR置“0”，LDAR置“1”，按下“ST”，然后LDAR置“0”恢复初态，IOR置“1”<br>② 读数据：RD置“1”（此时IOR应为“1”，LDAR置”0“）观察总线显示数，观察后RD置“0”释放总线</p>
-</blockquote>
-<h4 id="1-3-实验结果分析"><a href="#1-3-实验结果分析" class="headerlink" title="1.3 实验结果分析"></a>1.3 实验结果分析</h4><p>实验结果：</p>
-<blockquote>
-<p>在存储器的00H,01H,02H,03H,04H地址单元中分别读取出的数据为11H,12H,13H,14H,15H。</p>
-</blockquote>
-<p>结果分析：</p>
-<blockquote>
-<p>以01H地址单元写入数据12H并读出的过程为例<br>(1) 首先地址和数据是由同一个数据开关给出的（实验箱IN单元）因此地址和数据要分别写入。先关掉存储器的读写，数据开关给出地址01H，将地址01H打入AR中，再关闭地址寄存器，数据开关给出数据12H，打开输入三态门(写状态)，即把12H传至存储器。<br>读数据也应该先给出地址，在进行读操作，地址01H的写入方式相同，关闭IN单元输出，使存储器处于读状态，此时CPU总线上显示12H。<br>(2) 存储器存储数据原理：<br>存储器中最小单元为一个双稳态半导体电路或CMOS晶体管，磁性材料的存储单元，它可以存储一个二进制数序列，若干存储元构成一个存储单元，若干存储单元构成存储器，可用于存放数据。</p>
-</blockquote>
-<h4 id="1-4-思考题"><a href="#1-4-思考题" class="headerlink" title="1.4 思考题"></a>1.4 思考题</h4><ul>
-<li>思考题1：存储器实验各个控制信号的初始状态如何设置？<br><strong>IOR 置 “1”，其他控制信号置 “0”</strong></li>
-<li>思考题2：所有的写操作要配合脉冲（边沿触发），为什么？<br><strong>为了防止误操作</strong></li>
+    <title>计算机网络5 链路层</title>
+    <url>/2022/11/16/Computer-Network-5-Link-Layer-and-LANs/</url>
+    <content><![CDATA[<h2 id="第6章-链路层和局域网-Link-Layer-and-LANs"><a href="#第6章-链路层和局域网-Link-Layer-and-LANs" class="headerlink" title="第6章 链路层和局域网(Link Layer and LANs)"></a>第6章 链路层和局域网(Link Layer and LANs)</h2><h3 id="6-2-差错检测-和-纠正"><a href="#6-2-差错检测-和-纠正" class="headerlink" title="6.2 差错检测 和 纠正"></a>6.2 差错检测 和 纠正</h3><ul>
+<li>误码率 BER：在一段时间内，传输错误的比特占所传输比特总数的比率</li>
 </ul>
-<h3 id="实验三-基本运算器实验"><a href="#实验三-基本运算器实验" class="headerlink" title="实验三 基本运算器实验"></a>实验三 基本运算器实验</h3><h4 id="3-1-实验目的及内容"><a href="#3-1-实验目的及内容" class="headerlink" title="3.1 实验目的及内容"></a>3.1 实验目的及内容</h4><img src="https://s1.ax1x.com/2023/03/17/ppGpSgI.jpg" style="zoom:25%;" />
-
-<h4 id="3-2-实验步骤"><a href="#3-2-实验步骤" class="headerlink" title="3.2 实验步骤"></a>3.2 实验步骤</h4><blockquote>
-<p>（1）关闭电源开关，连接实验电路，并检查无误<br>（2）将时序与操作台单元的开关KK2 置为“单步”档，开关KK1, KK3置为“运行”档<br>（3）打开电源开关，按动 CON单元 的 CLR按钮，将运算器的 A,B,FC,FZ 清零<br>（4）用输入开关向暂存器A 置数<br>（5）用输入开关向暂存器B 置数<br>（6）改变运算器的功能设置，观察运算器的输出</p>
-</blockquote>
-<h4 id="3-3-实验结果分析"><a href="#3-3-实验结果分析" class="headerlink" title="3.3 实验结果分析"></a>3.3 实验结果分析</h4><blockquote>
-<p>（1）运算器能实现二进制算术和移位，逻辑运算<br>设置运算器的控制信号S_3, S_2, S_1, S_0, C_n 来选择运算器的不同功能<br>（2）数据的输入，输出以及 FC、FZ 标志状态要通过 LED观察灯 观察时<br>都需要按下脉冲单元的 ST按钮<br>（3）数据进入哪一寄存器就必须开启哪一个寄存器<br>如数据只进入暂存器A，必须设置LDA &#x3D; 1， LDB &#x3D; 0且获得脉冲信号</p>
-</blockquote>
-<h4 id="3-4-思考题"><a href="#3-4-思考题" class="headerlink" title="3.4 思考题"></a>3.4 思考题</h4><ul>
-<li>思考题3：采用单步模式时，实验箱是如何产生时序信号的？例如要产生T3需要按几次ST?<br><strong>按ST产生时序信号；单步模式下要产生T3需要按1次ST</strong></li>
-<li>思考题4：运算器实验中的FZ代表什么含义？FZ什么时候取值为1？<br><strong>FZ为零标志位（Flag Zero），表示运算是否为0，当运算结果为0时，FZ为1</strong></li>
+<h4 id="奇偶校验"><a href="#奇偶校验" class="headerlink" title="奇偶校验"></a>奇偶校验</h4><h4 id="校验和"><a href="#校验和" class="headerlink" title="校验和"></a>校验和</h4><p><a href="https://blog.csdn.net/qq_37174526/article/details/88407884">检验和（checksum）</a></p>
+<ul>
+<li>计算步骤：将数据中所有的字的二进制加在一起，高位移出要回卷(变成低位的1)，再进行反码运算(0, 1互换)。</li>
 </ul>
-<h3 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h3><blockquote>
-<p>感谢一只路过的喵喵提供了相关照片、思考题的参考答案以及改正建议</p>
-</blockquote>
-<hr>
+<h4 id="CRC-循环冗余校验"><a href="#CRC-循环冗余校验" class="headerlink" title="CRC 循环冗余校验"></a>CRC 循环冗余校验</h4><p>计算过程：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">题目：收到的以太网帧为<span class="number">110101011011</span>，生成多项式为P(X)=X^<span class="number">4</span>+X^<span class="number">3</span>+<span class="number">1</span>，请检验该帧并给出检验过程。</span><br><span class="line">解答：</span><br><span class="line">根据多项式，CRC除数 = <span class="number">11001</span>，阶数 n=<span class="number">4</span></span><br><span class="line">后面 加 <span class="number">4</span>个</span><br><span class="line">			<span class="number">10010111</span> -&gt; 商</span><br><span class="line"><span class="number">11001</span> | <span class="number">110101011011</span></span><br><span class="line">		<span class="number">11001</span>  | | |</span><br><span class="line">----------<span class="number">-11101</span> | |</span><br><span class="line">		   <span class="number">11001</span> | |</span><br><span class="line">------------<span class="number">-10010</span> |</span><br><span class="line">		     <span class="number">11001</span> |</span><br><span class="line">-------------<span class="number">-10111</span>|</span><br><span class="line">		      <span class="number">11001</span>|</span><br><span class="line">--------------<span class="number">-11101</span></span><br><span class="line">		       <span class="number">11001</span></span><br><span class="line">		         <span class="number">100</span> -&gt; R</span><br><span class="line"></span><br><span class="line">经计算，余数R不为<span class="number">0</span>，说明接收到的数据是错误</span><br></pre></td></tr></table></figure>
+<h3 id="6-3-多路访问协议"><a href="#6-3-多路访问协议" class="headerlink" title="6.3 多路访问协议"></a>6.3 多路访问协议</h3><ul>
+<li>MAC协议的分类<ul>
+<li>① 信道划分：<br>  把信道划分成片（依据时间、频率、编码）<br>  把片分配给每个节点专用</li>
+<li>② 随机存取<br>  信道不划分，允许冲突，冲突后恢复</li>
+<li>③ 依次轮流<br>  节点依次轮流<br>  很多数据传输节点可以获得较长的信道使用权</li>
+</ul>
+</li>
+</ul>
+<h4 id="信道划分-MAC协议"><a href="#信道划分-MAC协议" class="headerlink" title="信道划分 MAC协议"></a>信道划分 MAC协议</h4><ul>
+<li><strong>TDMA 时分多路访问</strong><br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/8e7d3a3413a24d0ca701fa9f759ce100.png">https://img-blog.csdnimg.cn/8e7d3a3413a24d0ca701fa9f759ce100.png</a> &#x3D;400x)</li>
+<li><strong>FDMA 频分多路访问</strong><br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/66e3e4e7a92241d994d7f49fb002a002.png">https://img-blog.csdnimg.cn/66e3e4e7a92241d994d7f49fb002a002.png</a> &#x3D;400x)</li>
+<li><strong>CDMA 码分多路访问</strong><br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/e3dd5637ec9b4ed8a759dc85f1e39eec.png">https://img-blog.csdnimg.cn/e3dd5637ec9b4ed8a759dc85f1e39eec.png</a> &#x3D;400x)</li>
+</ul>
+<h4 id="随机存取MAC协议"><a href="#随机存取MAC协议" class="headerlink" title="随机存取MAC协议"></a>随机存取MAC协议</h4><ul>
+<li><p><strong>CSMA 载波侦听多路访问</strong></p>
+<ul>
+<li>工作方式<br>  传输前监听信道<br>  if 信道空闲 then 传送整个帧<br>  if 信道忙 then 推迟传送帧</li>
+<li>缺点<br>  冲突仍可能发生，冲突帧时间浪费</li>
+</ul>
+</li>
+<li><p><strong>CSMA&#x2F;CD 冲突检测</strong>（&#x3D;&#x3D;重点&#x3D;&#x3D;）</p>
+<ul>
+<li>算法：<br>  ① 适配器获取数据包，创建帧<br>  ② 发送前 监听信道CS，忙等，闲送<br>  ③ 发送过程中，进行冲突检测(CD)，没冲突则成功，有冲突则放弃，之后尝试重发<br>  ④ 发送方检测到冲突时，还要发送一个冲突信号，所有听到冲突的信号都发，让所有站点都知道冲突 <strong>(强化冲突)</strong><br>  ⑤ 放弃发送后，适配器进入指数退避状态，择机重发（等待2^n^ * 512位时间，n为[0~失败次数]）</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-4-LAN-局域网"><a href="#6-4-LAN-局域网" class="headerlink" title="6.4 LAN 局域网"></a>6.4 LAN 局域网</h3><h4 id="MAC地址-和-ARP"><a href="#MAC地址-和-ARP" class="headerlink" title="MAC地址 和 ARP"></a>MAC地址 和 ARP</h4><ul>
+<li>MAC地址：48位，固化在适配器的ROM中<ul>
+<li>示例： 1A-2F-BB-76-09-AD 十六进制</li>
+</ul>
+</li>
+</ul>
+<h4 id="无效的MAC帧格式"><a href="#无效的MAC帧格式" class="headerlink" title="无效的MAC帧格式"></a>无效的MAC帧格式</h4><p>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/b7d91ebbfb964f28a82f5378b3616544.png">https://img-blog.csdnimg.cn/b7d91ebbfb964f28a82f5378b3616544.png</a> &#x3D;300x)</p>
+<h4 id="Ethernet-以太网"><a href="#Ethernet-以太网" class="headerlink" title="Ethernet 以太网"></a>Ethernet 以太网</h4><ul>
+<li>每个节点都与中心的交换机端口相连</li>
+<li>以太网使用CMDA&#x2F;CD<ul>
+<li>网卡如果侦听到其他网卡在发送，则不发送（<strong>载波监听</strong>）</li>
+<li>发送时，适配器侦听到其他适配器在发送就放弃对当前帧的发送（<strong>冲突检测</strong>）</li>
+<li>冲突后，适配器等待随机时间，尝试重传（<strong>随机访问</strong>）</li>
+</ul>
+</li>
+</ul>
+<h4 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h4><ul>
+<li><strong>交换机</strong>：能够实现将数据发送到指定的设备而不会转发到所有出口（广播）的情况<ul>
+<li>定位为<strong>数据链路层设备</strong></li>
+<li>存储和转发 帧、</li>
+<li>对于到来的帧，检查帧头，根据目标MAC地址选择性转发</li>
+<li>当帧需要发向某个网段时，需要使用CSMA&#x2F;CD进行接入控制</li>
+<li>通常一个交换机端口在一个独立网段</li>
+<li>交换机有MAC地址，没有IP地址</li>
+<li>交换机是二层设备，即 有数据链路层和物理层，没有网络层</li>
+</ul>
+</li>
+<li>每一台交换机内部维护一张 MAC 地址表，记录着每一个设备的 MAC 地址，连接在其哪一个端口上</li>
+</ul>
 ]]></content>
       <categories>
         <category>学习</category>
-        <category>计算机组成原理</category>
+        <category>计算机网络</category>
       </categories>
       <tags>
-        <tag>计组</tag>
+        <tag>Computer Network</tag>
       </tags>
   </entry>
   <entry>
@@ -1199,6 +1112,93 @@
       </tags>
   </entry>
   <entry>
+    <title>Dev C++注释中文乱码问题及解决方法</title>
+    <url>/2022/07/29/DevC++annotation-zh-CN-garbled-code-problem-and-solution/</url>
+    <content><![CDATA[<h2 id="问题：打开文件时注释的中文部分为乱码"><a href="#问题：打开文件时注释的中文部分为乱码" class="headerlink" title="问题：打开文件时注释的中文部分为乱码"></a>问题：打开文件时注释的中文部分为乱码</h2><img src="https://img-blog.csdnimg.cn/94d35cf5abd3497db97067f79fcd61c8.png" style="zoom:67%;" />
+
+<hr>
+<h2 id="原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI"><a href="#原因：Dev-C-的默认字符编码为ANSI，而打开的文件的编码不是ANSI" class="headerlink" title="原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI"></a>原因：Dev C++的默认字符编码为ANSI，而打开的文件的编码不是ANSI</h2><hr>
+<h2 id="解决方法1：利用记事本修改文件编码"><a href="#解决方法1：利用记事本修改文件编码" class="headerlink" title="解决方法1：利用记事本修改文件编码"></a>解决方法1：利用记事本修改文件编码</h2><ol>
+<li><p><b>右键点击需要打开的文件，点击 打开方式 -&gt; 记事本</b><br>如果<u> 打开方式 里没有 记事本，要在 <strong>选择其他应用</strong> 里找</u></p>
+<img src="https://img-blog.csdnimg.cn/4778ad5ec22b40109547333eadc71abc.png" style="zoom:80%;" />
+</li>
+<li><p><b>点击菜单栏 文件 -&gt; 另存为</b></p>
+<img src="https://img-blog.csdnimg.cn/c72c2db3974a4b59a935574e2de945a4.png" style="zoom: 80%;" />
+</li>
+<li><p><b>将编码修改为 ANSI，点击保存，覆盖原先的文件 或 另存为一个文件</b></p>
+<img src="https://img-blog.csdnimg.cn/87c35da868794fab811d08cad882aaf4.png" style="zoom:80%;" /></li>
+<li><p>用DevC++打开即可</p>
+</li>
+</ol>
+<hr>
+<h2 id="解决方法2：利用Notepad-修改文件编码"><a href="#解决方法2：利用Notepad-修改文件编码" class="headerlink" title="解决方法2：利用Notepad++修改文件编码"></a>解决方法2：利用Notepad++修改文件编码</h2><p><b>（需要先安装 <font color="red">Notepad++</font>）用Notepad++打开文件，点击 菜单栏 -&gt; Encoding -&gt; “Convert to ANSI”，保存文件，再次用Dev C++打开即可</b><br><img src="https://img-blog.csdnimg.cn/e48c9c2c119e4e15a8ef6ec7d56e9697.png" style="zoom: 80%;" /></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Dev C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机组成原理实验</title>
+    <url>/2022/01/07/Experiment-on-Principles-of-Computer-Composition/</url>
+    <content><![CDATA[<h3 id="实验一-静态随机存储器实验"><a href="#实验一-静态随机存储器实验" class="headerlink" title="实验一 静态随机存储器实验"></a>实验一 静态随机存储器实验</h3><h4 id="1-1-实验目的及内容"><a href="#1-1-实验目的及内容" class="headerlink" title="1.1 实验目的及内容"></a>1.1 实验目的及内容</h4><p><strong>实验目的</strong>：掌握静态随机存储器RAM工作特性及数据的读写方法</p>
+<p><strong>仪器设备</strong>：PC机一台，TD-CMA实验系统一套</p>
+<p><strong>实验内容</strong>：</p>
+<img src="https://s1.ax1x.com/2023/03/17/ppGSz8A.jpg" style="zoom:25%;" />
+
+<h4 id="1-2-实验步骤"><a href="#1-2-实验步骤" class="headerlink" title="1.2 实验步骤"></a>1.2 实验步骤</h4><blockquote>
+<p>(1) 关闭实验系统电源，连接实验电路，并检查无误<br>(2) 将时序与操作台单元的开关KK1，KK3置为运行档，开关KK2置为”单步”档，开关KK4置为”主存”档<br>(3) 将CON单元的IOR开关置1，打开电源开关（如果听到“嘀”的报警声，应立即关闭电源，重新检查接线直到错误排除）<br>(4) 给存储器的00H,01H,02H,03H,04H地址单元中分别写入数据11H,12H,13H,14H,15H。<br>(5) 依次读出第00,01,02,03,04号单元中的内容，观察上述单元中内容是否与前面输入的一致</p>
+</blockquote>
+<p>上述 (4) 具体操作：</p>
+<blockquote>
+<p>① 写地址：在IN单元处输入地址，IOR置“0”，LDAR置“1”，按一下“ST”，将地址传至地址总线处，LDAR置“0”恢复至初态<br>② 写数据：IOR置“1”，在IN单元处输入数据，后IOR置“0”<br>WR置“1”，按下“ST”，写入数据，WR置“0”，IOR置“1”释放总线<br>重复上述步骤，依次在5个地质单元中写入对应数据即可。</p>
+</blockquote>
+<p>上述 (5) 具体操作：</p>
+<blockquote>
+<p>① 写地址：IOR置“1”，在IN单元处输入待读取的地址，IOR置“0”，LDAR置“1”，按下“ST”，然后LDAR置“0”恢复初态，IOR置“1”<br>② 读数据：RD置“1”（此时IOR应为“1”，LDAR置”0“）观察总线显示数，观察后RD置“0”释放总线</p>
+</blockquote>
+<h4 id="1-3-实验结果分析"><a href="#1-3-实验结果分析" class="headerlink" title="1.3 实验结果分析"></a>1.3 实验结果分析</h4><p>实验结果：</p>
+<blockquote>
+<p>在存储器的00H,01H,02H,03H,04H地址单元中分别读取出的数据为11H,12H,13H,14H,15H。</p>
+</blockquote>
+<p>结果分析：</p>
+<blockquote>
+<p>以01H地址单元写入数据12H并读出的过程为例<br>(1) 首先地址和数据是由同一个数据开关给出的（实验箱IN单元）因此地址和数据要分别写入。先关掉存储器的读写，数据开关给出地址01H，将地址01H打入AR中，再关闭地址寄存器，数据开关给出数据12H，打开输入三态门(写状态)，即把12H传至存储器。<br>读数据也应该先给出地址，在进行读操作，地址01H的写入方式相同，关闭IN单元输出，使存储器处于读状态，此时CPU总线上显示12H。<br>(2) 存储器存储数据原理：<br>存储器中最小单元为一个双稳态半导体电路或CMOS晶体管，磁性材料的存储单元，它可以存储一个二进制数序列，若干存储元构成一个存储单元，若干存储单元构成存储器，可用于存放数据。</p>
+</blockquote>
+<h4 id="1-4-思考题"><a href="#1-4-思考题" class="headerlink" title="1.4 思考题"></a>1.4 思考题</h4><ul>
+<li>思考题1：存储器实验各个控制信号的初始状态如何设置？<br><strong>IOR 置 “1”，其他控制信号置 “0”</strong></li>
+<li>思考题2：所有的写操作要配合脉冲（边沿触发），为什么？<br><strong>为了防止误操作</strong></li>
+</ul>
+<h3 id="实验三-基本运算器实验"><a href="#实验三-基本运算器实验" class="headerlink" title="实验三 基本运算器实验"></a>实验三 基本运算器实验</h3><h4 id="3-1-实验目的及内容"><a href="#3-1-实验目的及内容" class="headerlink" title="3.1 实验目的及内容"></a>3.1 实验目的及内容</h4><img src="https://s1.ax1x.com/2023/03/17/ppGpSgI.jpg" style="zoom:25%;" />
+
+<h4 id="3-2-实验步骤"><a href="#3-2-实验步骤" class="headerlink" title="3.2 实验步骤"></a>3.2 实验步骤</h4><blockquote>
+<p>（1）关闭电源开关，连接实验电路，并检查无误<br>（2）将时序与操作台单元的开关KK2 置为“单步”档，开关KK1, KK3置为“运行”档<br>（3）打开电源开关，按动 CON单元 的 CLR按钮，将运算器的 A,B,FC,FZ 清零<br>（4）用输入开关向暂存器A 置数<br>（5）用输入开关向暂存器B 置数<br>（6）改变运算器的功能设置，观察运算器的输出</p>
+</blockquote>
+<h4 id="3-3-实验结果分析"><a href="#3-3-实验结果分析" class="headerlink" title="3.3 实验结果分析"></a>3.3 实验结果分析</h4><blockquote>
+<p>（1）运算器能实现二进制算术和移位，逻辑运算<br>设置运算器的控制信号S_3, S_2, S_1, S_0, C_n 来选择运算器的不同功能<br>（2）数据的输入，输出以及 FC、FZ 标志状态要通过 LED观察灯 观察时<br>都需要按下脉冲单元的 ST按钮<br>（3）数据进入哪一寄存器就必须开启哪一个寄存器<br>如数据只进入暂存器A，必须设置LDA &#x3D; 1， LDB &#x3D; 0且获得脉冲信号</p>
+</blockquote>
+<h4 id="3-4-思考题"><a href="#3-4-思考题" class="headerlink" title="3.4 思考题"></a>3.4 思考题</h4><ul>
+<li>思考题3：采用单步模式时，实验箱是如何产生时序信号的？例如要产生T3需要按几次ST?<br><strong>按ST产生时序信号；单步模式下要产生T3需要按1次ST</strong></li>
+<li>思考题4：运算器实验中的FZ代表什么含义？FZ什么时候取值为1？<br><strong>FZ为零标志位（Flag Zero），表示运算是否为0，当运算结果为0时，FZ为1</strong></li>
+</ul>
+<h3 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h3><blockquote>
+<p>感谢一只路过的喵喵提供了相关照片、思考题的参考答案以及改正建议</p>
+</blockquote>
+<hr>
+]]></content>
+      <categories>
+        <category>学习</category>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>计组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>前端工具(框架)</title>
     <url>/2023/03/07/Front-end-tools/</url>
     <content><![CDATA[<p><a href="https://element.eleme.cn/#/zh-CN">Element - 网站快速成型工具</a></p>
@@ -1275,6 +1275,21 @@
       </tags>
   </entry>
   <entry>
+    <title>面试相关总结</title>
+    <url>/2023/03/07/Interview-related-content/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
+<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
+<p><a href="https://blog.csdn.net/sihai12345/article/details/120387150">Java 资料汇总</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基于神经网络的图像分类</title>
     <url>/2023/04/03/Image-Classification-Based-on-Neural-Network/</url>
     <content><![CDATA[<h3 id="XXX"><a href="#XXX" class="headerlink" title="XXX"></a>XXX</h3><h3 id="相关基础知识"><a href="#相关基础知识" class="headerlink" title="相关基础知识"></a>相关基础知识</h3><p><a href="https://zhuanlan.zhihu.com/p/377396096">机器学习为什么要划分训练集、测试集和验证集？- 知乎</a></p>
@@ -1297,21 +1312,6 @@
       </categories>
       <tags>
         <tag>AI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面试相关总结</title>
-    <url>/2023/03/07/Interview-related-content/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/adminpd/article/details/122934938">Redis面试题总结（2022最新版）</a></p>
-<p><a href="https://www.cnblogs.com/chumochen/p/17134303.html">NET面试总结</a></p>
-<p><a href="https://blog.csdn.net/sihai12345/article/details/120387150">Java 资料汇总</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
@@ -1405,8 +1405,164 @@
       </tags>
   </entry>
   <entry>
+    <title>信息系统安全复习</title>
+    <url>/2023/05/04/Review-Information-System-Security-Review/</url>
+    <content><![CDATA[<hr>
+<h3 id="第0章-绪论"><a href="#第0章-绪论" class="headerlink" title="第0章 绪论"></a>第0章 绪论</h3><ul>
+<li><p><strong>信息的安全属性</strong><br><strong>机密性</strong>：确保信息不泄漏给未经授权的实体<br><strong>完整性</strong>：确保信息及其处理过程不被未经授权地篡改<br><strong>可用性</strong>：确保信息及信息系统确实为授权使用者所用<br><strong>可控性</strong>：能够控制使用信息资源的人或实体的使用方式<br><strong>可鉴别性</strong>：信息及其操作是可鉴别的，包括真实性和不可抵赖性</p>
+</li>
+<li><p><strong>硬件结构的安全</strong>和<strong>操作系统的安全</strong>是<strong>信息系统安全的基础</strong></p>
+</li>
+</ul>
+<hr>
+<h3 id="第3章-访问控制"><a href="#第3章-访问控制" class="headerlink" title="第3章 访问控制"></a>第3章 访问控制</h3><h4 id="3-2-自主访问控制的实现方式"><a href="#3-2-自主访问控制的实现方式" class="headerlink" title="3.2 自主访问控制的实现方式"></a>3.2 自主访问控制的实现方式</h4><p>① <strong>访问口令</strong>：客体提供口令，并分发给主体；主体访问时需要提供访问口令<br>② <strong>访问控制矩阵</strong>：访问控制的矩阵形式<br>③ <strong>访问能力表</strong>：主体能访问的客体明细表<br>④ <strong>访问控制表</strong>(ACL)：能访问该客体的主体明细表<br>⑤ <strong>授权关系表</strong>：记录所有的主-客体关系<br>⑥ <strong>属主&#x2F;同组用户&#x2F;其他用户</strong>(OGO)：文件属性附加访问控制信息</p>
+<h4 id="3-3-强制访问控制-MAC"><a href="#3-3-强制访问控制-MAC" class="headerlink" title="3.3 强制访问控制 MAC"></a>3.3 强制访问控制 MAC</h4><p><strong>特点</strong>：系统对授权<strong>集中</strong>管理；管理部门按照严格的安全规则设置系统中的主体、客体的安全级别、安全范畴等安全属性；系统运行时通过比较主-客体的安全属性，决定是否允许主体以其所请求的方式访问客体。</p>
+<h5 id="BLP模型"><a href="#BLP模型" class="headerlink" title="BLP模型"></a>BLP模型</h5><p>安全目标：机密性<br>主体对客体的4种访问权限：只读、添加、执行、读写<br>安全访问规则：<strong>不上读，不下写，自主访问控制</strong>（分别为SS策略、*策略、DS策略）<br>可用性问题：<strong>隐蔽通道违反系统安全策略</strong><br><strong>信息流方向 为从 低机密性级别 到 高密级 的安全域</strong></p>
+<h5 id="Biba模型"><a href="#Biba模型" class="headerlink" title="Biba模型"></a>Biba模型</h5><ul>
+<li>针对<strong>主体</strong>：<br>  <strong>SIP策略</strong>：<u><strong>不下读，不上写</strong></u>，信息流方向 从 高完整性级别 到 低完整性级别 的安全域<br>  <strong>RP策略</strong>：<u>任何主体都可以对任何客体进行“读”访问</u>，其他一样<br>  <strong>LWMPS策略</strong>：<u>允许主体s对任何客体o进行“读”访问，但访问完成后其完整性级别调整为 $min(i(s) , i(o))$</u></li>
+<li>针对<strong>客体</strong>：<br>  <strong>SIP策略</strong>：<u><strong>不下读，不上写</strong></u><br>  <strong>LWMPO策略</strong>：<u>允许主体s对任何客体o进行“写”访问，但访问完成后其完整性级别调整为 $min(i(s) , i(o))$</u><br>  <strong>LWMIAP策略</strong>：<u>允许主体s对任何客体o进行“写”访问，但如果i(s)不支配i(o)，则对该操作进行审计</u></li>
+</ul>
+<h4 id="3-4-基于角色的访问控制"><a href="#3-4-基于角色的访问控制" class="headerlink" title="3.4 基于角色的访问控制"></a>3.4 基于角色的访问控制</h4><p>特权的作用： ① <strong>便于系统维护</strong>，② <strong>提高系统可用性</strong><br>特权对信息系统安全的危害：<strong>被窃取、被误用、被滥用</strong></p>
+<hr>
+<h3 id="第4章-安全审计"><a href="#第4章-安全审计" class="headerlink" title="第4章 安全审计"></a>第4章 安全审计</h3><h4 id="4-2-安全审计系统模型"><a href="#4-2-安全审计系统模型" class="headerlink" title="4.2 安全审计系统模型"></a>4.2 安全审计系统模型</h4><p><a href="https://imgse.com/i/p9NFJk8"><img src="https://s1.ax1x.com/2023/05/04/p9NFJk8.jpg" alt="p9NFJk8.jpg" border="0" style="zoom: 67%;" /></a><br>① 事件鉴别器被逻辑地嵌入系统软件中，检测被配置为需要检测的与安全相关的活动<br>② 事件鉴别器对每个检测到的事件，以审计消息的形式传输到审计记录器<br>③ 审计记录器为每个事件消息创建格式化的记录，并将其存储在安全审计踪迹中<br>④ 审计分析器基于活动模式，可以定义新的可审计事件并发送到审计记录器中，也可以产生报警<br>⑤ 报警处理器根据收到的报警信息采取一系列活动，这些活动通常是可审计事件，可以被传输到审计记录器<br>⑥ 审计存档器是一个软件模块，定期从 安全审计踪迹中提取记录，创建可审计事件的一个永久存档。<br>⑦ 审计存档是在此系统上实现安全相关 事件的永久存档。<br>⑧ 审计提供器是一个与应用程序和安全审计踪迹相关的用户接口<br>⑨ 审计检查器是一个应用程序或用户，可以检查审计踪迹和审计存档的历史数据<br>⑩ 审计检查器提供人工可读的安全报告</p>
+<h4 id="4-3-安全审计系统的设计与实现"><a href="#4-3-安全审计系统的设计与实现" class="headerlink" title="4.3 安全审计系统的设计与实现"></a>4.3 安全审计系统的设计与实现</h4><ul>
+<li>审计踪迹：维护系统活动的记录<br>系统级、应用级、用户级、物理访问级</li>
+</ul>
+<hr>
+<h3 id="第5章-Windows操作系统安全"><a href="#第5章-Windows操作系统安全" class="headerlink" title="第5章 Windows操作系统安全"></a>第5章 Windows操作系统安全</h3><ol>
+<li><p><strong>操作系统的安全性方法</strong><br> 物理隔离、时间隔离、逻辑隔离、加密隔离</p>
+</li>
+<li><p><strong>活动目录</strong> 和 <strong>域</strong><br> <strong>活动目录</strong>是一个包含网络资源（计算机、用户、文件、打印机等）的数据库。<br> 也是一种分布式的目录服务系统。在分布式环境中，允许网络资源被各种授权应用（用户、程序）方便地访问读取。<br> <strong>域</strong>是Windows网络系统的安全性边界。一个域可以分布在多个物理位置上。活动目录可以贯穿一个或多个域。<br> <strong>活动目录的 安全管理单元 是 域</strong>，域中的所有用户和计算机执行相同的域安全策略。</p>
+</li>
+<li><p><strong>Winlogon进程</strong> 是用户本地登陆程序，负责管理用户登录和注销过程，加载登录界面 并监视安全认证的顺序<br> <strong>NetLogon进程</strong> 处理网络登录，维护计算机到其所在域的域控制器的安全信道</p>
+</li>
+<li><p><strong>Windows 本地身份认证机制</strong><br> <a href="https://imgse.com/i/p9NPgET"><img src="https://s1.ax1x.com/2023/05/04/p9NPgET.jpg" alt="p9NPgET.jpg" border="0" style="zoom: 33%;" /></a><br> ① 用户按下SAS键引起硬件中断，并被操作系统捕获，激活Winlogon进程。Winlogon进程调用GINA，显示对话框，便于用户输入账号和口令<br> ② GINA将用户输入的账号和口令返回给Winlogon进程<br> ③ Winlogon进程将账号口令信息发送给LSA进行验证<br> ④ LSA调用Msv1_0.dll验证程序包处理用户信息，生成密钥<br> ⑤ Msv1_0.dll验证程序包 将生成的密钥发送给SAM服务器进程<br> ⑥ SAM服务器进程将收到的用户密钥与SAM数据库中存储的密钥进行对比<br> ⑦ 如果用户合法，SAM进程会将用户SID、用户组SID和相关信息发送给Msv1_0.dll<br> ⑧ Msv1_0.dll 验证程序包将 认证结果 返回给LSA<br> ⑨ LSA根据收到的SID信息创建安全访问令牌，将令牌句柄和登录信息发送给Winlogon进程。Winlogon进程处理用户登录，完成本地身份认证过程。</p>
+</li>
+<li><p><strong>加密文件系统 EFS</strong><br><a href="https://imgse.com/i/p9NiIJg"><img src="https://s1.ax1x.com/2023/05/04/p9NiIJg.jpg" alt="p9NiIJg.jpg" border="0" style="zoom: 67%;" /></a></p>
+</li>
+<li><p><strong>安全关联 SA</strong><br>从源主机到目的主机建立一条网络层的逻辑连接，即为安全关联 SA<br>安全关联是从源点到终点的<strong>单向</strong>连接，能够提供安全服务<br>例如：公司H1经由公司路由器R1与主机H2进行安全通信，则需要在R1和H2之间建立SA</p>
+</li>
+</ol>
+<hr>
+<h3 id="第6章-Linux系统操作系统安全"><a href="#第6章-Linux系统操作系统安全" class="headerlink" title="第6章 Linux系统操作系统安全"></a>第6章 Linux系统操作系统安全</h3><h4 id="6-1-Linux系统安全威胁"><a href="#6-1-Linux系统安全威胁" class="headerlink" title="6.1 Linux系统安全威胁"></a>6.1 Linux系统安全威胁</h4><p>（四点）<strong>特权程序漏洞、恶意代码、网络监听和数据捕获、软件设置和相互作用</strong></p>
+<h4 id="6-2-Linux-本地安全机制"><a href="#6-2-Linux-本地安全机制" class="headerlink" title="6.2 Linux 本地安全机制"></a>6.2 Linux 本地安全机制</h4><ol>
+<li><p><strong>用户和组安全</strong></p>
+</li>
+<li><p><strong>文件系统安全</strong><br> 支持 Owner&#x2F;Group&#x2F;Other 访问控制机制（不灵活）：Owner为客体属主的访问权限(r-w-x)，Group为Owner同组用户对该客体的权限，Other为其他用户对该客体的权限</p>
+</li>
+<li><p><strong>僵尸进程</strong>：<u>一个进程调用了exit后，并非马上消失，而留下一个僵尸进程（Zombie）的数据结构</u>；僵尸进程<u>放弃了几乎所有内存空间，无任何可执行代码，也不能被调度，仅仅在进程表中保留一个位置</u>，记载该进程的退出状态等信息供其他进程收集。<br> Linux系统中进程数目有限制，<u>存在太多的僵尸进程会占用内存资源，影响系统性能和新进程的产生，甚至导致瘫痪</u></p>
+</li>
+<li><p><strong>日志管理</strong>：主要功能为<strong>检测</strong> 和 <strong>审计</strong>（连接时间日志、进程日志、错误日志、实用程序日志等）</p>
+</li>
+</ol>
+<h4 id="6-3-Linux-网络安全技术"><a href="#6-3-Linux-网络安全技术" class="headerlink" title="6.3 Linux 网络安全技术"></a>6.3 Linux 网络安全技术</h4><ol>
+<li><p>Web 服务安全<br>配置特定的用户运行Apache服务器<br>服务器配置隐藏Apache服务器的版本号<br>访问控制（allow、deny、order指令）<br>使用认证和授权保护<br>设置虚拟目录<br>Apache服务器的安全模块<br>应用SSL技术对网络传输数据进行加密</p>
+</li>
+<li><p>NetFilter&#x2F;Iptables防火墙</p>
+<h5 id="四表五链"><a href="#四表五链" class="headerlink" title="四表五链"></a>四表五链</h5><ul>
+<li><strong>四表</strong><br> <code>filter表</code>：负责过滤、防火墙<br> <code>nat表</code>：网络地址转换<br> <code>mangle表</code>：拆解报文、进行修改、重新封装<br> <code>raw表</code>：关闭nat表上启用的连接追踪机制</li>
+<li><strong>五链</strong><br> <code>PREROUTING</code> | <code>INPUT</code> | <code>OUTPUT</code> | <code>FORWARD</code>| <code>POSTROUTING</code></li>
+<li>对应关系图如下<br> <a href="https://imgse.com/i/p9N9XdO"><img src="https://s1.ax1x.com/2023/05/04/p9N9XdO.jpg" alt="p9N9XdO.jpg" border="0" style="zoom: 50%;" /></a></li>
+</ul>
+</li>
+<li><p>入侵检测：Snort → 嗅探器、数据包记录器、网络入侵检测系统</p>
+</li>
+<li><p>DNS服务安全：BIND软件</p>
+</li>
+<li><p>DHCP服务安全</p>
+</li>
+<li><p>xinetd 网络服务管理程序</p>
+</li>
+</ol>
+<hr>
+<h3 id="第7章-数据库系统安全"><a href="#第7章-数据库系统安全" class="headerlink" title="第7章 数据库系统安全"></a>第7章 数据库系统安全</h3><h4 id="7-2-数据库系统的安全需求"><a href="#7-2-数据库系统的安全需求" class="headerlink" title="7.2 数据库系统的安全需求"></a>7.2 数据库系统的安全需求</h4><ul>
+<li>机密性：数据值、可能的取值、数据值范围、否定的查询结果</li>
+<li>完整性<br>防止对DBMS的非法访问和修改，保护存储的数据、文件的安全性</li>
+<li>数据完整性<br>① 物理数据库完整性（整个数据库损毁时保证数据能够物理读取）<br>② 逻辑数据库完整性（保护数据库的结构）<br>③ 元素完整性（数据元素只能由授权用户改变）</li>
+<li>一致性：表示同一事实的两个数据应相同，否则就不一致</li>
+<li>可审计性<br>① 数据库受破坏后可恢复，维护完整性<br>② 防止用户采用累加的方式，访问受保护的数据<br>③ 审计、跟踪用户访问记录，推理用户意图</li>
+</ul>
+<ol>
+<li>数据库系统的安全防护层次：网络环境 - 宿主操作系统 - 数据库管理系统 - 数据库应用系统</li>
+<li><strong>库外加密</strong><br>加解密过程在DBMS外，DBMS只管理密文，有客户端实现<br>优点：对DBMS要求少<br>缺点：效率低，数据加解密需要很大代价</li>
+<li><strong>库内加密</strong><br>加密的是数据库中的数据(表、记录、字段等)，在DBMS内核层加密，加解密过程对用户和应用透明，发生在物理层存取数据之前<br>优点：加密粒度可细化、效率较高<br>缺点：DBMS性能降低、密钥管理风险较大</li>
+<li><strong>数据库加密局限性</strong><br>不宜以整个数据库文件为单位进行加密<br>条件、索引、表间连接码等字段不能加密</li>
+</ol>
+<hr>
+<h3 id="第8章-信息系统安全测评"><a href="#第8章-信息系统安全测评" class="headerlink" title="第8章 信息系统安全测评"></a>第8章 信息系统安全测评</h3><h4 id="8-7-矩阵法"><a href="#8-7-矩阵法" class="headerlink" title="8.7 矩阵法"></a>8.7 矩阵法</h4><ul>
+<li><strong>理念</strong>：由两个要素值确定一个要素值，简单直观</li>
+<li><strong>计算过程</strong>：借由 <strong>预设关系表</strong> 计算下列值<ul>
+<li><u>由<strong>威胁-脆弱性</strong> 确定 安全事件发生<strong>可能性值 和 可能等级</strong></u></li>
+<li><u>由<strong>资产价值-脆弱性</strong> 确定 安全事件的<strong>损失值 和 损失等级</strong></u></li>
+<li><u>由<strong>可能性值-损失值</strong> 确定 <strong>风险值 和 风险等级</strong></u></li>
+</ul>
+</li>
+</ul>
+<h4 id="8-7-相乘法"><a href="#8-7-相乘法" class="headerlink" title="8.7 相乘法"></a>8.7 相乘法</h4><ul>
+<li><strong>理念</strong>：由两个要素值 <strong>乘积开根号</strong> 确定结果要素值 $f &#x3D; \sqrt{x\times y}$</li>
+<li><strong>计算过程</strong>：<ul>
+<li><u>由<strong>威胁-脆弱性</strong> 确定 安全事件发生<strong>可能性值 和 可能等级</strong></u></li>
+<li><u>由<strong>资产价值-脆弱性</strong> 确定 安全事件的<strong>损失值 和 损失等级</strong></u></li>
+<li><u>由<strong>可能性值-损失值</strong> 确定 <strong>风险值 和 风险等级</strong></u></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="第9章-可信计算"><a href="#第9章-可信计算" class="headerlink" title="第9章 可信计算"></a>第9章 可信计算</h3><ul>
+<li><strong>定义</strong>：计算机运算的同时进行安全防护，使操作和过程行为在任意条件下的结果总和预期一样，计算全程可测可控，不被干扰</li>
+<li>组成：信任根 → 可信硬件平台 → 可信操作系统 → 可信应用系统</li>
+<li><strong>过程</strong>：首先构建一个信任根，再建立一条信任链，从信任根开始到硬件平台，到操作<br>系统，再到应用，一级度量认证一级，一级信任一级，把这种信任扩展到整个计算机系统，并采取防护措施，确保计算资源的完整性和行为的预期性，从而提高计算机系统的可信性</li>
+</ul>
+<hr>
+<h2 id="期末试题（19-20）"><a href="#期末试题（19-20）" class="headerlink" title="期末试题（19-20）"></a>期末试题（19-20）</h2><p>一、判断题（每题 1 分，共 10 分）</p>
+<ol>
+<li><strong>硬件结构的安全是信息系统安全的基础</strong>。（ $\checkmark$ ） </li>
+<li><strong>稳定不变是用于身份认证的生理特征的必要条件，但也是用于安全认证的缺点</strong>。（ $\checkmark$ ） </li>
+<li><strong>访问控制中，客体是可以导致信息流动，或使系统状态发生变化的主动实体</strong>。 （ $\times$ ） </li>
+<li><strong>在强制访问控制策略下，主体可以改变自己、自己所拥有客体的安全属性</strong>。 （$\times$）</li>
+<li><strong>BLP 模型的特点是不上读、不下写</strong>。（ $\checkmark$ ） </li>
+<li><strong>安全审计是信息系统安全的最后防线，是访问控制的必要补充</strong>。（ $\checkmark$ ） </li>
+<li><strong>隐蔽通道的存在违反了信息系统的安全策略</strong>。（ $\checkmark$ ）</li>
+<li><strong>Windows 操作系统中，用户通过身份认证后，登录进程会为其创建一个安全描述符，相当于用户访问系统资源的票证</strong>。（ ） </li>
+<li><strong>Linux 系统中，特权程序是可以暂时获得管理员权限并执行一些管理员特权功能的程序</strong>。（$\checkmark$） </li>
+<li><strong>数据库库外加密只能以整个数据库文件为单位进行加密</strong>。（$\times$）</li>
+</ol>
+<p>二、简答题（每题 5 分，共 30 分）</p>
+<ol>
+<li><p><strong>请列举出 5 种自主访问控制的实现方式</strong>。<br> 答：① <strong>访问口令</strong>：客体提供口令，并分发给主体；主体访问时需要提供访问口令<br> ② <strong>访问控制矩阵</strong>：访问控制的矩阵形式<br> ③ <strong>访问能力表</strong>：主体能访问的客体明细表<br> ④ <strong>访问控制表</strong>(ACL)：能访问该客体的主体明细表<br> ⑤ <strong>授权关系表</strong>：记录所有的主-客体关系<br> ⑥ <strong>属主&#x2F;同组用户&#x2F;其他用户</strong>(OGO)：文件属性附加访问控制信息</p>
+</li>
+<li><p><strong>简述特权对信息系统安全的危害，那为什么还要提供特权</strong>？<br> 答：① <u>特权会<strong>被窃取、被误用、被滥用</strong></u> ；② 便于系统维护，提高系统可用性</p>
+</li>
+<li><p><strong>信息系统安全审计有何作用</strong>？<br> 答：① 系统安全的最后防线，是访问控制的必要补充；② 重建事件；③ 监测潜在的入侵并提供相关数据；④ 故障检测 (定位安全问题，帮助故障分析)；④ 发现系统不足；⑤ 联动其他安全机制】</p>
+</li>
+<li><p><strong>说明数据库安全中，数据完整性的含义</strong>。<br> 答：① 物理数据库完整性（整个数据库损毁时保证数据能够物理读取）② 逻辑数据库完整性（保护数据库的结构）③ 元素完整性（数据元素只能由授权用户改变）</p>
+</li>
+<li><p><strong>什么是 Linux 系统中的僵尸进程？僵尸进程有何危害</strong>？<br> 答：① 一个进程在调用exit后，不会立刻消失，而是留下的一个僵尸进程数据结构；② 太多的僵尸进程会占用较多的内存，进而影响系统性能和新进程创建，甚至导致系统瘫痪</p>
+</li>
+<li><p><strong>信息安全风险评估中，什么是残余风险？如何对待残余风险？</strong><br> 答：① 残余风险 是指 <u>采取风险控制措施后系统仍然存在的风险</u>；② 应该<u>评估其是否可以接受。如果可以接受，则予以持续关注，防止其导致安全事件的发生，否则进一步采取更为强劲的风险控制措施。</u></p>
+</li>
+</ol>
+<p>三、分析、设计题（每题 15 分，共 30 分） </p>
+<ol>
+<li><p><strong>设计一种动态口令身份认证机制，说明口令的使用和验证过程，并分析其可以抵御哪些口令攻击</strong>？<br>答：①<br>② 是一次性口令，可以抵御【重放攻击】</p>
+</li>
+<li><p><strong>叙述 Windows 操作系统中一种加密文件系统（例如 EFS）的工作原理，分析其安全性</strong>。<br>答：</p>
+</li>
+</ol>
+<p>四、计算题（20 分）<br><strong>假设有 3 个重要资产 A1、A2 和 A3，资产所面临的威胁以及威胁可利用的资产的脆弱性见表 1，括号内是其等级值。要求使用矩阵法计算资产的风险值及风险等级。矩阵的构建和等级划分表如表 2 - 表 7 所示，写出详细的风险计算过程。</strong> </p>
+<p>五、论述题（10 分）<br><strong>本次在线考试，利用学生的电脑、手机等设备在学生的家里搭建了在线考试环 境（系统），请利用学习的信息系统安全原理分析，这种在线考试环境能否从技 术上保证学生无法作弊？</strong> </p>
+]]></content>
+      <categories>
+        <category>学习</category>
+        <category>信息系统安全</category>
+      </categories>
+      <tags>
+        <tag>信息系统安全</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>人工智能概论复习-上半</title>
-    <url>/2023/04/20/Review-of-Introduction-to-Artificial-Intelligence-first-half/</url>
+    <url>/2023/04/20/Review-of-Introduction-to-Artificial-Intelligence-first-half%20-%20%E5%89%AF%E6%9C%AC/</url>
     <content><![CDATA[<blockquote>
 <p>备考核心：重点掌握核心知识点概念，理解意义及过程。考试不会难，不会考太多概念，重在理解运用，用自己的语言描述 (过程, 概念) 即可。实验相关内容要重点看，报告要认真写。</p>
 <p>考试题型：单选题，简答题，解答题，综合分析题<br>解答题包括简单的计算和问答，主要是问答。综合分析是基于已学知识的扩展，考察灵活应用与分析的能力，有一定难度。</p>
@@ -1609,36 +1765,6 @@
       </tags>
   </entry>
   <entry>
-    <title>常用数据库的异同</title>
-    <url>/2023/03/14/SQL/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/362598819">MySQL 与 PostgreSQL 比较</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>PostgreSQ</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu问题及解决方案汇总</title>
-    <url>/2023/03/07/Ubuntu-problems-and-solutions/</url>
-    <content><![CDATA[<hr>
-<p><a href="https://www.cnblogs.com/nuochengze/p/12642282.html">解决Ubuntu连不上网络，输入ifconfig只显示本地环回问题</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>人工智能概论复习-下半</title>
     <url>/2023/04/20/Review-of-Introduction-to-Artificial-Intelligence-lower-half/</url>
     <content><![CDATA[<blockquote>
@@ -1691,6 +1817,36 @@
       </categories>
       <tags>
         <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常用数据库的异同</title>
+    <url>/2023/03/14/SQL/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/qq_32392597/article/details/107645823">ISAM、MyISAM、InnoDB、ACID详解</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/362598819">MySQL 与 PostgreSQL 比较</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>PostgreSQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu问题及解决方案汇总</title>
+    <url>/2023/03/07/Ubuntu-problems-and-solutions/</url>
+    <content><![CDATA[<hr>
+<p><a href="https://www.cnblogs.com/nuochengze/p/12642282.html">解决Ubuntu连不上网络，输入ifconfig只显示本地环回问题</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -1774,6 +1930,21 @@ PS：如果未成功可以把 DOSBox程序关闭，再重新打开（doge</li>
         <tag>Assembly</tag>
         <tag>DOSBox</tag>
         <tag>MASM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows相关问题及解决方案</title>
+    <url>/2023/03/16/Windows-related-issues-and-solutions/</url>
+    <content><![CDATA[<p><a href="https://www.win7zhijia.cn/win10jc/win10_51994.html">删除文件提示你需要来自system的权限才能对此文件夹进行更改(win7,win10,win11通用)</a></p>
+<p><a href="https://www.disktool.cn/jiaocheng/extend-c-drive.html">在Windows中扩大C盘的4种方法</a></p>
+<p><a href="https://blog.csdn.net/lingbomanbu628/article/details/121198056">在文件夹页面检索文件的内容</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>
@@ -1887,21 +2058,6 @@ Save后，改个主机字（有自己特色的），再点Apply
         <tag>Cloud Computing</tag>
         <tag>VMware</tag>
         <tag>StarVCenter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows相关问题及解决方案</title>
-    <url>/2023/03/16/Windows-related-issues-and-solutions/</url>
-    <content><![CDATA[<p><a href="https://www.win7zhijia.cn/win10jc/win10_51994.html">删除文件提示你需要来自system的权限才能对此文件夹进行更改(win7,win10,win11通用)</a></p>
-<p><a href="https://www.disktool.cn/jiaocheng/extend-c-drive.html">在Windows中扩大C盘的4种方法</a></p>
-<p><a href="https://blog.csdn.net/lingbomanbu628/article/details/121198056">在文件夹页面检索文件的内容</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Windows</tag>
       </tags>
   </entry>
   <entry>

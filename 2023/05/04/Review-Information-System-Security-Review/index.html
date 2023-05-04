@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<!-- 全站黑白(公祭日专用)
+<style>
+  html {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+} </style>
+-->
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="博客,思考" />
+       
+      <meta name="description" content="人生小站" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>信息系统安全复习 |  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Review-Information-System-Security-Review"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  信息系统安全复习
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/04/Review-Information-System-Security-Review/" class="article-date">
+  <time datetime="2023-05-04T06:55:12.000Z" itemprop="datePublished">2023-05-04</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8/">信息系统安全</a>
+  </div>
+ 
+       
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">4.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">14 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+      
+    </div>
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <hr>
+<h3 id="第0章-绪论"><a href="#第0章-绪论" class="headerlink" title="第0章 绪论"></a>第0章 绪论</h3><ul>
+<li><p><strong>信息的安全属性</strong><br><strong>机密性</strong>：确保信息不泄漏给未经授权的实体<br><strong>完整性</strong>：确保信息及其处理过程不被未经授权地篡改<br><strong>可用性</strong>：确保信息及信息系统确实为授权使用者所用<br><strong>可控性</strong>：能够控制使用信息资源的人或实体的使用方式<br><strong>可鉴别性</strong>：信息及其操作是可鉴别的，包括真实性和不可抵赖性</p>
+</li>
+<li><p><strong>硬件结构的安全</strong>和<strong>操作系统的安全</strong>是<strong>信息系统安全的基础</strong></p>
+</li>
+</ul>
+<hr>
+<h3 id="第3章-访问控制"><a href="#第3章-访问控制" class="headerlink" title="第3章 访问控制"></a>第3章 访问控制</h3><h4 id="3-2-自主访问控制的实现方式"><a href="#3-2-自主访问控制的实现方式" class="headerlink" title="3.2 自主访问控制的实现方式"></a>3.2 自主访问控制的实现方式</h4><p>① <strong>访问口令</strong>：客体提供口令，并分发给主体；主体访问时需要提供访问口令<br>② <strong>访问控制矩阵</strong>：访问控制的矩阵形式<br>③ <strong>访问能力表</strong>：主体能访问的客体明细表<br>④ <strong>访问控制表</strong>(ACL)：能访问该客体的主体明细表<br>⑤ <strong>授权关系表</strong>：记录所有的主-客体关系<br>⑥ <strong>属主&#x2F;同组用户&#x2F;其他用户</strong>(OGO)：文件属性附加访问控制信息</p>
+<h4 id="3-3-强制访问控制-MAC"><a href="#3-3-强制访问控制-MAC" class="headerlink" title="3.3 强制访问控制 MAC"></a>3.3 强制访问控制 MAC</h4><p><strong>特点</strong>：系统对授权<strong>集中</strong>管理；管理部门按照严格的安全规则设置系统中的主体、客体的安全级别、安全范畴等安全属性；系统运行时通过比较主-客体的安全属性，决定是否允许主体以其所请求的方式访问客体。</p>
+<h5 id="BLP模型"><a href="#BLP模型" class="headerlink" title="BLP模型"></a>BLP模型</h5><p>安全目标：机密性<br>主体对客体的4种访问权限：只读、添加、执行、读写<br>安全访问规则：<strong>不上读，不下写，自主访问控制</strong>（分别为SS策略、*策略、DS策略）<br>可用性问题：<strong>隐蔽通道违反系统安全策略</strong><br><strong>信息流方向 为从 低机密性级别 到 高密级 的安全域</strong></p>
+<h5 id="Biba模型"><a href="#Biba模型" class="headerlink" title="Biba模型"></a>Biba模型</h5><ul>
+<li>针对<strong>主体</strong>：<br>  <strong>SIP策略</strong>：<u><strong>不下读，不上写</strong></u>，信息流方向 从 高完整性级别 到 低完整性级别 的安全域<br>  <strong>RP策略</strong>：<u>任何主体都可以对任何客体进行“读”访问</u>，其他一样<br>  <strong>LWMPS策略</strong>：<u>允许主体s对任何客体o进行“读”访问，但访问完成后其完整性级别调整为 $min(i(s) , i(o))$</u></li>
+<li>针对<strong>客体</strong>：<br>  <strong>SIP策略</strong>：<u><strong>不下读，不上写</strong></u><br>  <strong>LWMPO策略</strong>：<u>允许主体s对任何客体o进行“写”访问，但访问完成后其完整性级别调整为 $min(i(s) , i(o))$</u><br>  <strong>LWMIAP策略</strong>：<u>允许主体s对任何客体o进行“写”访问，但如果i(s)不支配i(o)，则对该操作进行审计</u></li>
+</ul>
+<h4 id="3-4-基于角色的访问控制"><a href="#3-4-基于角色的访问控制" class="headerlink" title="3.4 基于角色的访问控制"></a>3.4 基于角色的访问控制</h4><p>特权的作用： ① <strong>便于系统维护</strong>，② <strong>提高系统可用性</strong><br>特权对信息系统安全的危害：<strong>被窃取、被误用、被滥用</strong></p>
+<hr>
+<h3 id="第4章-安全审计"><a href="#第4章-安全审计" class="headerlink" title="第4章 安全审计"></a>第4章 安全审计</h3><h4 id="4-2-安全审计系统模型"><a href="#4-2-安全审计系统模型" class="headerlink" title="4.2 安全审计系统模型"></a>4.2 安全审计系统模型</h4><p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9NFJk8"><img src="https://s1.ax1x.com/2023/05/04/p9NFJk8.jpg" alt="p9NFJk8.jpg" border="0" style="zoom: 67%;" /></a><br>① 事件鉴别器被逻辑地嵌入系统软件中，检测被配置为需要检测的与安全相关的活动<br>② 事件鉴别器对每个检测到的事件，以审计消息的形式传输到审计记录器<br>③ 审计记录器为每个事件消息创建格式化的记录，并将其存储在安全审计踪迹中<br>④ 审计分析器基于活动模式，可以定义新的可审计事件并发送到审计记录器中，也可以产生报警<br>⑤ 报警处理器根据收到的报警信息采取一系列活动，这些活动通常是可审计事件，可以被传输到审计记录器<br>⑥ 审计存档器是一个软件模块，定期从 安全审计踪迹中提取记录，创建可审计事件的一个永久存档。<br>⑦ 审计存档是在此系统上实现安全相关 事件的永久存档。<br>⑧ 审计提供器是一个与应用程序和安全审计踪迹相关的用户接口<br>⑨ 审计检查器是一个应用程序或用户，可以检查审计踪迹和审计存档的历史数据<br>⑩ 审计检查器提供人工可读的安全报告</p>
+<h4 id="4-3-安全审计系统的设计与实现"><a href="#4-3-安全审计系统的设计与实现" class="headerlink" title="4.3 安全审计系统的设计与实现"></a>4.3 安全审计系统的设计与实现</h4><ul>
+<li>审计踪迹：维护系统活动的记录<br>系统级、应用级、用户级、物理访问级</li>
+</ul>
+<hr>
+<h3 id="第5章-Windows操作系统安全"><a href="#第5章-Windows操作系统安全" class="headerlink" title="第5章 Windows操作系统安全"></a>第5章 Windows操作系统安全</h3><ol>
+<li><p><strong>操作系统的安全性方法</strong><br> 物理隔离、时间隔离、逻辑隔离、加密隔离</p>
+</li>
+<li><p><strong>活动目录</strong> 和 <strong>域</strong><br> <strong>活动目录</strong>是一个包含网络资源（计算机、用户、文件、打印机等）的数据库。<br> 也是一种分布式的目录服务系统。在分布式环境中，允许网络资源被各种授权应用（用户、程序）方便地访问读取。<br> <strong>域</strong>是Windows网络系统的安全性边界。一个域可以分布在多个物理位置上。活动目录可以贯穿一个或多个域。<br> <strong>活动目录的 安全管理单元 是 域</strong>，域中的所有用户和计算机执行相同的域安全策略。</p>
+</li>
+<li><p><strong>Winlogon进程</strong> 是用户本地登陆程序，负责管理用户登录和注销过程，加载登录界面 并监视安全认证的顺序<br> <strong>NetLogon进程</strong> 处理网络登录，维护计算机到其所在域的域控制器的安全信道</p>
+</li>
+<li><p><strong>Windows 本地身份认证机制</strong><br> <a target="_blank" rel="noopener" href="https://imgse.com/i/p9NPgET"><img src="https://s1.ax1x.com/2023/05/04/p9NPgET.jpg" alt="p9NPgET.jpg" border="0" style="zoom: 33%;" /></a><br> ① 用户按下SAS键引起硬件中断，并被操作系统捕获，激活Winlogon进程。Winlogon进程调用GINA，显示对话框，便于用户输入账号和口令<br> ② GINA将用户输入的账号和口令返回给Winlogon进程<br> ③ Winlogon进程将账号口令信息发送给LSA进行验证<br> ④ LSA调用Msv1_0.dll验证程序包处理用户信息，生成密钥<br> ⑤ Msv1_0.dll验证程序包 将生成的密钥发送给SAM服务器进程<br> ⑥ SAM服务器进程将收到的用户密钥与SAM数据库中存储的密钥进行对比<br> ⑦ 如果用户合法，SAM进程会将用户SID、用户组SID和相关信息发送给Msv1_0.dll<br> ⑧ Msv1_0.dll 验证程序包将 认证结果 返回给LSA<br> ⑨ LSA根据收到的SID信息创建安全访问令牌，将令牌句柄和登录信息发送给Winlogon进程。Winlogon进程处理用户登录，完成本地身份认证过程。</p>
+</li>
+<li><p><strong>加密文件系统 EFS</strong><br><a target="_blank" rel="noopener" href="https://imgse.com/i/p9NiIJg"><img src="https://s1.ax1x.com/2023/05/04/p9NiIJg.jpg" alt="p9NiIJg.jpg" border="0" style="zoom: 67%;" /></a></p>
+</li>
+<li><p><strong>安全关联 SA</strong><br>从源主机到目的主机建立一条网络层的逻辑连接，即为安全关联 SA<br>安全关联是从源点到终点的<strong>单向</strong>连接，能够提供安全服务<br>例如：公司H1经由公司路由器R1与主机H2进行安全通信，则需要在R1和H2之间建立SA</p>
+</li>
+</ol>
+<hr>
+<h3 id="第6章-Linux系统操作系统安全"><a href="#第6章-Linux系统操作系统安全" class="headerlink" title="第6章 Linux系统操作系统安全"></a>第6章 Linux系统操作系统安全</h3><h4 id="6-1-Linux系统安全威胁"><a href="#6-1-Linux系统安全威胁" class="headerlink" title="6.1 Linux系统安全威胁"></a>6.1 Linux系统安全威胁</h4><p>（四点）<strong>特权程序漏洞、恶意代码、网络监听和数据捕获、软件设置和相互作用</strong></p>
+<h4 id="6-2-Linux-本地安全机制"><a href="#6-2-Linux-本地安全机制" class="headerlink" title="6.2 Linux 本地安全机制"></a>6.2 Linux 本地安全机制</h4><ol>
+<li><p><strong>用户和组安全</strong></p>
+</li>
+<li><p><strong>文件系统安全</strong><br> 支持 Owner&#x2F;Group&#x2F;Other 访问控制机制（不灵活）：Owner为客体属主的访问权限(r-w-x)，Group为Owner同组用户对该客体的权限，Other为其他用户对该客体的权限</p>
+</li>
+<li><p><strong>僵尸进程</strong>：<u>一个进程调用了exit后，并非马上消失，而留下一个僵尸进程（Zombie）的数据结构</u>；僵尸进程<u>放弃了几乎所有内存空间，无任何可执行代码，也不能被调度，仅仅在进程表中保留一个位置</u>，记载该进程的退出状态等信息供其他进程收集。<br> Linux系统中进程数目有限制，<u>存在太多的僵尸进程会占用内存资源，影响系统性能和新进程的产生，甚至导致瘫痪</u></p>
+</li>
+<li><p><strong>日志管理</strong>：主要功能为<strong>检测</strong> 和 <strong>审计</strong>（连接时间日志、进程日志、错误日志、实用程序日志等）</p>
+</li>
+</ol>
+<h4 id="6-3-Linux-网络安全技术"><a href="#6-3-Linux-网络安全技术" class="headerlink" title="6.3 Linux 网络安全技术"></a>6.3 Linux 网络安全技术</h4><ol>
+<li><p>Web 服务安全<br>配置特定的用户运行Apache服务器<br>服务器配置隐藏Apache服务器的版本号<br>访问控制（allow、deny、order指令）<br>使用认证和授权保护<br>设置虚拟目录<br>Apache服务器的安全模块<br>应用SSL技术对网络传输数据进行加密</p>
+</li>
+<li><p>NetFilter&#x2F;Iptables防火墙</p>
+<h5 id="四表五链"><a href="#四表五链" class="headerlink" title="四表五链"></a>四表五链</h5><ul>
+<li><strong>四表</strong><br> <code>filter表</code>：负责过滤、防火墙<br> <code>nat表</code>：网络地址转换<br> <code>mangle表</code>：拆解报文、进行修改、重新封装<br> <code>raw表</code>：关闭nat表上启用的连接追踪机制</li>
+<li><strong>五链</strong><br> <code>PREROUTING</code> | <code>INPUT</code> | <code>OUTPUT</code> | <code>FORWARD</code>| <code>POSTROUTING</code></li>
+<li>对应关系图如下<br> <a target="_blank" rel="noopener" href="https://imgse.com/i/p9N9XdO"><img src="https://s1.ax1x.com/2023/05/04/p9N9XdO.jpg" alt="p9N9XdO.jpg" border="0" style="zoom: 50%;" /></a></li>
+</ul>
+</li>
+<li><p>入侵检测：Snort → 嗅探器、数据包记录器、网络入侵检测系统</p>
+</li>
+<li><p>DNS服务安全：BIND软件</p>
+</li>
+<li><p>DHCP服务安全</p>
+</li>
+<li><p>xinetd 网络服务管理程序</p>
+</li>
+</ol>
+<hr>
+<h3 id="第7章-数据库系统安全"><a href="#第7章-数据库系统安全" class="headerlink" title="第7章 数据库系统安全"></a>第7章 数据库系统安全</h3><h4 id="7-2-数据库系统的安全需求"><a href="#7-2-数据库系统的安全需求" class="headerlink" title="7.2 数据库系统的安全需求"></a>7.2 数据库系统的安全需求</h4><ul>
+<li>机密性：数据值、可能的取值、数据值范围、否定的查询结果</li>
+<li>完整性<br>防止对DBMS的非法访问和修改，保护存储的数据、文件的安全性</li>
+<li>数据完整性<br>① 物理数据库完整性（整个数据库损毁时保证数据能够物理读取）<br>② 逻辑数据库完整性（保护数据库的结构）<br>③ 元素完整性（数据元素只能由授权用户改变）</li>
+<li>一致性：表示同一事实的两个数据应相同，否则就不一致</li>
+<li>可审计性<br>① 数据库受破坏后可恢复，维护完整性<br>② 防止用户采用累加的方式，访问受保护的数据<br>③ 审计、跟踪用户访问记录，推理用户意图</li>
+</ul>
+<ol>
+<li>数据库系统的安全防护层次：网络环境 - 宿主操作系统 - 数据库管理系统 - 数据库应用系统</li>
+<li><strong>库外加密</strong><br>加解密过程在DBMS外，DBMS只管理密文，有客户端实现<br>优点：对DBMS要求少<br>缺点：效率低，数据加解密需要很大代价</li>
+<li><strong>库内加密</strong><br>加密的是数据库中的数据(表、记录、字段等)，在DBMS内核层加密，加解密过程对用户和应用透明，发生在物理层存取数据之前<br>优点：加密粒度可细化、效率较高<br>缺点：DBMS性能降低、密钥管理风险较大</li>
+<li><strong>数据库加密局限性</strong><br>不宜以整个数据库文件为单位进行加密<br>条件、索引、表间连接码等字段不能加密</li>
+</ol>
+<hr>
+<h3 id="第8章-信息系统安全测评"><a href="#第8章-信息系统安全测评" class="headerlink" title="第8章 信息系统安全测评"></a>第8章 信息系统安全测评</h3><h4 id="8-7-矩阵法"><a href="#8-7-矩阵法" class="headerlink" title="8.7 矩阵法"></a>8.7 矩阵法</h4><ul>
+<li><strong>理念</strong>：由两个要素值确定一个要素值，简单直观</li>
+<li><strong>计算过程</strong>：借由 <strong>预设关系表</strong> 计算下列值<ul>
+<li><u>由<strong>威胁-脆弱性</strong> 确定 安全事件发生<strong>可能性值 和 可能等级</strong></u></li>
+<li><u>由<strong>资产价值-脆弱性</strong> 确定 安全事件的<strong>损失值 和 损失等级</strong></u></li>
+<li><u>由<strong>可能性值-损失值</strong> 确定 <strong>风险值 和 风险等级</strong></u></li>
+</ul>
+</li>
+</ul>
+<h4 id="8-7-相乘法"><a href="#8-7-相乘法" class="headerlink" title="8.7 相乘法"></a>8.7 相乘法</h4><ul>
+<li><strong>理念</strong>：由两个要素值 <strong>乘积开根号</strong> 确定结果要素值 $f &#x3D; \sqrt{x\times y}$</li>
+<li><strong>计算过程</strong>：<ul>
+<li><u>由<strong>威胁-脆弱性</strong> 确定 安全事件发生<strong>可能性值 和 可能等级</strong></u></li>
+<li><u>由<strong>资产价值-脆弱性</strong> 确定 安全事件的<strong>损失值 和 损失等级</strong></u></li>
+<li><u>由<strong>可能性值-损失值</strong> 确定 <strong>风险值 和 风险等级</strong></u></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="第9章-可信计算"><a href="#第9章-可信计算" class="headerlink" title="第9章 可信计算"></a>第9章 可信计算</h3><ul>
+<li><strong>定义</strong>：计算机运算的同时进行安全防护，使操作和过程行为在任意条件下的结果总和预期一样，计算全程可测可控，不被干扰</li>
+<li>组成：信任根 → 可信硬件平台 → 可信操作系统 → 可信应用系统</li>
+<li><strong>过程</strong>：首先构建一个信任根，再建立一条信任链，从信任根开始到硬件平台，到操作<br>系统，再到应用，一级度量认证一级，一级信任一级，把这种信任扩展到整个计算机系统，并采取防护措施，确保计算资源的完整性和行为的预期性，从而提高计算机系统的可信性</li>
+</ul>
+<hr>
+<h2 id="期末试题（19-20）"><a href="#期末试题（19-20）" class="headerlink" title="期末试题（19-20）"></a>期末试题（19-20）</h2><p>一、判断题（每题 1 分，共 10 分）</p>
+<ol>
+<li><strong>硬件结构的安全是信息系统安全的基础</strong>。（ $\checkmark$ ） </li>
+<li><strong>稳定不变是用于身份认证的生理特征的必要条件，但也是用于安全认证的缺点</strong>。（ $\checkmark$ ） </li>
+<li><strong>访问控制中，客体是可以导致信息流动，或使系统状态发生变化的主动实体</strong>。 （ $\times$ ） </li>
+<li><strong>在强制访问控制策略下，主体可以改变自己、自己所拥有客体的安全属性</strong>。 （$\times$）</li>
+<li><strong>BLP 模型的特点是不上读、不下写</strong>。（ $\checkmark$ ） </li>
+<li><strong>安全审计是信息系统安全的最后防线，是访问控制的必要补充</strong>。（ $\checkmark$ ） </li>
+<li><strong>隐蔽通道的存在违反了信息系统的安全策略</strong>。（ $\checkmark$ ）</li>
+<li><strong>Windows 操作系统中，用户通过身份认证后，登录进程会为其创建一个安全描述符，相当于用户访问系统资源的票证</strong>。（ ） </li>
+<li><strong>Linux 系统中，特权程序是可以暂时获得管理员权限并执行一些管理员特权功能的程序</strong>。（$\checkmark$） </li>
+<li><strong>数据库库外加密只能以整个数据库文件为单位进行加密</strong>。（$\times$）</li>
+</ol>
+<p>二、简答题（每题 5 分，共 30 分）</p>
+<ol>
+<li><p><strong>请列举出 5 种自主访问控制的实现方式</strong>。<br> 答：① <strong>访问口令</strong>：客体提供口令，并分发给主体；主体访问时需要提供访问口令<br> ② <strong>访问控制矩阵</strong>：访问控制的矩阵形式<br> ③ <strong>访问能力表</strong>：主体能访问的客体明细表<br> ④ <strong>访问控制表</strong>(ACL)：能访问该客体的主体明细表<br> ⑤ <strong>授权关系表</strong>：记录所有的主-客体关系<br> ⑥ <strong>属主&#x2F;同组用户&#x2F;其他用户</strong>(OGO)：文件属性附加访问控制信息</p>
+</li>
+<li><p><strong>简述特权对信息系统安全的危害，那为什么还要提供特权</strong>？<br> 答：① <u>特权会<strong>被窃取、被误用、被滥用</strong></u> ；② 便于系统维护，提高系统可用性</p>
+</li>
+<li><p><strong>信息系统安全审计有何作用</strong>？<br> 答：① 系统安全的最后防线，是访问控制的必要补充；② 重建事件；③ 监测潜在的入侵并提供相关数据；④ 故障检测 (定位安全问题，帮助故障分析)；④ 发现系统不足；⑤ 联动其他安全机制】</p>
+</li>
+<li><p><strong>说明数据库安全中，数据完整性的含义</strong>。<br> 答：① 物理数据库完整性（整个数据库损毁时保证数据能够物理读取）② 逻辑数据库完整性（保护数据库的结构）③ 元素完整性（数据元素只能由授权用户改变）</p>
+</li>
+<li><p><strong>什么是 Linux 系统中的僵尸进程？僵尸进程有何危害</strong>？<br> 答：① 一个进程在调用exit后，不会立刻消失，而是留下的一个僵尸进程数据结构；② 太多的僵尸进程会占用较多的内存，进而影响系统性能和新进程创建，甚至导致系统瘫痪</p>
+</li>
+<li><p><strong>信息安全风险评估中，什么是残余风险？如何对待残余风险？</strong><br> 答：① 残余风险 是指 <u>采取风险控制措施后系统仍然存在的风险</u>；② 应该<u>评估其是否可以接受。如果可以接受，则予以持续关注，防止其导致安全事件的发生，否则进一步采取更为强劲的风险控制措施。</u></p>
+</li>
+</ol>
+<p>三、分析、设计题（每题 15 分，共 30 分） </p>
+<ol>
+<li><p><strong>设计一种动态口令身份认证机制，说明口令的使用和验证过程，并分析其可以抵御哪些口令攻击</strong>？<br>答：①<br>② 是一次性口令，可以抵御【重放攻击】</p>
+</li>
+<li><p><strong>叙述 Windows 操作系统中一种加密文件系统（例如 EFS）的工作原理，分析其安全性</strong>。<br>答：</p>
+</li>
+</ol>
+<p>四、计算题（20 分）<br><strong>假设有 3 个重要资产 A1、A2 和 A3，资产所面临的威胁以及威胁可利用的资产的脆弱性见表 1，括号内是其等级值。要求使用矩阵法计算资产的风险值及风险等级。矩阵的构建和等级划分表如表 2 - 表 7 所示，写出详细的风险计算过程。</strong> </p>
+<p>五、论述题（10 分）<br><strong>本次在线考试，利用学生的电脑、手机等设备在学生的家里搭建了在线考试环 境（系统），请利用学习的信息系统安全原理分析，这种在线考试环境能否从技 术上保证学生无法作弊？</strong> </p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://safforn.github.io/2023/05/04/Review-Information-System-Security-Review/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8/" rel="tag">信息系统安全</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2023/04/20/Review-of-Introduction-to-Artificial-Intelligence-lower-half/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">人工智能概论复习-下半</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "Mfj1ZnfVCAmY5dx71wOb68eU-gzGzoHsz",
+    app_key: "mzPI9zT9JlMSa66KB2mEaYzs",
+    path: window.location.pathname,
+    avatar: "mp",
+    placeholder: "来评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+
+  .v[data-class=v] .veditor {
+      background-image: url(https://s1.ax1x.com/2023/03/17/ppGUXXd.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
+      opacity: 0.75;
+  }
+
+</style>
+
+
+ 
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul> <!-- Copyrights -->
+      <li>
+        Copyrights &copy;
+        2020-2023
+        <i class="ri-heart-fill heart_icon"></i> Safforn
+      </li>
+    </ul>
+    <ul> <!-- Powered by -->
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>  <!-- cnzz统计 -->
+      <li>
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+    
+	  <ul> <!-- Website Runtime -->
+		  <li>
+        <span id="runtime_span"></span>
+        <script type="text/javascript">			
+          function show_runtime() {
+              window.setTimeout("show_runtime()", 1000);
+              StartTime = new Date("02/26/2023 08:07:08");
+              Y = new Date();
+              T = (Y.getTime() - StartTime.getTime());
+              M = 24 * 60 * 60 * 1000;
+              a = T / M;
+              A = Math.floor(a);
+              b = (a - A) * 24;
+              B = Math.floor(b);
+              c = (b - B) * 60;
+              C = Math.floor((b - B) * 60);
+              D = Math.floor((c - C) * 60);
+              runtime_span.innerHTML = "在猫猫的庇护下存在了: "+A+"天"+B+"小时"+C+"分"+D+"秒"}
+        show_runtime();
+      </script>
+      </li>
+	  </ul>
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt=""></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friendlink">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+            <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/copy-tex.min.js"></script>
+            <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/copy-tex.min.css">
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=22636878&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":170,"height":250,"hOffset":180,"vOffset":-100},"mobile":{"show":true,"scale":0.5},"log":false});</script></body>
+
+</html>
