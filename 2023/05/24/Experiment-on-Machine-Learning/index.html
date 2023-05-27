@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<!-- 全站黑白(公祭日专用)
+<style>
+  html {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+} </style>
+-->
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="博客,思考" />
+       
+      <meta name="description" content="人生小站" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>机器学习实验 |  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Experiment-on-Machine-Learning"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  机器学习实验
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/24/Experiment-on-Machine-Learning/" class="article-date">
+  <time datetime="2023-05-24T11:23:28.000Z" itemprop="datePublished">2023-05-24</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+  </div>
+ 
+       
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">5 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+      
+    </div>
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="实验1-决策树算法分析泰坦尼克号乘客存活情况"><a href="#实验1-决策树算法分析泰坦尼克号乘客存活情况" class="headerlink" title="实验1 决策树算法分析泰坦尼克号乘客存活情况"></a>实验1 决策树算法分析泰坦尼克号乘客存活情况</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">&#x27;PATH&#x27;</span>] = os.pathsep + <span class="string">r&#x27;E:\Tools\Graphviz\bin&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> pandas.core.common <span class="keyword">import</span> SettingWithCopyWarning</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> graphviz</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 数据读取</span></span><br><span class="line">data_train = pd.read_csv(<span class="string">&quot;train.csv&quot;</span>)  <span class="comment"># (891, 12)</span></span><br><span class="line">data_X_test = pd.read_csv(<span class="string">&quot;test.csv&quot;</span>)</span><br><span class="line">data_y_test = pd.read_csv(<span class="string">&quot;gender_submission.csv&quot;</span>)</span><br><span class="line">data_y_test = data_y_test.iloc[:, data_y_test.columns == <span class="string">&quot;Survived&quot;</span>]</span><br><span class="line">data_test = pd.concat([data_X_test, data_y_test], axis=<span class="number">1</span>)  <span class="comment"># 横向合并 (418, 12)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 数据清洗</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">data_clean</span>(<span class="params">data, test=<span class="literal">False</span></span>):</span><br><span class="line">    <span class="comment"># 关闭 SettingWithCopyWarning</span></span><br><span class="line">    warnings.simplefilter(action=<span class="string">&quot;ignore&quot;</span>, category=SettingWithCopyWarning)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 删除 缺失值过多的列、观察发现与标签没有关系的列</span></span><br><span class="line">    data.drop([<span class="string">&quot;PassengerId&quot;</span>, <span class="string">&quot;Cabin&quot;</span>, <span class="string">&quot;Name&quot;</span>, <span class="string">&quot;Ticket&quot;</span>], inplace=<span class="literal">True</span>, axis=<span class="number">1</span>)  <span class="comment"># (891, 9)</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 删除 训练集中含缺失值的行</span></span><br><span class="line">    data = data.dropna()  <span class="comment"># train(712, 9), test(331, 9)</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 二分类变量数值化：性别Sex</span></span><br><span class="line">    data[<span class="string">&quot;Sex&quot;</span>] = (data[<span class="string">&quot;Sex&quot;</span>] == <span class="string">&quot;male&quot;</span>).astype(<span class="string">&quot;int&quot;</span>)  <span class="comment"># male=1,female=0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 三分类变量数值化：登陆港口Embarked</span></span><br><span class="line">    labels = data[<span class="string">&quot;Embarked&quot;</span>].unique().tolist()</span><br><span class="line">    data[<span class="string">&quot;Embarked&quot;</span>] = data[<span class="string">&quot;Embarked&quot;</span>].apply(<span class="keyword">lambda</span> x: labels.index(x))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 提取 特征矩阵 和 标签</span></span><br><span class="line">    data_X = data.iloc[:, data.columns != <span class="string">&quot;Survived&quot;</span>]</span><br><span class="line">    data_y = data.iloc[:, data.columns == <span class="string">&quot;Survived&quot;</span>]</span><br><span class="line">    <span class="keyword">return</span> data_X, data_y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 提取 特征矩阵 和 标签</span></span><br><span class="line">X_train, y_train = data_clean(data_train)</span><br><span class="line">X_test, y_test = data_clean(data_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修正测试集和训练集的索引</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [X_train, y_train, X_test, y_test]:</span><br><span class="line">    i.index = <span class="built_in">range</span>(i.shape[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看一部分训练集</span></span><br><span class="line"><span class="comment"># print(X_train.head(16))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 建立决策树模型</span></span><br><span class="line">clf = DecisionTreeClassifier(random_state=<span class="number">25</span>,</span><br><span class="line">                             criterion=<span class="string">&quot;entropy&quot;</span>,</span><br><span class="line">                             max_depth=<span class="number">7</span>,</span><br><span class="line">                             min_samples_leaf=<span class="number">1</span>,</span><br><span class="line">                             splitter=<span class="string">&quot;best&quot;</span>)</span><br><span class="line">clf = clf.fit(X_train, y_train)</span><br><span class="line"><span class="comment"># 模型对于给定测试数据和标签的平均预测准确度</span></span><br><span class="line">score = clf.score(X_test, y_test)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;模型预测得分:&quot;</span>, score)</span><br><span class="line"></span><br><span class="line">X = pd.concat([X_train, X_test], axis=<span class="number">0</span>)  <span class="comment"># 纵向合并</span></span><br><span class="line">y = pd.concat([y_train, y_test], axis=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 交叉验证(训练集与测试集混合抽样预测)</span></span><br><span class="line">cross_score = cross_val_score(clf, X, y, cv=<span class="number">10</span>).mean()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;交叉验证得分:&quot;</span>, cross_score)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. 决策树可视化</span></span><br><span class="line">feature_name = [<span class="string">&quot;Pclass&quot;</span>, <span class="string">&quot;Sex&quot;</span>, <span class="string">&quot;Age&quot;</span>, <span class="string">&quot;Parch&quot;</span>, <span class="string">&quot;SibSp&quot;</span>, <span class="string">&quot;Fare&quot;</span>, <span class="string">&quot;Embarked&quot;</span>]</span><br><span class="line">dot_data = tree.export_graphviz(clf,</span><br><span class="line">                                feature_names=feature_name,</span><br><span class="line">                                class_names=[<span class="string">&quot;alive&quot;</span>, <span class="string">&quot;dead&quot;</span>],</span><br><span class="line">                                filled=<span class="literal">True</span>,</span><br><span class="line">                                rounded=<span class="literal">True</span>)</span><br><span class="line">graph = graphviz.Source(dot_data)</span><br><span class="line">graph.render(<span class="string">&quot;决策树分类可视化&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 参数优化</span></span><br><span class="line"><span class="comment"># gini_thresholds = np.linspace(0, 0.5, 20)  # 生成0-0.5 50个有顺序的随机数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一串参数和这些参数对应的,我们希望网格搜索 总搜索的参数的取值范围</span></span><br><span class="line"><span class="comment"># parameters = &#123;&#x27;splitter&#x27;: (&#x27;best&#x27;, &#x27;random&#x27;),</span></span><br><span class="line"><span class="comment">#               &#x27;criterion&#x27;: (&quot;gini&quot;, &quot;entropy&quot;),</span></span><br><span class="line"><span class="comment">#               &quot;max_depth&quot;: [*range(1, 25)],</span></span><br><span class="line"><span class="comment">#               &#x27;min_samples_leaf&#x27;: [*range(1, 100, 5)],</span></span><br><span class="line"><span class="comment">#               &#x27;min_impurity_decrease&#x27;: [*np.linspace(0, 0.5, 20)]&#125;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># clf = DecisionTreeClassifier(random_state=25)</span></span><br><span class="line"><span class="comment"># GS = GridSearchCV(clf, parameters, cv=10)</span></span><br><span class="line"><span class="comment"># GS.fit(X_train, y_train)</span></span><br><span class="line"><span class="comment"># print(&quot;最佳参数:\n&quot;, GS.best_params_)</span></span><br><span class="line"><span class="comment"># print(&quot;最佳得分:&quot;, GS.best_score_)</span></span><br><span class="line"><span class="comment">#  &#123;&#x27;criterion&#x27;: &#x27;entropy&#x27;, &#x27;max_depth&#x27;: 7, &#x27;min_impurity_decrease&#x27;: 0.0, &#x27;min_samples_leaf&#x27;: 1, &#x27;splitter&#x27;: &#x27;best&#x27;&#125;</span></span><br><span class="line"><span class="comment"># 最佳得分: 0.8105438184663537</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_72505469/article/details/126860358">决策树 参考代码：泰坦尼克号幸存者的预测</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/268532582">决策树可视化 - Graphviz安装及使用</a></li>
+</ol>
+<hr>
+<h3 id="实验2-聚类算法实现图像分割"><a href="#实验2-聚类算法实现图像分割" class="headerlink" title="实验2 聚类算法实现图像分割"></a>实验2 聚类算法实现图像分割</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> PIL.Image <span class="keyword">as</span> image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取图像信息</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">readImage</span>(<span class="params">filePath</span>):</span><br><span class="line">    f = <span class="built_in">open</span>(filePath, <span class="string">&#x27;rb&#x27;</span>)  <span class="comment"># 以二进制打开文件</span></span><br><span class="line">    data = []</span><br><span class="line">    img = image.<span class="built_in">open</span>(f)  <span class="comment"># 以列表形式储存图片像素值</span></span><br><span class="line">    m, n = img.size  <span class="comment"># 获得图片大小，为便利每个像素准备</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            x, y, z = img.getpixel((i, j))</span><br><span class="line">            <span class="comment"># getpixel返回指定位置的像素，如果所打开的图像是多层次的图片，那这个方法就返回一个元组</span></span><br><span class="line">            data.append([x / <span class="number">256.0</span>, y / <span class="number">256.0</span>, z / <span class="number">256.0</span>])  <span class="comment"># 将每个像素归一化成0-1</span></span><br><span class="line">    f.close()</span><br><span class="line">    <span class="keyword">return</span> np.array(data), m, n  <span class="comment"># 返回矩阵形式的data，以及图片的大小</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择聚类算法，确定模型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">clustering</span>(<span class="params">file, kmean=<span class="literal">False</span>, gaus=<span class="literal">False</span>, mshift=<span class="literal">False</span></span>):</span><br><span class="line">    seg_filename = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> kmean == <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line">        label = KMeans(n_clusters=<span class="number">2</span>).fit_predict(imgData)</span><br><span class="line">        seg_filename = <span class="string">&quot;\KMean_&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> gaus == <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># 高斯混合聚类</span></span><br><span class="line">        <span class="keyword">from</span> sklearn <span class="keyword">import</span> mixture</span><br><span class="line">        label = mixture.GaussianMixture(n_components=<span class="number">2</span>, covariance_type=<span class="string">&#x27;full&#x27;</span>).fit_predict(imgData)</span><br><span class="line">        seg_filename = <span class="string">&quot;\Gaussian_&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> mshift == <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># 均值漂移</span></span><br><span class="line">        <span class="keyword">import</span> sklearn.cluster <span class="keyword">as</span> sc</span><br><span class="line">        bw = sc.estimate_bandwidth(imgData, n_samples=<span class="number">500</span>, quantile=<span class="number">0.2</span>)</span><br><span class="line">        model = sc.MeanShift(bandwidth=<span class="number">0.067</span>, bin_seeding=<span class="literal">True</span>)</span><br><span class="line">        label = model.fit_predict(imgData)</span><br><span class="line">        seg_filename = <span class="string">&quot;\MeanShift_&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span>  <span class="comment"># 异常情况</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存图像</span></span><br><span class="line">    label = label.reshape([row, col])</span><br><span class="line">    pic_new = image.new(<span class="string">&#x27;L&#x27;</span>, (row, col))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(row):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(col):</span><br><span class="line">            pic_new.putpixel((i, j), <span class="built_in">int</span>(<span class="number">255</span> * label[i][j]))  <span class="comment"># 二值化像素值0/255</span></span><br><span class="line">            <span class="comment"># 灰度图的像素值为 int(256 / (label[i][j] + 1))</span></span><br><span class="line">	</span><br><span class="line">    pic_new.save(path + <span class="string">r&#x27;\segmented_cloud&#x27;</span> + seg_filename + <span class="string">&#x27;segmented_&#x27;</span> + file, <span class="string">&#x27;JPEG&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">path = <span class="string">r&#x27;D:\机器学习实验\实验二-聚类算法分割蓝天白云&#x27;</span></span><br><span class="line">filepath = <span class="string">r&#x27;\cloud&#x27;</span></span><br><span class="line"><span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(path + filepath):</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> files:  <span class="comment"># 遍历文件夹下的所有图片</span></span><br><span class="line">        imgData, row, col = readImage(os.path.join(root, file))</span><br><span class="line">        clustering(file, kmean=<span class="literal">True</span>)</span><br><span class="line">        clustering(file, gaus=<span class="literal">True</span>)</span><br><span class="line">        clustering(file, mshift=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="参考文章-1"><a href="#参考文章-1" class="headerlink" title="参考文章"></a>参考文章</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41905413/article/details/124427692">基于聚类的图像分割 - Python实现</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_29957455/article/details/82778306">python遍历目录下的所有文件和目录</a></li>
+</ol>
+<hr>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://safforn.github.io/2023/05/24/Experiment-on-Machine-Learning/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2023/05/04/Review-of-Android-Development/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">安卓开发复习</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "Mfj1ZnfVCAmY5dx71wOb68eU-gzGzoHsz",
+    app_key: "mzPI9zT9JlMSa66KB2mEaYzs",
+    path: window.location.pathname,
+    avatar: "mp",
+    placeholder: "来评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+
+  .v[data-class=v] .veditor {
+      background-image: url(https://s1.ax1x.com/2023/03/17/ppGUXXd.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
+      opacity: 0.75;
+  }
+
+</style>
+
+
+ 
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul> <!-- Copyrights -->
+      <li>
+        Copyrights &copy;
+        2020-2023
+        <i class="ri-heart-fill heart_icon"></i> Safforn
+      </li>
+    </ul>
+    <ul> <!-- Powered by -->
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>  <!-- cnzz统计 -->
+      <li>
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+    
+	  <ul> <!-- Website Runtime -->
+		  <li>
+        <span id="runtime_span"></span>
+        <script type="text/javascript">			
+          function show_runtime() {
+              window.setTimeout("show_runtime()", 1000);
+              StartTime = new Date("02/26/2023 08:07:08");
+              Y = new Date();
+              T = (Y.getTime() - StartTime.getTime());
+              M = 24 * 60 * 60 * 1000;
+              a = T / M;
+              A = Math.floor(a);
+              b = (a - A) * 24;
+              B = Math.floor(b);
+              c = (b - B) * 60;
+              C = Math.floor((b - B) * 60);
+              D = Math.floor((c - C) * 60);
+              runtime_span.innerHTML = "在猫猫的庇护下存在了: "+A+"天"+B+"小时"+C+"分"+D+"秒"}
+        show_runtime();
+      </script>
+      </li>
+	  </ul>
+
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt=""></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friendlink">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+            <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/copy-tex.min.js"></script>
+            <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/copy-tex.min.css">
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
